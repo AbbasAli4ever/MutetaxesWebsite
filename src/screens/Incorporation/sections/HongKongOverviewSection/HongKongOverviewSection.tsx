@@ -63,7 +63,7 @@ const pricingTiers = [
 
 export const HongKongOverviewSection = (): JSX.Element => {
   return (
-    <section className="flex flex-col w-full gap-10 py-8">
+    <section className="flex flex-col w-full gap-10 py-8 mt-[100px]">
       <header className="flex flex-col items-center gap-4 px-4 max-w-[1016px] mx-auto">
         <div className="flex flex-col items-center w-full gap-4">
           <p className="[font-family:'Helvetica_Neue-Regular',Helvetica] font-normal text-[#21283399] text-2xl text-center tracking-[0] leading-7">
@@ -84,7 +84,7 @@ export const HongKongOverviewSection = (): JSX.Element => {
         {pricingTiers.map((tier, index) => (
           <div key={index} className="relative flex-1 max-w-[366px]">
             {tier.isPopular && (
-              <Badge className="absolute -top-[15px] left-1/2 -translate-x-1/2 z-10 rounded-[40px] shadow-[0px_4px_24px_#00000040,inset_0px_-3px_6px_#ffffff73] bg-[linear-gradient(90deg,rgba(139,174,255,1)_0%,rgba(4,81,255,1)_100%)] border-0 px-[13px] py-3 h-auto">
+              <Badge className="absolute -top-[15px] -right-5 -translate-x-1/2 z-10 rounded-[40px] shadow-[0px_4px_24px_#00000040,inset_0px_-3px_6px_#ffffff73] bg-[linear-gradient(90deg,rgba(139,174,255,1)_0%,rgba(4,81,255,1)_100%)] border-0 px-[13px] py-3 h-auto">
                 <span className="[font-family:'Helvetica_Neue-Medium',Helvetica] font-medium text-white text-base text-center tracking-[0] leading-[18.5px]">
                   Most Popular
                 </span>
@@ -92,19 +92,22 @@ export const HongKongOverviewSection = (): JSX.Element => {
             )}
 
             <Card
-              className={`h-[812px] rounded-[20px] border-0 ${
+              className={`h-[812px] rounded-[20px] bg-white border-0 ${
                 tier.isPopular
                   ? "shadow-[0px_35px_104px_#004eff40] overflow-hidden relative"
                   : ""
               }`}
             >
               {tier.isPopular && (
-                <div className="absolute inset-0 pointer-events-none">
-                  <div className="absolute -top-[217px] -left-[497px] w-[1132px] h-[1130px]">
-                    <div className="absolute top-[90px] left-[90px] w-[949px] h-[949px] rounded-[474.32px] rotate-[12.34deg] blur-[77.38px] bg-[linear-gradient(226deg,rgba(0,78,255,1)_0%,rgba(222,232,255,0)_100%)]" />
-                  </div>
-                </div>
-              )}
+                 
+              
+                
+                  <div className="absolute top-[-270px] left-[200px] rotate-[-30deg] w-[500px] h-[600px] rounded-[474.32px]  blur-[77.38px] bg-[#004EFF]" />
+                  
+               
+              
+            )}
+              
 
               <CardContent className="relative flex flex-col h-full p-6">
                 <div className="flex flex-col gap-5">
@@ -177,7 +180,7 @@ export const HongKongOverviewSection = (): JSX.Element => {
                     variant={tier.buttonVariant}
                     className={`w-[217px] h-[54px] rounded-[28.01px] ${
                       tier.isPopular
-                        ? "bg-[linear-gradient(129deg,rgba(104,150,255,1)_0%,rgba(0,78,255,1)_100%)] text-white border-0 hover:opacity-90 [-webkit-text-stroke:0.9px_#000000]"
+                        ? "bg-[linear-gradient(129deg,rgba(104,150,255,1)_0%,rgba(0,78,255,1)_100%)] text-white border-0 hover:opacity-90 "
                         : "bg-white border-[1.36px] border-black text-black hover:bg-gray-50"
                     }`}
                   >

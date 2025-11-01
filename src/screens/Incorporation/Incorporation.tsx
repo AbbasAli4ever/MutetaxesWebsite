@@ -11,28 +11,6 @@ import { PackageDetailsSection } from "./sections/PackageDetailsSection";
 import { ServicesOverviewSection } from "./sections/ServicesOverviewSection";
 import { WhyChooseHongKongSection } from "./sections/WhyChooseHongKongSection";
 
-const timelineBadges = [
-  {
-    top: "top-[4278px]",
-    left: "left-[662px]",
-    label: "Day 1",
-  },
-  {
-    top: "top-[4634px]",
-    left: "left-[651px]",
-    label: "Days 2-3",
-  },
-  {
-    top: "top-[4943px]",
-    left: "left-[651px]",
-    label: "Days 4-5",
-  },
-  {
-    top: "top-[5315px]",
-    left: "left-[651px]",
-    label: "Days 6-7",
-  },
-];
 
 
 
@@ -52,17 +30,7 @@ export const Incorporation = (): JSX.Element => {
       <BenefitsSection />
       <FooterSection />
 
-      {timelineBadges.map((badge, index) => (
-        <div
-          key={index}
-          className={`inline-flex items-center justify-center gap-2.5 px-4 py-3 absolute ${badge.top} ${badge.left} bg-white rounded-[30px] overflow-hidden shadow-[0px_4px_4px_#004eff26]`}
-        >
-          <div className="relative flex items-center justify-center w-fit mt-[-1.00px] [font-family:'Helvetica_Neue-Medium',Helvetica] font-medium text-[#212833] text-lg text-center tracking-[0] leading-7 whitespace-nowrap">
-            {badge.label}
-          </div>
-          <div className="absolute top-8 left-[11px] w-16 h-16 bg-[#004eff] rounded-[32px] blur-[17px]" />
-        </div>
-      ))}
+     
     </div>
   );
 };

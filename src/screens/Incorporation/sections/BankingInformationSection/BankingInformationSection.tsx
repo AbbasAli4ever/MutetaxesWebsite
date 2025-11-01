@@ -49,7 +49,7 @@ const companyItems = [
 
 export const BankingInformationSection = (): JSX.Element => {
   return (
-    <section className="w-full flex flex-col gap-[29px] py-10">
+    <section className="w-full flex flex-col gap-[29px] py-10 mt-[100px]">
       <div className="flex flex-col items-center gap-6 max-w-[964px] mx-auto px-4">
         <p className="[font-family:'Helvetica_Neue-Regular',Helvetica] font-normal text-[#21283399] text-2xl text-center tracking-[0] leading-7">
           We help you navigate Hong Kong&#39;s banking requirements
@@ -66,7 +66,7 @@ export const BankingInformationSection = (): JSX.Element => {
         </p>
       </div>
 
-      <div className="flex flex-wrap justify-center gap-6 max-w-[1146px] mx-auto px-4">
+      <div className="flex justify-center gap-6 max-w-[1146px] mx-auto px-4">
         <Card className="w-full max-w-[561px] bg-white rounded-[14px] border border-solid border-[#0000001a]">
           <CardContent className="flex flex-col gap-[30px] p-6">
             <h3 className="[font-family:'Helvetica_Neue-Medium',Helvetica] font-medium text-neutral-950 text-[22px] tracking-[0] leading-5">
