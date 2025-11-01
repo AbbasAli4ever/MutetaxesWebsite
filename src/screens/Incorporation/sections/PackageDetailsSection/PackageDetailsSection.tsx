@@ -5,7 +5,7 @@ const packageCards = [
   {
     icon: "/Incorporate/valuepropositionsection.svg",
     title: "Government Registrations",
-    bgClass: "bg-[url(/Incorporate/subtract-3.svg)] bg-[100%_100%]",
+    bgClass: "bg-[url(/Incorporate/subtract-4.svg)] bg-contain bg-no-repeat bg-bottom",
     items: [
       "Company Name Search And Reservation",
       "Certificate Of Incorporation",
@@ -17,7 +17,7 @@ const packageCards = [
   {
     icon: "/Incorporate/valuepropositionsection-1.svg",
     title: "Company Kit",
-    bgClass: "bg-[url(/Incorporate/subtract-5.svg)] bg-[100%_100%]",
+    bgClass: "bg-[url(/Incorporate/subtract-4.svg)] bg-contain bg-no-repeat bg-bottom",
     hasGradient: true,
     items: [
       "Common Seal (steel)",
@@ -31,7 +31,7 @@ const packageCards = [
   {
     icon: "/Incorporate/valuepropositionsection-2.svg",
     title: "First Year Services",
-    bgClass: "bg-[url(/Incorporate/subtract-4.svg)] bg-[100%_100%]",
+    bgClass: "bg-[url(/Incorporate/subtract-4.svg)] bg-contain bg-no-repeat bg-bottom",
     items: [
       "Registered Office Address\n(central Location)",
       "Mail Handling And Forwarding",
@@ -64,9 +64,9 @@ export const PackageDetailsSection = (): JSX.Element => {
 
       <div className="flex flex-col lg:flex-row items-start gap-4 lg:gap-[20.1px] w-full max-w-[1200px]">
         {packageCards.map((card, index) => (
-          <Card
+          <div
             key={index}
-            className={`relative w-full lg:w-[394.93px] h-auto lg:h-[361.77px] rounded-[17.08px] overflow-hidden border border-solid ${card.bgClass}`}
+            className={`relative w-full lg:w-[394.93px] h-auto lg:h-[361.77px] rounded-[17.08px] overflow-hidden ${card.bgClass}`}
           >
             <CardContent className="relative h-full p-0">
               {card.hasGradient && (
@@ -77,7 +77,7 @@ export const PackageDetailsSection = (): JSX.Element => {
               )}
 
               <img
-                className="absolute -top-2.5 left-[-11px] w-[123px] h-[123px]"
+                className="absolute -top-1 left-[-11px] w-[123px] h-[123px]"
                 alt={card.title}
                 src={card.icon}
               />
@@ -106,7 +106,7 @@ export const PackageDetailsSection = (): JSX.Element => {
                 ))}
               </div>
             </CardContent>
-          </Card>
+          </div>
         ))}
       </div>
     </section>
