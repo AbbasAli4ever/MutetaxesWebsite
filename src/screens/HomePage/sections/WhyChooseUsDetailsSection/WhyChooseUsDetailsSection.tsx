@@ -9,7 +9,7 @@ const benefits = [
   { text: "100% online process" },
   { text: "Expert support" },
 ];
-
+ 
 export const WhyChooseUsDetailsSection = (): JSX.Element => {
   return (
     <section className="relative w-full rounded-[30px]">

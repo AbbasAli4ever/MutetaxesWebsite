@@ -5,7 +5,7 @@ const serviceCards = [
   {
     icon: "/Secretary/valuepropositionsection-2.svg",
     title: "Annual Compliance Management",
-    background: "bg-[url(/subtract.svg)]",
+    background: "bg-[url(/Secretary/Subtract.png)]",
     sections: [
       {
         subtitle: "Annual Return (nar1)",
@@ -31,7 +31,7 @@ const serviceCards = [
   {
     icon: "/Secretary/valuepropositionsection-3.svg",
     title: "Corporate Changes & Resolutions",
-    background: "bg-[url(/subtract-1.svg)]",
+   background: "bg-[url(/Secretary/Subtract.png)]",
     sections: [
       {
         subtitle: "Director & Officer Changes",
@@ -65,7 +65,7 @@ const serviceCards = [
   {
     icon: "/Secretary/valuepropositionsection-4.svg",
     title: "Meeting\nadministration",
-    background: "bg-[url(/subtract-2.svg)]",
+ background: "bg-[url(/Secretary/Subtract.png)]",
     sections: [
       {
         subtitle: "Annual Return (nar1)",
@@ -137,7 +137,8 @@ export const ServicesDetailsSection = (): JSX.Element => {
             {serviceCards.map((card, cardIndex) => (
               <Card
                 key={cardIndex}
-                className={`relative w-[395px] h-[826px] ${card.background} bg-[100%_100%] border-0 overflow-visible`}
+             
+                className={`relative shadow-none w-[395px] bg-contain bg-no-repeat bg-center h-[826px] ${card.background} border-0 overflow-visible`}
               >
                 <CardContent className="relative h-full p-0">
                   <img
@@ -146,8 +147,8 @@ export const ServicesDetailsSection = (): JSX.Element => {
                     src={card.icon}
                   />
 
-                  <div className="flex gap-[5.57px] absolute top-[26px] left-[107px] flex-col items-start w-[289px]">
-                    <h3 className="[font-family:'Helvetica_Neue-Medium',Helvetica] font-medium text-[#212833] text-2xl tracking-[0] leading-9 whitespace-pre-line">
+                  <div className="flex gap-[5.57px] absolute top-[26px] left-[137px] flex-col items-start w-[289px]">
+                    <h3 className="whitespace-pre-line [font-family:'Helvetica_Neue-Medium',Helvetica] font-medium text-[#212833] text-2xl tracking-[0] leading-9 ">
                       {card.title}
                     </h3>
                   </div>
@@ -203,7 +204,7 @@ export const ServicesDetailsSection = (): JSX.Element => {
               </h3>
             </div>
 
-            <div className="flex items-start gap-[309px] absolute top-[113px] left-[43px]">
+            {/* <div className="flex items-start gap-[309px] absolute top-[113px] left-[43px]">
               {statutoryRecordSections.map((section, sectionIndex) => (
                 <div
                   key={sectionIndex}
@@ -233,7 +234,50 @@ export const ServicesDetailsSection = (): JSX.Element => {
                   ))}
                 </div>
               ))}
-            </div>
+            </div> */}
+ <div className="absolute top-[113px] left-[43px] grid grid-cols-3  items-start w-full max-w-[1200px]">
+  {statutoryRecordSections.map((section, sectionIndex) => (
+    <div
+      key={sectionIndex}
+      className="flex flex-col items-start gap-[13.86px] relative"
+    >
+      <div className="flex items-center justify-center gap-[11.55px]">
+        <h4 className="[font-family:'Helvetica_Neue-Medium',Helvetica] font-medium text-[#ffffffe6] text-xl tracking-[0] leading-[21.3px] whitespace-nowrap">
+          {section.subtitle}
+        </h4>
+      </div>
+
+      {section.items.map((item, itemIndex) => (
+        <div
+          key={itemIndex}
+          className="flex items-center gap-[11.55px] w-full"
+        >
+          <img
+            className="relative w-[27.71px] h-[27.71px]"
+            alt="Frame"
+            src="/Secretary/greyticke.png"
+          />
+
+          <p className="[font-family:'Helvetica_Neue-Regular',Helvetica] font-normal text-[#ffffffe6] text-[16.2px] tracking-[0] leading-[21.3px] whitespace-nowrap">
+            {item}
+          </p>
+        </div>
+      ))}
+
+      {/* ✅ Show image on the right side only for the last column */}
+      {sectionIndex === statutoryRecordSections.length - 1 && (
+        <img
+          src="/Secretary/freee.png"
+          alt="Decoration"
+          className="absolute right-[-380px]  top-0 w-[659vw] h-auto object-contain"
+        />
+      )}
+    </div>
+  ))}
+</div>
+
+
+
           </CardContent>
         </Card>
       </div>
