@@ -1,13 +1,28 @@
 import React from "react";
 import { Badge } from "../../../../components/ui/badge";
 import { Button } from "../../../../components/ui/button";
-
+import { Link } from "react-router-dom";
 const navigationItems = [
-  { label: "Incorporation", width: "w-[119.73px]" },
-  { label: "Secretary", width: "w-[89.75px]" },
-  { label: "Accounting Services", width: "w-fit" },
-  { label: "Tax Services", width: "w-fit" },
-  { label: "Audit Support", width: "w-fit" },
+  {
+    label: "Incorporation",
+    href: "/incorporate",
+    isActive: true,
+  },
+  {
+    label: "Secretary",
+    href: "/secretary",
+    isActive: false,
+  },
+  {
+    label: "Accounting & Tax Services",
+    href: "/AccountingServices",
+    isActive: false,
+  },
+  {
+    label: "Audit Support",
+    href: "/AuditSupport",
+    isActive: false,
+  },
 ];
 
 export const HeroSection = (): JSX.Element => {
@@ -38,15 +53,18 @@ export const HeroSection = (): JSX.Element => {
         />
 
         <nav className="flex items-center gap-8">
-          {navigationItems.map((item, index) => (
-            <button
-              key={index}
-              className={`${item.width} h-7 text-xl text-center tracking-[-0.40px] [font-family:'Helvetica_Neue-Regular',Helvetica] font-normal text-[#212833] leading-7 whitespace-nowrap hover:opacity-70 transition-opacity`}
-            >
-              {item.label}
-            </button>
-          ))}
-        </nav>
+                {navigationItems.map((item, index) => (
+                  <Link
+                    key={index}
+                    className={`h-7 text-xl text-center tracking-[-0.40px] [font-family:'Helvetica_Neue-Regular',Helvetica] font-normal text-[#212833] leading-7 whitespace-nowrap hover:opacity-70 transition-opacity ${
+                      item.isActive ? "text-[#004eff]" : "text-[#212833]"
+                    }`}
+                    to={item.href}
+                  >
+                    {item.label}
+                  </Link>
+                ))}
+              </nav>
 
         <div className="flex items-center gap-2">
           <Button

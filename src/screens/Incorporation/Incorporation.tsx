@@ -34,45 +34,12 @@ const timelineBadges = [
   },
 ];
 
-const navigationItems = [
-  {
-    label: "Incorporation",
-    href: "/incorporation",
-    isActive: true,
-  },
-  {
-    label: "Secretary",
-    href: "#",
-    isActive: false,
-  },
-  {
-    label: "Accounting & Tax Services",
-    href: "#",
-    isActive: false,
-  },
-  {
-    label: "Audit Support",
-    href: "#",
-    isActive: false,
-  },
-];
+
 
 export const Incorporation = (): JSX.Element => {
   return (
     <div className="bg-[#efefef] overflow-hidden w-full min-w-[1440px] relative">
-      <nav className="flex items-center gap-8 absolute top-11 left-[calc(50.00%_-_331px)] z-10">
-        {navigationItems.map((item, index) => (
-          <Link
-            key={index}
-            className={`relative flex items-end justify-center h-7 mt-[-1.00px] [font-family:'Helvetica_Neue-Regular',Helvetica] font-normal text-xl text-center tracking-[-0.40px] leading-7 whitespace-nowrap ${
-              item.isActive ? "text-[#004eff]" : "text-[#212833]"
-            }`}
-            to={item.href}
-          >
-            {item.label}
-          </Link>
-        ))}
-      </nav>
+      
 
       <HeroBannerSection />
       <ServicesOverviewSection />

@@ -99,7 +99,7 @@ export const IntroductionSection = (): JSX.Element => {
       <div className="inline-flex flex-col items-center gap-14 relative flex-[0_0_auto]">
         <div className="inline-flex gap-4 relative flex-[0_0_auto] flex-col items-center">
           <div className="flex flex-col items-start gap-4 relative self-stretch w-full flex-[0_0_auto]">
-            <div className="relative flex items-center justify-center self-stretch [font-family:'Helvetica_Neue-Regular',Helvetica] font-normal text-[#21283399] text-2xl text-center tracking-[0] leading-7">
+            <div className="relative flex items-center justify-center self-stretch [font-family:'Helvetica_Neue-Regular',Helvetica] font-normal text-[#21283399] text-2xl text-center tracking-[0] leading-7 mt-[130px]">
               Transition
             </div>
 
@@ -140,15 +140,19 @@ export const IntroductionSection = (): JSX.Element => {
                       </Badge>
                     </div>
 
-                    <ul className="flex flex-col w-[344px] items-start gap-6 relative flex-[0_0_auto]">
+                    <ul className="flex flex-col w-[344px] items-start gap-3 relative flex-[0_0_auto]">
                       {card.items.map((item, itemIndex) => (
                         <li
                           key={itemIndex}
                           className="flex gap-2.5 items-center relative w-full flex-[0_0_auto]"
                         >
-                          <CheckIcon className="relative w-6 h-6 text-[#212833]" />
+                          <img
+                            className="flex-shrink-0 w-5 h-5"
+                            alt="Check"
+                            src="/Incorporate/frame.svg"
+                          />
 
-                          <div className="relative flex items-center justify-center flex-1 [font-family:'Helvetica_Neue-Regular',Helvetica] font-normal text-[#212833e6] text-xl tracking-[0] leading-8">
+                          <div className="relative flex items-center justify-start flex-1 [font-family:'Helvetica_Neue-Regular',Helvetica] font-normal text-[#212833e6] text-xl tracking-[0] leading-8">
                             {renderTextWithBold(item.text, item.boldWords)}
                           </div>
                         </li>

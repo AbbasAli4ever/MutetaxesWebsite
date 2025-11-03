@@ -66,7 +66,7 @@ export const WhyChooseHongKongSection = (): JSX.Element => {
         </p>
       </div>
 
-      <div className="flex flex-wrap justify-center items-start gap-6 max-w-[1140px] mx-auto px-4">
+      <div className="flex justify-center items-start gap-6 max-w-[1140px] mx-auto px-4">
         {pricingData.map((plan, index) => (
           <Card
             key={index}
@@ -75,12 +75,12 @@ export const WhyChooseHongKongSection = (): JSX.Element => {
             }`}
           >
             {plan.featured && (
-              <div className="absolute inset-0 overflow-hidden pointer-events-none">
-                <div className="absolute top-[-217px] left-[-497px] w-[1130px] h-[1130px]">
-                  <div className="absolute top-[90px] left-[90px] w-[949px] h-[949px] rounded-[474.32px] rotate-[12.34deg] blur-[77.38px] bg-[linear-gradient(226deg,rgba(0,78,255,1)_0%,rgba(222,232,255,0)_100%)]" />
-                  <div className="absolute top-[90px] left-[90px] w-[949px] h-[949px] rounded-[474.32px] rotate-[12.34deg] blur-[77.38px] bg-[linear-gradient(226deg,rgba(0,78,255,1)_0%,rgba(222,232,255,0)_100%)]" />
-                </div>
-              </div>
+              
+                
+                  <div className="absolute top-[-270px] left-[200px] rotate-[-30deg] w-[500px] h-[600px] rounded-[474.32px]  blur-[77.38px] bg-[#004EFF]" />
+                  
+               
+              
             )}
 
             <CardContent className="relative z-10 flex flex-col h-full p-6">
@@ -132,8 +132,8 @@ export const WhyChooseHongKongSection = (): JSX.Element => {
                   </div>
                 </div>
               </div>
-
-              <div className="flex justify-center mt-auto">
+</CardContent>
+              <div className="absolute flex items-center justify-center w-full mt-auto bottom-10">
                 <Button
                   variant={plan.buttonVariant}
                   className={`h-auto w-[217px] rounded-[28.01px] py-[15px] px-6 ${
@@ -147,7 +147,7 @@ export const WhyChooseHongKongSection = (): JSX.Element => {
                   </span>
                 </Button>
               </div>
-            </CardContent>
+            
           </Card>
         ))}
       </div>
