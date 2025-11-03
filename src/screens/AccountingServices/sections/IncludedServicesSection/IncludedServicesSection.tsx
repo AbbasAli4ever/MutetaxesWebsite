@@ -109,7 +109,7 @@ export const IncludedServicesSection = (): JSX.Element => {
   return (
     <section className="flex flex-col w-full items-center gap-14 px-4 md:px-8 lg:px-[120px] py-8">
       <header className="inline-flex gap-4 flex-col items-center max-w-[994px]">
-        <div className="flex flex-col items-start w-full gap-4">
+        <div className="flex flex-col items-start w-full gap-4 mt-[130px]">
           <p className="flex items-center justify-center w-full [font-family:'Helvetica_Neue-Regular',Helvetica] font-normal text-[#21283399] text-2xl text-center tracking-[0] leading-7">
             Secretary Requirements
           </p>
@@ -133,12 +133,12 @@ export const IncludedServicesSection = (): JSX.Element => {
             <CardContent className="relative p-0">
               <div className="relative w-full pt-[41px]">
                 <img
-                  className="w-full h-[360px] object-cover"
+                  className="w-full h-[360px] object-contain"
                   alt={`${service.title} background`}
                   src={service.background}
                 />
 
-                <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-[13px] w-[162px] h-[162px]">
+                <div className="absolute top-[2px] left-[57%] -translate-x-1/2 -translate-y-[13px] w-[162px] h-[162px]">
                   <img
                     className="w-full h-full"
                     alt={`${service.title} icon`}
@@ -151,14 +151,18 @@ export const IncludedServicesSection = (): JSX.Element => {
                     {service.title}
                   </h3>
 
-                  <ul className="flex flex-col gap-6">
+                  <ul className="flex flex-col gap-3">
                     {service.features.map((feature, featureIndex) => (
                       <li
                         key={featureIndex}
                         className="flex items-center gap-2.5"
                       >
                         <div className="flex items-center justify-center flex-shrink-0 w-6 h-6">
-                          <CheckIcon className="w-6 h-6 text-current" />
+                          <img
+                            className="flex-shrink-0 w-5 h-5"
+                            alt="Check"
+                            src="/Incorporate/frame.svg"
+                          />
                         </div>
 
                         <span className="flex-1 [font-family:'Helvetica_Neue-Regular',Helvetica] text-[#212833e6] text-xl tracking-[0] leading-8">
