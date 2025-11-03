@@ -65,7 +65,7 @@ export const ServicesIncludedSection = (): JSX.Element => {
               />
 
               <div className="absolute top-[124px] left-[26px] right-[26px] flex flex-col gap-8">
-                <h3 className="[font-family:'Helvetica_Neue-Medium',Helvetica] font-medium text-[#212833] text-2xl tracking-[0] leading-[34.1px]">
+                <h3 className="[font-family:'Helvetica_Neue-Medium',Helvetica] font-semibold text-[#212833] text-2xl tracking-[0] leading-[34.1px]">
                   {card.title}
                 </h3>
 
@@ -82,7 +82,7 @@ export const ServicesIncludedSection = (): JSX.Element => {
               </div>
 
               <img
-                className="absolute top-[-13px] left-1/2 -translate-x-1/2 w-[162px] h-[162px]"
+                className="absolute top-[-13px] right-1 -translate-x-1/2 w-[162px] h-[162px]"
                 alt="Value proposition icon"
                 src={card.iconImage}
               />

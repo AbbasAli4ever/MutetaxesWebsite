@@ -12,17 +12,17 @@ import { MainContentSection } from "./sections/MainContentSection";
 
 export const HomePage = (): JSX.Element => {
   return (
-    <div className="bg-[#efefef] w-full min-w-[1440px] relative">
+    <div className="bg-[#efefef] w-full relative">
       <HeroSection />
-      <MainContentSection/>
+       <MainContentSection/>
       <WhyChooseUsSection />
-      <ServicesSection />
+      {/*<ServicesSection />
       <WhyHongKongSection />
       <HowItWorksSection />
       <TestimonialsSection />
       <FaqSection />
       <WhyChooseUsDetailsSection />
-      <FooterSection />
+      <FooterSection /> */}
     </div>
   );
 };

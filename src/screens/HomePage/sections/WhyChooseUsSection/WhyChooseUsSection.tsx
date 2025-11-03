@@ -34,43 +34,48 @@ const features = [
 
 export const WhyChooseUsSection = (): JSX.Element => {
   return (
-    <section className="flex items-center justify-center w-full px-4 py-16">
-      <div className="flex flex-col items-center gap-16 max-w-[1226px] w-full">
-        <div className="flex flex-col items-center gap-4 max-w-[882px] w-full">
-          <p className="[font-family:'Helvetica_Neue-Regular',Helvetica] font-normal text-[#21283399] text-2xl text-center tracking-[0] leading-[28.1px]">
+    <section className="flex items-center justify-center w-full px-4 py-16 md:px-8 lg:px-12">
+      <div className="flex flex-col items-center gap-12 max-w-[1226px] w-full">
+        {/* Heading Section */}
+        <div className="flex flex-col items-center gap-4 text-center max-w-[882px] w-full px-2">
+          <p className="[font-family:'Helvetica_Neue-Regular',Helvetica] font-normal text-[#21283399] text-lg sm:text-xl md:text-2xl leading-tight">
             Why Choose Us
           </p>
 
-          <h2 className="[font-family:'Georgia-Regular',Helvetica] font-normal text-[#212833] text-[64.3px] text-center tracking-[0] leading-[72.4px]">
+          <h2 className="[font-family:'Georgia-Regular',Helvetica] font-normal text-[#212833] text-3xl sm:text-4xl md:text-5xl lg:text-[64px] leading-tight md:leading-[72px]">
             Why 1,000+ Hong Kong Businesses Choose Mute Taxes
           </h2>
         </div>
 
-        <div className="grid w-full grid-cols-1 gap-8 md:grid-cols-3">
+        {/* Features Grid */}
+        <div className="grid w-full grid-cols-1 gap-24 sm:gap-8 sm:grid-cols-2 lg:grid-cols-3">
           {features.map((feature, index) => (
             <Card
               key={index}
               className="relative bg-transparent border-0 shadow-none"
             >
-              <CardContent className="relative p-0">
+              <CardContent className="relative flex flex-col items-center p-0">
+                {/* Background Shape */}
                 <img
-                  className="absolute top-[42px] left-0 w-full h-[348px]"
+                  className="absolute top-[30px] sm:top-[60px] left-0 w-full h-[300px] sm:h-[320px] md:h-[340px] lg:h-[348px] object-contain"
                   alt="Background"
                   src={feature.background}
                 />
-
+<div className={"w-full flex items-center justify-center"}>
+                {/* Icon */}
                 <img
-                  className="absolute top-[-13px] left-[57%] -translate-x-1/2 w-[162px] h-[162px]"
+                  className="ml-8 sm:ml-12 w-[110px] sm:w-[130px] md:w-[150px] lg:w-[162px] h-auto z-10"
                   alt={feature.title}
                   src={feature.icon}
                 />
-
-                <div className="flex flex-col items-start gap-[10.67px] pt-[151px] px-[26px] pb-[42px] relative z-10">
-                  <h3 className="[font-family:'Helvetica_Neue-Medium',Helvetica] font-medium text-[#212833] text-[32px] tracking-[0] leading-[34.1px]">
+</div>
+                {/* Content */}
+                <div className="flex flex-col items-center sm:items-start gap-3  px-4 sm:px-6 pb-[40px] relative z-10 text-center sm:text-left">
+                  <h3 className="[font-family:'Helvetica_Neue-Medium',Helvetica] font-medium text-[#212833] text-2xl sm:text-[26px] md:text-[30px] lg:text-[32px] leading-snug">
                     {feature.title}
                   </h3>
 
-                  <p className="[font-family:'Helvetica_Neue-Regular',Helvetica] font-normal text-[#212833e6] text-[21.3px] tracking-[0] leading-[31.5px]">
+                  <p className="[font-family:'Helvetica_Neue-Regular',Helvetica] font-normal text-[#212833e6] text-base sm:text-lg md:text-[20px] leading-relaxed">
                     {feature.description}
                   </p>
                 </div>

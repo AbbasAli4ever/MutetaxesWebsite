@@ -92,7 +92,7 @@ export const WhyHongKongSection = (): JSX.Element => {
           {pricingPlans.map((plan, index) => (
             <div key={index} className="relative">
               {plan.featured && (
-                <Badge className="absolute -top-4 left-1/2 -translate-x-1/2 z-10 rounded-[40px] shadow-[0px_4px_24px_#00000040,inset_0px_-3px_6px_#ffffff73] bg-[linear-gradient(90deg,rgba(139,174,255,1)_0%,rgba(4,81,255,1)_100%)] border-0 px-[13px] py-3 h-auto">
+                <Badge className="absolute -top-4 left-52 -translate-x-1/2 z-10 rounded-[40px] shadow-[0px_4px_24px_#00000040,inset_0px_-3px_6px_#ffffff73] bg-[linear-gradient(90deg,rgba(139,174,255,1)_0%,rgba(4,81,255,1)_100%)] border-0 px-[13px] py-3 h-auto">
                   <span className="[font-family:'Helvetica_Neue-Medium',Helvetica] font-medium text-white text-base text-center tracking-[0] leading-[18.5px] whitespace-nowrap">
                     {plan.featuredLabel}
                   </span>
@@ -107,9 +107,7 @@ export const WhyHongKongSection = (): JSX.Element => {
                 }`}
               >
                 {plan.featured && (
-                  <div className="absolute inset-0 pointer-events-none">
-                    <div className="absolute -top-[217px] -left-[197px] w-[949px] h-[949px] rounded-[474.32px] rotate-[12.34deg] blur-[77.38px] bg-[linear-gradient(226deg,rgba(0,78,255,1)_0%,rgba(222,232,255,0)_100%)]" />
-                  </div>
+                  <div className="absolute top-[-270px] left-[200px] rotate-[-30deg] w-[500px] h-[600px] rounded-[474.32px]  blur-[77.38px] bg-[#004EFF]" />
                 )}
 
                 <CardContent className="relative flex flex-col h-full p-0">
@@ -129,13 +127,13 @@ export const WhyHongKongSection = (): JSX.Element => {
                         {plan.name}
                       </h4>
 
-                      <p className="[-webkit-text-stroke:0.9px_#707070] [font-family:'Helvetica_Neue-Regular',Helvetica] font-normal text-[#65676c] text-lg tracking-[0.45px] leading-6 whitespace-pre-line">
+                      <p className="[ [font-family:'Helvetica_Neue-Regular',Helvetica] font-normal text-[#65676c] text-lg tracking-[0.45px] leading-6 whitespace-pre-line">
                         {plan.description}
                       </p>
                     </div>
                   </div>
 
-                  <div className="flex items-center justify-center px-4 mt-[67px]">
+                  <div className="flex items-center justify-center mx-auto w-full mt-[67px] absolute top-40">
                     <Badge className="bg-[#004eff1a] hover:bg-[#004eff1a] border-0 rounded-[40px] px-4 py-4 h-auto">
                       <span className="[font-family:'Helvetica_Neue-Regular',Helvetica] font-normal text-[#004eff] text-base text-center tracking-[0] leading-[18.5px] whitespace-nowrap">
                         {plan.revenueRange}
@@ -143,19 +141,19 @@ export const WhyHongKongSection = (): JSX.Element => {
                     </Badge>
                   </div>
 
-                  <div className="flex flex-col items-start gap-10 mt-[37px] px-[17px]">
+                  <div className="flex flex-col items-start gap-10 mt-[37px] px-[17px] absolute top-72">
                     <div className="flex flex-col items-start w-full gap-5">
-                      <h5 className="[-webkit-text-stroke:0.9px_#707070] [font-family:'Helvetica_Neue-Medium',Helvetica] font-medium text-[#212833] text-[22px] tracking-[0.55px] leading-6">
+                      <h5 className="[ [font-family:'Helvetica_Neue-Medium',Helvetica] font-semibold text-[#212833] text-[22px] tracking-[0.55px] leading-6">
                         Features
                       </h5>
 
-                      <div className="flex flex-col items-start gap-3">
+                      <div className="flex flex-col items-start justify-center gap-3">
                         {plan.features.map((feature, featureIndex) => (
                           <div
                             key={featureIndex}
-                            className="flex items-start gap-2.5"
+                            className="flex items-start justify-center gap-2.5"
                           >
-                            <CheckIcon className="w-6 h-6 text-[#004eff] flex-shrink-0 mt-0.5" />
+                            <img src="/Audit/frame.svg" alt="tick icon" width={24} height={24} />
                             <p
                               className={`[font-family:'Helvetica_Neue-Regular',Helvetica] text-[#212833e6] text-base tracking-[0] leading-[18.5px] ${
                                 featureIndex === 0 &&
@@ -185,7 +183,7 @@ export const WhyHongKongSection = (): JSX.Element => {
                       variant="outline"
                       className={`w-[217px] h-[54px] rounded-[28.01px] ${
                         plan.featured
-                          ? "bg-[linear-gradient(129deg,rgba(104,150,255,1)_0%,rgba(0,78,255,1)_100%)] border-0 text-white hover:bg-[linear-gradient(129deg,rgba(104,150,255,1)_0%,rgba(0,78,255,1)_100%)] hover:text-white [-webkit-text-stroke:0.9px_#000000]"
+                          ? "bg-[linear-gradient(129deg,rgba(104,150,255,1)_0%,rgba(0,78,255,1)_100%)] border-0 text-white hover:bg-[linear-gradient(129deg,rgba(104,150,255,1)_0%,rgba(0,78,255,1)_100%)] hover:text-white "
                           : "bg-white border-[1.36px] border-solid border-black text-black hover:bg-white hover:text-black"
                       } [font-family:'Helvetica_Neue-Regular',Helvetica] font-normal text-[16.3px] tracking-[0] leading-[normal]`}
                     >

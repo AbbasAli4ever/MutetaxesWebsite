@@ -1,7 +1,7 @@
 import React from "react";
-import { Button } from "../../../../AuditComponents/ui/button";
-import { Input } from "../../../../AuditComponents/ui/input";
-import { Separator } from "../../../../AuditComponents/ui/separator";
+import { Button } from "../../../../components/ui/button";
+import { Input } from "../../../../components/ui/input";
+import { Separator } from "../../../../components/ui/separator";
 
 const contactInfo = [
   { label: "Phone:", value: "+852 XXXX XXXX" },
@@ -39,7 +39,7 @@ export const FooterSection = (): JSX.Element => {
             <img
               className="w-44 h-[30px]"
               alt="Mutetaxes logo"
-              src="/Audit/mutetaxes-logo-1.svg"
+              src="/HomePage/mutetaxes-logo-1-1.svg"
             />
 
             <div className="flex items-end justify-center w-fit [font-family:'Helvetica_Neue-Regular',Helvetica] font-normal text-[#c6c8cb] text-base tracking-[-0.32px] leading-6 whitespace-nowrap">
@@ -59,8 +59,8 @@ export const FooterSection = (): JSX.Element => {
 
         <Separator className="w-full bg-gray-700" />
 
-        <div className="inline-flex items-start gap-[734px]">
-          <div className="inline-flex items-start gap-[58px]">
+        <div className="inline-flex w-full items-start gap-[734px]">
+          <div className="inline-flex items-start justify-between w-full">
             <div className="inline-flex flex-col items-start gap-4">
               <div className="flex items-end justify-center w-fit mt-[-1.00px] [font-family:'Helvetica_Neue-Medium',Helvetica] font-medium text-white text-xl tracking-[-0.40px] leading-[30px] whitespace-nowrap">
                 Contact:
@@ -156,10 +156,10 @@ export const FooterSection = (): JSX.Element => {
                 <Input
                   type="email"
                   placeholder="Your email address"
-                  className="w-full h-9 bg-gray-800 rounded-[166px] border border-gray-700 shadow-[0px_1px_2px_#0000000d] px-[13px] [font-family:'Segoe_UI-Regular',Helvetica] font-normal text-gray-500 text-sm placeholder:text-gray-500"
+                  className="w-full h-9 bg-gray-800 rounded-[166px] border border-gray-700 shadow-[0px_1px_2px_#0000000d] text-gray-500 text-sm [font-family:'Segoe_UI-Regular',Helvetica] px-[13px]"
                 />
 
-                <Button className="h-9 w-full bg-[#004eff] rounded-[146px] shadow-[0px_1px_2px_-1px_#0000001a,0px_1px_3px_#0000001a] [font-family:'Segoe_UI-Regular',Helvetica] font-normal text-white text-sm text-center hover:bg-[#0040cc]">
+                <Button className="h-9 px-4 py-2 w-full bg-[#004eff] rounded-[146px] shadow-[0px_1px_2px_-1px_#0000001a,0px_1px_3px_#0000001a] [font-family:'Segoe_UI-Regular',Helvetica] font-normal text-white text-sm text-center tracking-[0] leading-5 hover:bg-[#0040cc]">
                   Subscribe
                 </Button>
               </div>
@@ -172,7 +172,7 @@ export const FooterSection = (): JSX.Element => {
         <div className="flex flex-wrap items-center justify-center gap-[0px_24px] w-full">
           {certifications.map((cert, index) => (
             <div key={index} className="inline-flex items-center">
-              <img className="w-6 h-4" alt="Svg margin" src="/Audit/svg-margin.svg" />
+              <img className="w-6 h-4" alt="Svg margin" src="/HomePage/svg-margin.svg" />
 
               <div className="inline-flex flex-col items-start">
                 <div className="flex items-center justify-center w-fit mt-[-1.00px] [font-family:'Segoe_UI-Regular',Helvetica] font-normal text-gray-400 text-sm tracking-[0] leading-5 whitespace-nowrap">
@@ -193,7 +193,7 @@ export const FooterSection = (): JSX.Element => {
           <img
             className="flex-[0_0_auto]"
             alt="Social media"
-            src="/Audit/social-media.svg"
+            src="/HomePage/social-media.svg"
           />
         </div>
       </footer>

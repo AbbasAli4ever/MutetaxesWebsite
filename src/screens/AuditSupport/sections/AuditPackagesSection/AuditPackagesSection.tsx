@@ -131,10 +131,8 @@ export const AuditPackagesSection = (): JSX.Element => {
 
           <Card className="w-full rounded-[20px] overflow-hidden border-0 bg-[linear-gradient(131deg,rgba(104,150,255,1)_0%,rgba(0,78,255,1)_100%)]">
             <CardContent className="relative p-0 h-[371px]">
-              <div className="absolute top-[23px] left-[583px] w-[1130px] h-[1180px]">
-                <div className="absolute top-[90px] left-[90px] w-[949px] h-[949px] rounded-[474.32px] rotate-[12.34deg] blur-[27.38px] bg-[linear-gradient(226deg,rgba(0,78,255,0.9)_0%,rgba(222,232,255,0.18)_100%)]" />
-                <div className="absolute top-[140px] left-[90px] w-[949px] h-[949px] rounded-[474.32px] rotate-[12.34deg] blur-[27.38px] bg-[linear-gradient(226deg,rgba(0,78,255,0.9)_0%,rgba(222,232,255,0.18)_100%)]" />
-              </div>
+              
+              <div className="absolute -bottom-[500px] -right-[200px] w-[700px] h-[700px] bg-white rounded-full blur-3xl opacity-40" />
 
               <div className="relative z-10 pt-[43px] px-[43px]">
                 <h3 className="[font-family:'Helvetica_Neue-Medium',Helvetica] font-medium text-white text-[32px] tracking-[0] leading-[26.0px] mb-[18px]">

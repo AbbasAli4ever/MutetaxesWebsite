@@ -11,30 +11,7 @@ export const HeroBannerSection = (): JSX.Element => {
         <div className="absolute top-[142px] right-[-535px] w-[944px] h-[944px] rounded-[472px] rotate-[167.66deg] blur-[77px] bg-[linear-gradient(184deg,rgba(0,78,255,0.24)_0%,rgba(222,232,255,0)_100%)]" />
 
         <div className="relative flex flex-col min-h-[964px]">
-          <header className="flex items-center justify-between px-6 py-[19px]">
-            <img
-              className="w-44 h-[30px]"
-              alt="Mutetaxes logo"
-              src="/AccountingServices/mutetaxes-logo-1-1.svg"
-            />
-
-            <div className="flex items-center gap-2">
-              <Button
-                variant="outline"
-                className="h-auto px-[18px] py-4 rounded-[40px] border-[#21283366] bg-transparent hover:bg-transparent"
-              >
-                <span className="[font-family:'Helvetica_Neue-Medium',Helvetica] font-medium text-[#212833] text-base">
-                  Sign In
-                </span>
-              </Button>
-
-              <Button className="h-auto px-[18px] py-4 rounded-[40px] bg-[linear-gradient(129deg,rgba(104,150,255,1)_0%,rgba(0,78,255,1)_100%)] hover:bg-[linear-gradient(129deg,rgba(104,150,255,0.9)_0%,rgba(0,78,255,0.9)_100%)]">
-                <span className="[font-family:'Helvetica_Neue-Medium',Helvetica] font-medium text-[#dde7ff] text-base">
-                  Get Started
-                </span>
-              </Button>
-            </div>
-          </header>
+          
 
           <div className="flex flex-col items-center justify-center flex-1 gap-6 px-6 py-12">
             <div className="flex flex-col items-center gap-6 max-w-[894px]">

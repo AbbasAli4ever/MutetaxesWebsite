@@ -57,11 +57,11 @@ export const BankingInfoSection = (): JSX.Element => {
             >
               <CardContent className="flex items-start gap-2 p-4">
                 <div className="w-8 h-8 flex-shrink-0 rounded-lg bg-[linear-gradient(129deg,rgba(255,136,128,1)_0%,rgba(241,67,54,1)_100%)] flex items-center justify-center">
-                  <div className="w-3.5 h-3.5 bg-[url(/union.svg)] bg-[100%_100%]" />
+                  <div className="w-3.5 h-3.5 bg-[url(/Audit/whitecross.png)] bg-[100%_100%]" />
                 </div>
 
                 <div className="flex flex-col flex-1 gap-3">
-                  <h3 className="[font-family:'Helvetica_Neue-Medium',Helvetica] font-medium text-[#212833] text-2xl tracking-[0] leading-[29px] whitespace-pre-line">
+                  <h3 className="[font-family:'Helvetica_Neue-Medium',Helvetica] font-semibold text-[#212833] text-[22px] tracking-[0] leading-[29px] whitespace-pre-line">
                     {issue.title}
                   </h3>
 

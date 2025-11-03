@@ -91,11 +91,11 @@ export const SupportInfoSection = (): JSX.Element => {
                 />
 
                 <div className="absolute top-32 left-[25px] flex flex-col items-start gap-8 w-[344px]">
-                  <h3 className="flex items-center justify-center w-full [font-family:'Helvetica_Neue-Medium',Helvetica] font-medium text-[#212833] text-2xl tracking-[0] leading-[34.1px]">
+                  <h3 className="flex items-center justify-start w-full [font-family:'Helvetica_Neue-Medium',Helvetica] font-semibold text-[#212833] text-2xl tracking-[0] leading-[34.1px]">
                     {category.title}
                   </h3>
 
-                  <ul className="flex flex-col items-start w-full gap-6">
+                  <ul className="flex flex-col items-start w-full gap-3">
                     {category.items.map((item, itemIndex) => (
                       <li
                         key={itemIndex}
@@ -106,7 +106,7 @@ export const SupportInfoSection = (): JSX.Element => {
                           alt="Checkmark"
                           src="/Audit/frame.svg"
                         />
-                        <span className="flex items-center justify-center flex-1 [font-family:'Helvetica_Neue-Regular',Helvetica] font-normal text-[#212833e6] text-xl tracking-[0] leading-8">
+                        <span className="flex items-center justify-start flex-1 [font-family:'Helvetica_Neue-Regular',Helvetica] font-normal text-[#212833e6] text-xl tracking-[0] leading-8">
                           {item}
                         </span>
                       </li>
@@ -138,11 +138,11 @@ export const SupportInfoSection = (): JSX.Element => {
                 />
 
                 <div className="absolute top-32 left-[25px] flex flex-col items-start gap-8 w-[344px]">
-                  <h3 className="flex items-center justify-center w-full [font-family:'Helvetica_Neue-Medium',Helvetica] font-medium text-[#212833] text-2xl tracking-[0] leading-[34.1px]">
+                  <h3 className="flex items-center justify-start w-full [font-family:'Helvetica_Neue-Medium',Helvetica] font-semibold text-[#212833] text-2xl tracking-[0] leading-[34.1px]">
                     {category.title}
                   </h3>
 
-                  <ul className="flex flex-col items-start w-full gap-6">
+                  <ul className="flex flex-col items-start w-full gap-3">
                     {category.items.map((item, itemIndex) => (
                       <li
                         key={itemIndex}
@@ -153,7 +153,7 @@ export const SupportInfoSection = (): JSX.Element => {
                           alt="Checkmark"
                           src="/Audit/frame.svg"
                         />
-                        <span className="flex items-center justify-center flex-1 [font-family:'Helvetica_Neue-Regular',Helvetica] font-normal text-[#212833e6] text-xl tracking-[0] leading-8">
+                        <span className="flex items-center justify-start flex-1 [font-family:'Helvetica_Neue-Regular',Helvetica] font-normal text-[#212833e6] text-xl tracking-[0] leading-8">
                           {item}
                         </span>
                       </li>

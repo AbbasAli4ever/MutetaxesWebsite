@@ -1,7 +1,7 @@
 import React from "react";
 import { Badge } from "../../../../IncorporateComponents/ui/badge";
 import { Button } from "../../../../IncorporateComponents/ui/button";
-import { Link } from "react-router-dom";
+
 
 const statisticsBadges = [
   {
@@ -21,28 +21,7 @@ const statisticsBadges = [
   },
 ];
 
-const navigationItems = [
-  {
-    label: "Incorporation",
-    href: "/incorporate",
-    isActive: true,
-  },
-  {
-    label: "Secretary",
-    href: "/secretary",
-    isActive: false,
-  },
-  {
-    label: "Accounting & Tax Services",
-    href: "/AccountingServices",
-    isActive: false,
-  },
-  {
-    label: "Audit Support",
-    href: "/AuditSupport",
-    isActive: false,
-  },
-];
+
 
 export const HeroBannerSection = (): JSX.Element => {
   return (
@@ -74,44 +53,7 @@ export const HeroBannerSection = (): JSX.Element => {
 
 
 
-      <header className="absolute left-0 right-0 flex items-center justify-between w-[97%] mx-auto px-12 top-9">
-        <img
-          className="w-44 h-[30px]"
-          alt="Mutetaxes logo"
-          src="/HomePage/mutetaxes-logo-1.svg"
-        />
-
-        <nav className="flex items-center gap-8">
-                {navigationItems.map((item, index) => (
-                  <Link
-                    key={index}
-                    className={`h-7 text-xl text-center tracking-[-0.40px] [font-family:'Helvetica_Neue-Regular',Helvetica] font-normal text-[#212833] leading-7 whitespace-nowrap hover:opacity-70 transition-opacity ${
-                      item.isActive ? "text-[#004eff]" : "text-[#212833]"
-                    }`}
-                    to={item.href}
-                  >
-                    {item.label}
-                  </Link>
-                ))}
-              </nav>
-
-        <div className="flex items-center gap-2">
-          <Button
-            variant="outline"
-            className="h-auto px-[18px] py-2 rounded-[40px] border border-solid border-[#21283366] bg-transparent hover:bg-transparent"
-          >
-            <span className="[font-family:'Helvetica_Neue-Medium',Helvetica] font-medium text-[#212833] text-base tracking-[0] leading-6">
-              Sign In
-            </span>
-          </Button>
-
-          <Button className="h-auto px-[18px] py-2 rounded-[40px] bg-[linear-gradient(129deg,rgba(104,150,255,1)_0%,rgba(0,78,255,1)_100%)] hover:opacity-90">
-            <span className="[font-family:'Helvetica_Neue-Medium',Helvetica] font-medium text-[#dde7ff] text-base tracking-[0] leading-6">
-              Get Started
-            </span>
-          </Button>
-        </div>
-      </header>
+      
 
       <div className="absolute top-[207px] left-1/2 -translate-x-1/2 flex flex-col w-[900px] items-center justify-center gap-6">
         <div className="flex flex-col items-center justify-center gap-6">

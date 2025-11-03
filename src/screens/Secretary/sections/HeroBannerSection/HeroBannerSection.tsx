@@ -3,13 +3,7 @@ import React from "react";
 import { Badge } from "../../../../components/ui/badge";
 import { Button } from "../../../../components/ui/button";
 
-const navigationItems = [
-  { label: "Incorporation", width: "w-[119.73px]" },
-  { label: "Secretary", width: "w-[89.75px]", active: true },
-  { label: "Accounting Services", width: "w-fit" },
-  { label: "Tax Services", width: "w-fit" },
-  { label: "Audit Support", width: "w-fit" },
-];
+
 const statisticsBadges = [
   {
      text: ( 
@@ -66,46 +60,7 @@ export const HeroBannerSection = (): JSX.Element => {
         ))}
       </div>
 
-      <header className="absolute left-0 right-0 flex items-center justify-between w-[97%] mx-auto px-12 top-9">
-        <img
-          className="w-44 h-[30px]"
-          alt="Mutetaxes logo"
-          src="/HomePage/mutetaxes-logo-1.svg"
-        />
-
-        <nav className="flex items-center gap-8">
-          {navigationItems.map((item, index) => (
-            <button
-              key={index}
-              className={`
-        ${item.width} h-7 text-xl text-center tracking-[-0.40px]
-        [font-family:'Helvetica_Neue-Regular',Helvetica] font-normal leading-7 whitespace-nowrap
-        transition-all duration-200
-        ${item.active ? "text-[#224dff] " : "text-[#212833] hover:opacity-70"}
-      `}
-            >
-              {item.label}
-            </button>
-          ))}
-        </nav>
-
-        <div className="flex items-center gap-2">
-          <Button
-            variant="outline"
-            className="h-auto px-[18px] py-2 rounded-[40px] border border-solid border-[#21283366] bg-transparent hover:bg-transparent"
-          >
-            <span className="[font-family:'Helvetica_Neue-Medium',Helvetica] font-medium text-[#212833] text-base tracking-[0] leading-6">
-              Sign In
-            </span>
-          </Button>
-
-          <Button className="h-auto px-[18px] py-2 rounded-[40px] bg-[linear-gradient(129deg,rgba(104,150,255,1)_0%,rgba(0,78,255,1)_100%)] hover:opacity-90">
-            <span className="[font-family:'Helvetica_Neue-Medium',Helvetica] font-medium text-[#dde7ff] text-base tracking-[0] leading-6">
-              Get Started
-            </span>
-          </Button>
-        </div>
-      </header>
+     
 
       <div className="absolute top-[207px] left-1/2 -translate-x-1/2 flex flex-col w-full items-center justify-center gap-6">
         <div className="flex flex-col items-center justify-center gap-6">
