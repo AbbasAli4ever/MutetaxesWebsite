@@ -48,7 +48,7 @@ export const WhyChooseUsSection = (): JSX.Element => {
         </div>
 
         {/* Features Grid */}
-        <div className="grid w-full grid-cols-1 gap-24 sm:gap-8 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="grid w-full grid-cols-1 gap-24 sm:gap-10 xl:gap-y-20 sm:grid-cols-2 lg:grid-cols-3">
           {features.map((feature, index) => (
             <Card
               key={index}
@@ -57,25 +57,25 @@ export const WhyChooseUsSection = (): JSX.Element => {
               <CardContent className="relative flex flex-col items-center p-0">
                 {/* Background Shape */}
                 <img
-                  className="absolute top-[30px] sm:top-[60px] left-0 w-full h-[300px] sm:h-[320px] md:h-[340px] lg:h-[348px] object-contain"
+                  className="absolute top-[30px] lg:top-[7px] xl:top-[60px] left-0 w-full h-[300px] sm:h-[320px] md:h-[340px] lg:h-[348px] object-contain"
                   alt="Background"
                   src={feature.background}
                 />
 <div className={"w-full flex items-center justify-center"}>
                 {/* Icon */}
                 <img
-                  className="ml-8 sm:ml-12 w-[110px] sm:w-[130px] md:w-[150px] lg:w-[162px] h-auto z-10"
+                  className="ml-8 md:ml-10 lg:ml-11 xl:ml-12 w-[110px] sm:w-[130px] md:w-[130px] xl:w-[162px] h-auto z-10"
                   alt={feature.title}
                   src={feature.icon}
                 />
 </div>
                 {/* Content */}
-                <div className="flex flex-col items-center sm:items-start gap-3  px-4 sm:px-6 pb-[40px] relative z-10 text-center sm:text-left">
-                  <h3 className="[font-family:'Helvetica_Neue-Medium',Helvetica] font-medium text-[#212833] text-2xl sm:text-[26px] md:text-[30px] lg:text-[32px] leading-snug">
+                <div className="flex flex-col items-center sm:items-start gap-1  px-4 sm:px-6 pb-[40px] relative z-10 text-center sm:text-left">
+                  <h3 className="[font-family:'Helvetica_Neue-Medium',Helvetica] font-medium text-[#212833] text-2xl sm:text-[26px] md:text-[25px] xl:text-[32px] leading-snug">
                     {feature.title}
                   </h3>
 
-                  <p className="[font-family:'Helvetica_Neue-Regular',Helvetica] font-normal text-[#212833e6] text-base sm:text-lg md:text-[20px] leading-relaxed">
+                  <p className="[font-family:'Helvetica_Neue-Regular',Helvetica] font-normal text-[#212833e6] text-base px-5 sm:px-0 sm:text-lg md:text-[15px] xl:text-[20px] leading-relaxed">
                     {feature.description}
                   </p>
                 </div>
