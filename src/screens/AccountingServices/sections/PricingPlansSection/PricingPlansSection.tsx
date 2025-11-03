@@ -31,11 +31,11 @@ export const PricingPlansSection = (): JSX.Element => {
     <section className="flex justify-center w-full py-8">
       <div className="flex w-full max-w-[1226px] flex-col items-center gap-16 px-4">
         <header className="flex flex-col w-full max-w-[882px] items-center gap-4">
-          <div className="[font-family:'Helvetica_Neue-Regular',Helvetica] font-normal text-[#21283399] text-2xl text-center tracking-[0] leading-[28.1px]">
+          <div className="[font-family:'Helvetica_Neue-Regular',Helvetica] font-normal text-[#21283399] text-2xl text-center tracking-[0] leading-[28.1px] mt-[130px]">
             Dashboard
           </div>
 
-          <h1 className="[font-family:'Georgia-Regular',Helvetica] font-normal text-[#212833] text-[64.3px] text-center tracking-[0] leading-[72.4px]">
+          <h1 className="[font-family:'Helvetica] font-normal text-[#212833] text-[64.3px] text-center tracking-[0] leading-[72.4px]">
             Modern Compliance Management Dashboard
           </h1>
 
@@ -54,13 +54,14 @@ export const PricingPlansSection = (): JSX.Element => {
                   src="/AccountingServices/subtract-2.svg"
                 />
 
-                <div className="absolute left-0.5 top-0 flex w-[83px] h-[83px] items-center justify-center rounded-[23.37px] shadow-[25.39px_26.4px_39.61px_#004eff47] bg-[linear-gradient(129deg,rgba(104,150,255,1)_0%,rgba(0,78,255,1)_100%)]">
+                <div className="absolute left-0.5 top-0 flex w-[83px] h-[83px] items-center justify-center rounded-[23.37px] shadow-[25.39px_26.4px_39.61px_#00b8db47] bg-[linear-gradient(129deg,#96E5F4_0%,#00B8DB_100%)]">
                   <img
                     className="relative object-cover w-14 h-14"
                     alt="Download"
                     src="/AccountingServices/download--82--1.png"
                   />
                 </div>
+
 
                 <div className="absolute left-[26px] top-[131px] flex flex-col w-[334px] items-start gap-4">
                   <h3 className="[font-family:'Helvetica_Neue-Medium',Helvetica] font-medium text-[#212833] text-[32px] tracking-[0] leading-[34.1px]">
@@ -117,58 +118,14 @@ export const PricingPlansSection = (): JSX.Element => {
             </Card>
           </div>
 
-          <Card className="w-full max-w-[1184px] h-auto border-0 rounded-[20px] overflow-hidden bg-[linear-gradient(131deg,rgba(104,150,255,1)_0%,rgba(0,78,255,1)_100%)]">
-            <CardContent className="relative p-0 h-[266px]">
-              <div className="absolute top-[23px] left-[583px] w-[1130px] h-[1180px]">
-                <div className="absolute top-[90px] left-[90px] w-[949px] h-[949px] rounded-[474.32px] rotate-[12.34deg] blur-[27.38px] bg-[linear-gradient(226deg,rgba(0,78,255,0.9)_0%,rgba(222,232,255,0.18)_100%)]" />
-                <div className="absolute top-[140px] left-[90px] w-[949px] h-[949px] rounded-[474.32px] rotate-[12.34deg] blur-[27.38px] bg-[linear-gradient(226deg,rgba(0,78,255,0.9)_0%,rgba(222,232,255,0.18)_100%)]" />
-              </div>
+          <div className="w-full max-w-[1184px] h-auto rounded-[20px] overflow-hidden">
+  <img
+    src="/AccountingServices/key-features.png"
+    alt="Key Features"
+    className="w-full h-auto object-cover"
+  />
+</div>
 
-              <div className="absolute top-[43px] left-[43px] flex flex-col items-start gap-[5.57px]">
-                <h3 className="[font-family:'Helvetica_Neue-Medium',Helvetica] font-medium text-white text-[32px] tracking-[0] leading-[26.0px] whitespace-nowrap">
-                  Key Features
-                </h3>
-              </div>
-
-              <div className="absolute top-[113px] left-[43px] flex flex-col items-start justify-center gap-[54px]">
-                <div className="flex items-center gap-[54px] flex-wrap">
-                  {keyFeaturesRow1.map((feature, index) => (
-                    <div
-                      key={index}
-                      className="flex items-center gap-[11.55px]"
-                    >
-                      <img
-                        className="w-[27.71px] h-[27.71px]"
-                        alt="Frame"
-                        src="/AccountingServices/frame-3.svg"
-                      />
-                      <span className="[font-family:'Helvetica_Neue-Regular',Helvetica] font-normal text-[#ffffffe6] text-[16.2px] tracking-[0] leading-[21.3px] whitespace-nowrap">
-                        {feature}
-                      </span>
-                    </div>
-                  ))}
-                </div>
-
-                <div className="flex items-center gap-[54px] flex-wrap">
-                  {keyFeaturesRow2.map((feature, index) => (
-                    <div
-                      key={index}
-                      className="flex items-center gap-[11.55px]"
-                    >
-                      <img
-                        className="w-[27.71px] h-[27.71px]"
-                        alt="Frame"
-                        src="/AccountingServices/frame-3.svg"
-                      />
-                      <span className="[font-family:'Helvetica_Neue-Regular',Helvetica] font-normal text-[#ffffffe6] text-[16.2px] tracking-[0] leading-[21.3px] whitespace-nowrap">
-                        {feature}
-                      </span>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </CardContent>
-          </Card>
         </div>
       </div>
     </section>

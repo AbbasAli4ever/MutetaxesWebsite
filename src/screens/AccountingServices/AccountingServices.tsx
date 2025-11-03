@@ -10,17 +10,17 @@ import { IntroductionSection } from "./sections/IntroductionSection";
 import { PricingPlansSection } from "./sections/PricingPlansSection";
 import { ServicesOverviewSection } from "./sections/ServicesOverviewSection";
 
-const navigationItems = [
-  { label: "Incorporation", active: false },
-  { label: "Secretary", active: false },
-  { label: "Accounting & Tax Services", active: true },
-  { label: "Audit Support", active: false },
-];
+// const navigationItems = [
+//   { label: "Incorporation", active: false },
+//   { label: "Secretary", active: false },
+//   { label: "Accounting & Tax Services", active: true },
+//   { label: "Audit Support", active: false },
+// ];
 
 export const AccountingServices = (): JSX.Element => {
   return (
     <div className="bg-[#efefef] overflow-hidden w-full relative">
-      <nav className="flex items-center justify-center gap-8 py-11 w-full">
+      {/* <nav className="flex items-center justify-center gap-8 py-11 w-full">
         {navigationItems.map((item, index) => (
           <div
             key={index}
@@ -31,7 +31,7 @@ export const AccountingServices = (): JSX.Element => {
             {item.label}
           </div>
         ))}
-      </nav>
+      </nav> */}
 
       <HeroBannerSection />
       <FeaturesIncludedSection />
