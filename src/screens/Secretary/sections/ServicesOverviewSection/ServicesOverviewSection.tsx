@@ -52,7 +52,7 @@ export const ServicesOverviewSection = (): JSX.Element => {
     <section className="flex flex-col w-full items-center gap-14 px-[120px] py-8 relative">
       <header className="inline-flex flex-col items-center gap-4 relative flex-[0_0_auto]">
         <div className="flex flex-col items-start gap-4 relative self-stretch w-full flex-[0_0_auto]">
-          <p className="relative flex items-center justify-center self-stretch mt-[-1.00px] [font-family:'Helvetica_Neue-Regular',Helvetica] font-normal text-[#21283399] text-2xl text-center tracking-[0] leading-7">
+          <p className="relative flex items-center justify-center self-stretch mt-[-1.00px] [font-family:'Helvetica_Neue-Regular',Helvetica] font-light text-[#21283399] text-[24px] text-center tracking-[0] leading-7">
             Secretary Requirements
           </p>
 
@@ -60,7 +60,7 @@ export const ServicesOverviewSection = (): JSX.Element => {
             Understanding Hong Kong&#39;s Company Secretary Requirements
           </h2>
 
-          <p className="relative flex items-center justify-center self-stretch [font-family:'Helvetica_Neue-Regular',Helvetica] font-normal text-[#212833] text-2xl text-center tracking-[0] leading-7">
+          <p className="relative flex items-center justify-center self-stretch [font-family:'Helvetica_Neue-Regular',Helvetica] font-light text-[#212833] text-[24px] text-center tracking-[0] leading-7">
             Legal Obligations Every Hong Kong Company Must Comply With
           </p>
         </div>
@@ -86,12 +86,12 @@ export const ServicesOverviewSection = (): JSX.Element => {
               />
 
               <div className="flex flex-col w-[334px] items-start gap-8 absolute top-32 left-[25px]">
-                <h3 className="relative flex items-center justify-center self-stretch mt-[-1.22px] [font-family:'Helvetica_Neue-Medium',Helvetica] font-medium text-[#212833] text-2xl tracking-[0] leading-[34.1px] whitespace-pre-line">
+                <h3 className="relative  flex items-start justify-start self-stretch mt-[-1.22px] [font-family:'Helvetica_Neue-Medium',Helvetica] font-medium text-[#212833] text-[24px] tracking-[0] leading-[34.1px] whitespace-pre-line">
                   {card.title}
                 </h3>
 
                 {card.type === "text" && (
-                  <p className="relative flex items-center justify-center w-[336.23px] mr-[-2.67px] [font-family:'Helvetica_Neue-Regular',Helvetica] font-normal text-[#212833e6] text-xl tracking-[0] leading-[31.5px]">
+                  <p className="relative flex  items-center justify-center w-[336.23px] mr-[-2.67px] [font-family:'Helvetica_Neue-Regular',Helvetica] font-extralight text-[#212833e6] text-xl tracking-[0] leading-[31.5px]">
                     {card.description}
                   </p>
                 )}
@@ -109,12 +109,13 @@ export const ServicesOverviewSection = (): JSX.Element => {
                           src="/Secretary/frame.svg"
                         />
 
-                        <p className="relative flex items-center justify-center flex-1 mt-[-1.00px] [font-family:'Helvetica_Neue-Medium',Helvetica] font-normal text-[#212833e6] text-xl tracking-[0] leading-8">
-                          <span className="font-medium">{item.boldText}</span>
-                          <span className="[font-family:'Helvetica_Neue-Regular',Helvetica]">
-                            {item.regularText}
-                          </span>
-                        </p>
+                       <p className="relative  [font-family:'Helvetica_Neue-Medium',Helvetica] font-normal text-[#212833e6] text-xl tracking-[0] leading-8">
+  <span className="font-medium ">{item.boldText}</span>{" "}
+  <span className="[font-family:'Helvetica_Neue-Regular',Helvetica] font-extralight">
+    {item.regularText}
+  </span>
+</p>
+
                       </div>
                     ))}
                   </div>
@@ -128,13 +129,17 @@ export const ServicesOverviewSection = (): JSX.Element => {
                         className="flex flex-col w-[344px] items-start gap-6 relative flex-[0_0_auto]"
                       >
                         <div className="flex w-[344px] items-center gap-2.5 relative flex-[0_0_auto]">
-                          <div className="relative w-6 h-6 bg-[#f1433669] rounded-[60px] overflow-hidden">
-                            <div className="relative w-[50.00%] h-[50.00%] top-[24.21%] left-[25.00%]">
-                              <div className="relative w-[85.00%] h-[85.00%] top-[7.50%] left-[7.50%] bg-[url(/union.svg)] bg-[100%_100%]" />
-                            </div>
-                          </div>
+                         
+                                <img
+                          className="relative w-6 h-6 "
+                          alt="Check icon"
+                          src="/Secretary/Framecrose.png"
+                        />
 
-                          <p className="relative flex items-center justify-center w-[310px] [font-family:'Helvetica_Neue-Regular',Helvetica] font-normal text-[#212833e6] text-xl tracking-[0] leading-8">
+                            
+                       
+
+                          <p className="relative flex items-start justify-start w-[310px] [font-family:'Helvetica_Neue-Regular',Helvetica] font-light text-[#212833e6] text-xl tracking-[0] ">
                             {item}
                           </p>
                         </div>

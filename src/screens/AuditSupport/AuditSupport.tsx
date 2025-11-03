@@ -20,18 +20,7 @@ const navigationItems = [
 export const AuditSupport = (): JSX.Element => {
   return (
     <div className="bg-[#efefef] overflow-hidden w-full min-w-[1440px] relative">
-      <nav className="flex items-center justify-center gap-8 py-11">
-        {navigationItems.map((item, index) => (
-          <button
-            key={index}
-            className={`relative flex items-center justify-center h-7 [font-family:'Helvetica_Neue-Regular',Helvetica] font-normal text-xl tracking-[-0.40px] leading-7 whitespace-nowrap ${
-              item.active ? "text-[#004eff]" : "text-[#212833]"
-            }`}
-          >
-            {item.label}
-          </button>
-        ))}
-      </nav>
+
 
       <HeroSection />
       <IncludedServicesSection />

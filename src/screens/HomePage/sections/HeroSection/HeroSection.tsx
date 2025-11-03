@@ -8,7 +8,7 @@ const navigationItems = [
   { label: "Accounting Services", width: "w-fit" },
   { label: "Tax Services", width: "w-fit" },
   { label: "Audit Support", width: "w-fit" },
-];
+]; 
 
 export const HeroSection = (): JSX.Element => {
   return (

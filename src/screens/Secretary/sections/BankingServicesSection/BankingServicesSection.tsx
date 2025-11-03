@@ -37,7 +37,7 @@ const features = [
 export const BankingServicesSection = (): JSX.Element => {
   return (
     <section className="flex flex-col w-full gap-12 py-10">
-      <div className="flex flex-col items-center gap-6 max-w-[964px] mx-auto px-4">
+      <div className="flex flex-col items-center gap-6 max-w-[980px] mx-auto px-4">
         <div className="[font-family:'Helvetica_Neue-Regular',Helvetica] font-normal text-[#21283399] text-2xl text-center tracking-[0] leading-7">
           Compliance Partner
         </div>
@@ -93,7 +93,7 @@ export const BankingServicesSection = (): JSX.Element => {
                   <h3 className="[font-family:'Helvetica_Neue-Medium',Helvetica] font-medium text-[#212833] text-2xl tracking-[0] leading-5">
                     {feature.title}
                   </h3>
-                  <p className="[font-family:'Helvetica_Neue-Regular',Helvetica] font-normal text-[#212833] text-base tracking-[0] leading-[17px]">
+                  <p className="[font-family:'Helvetica_Neue-Regular',Helvetica]  text-[#212833] text-base font-extralight tracking-[0] leading-[17px]">
                     {feature.description}
                   </p>
                 </div>
