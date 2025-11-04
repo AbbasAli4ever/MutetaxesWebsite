@@ -16,13 +16,13 @@ export const HomePage = (): JSX.Element => {
       <HeroSection />
        <MainContentSection/>
       <WhyChooseUsSection />
-      {/*<ServicesSection />
+      <ServicesSection />
       <WhyHongKongSection />
       <HowItWorksSection />
       <TestimonialsSection />
       <FaqSection />
       <WhyChooseUsDetailsSection />
-      <FooterSection /> */}
+      <FooterSection />
     </div>
   );
 };
