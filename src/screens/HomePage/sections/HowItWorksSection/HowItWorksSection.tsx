@@ -65,8 +65,20 @@ export const HowItWorksSection = (): JSX.Element => {
               </div>
 
               <Card
-                className={`absolute ${index === 0 ? "top-[7px]" : index === 1 ? "top-[256px]" : "top-[506px]"} ${step.alignment === "right" ? "left-[calc(50%+63px)]" : "right-[calc(50%+63px)]"} w-[292px] border-0 shadow-none bg-transparent`}
-              >
+  className={`
+    absolute
+    ${index === 0 ? "top-[7px] " : index === 1 ? "top-[256px] " : "top-[506px]"}
+    ${step.alignment === "right"
+      ? "left-[calc(50%+63px)]"
+      : "right-[calc(50%+63px)]"}
+    border-0 shadow-none bg-transparent
+
+    /* :iphone: Responsive */
+  static mx-auto w-[90%] max-w-[320px] flex justify-center items-center 
+
+  md:absolute md:mx-auto md:w-[90%] md:max-w-[320px] md:flex md:justify-center md:items-center
+  `}
+>
                 <CardContent
                   className={`relative py-3 pl-7 p h-[194px] bg-contain bg-center bg-no-repeat flex flex-col`}
                   style={{ backgroundImage: `url(${step.background})` }}
