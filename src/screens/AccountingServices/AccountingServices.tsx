@@ -26,7 +26,7 @@ export const AccountingServices = (): JSX.Element => {
       <ServicesOverviewSection />
       <AccountingFAQSection />
       <BenefitsSection />
-      <ContactFooterSection />
+      {/* <ContactFooterSection /> */}
     </div>
   );
 };

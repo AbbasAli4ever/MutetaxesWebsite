@@ -12,6 +12,8 @@ module.exports = {
         "body-text-medium-semi-bold":
           "var(--body-text-medium-semi-bold-font-family)",
         "body-text-xsmall-medium": "var(--body-text-xsmall-medium-font-family)",
+        georgia: ['Georgia', 'serif'],
+         helvetica: ['"Helvetica Neue"', 'Helvetica', 'Arial', 'sans-serif'],
         sans: [
           "ui-sans-serif",
           "system-ui",

@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 export const HeroSection = (): JSX.Element => {
   return (
     <section className="relative w-full bg-[#dbe6fe] md:bg-transparent h-auto">
-      <div className="relative w-full xl:w-[97vw] mx-auto h-[850px] md:h-[850px] lg:h-[1100px] pt-5 overflow-hidden">
+      <div className="relative w-full xl:w-[97vw] mx-auto h-[950px] sm:h-[700px] md:h-[850px] lg:h-[1100px] pt-5 overflow-hidden">
         <img
           className="hidden object-cover w-full h-full md:object-fill md:block"
           alt="G illustration"
@@ -27,19 +27,19 @@ export const HeroSection = (): JSX.Element => {
             <Badge className="h-auto px-[11px] py-2 bg-[#28b44608] rounded-[50px] border border-solid border-[#28b446] hover:bg-[#28b44608]">
               <div className="flex items-center gap-2.5">
                 <img className="w-5 h-5" alt="Svg" src="/HomePage/svg-3.svg" />
-                <span className="[font-family:'Helvetica_Neue-Regular',Helvetica] font-normal text-[#28b446] text-sm text-center tracking-[0] leading-[21px]">
+                <span className="font-helvetica font-normal text-[#28b446] text-sm text-center tracking-[0] leading-[21px]">
                   Starting from €279
                 </span>
               </div>
             </Badge>
 
-            <h1 className="[font-family:'Helvetica_Neue-Medium',Helvetica] font-normal text-4xl md:text-6xl lg:text-[74px] text-center tracking-[-1.95px] leading-tight md:leading-snug lg:leading-[83px]">
-              <span className="font-medium text-[#212833]">
+            <h1 className="font-helvetica font-bold text-5xl sm:text-5xl md:text-6xl lg:text-[74px] text-center tracking-[-1.95px] leading-tight md:leading-snug lg:leading-[83px]">
+              <span className=" text-[#212833] ">
                 Your Complete Business{" "} 
                 <br />  
               </span>
                
-              <div className="flex flex-col items-center justify-center gap-1 sm:flex-row ">
+              <div className="flex flex-col items-center justify-center gap-1 font-bold sm:flex-row ">
              <span>
                 Solution in
               </span>
@@ -48,13 +48,13 @@ export const HeroSection = (): JSX.Element => {
               alt="Ellipse"
               src="/HomePage/ellipse-3-1.png"
             />
-              <span className="[font-family:'Georgia-Regular',Helvetica] text-[#004eff]">
+              <span className="font-georgia font-normal text-[#004eff]">
                 Hong Kong
               </span>
               </div>
             </h1>
 
-            <p className="w-full max-w-[702px] [font-family:'Helvetica_Neue-Regular',Helvetica] font-normal text-[#212833] text-lg md:text-xl lg:text-[27px] text-center tracking-[-0.64px] leading-normal md:leading-[35px]">
+            <p className="w-full max-w-[702px] font-helvetica font-normal text-[#212833] text-lg md:text-xl lg:text-[27px] text-center tracking-[-0.64px] leading-normal md:leading-[35px]">
               From company formation to compliance - we handle your business
               essentials so you can focus on growth
             </p>
@@ -64,7 +64,7 @@ export const HeroSection = (): JSX.Element => {
 
           <div className="flex flex-col items-center gap-4 sm:flex-row">
             <Button className="h-auto gap-[35px] pl-3 pr-1.5 py-2 rounded-[100px] bg-[linear-gradient(131deg,rgba(104,150,255,1)_0%,rgba(0,78,255,1)_100%)] hover:opacity-90">
-              <span className="[font-family:'Helvetica_Neue-Medium',Helvetica] font-medium text-white text-base text-center tracking-[0] leading-6">
+              <span className="font-helvetica font-medium text-white text-base text-center tracking-[0] leading-6">
                 Incorporate Now
               </span>
               <img className="w-[38px] h-[38px]" alt="Arrow" src="/HomePage/arrow.svg" />
@@ -74,7 +74,7 @@ export const HeroSection = (): JSX.Element => {
               variant="outline"
               className="h-auto px-[18px] py-[13px] rounded-[40px] border border-solid border-blue-500 bg-transparent hover:bg-transparent"
             >
-              <span className="bg-[linear-gradient(140deg,rgba(104,150,255,1)_0%,rgba(0,78,255,1)_100%)] [-webkit-background-clip:text] bg-clip-text [-webkit-text-fill-color:transparent] [text-fill-color:transparent] [font-family:'Helvetica_Neue-Medium',Helvetica] font-medium text-base tracking-[0] leading-6">
+              <span className="bg-[linear-gradient(140deg,rgba(104,150,255,1)_0%,rgba(0,78,255,1)_100%)] [-webkit-background-clip:text] bg-clip-text [-webkit-text-fill-color:transparent] [text-fill-color:transparent] font-helvetica font-medium text-base tracking-[0] leading-6">
                 Book Free Consultation
               </span>
             </Button>
@@ -82,7 +82,7 @@ export const HeroSection = (): JSX.Element => {
         </div>
 
         <div className="flex flex-col items-center gap-2">
-          <p className="[font-family:'Helvetica_Neue-Regular',Helvetica] font-normal text-[#212833] text-base md:text-xl text-center tracking-[-0.64px] leading-6">
+          <p className="font-helvetica font-normal text-[#212833] text-base md:text-xl text-center tracking-[-0.64px] leading-6">
             Trusted by 1,000+ Hong Kong companies.
           </p>
 
@@ -93,13 +93,13 @@ export const HeroSection = (): JSX.Element => {
               src="/HomePage/frame-2.svg"
             />
 
-            <span className="[font-family:'Helvetica_Neue-Regular',Helvetica] font-normal text-[#212833] text-base md:text-xl tracking-[0] leading-[21px]">
+            <span className="font-helvetica font-normal text-[#212833] text-base md:text-xl tracking-[0] leading-[21px]">
               4.9
             </span>
 
             <img alt="Frame" src="/HomePage/frame-7.svg" />
 
-            <span className="[font-family:'Helvetica_Neue-Regular',Helvetica] font-normal text-[#212833] text-base md:text-xl tracking-[0] leading-[18px]">
+            <span className="font-helvetica font-normal text-[#212833] text-base md:text-xl tracking-[0] leading-[18px]">
               10,000+ reviews
             </span>
           </div>

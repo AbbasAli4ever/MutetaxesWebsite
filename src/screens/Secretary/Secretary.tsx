@@ -23,7 +23,7 @@ export const Secretary = (): JSX.Element => {
       <BankingServicesSection />
       <FaqSection />
       <BenefitsSection />
-      <FooterSection />
+      {/* <FooterSection /> */}
     </div>
   );
 };

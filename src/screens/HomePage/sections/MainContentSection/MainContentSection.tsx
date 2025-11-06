@@ -19,14 +19,14 @@ export const MainContentSection = (): JSX.Element => {
               className="flex flex-col items-center w-[45%] sm:w-[40%] md:w-[220px] lg:w-[206px] gap-2 sm:gap-3 text-center"
             >
               <div
-                className="font-bold text-[#004eff] tracking-[0] leading-[1.2] font-['Helvetica_Neue-Bold',Helvetica]
+                className="font-bold text-[#004eff] tracking-[0] leading-[1.2] font-helvetica
                 text-[26px] sm:text-[28px] md:text-[30px] lg:text-[29px]"
               >
                 {stat.value}
               </div>
 
               <div
-                className="font-normal text-gray-600 tracking-[0] leading-5 font-['Helvetica_Neue-Regular',Helvetica]
+                className="font-normal text-gray-600 tracking-[0] leading-5 font-helvetica
                 text-[14px] sm:text-[15px] md:text-[16px] lg:text-[17px]"
               >
                 {stat.label}
@@ -35,7 +35,7 @@ export const MainContentSection = (): JSX.Element => {
           ))}
 
           {/* Gradient Background Circle */}
-          <div className="absolute -bottom-110 left-[50%] -translate-x-1/2 translate-y-1/2 w-[700px] sm:w-[850px] md:w-[950px] lg:w-[1130px] h-[700px] sm:h-[850px] md:h-[950px] lg:h-[1130px] rotate-[-47.99deg] pointer-events-none">
+          <div className="absolute -bottom-[560px] left-[50%] -translate-x-1/2 translate-y-1/2 w-[700px] sm:w-[850px] md:w-[950px] lg:w-[1130px] h-[700px] sm:h-[850px] md:h-[950px] lg:h-[1130px] rotate-[-47.99deg] pointer-events-none">
             <div className="absolute top-[50%] left-[50%] -translate-x-1/2 -translate-y-1/2 w-full h-full rounded-full rotate-[12.34deg] blur-[70px] bg-[linear-gradient(226deg,rgba(0,78,255,0.6)_0%,rgba(222,232,255,0)_100%)]" />
           </div>
         </CardContent>

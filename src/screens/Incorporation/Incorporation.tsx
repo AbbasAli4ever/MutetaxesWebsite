@@ -28,7 +28,7 @@ export const Incorporation = (): JSX.Element => {
       <BankingInformationSection />
       <FrequentlyAskedQuestionsSection />
       <BenefitsSection />
-      <FooterSection />
+      {/* <FooterSection /> */}
 
      
     </div>

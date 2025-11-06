@@ -31,7 +31,7 @@ export const AuditSupport = (): JSX.Element => {
       <BankingInfoSection />
       <FaqSection />
       <BenefitsSection />
-      <FooterSection />
+      {/* <FooterSection /> */}
     </div>
   );
 };

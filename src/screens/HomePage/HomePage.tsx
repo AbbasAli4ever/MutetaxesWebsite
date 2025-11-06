@@ -9,6 +9,8 @@ import { WhyChooseUsDetailsSection } from "./sections/WhyChooseUsDetailsSection"
 import { WhyChooseUsSection } from "./sections/WhyChooseUsSection";
 import { WhyHongKongSection } from "./sections/WhyHongKongSection";
 import { MainContentSection } from "./sections/MainContentSection";
+import NotchedCard from "../../UIComponents/NotchedCard";
+import SideNotchCard from "../../UIComponents/SIdeNotchCard";
 
 export const HomePage = (): JSX.Element => {
   return (
@@ -17,12 +19,14 @@ export const HomePage = (): JSX.Element => {
        <MainContentSection/>
       <WhyChooseUsSection />
       <ServicesSection />
-      <WhyHongKongSection />
-      <HowItWorksSection />
+   
+        <WhyHongKongSection />
+     <HowItWorksSection />
       <TestimonialsSection />
       <FaqSection />
       <WhyChooseUsDetailsSection />
-      <FooterSection />
+      {/* <FooterSection /> */}
+      
     </div>
   );
 };

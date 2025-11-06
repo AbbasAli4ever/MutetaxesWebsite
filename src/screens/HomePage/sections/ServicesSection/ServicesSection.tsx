@@ -7,157 +7,137 @@ import {
   TabsList,
   TabsTrigger,
 } from "../../../../components/ui/tabs";
+import NotchedCard from "../../../../UIComponents/NotchedCard";
 
 const services = [
   {
     id: "incorporation",
     label: "Incorporation",
     title: "Company Incorporation",
-    subtitle: "Register your Hong Kong limited company in as fast as 5 days",
+    subtitle: "Register your Hong Kong limited company in as fast as 1 day",
     features: [
       {
-        text: "Company name",
-        boldText: "Company name",
-        regularText: " search and reservation",
+        text: "Company name search and reservation",
       },
       {
         text: "Complete government registration",
-        boldText: "registration",
-        regularText: "Complete government ",
+        
       },
       {
         text: "Company kit with chops and seals",
-        boldText: "chops and seals",
-        regularText: "Company kit with ",
+        
       },
       {
         text: "First year registered office included",
-        boldText: "First year",
-        regularText: " registered office included",
+       
       },
     ],
     price: "€279",
-    image: "/HomePage/company-registration-1.png",
+    image: "/HomePage/incorp.png",
   },
   {
     id: "secretary",
     label: "Secretary",
-    title: "Company Secretary",
-    subtitle: "Professional company secretary services",
+    title: "Company Secretary Services",
+    subtitle: "Stay 100% compliant with statutory requirements",
     features: [
       {
-        text: "Company name",
-        boldText: "Company name",
-        regularText: " search and reservation",
+        text: "Annual return filing",
+      
       },
       {
-        text: "Complete government registration",
-        boldText: "registration",
-        regularText: "Complete government ",
+        text: "Board resolutions and minutes",
+        
       },
       {
-        text: "Company kit with chops and seals",
-        boldText: "chops and seals",
-        regularText: "Company kit with ",
+        text: "Regulatory compliance management",
+        
       },
       {
-        text: "First year registered office included",
-        boldText: "First year",
-        regularText: " registered office included",
+        text: "Registered office address",
+        
       },
     ],
-    price: "€279",
-    image: "/HomePage/company-registration-1.png",
+    price: "€99/month",
+    image: "/HomePage/sectry.jpg",
   },
   {
     id: "accounting",
     label: "Accounting Services",
     title: "Accounting Services",
-    subtitle: "Professional accounting services",
+    subtitle: "Professional bookkeeping and financial reporting",
     features: [
       {
-        text: "Company name",
-        boldText: "Company name",
-        regularText: " search and reservation",
+        text: "Monthly bookkeeping and reconciliation",
+     
       },
       {
-        text: "Complete government registration",
-        boldText: "registration",
-        regularText: "Complete government ",
+        text: "Financial statements preparation",
+        
       },
       {
-        text: "Company kit with chops and seals",
-        boldText: "chops and seals",
-        regularText: "Company kit with ",
+        text: "Tax-ready accounting",
+        
       },
       {
-        text: "First year registered office included",
-        boldText: "First year",
-        regularText: " registered office included",
+        text: "Cloud-based platform access",
+     
       },
     ],
-    price: "€279",
-    image: "/HomePage/company-registration-1.png",
+    price: "€279/month",
+    image: "/HomePage/acount.jpg",
   },
   {
     id: "tax",
     label: "Tax Services",
     title: "Tax Services",
-    subtitle: "Professional tax services",
+    subtitle: "Strategic tax planning and compliance",
     features: [
       {
-        text: "Company name",
-        boldText: "Company name",
-        regularText: " search and reservation",
+        text: "Profits tax return filing",
+        
       },
       {
-        text: "Complete government registration",
-        boldText: "registration",
-        regularText: "Complete government ",
+        text: "Tax planning advisory",
+       
       },
       {
-        text: "Company kit with chops and seals",
-        boldText: "chops and seals",
-        regularText: "Company kit with ",
+        text: "IRD correspondence",
+      
       },
       {
-        text: "First year registered office included",
-        boldText: "First year",
-        regularText: " registered office included",
+        text: "Offshore claims assistance",
+    
       },
     ],
-    price: "€279",
-    image: "/HomePage/company-registration-1.png",
+    price: "€399/year",
+    image: "/HomePage/taxfile.png",
   },
   {
     id: "audit",
     label: "Audit Support",
     title: "Audit Support",
-    subtitle: "Professional audit support services",
+    subtitle: "Streamline your annual statutory audit",
     features: [
       {
-        text: "Company name",
-        boldText: "Company name",
-        regularText: " search and reservation",
+        text: "Document preparation",
+       
       },
       {
-        text: "Complete government registration",
-        boldText: "registration",
-        regularText: "Complete government ",
+        text: "Auditor coordination",
+ 
       },
       {
-        text: "Company kit with chops and seals",
-        boldText: "chops and seals",
-        regularText: "Company kit with ",
+        text: "Working papers compilation",
+
       },
       {
-        text: "First year registered office included",
-        boldText: "First year",
-        regularText: " registered office included",
+        text: "Query resolution support",
+
       },
     ],
-    price: "€279",
-    image: "/HomePage/company-registration-1.png",
+    price: "€799",
+    image: "/HomePage/audit.png",
   },
 ];
 
@@ -168,126 +148,103 @@ export const ServicesSection = (): JSX.Element => {
     <section className="flex flex-col w-full gap-10 py-8">
       <div className="flex flex-col items-center gap-4 px-4 max-w-[952px] mx-auto">
         <div className="flex flex-col items-start w-full gap-4">
-          <div className="w-full flex items-center justify-center [font-family:'Helvetica_Neue-Regular',Helvetica] font-normal text-[#21283399] text-2xl text-center tracking-[0] leading-7">
+          <div className="w-full flex items-center justify-center font-helvetica font-normal text-[#21283399] text-2xl text-center tracking-[0] leading-7">
             Our Services
           </div>
 
-          <h2 className="w-full flex items-center justify-center [font-family:'Georgia-Regular',Helvetica] font-normal text-[#212833] text-[64px] text-center tracking-[0] leading-[72px]">
+          <h2 className="w-full flex items-center justify-center font-georgia font-normal text-[#212833] text-[40px] md:text-[50px] lg:text-[64px] text-center tracking-[0] leading-[42px] md:leading-[60px] lg:leading-[72px]">
             Everything You Need to Run Your Hong Kong Business
           </h2>
         </div>
 
-        <p className="flex items-center justify-center max-w-[702px] [font-family:'Helvetica_Neue-Regular',Helvetica] font-normal text-[#212833] text-[22px] text-center tracking-[-0.64px] leading-[35px]">
+        <p className="flex items-center justify-center max-w-[702px] font-helvetica font-normal text-[#212833] text-lg md:text-xl lg:text-[22px] text-center tracking-[-0.64px] leading-relaxed lg:leading-[35px]">
           Comprehensive solutions tailored for modern businesses
         </p>
       </div>
-
-      <div className="w-full max-w-[1276px] min-h-[500px] mx-auto relative bg-[url(/HomePage/subtract-2.svg)] bg-contain bg-no-repeat bg-center px-4">
-        <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
-          <TabsList className=" items-center gap-1.5 bg-transparent h-auto p-0 mx-auto flex justify-center mb-12">
-            {services.map((service) => (
-              <TabsTrigger
-                key={service.id}
-                value={service.id}
-                className={`inline-flex items-center justify-center gap-2.5 p-3 rounded-[50px] h-auto data-[state=active]:shadow-[0px_24px_34px_#004eff47] data-[state=active]:bg-[linear-gradient(131deg,rgba(104,150,255,1)_0%,rgba(0,78,255,1)_100%)] data-[state=inactive]:bg-white [font-family:'Helvetica_Neue-Regular',Helvetica] font-normal text-[17px] text-center tracking-[0] leading-6 whitespace-nowrap data-[state=active]:text-white data-[state=inactive]:text-[#212833]`}
-              >
-                {service.label}
-              </TabsTrigger>
-            ))}
-          </TabsList>
-
+      <Tabs
+        value={activeTab}
+        onValueChange={setActiveTab}
+        className="relative z-10 w-full mt-12"
+      >
+<TabsList className="relative z-20 flex items-center scrollbar-hide justify-start w-[90%] h-auto gap-2 mx-auto overflow-x-auto bg-transparent sm:w-full sm:overflow-x-visible md:justify-center -mb-14 sm:-mb-11">
           {services.map((service) => (
-            <TabsContent key={service.id} value={service.id} className="mt-0">
-              <div className="flex flex-col w-[90%] mx-auto items-start gap-8 lg:flex-row">
-                <div className="flex flex-col items-start flex-1 gap-12">
+            <TabsTrigger
+              key={service.id}
+              value={service.id}
+              className={`inline-flex items-center justify-center z-30 gap-2.5 p-1.5 md:p-2 lg:p-3 rounded-[50px] h-auto data-[state=active]:shadow-none sm:data-[state=active]:shadow-[0px_24px_34px_#004eff47] data-[state=active]:bg-[linear-gradient(131deg,rgba(104,150,255,1)_0%,rgba(0,78,255,1)_100%)] bg-white  data-[state=inactive]:bg-[#efefef] sm:data-[state=inactive]:bg-white font-helvetica font-normal text-xs md:text-[17px] text-center tracking-[0] leading-6 whitespace-nowrap data-[state=active]:text-white data-[state=inactive]:text-[#212833] mb-2`}
+            >
+              {service.label}
+            </TabsTrigger>
+          ))}
+        </TabsList>
+
+        <NotchedCard
+        notch={{
+    width: { base:0, sm: 200, md: 700, lg: 750 }, // px values for each screen size
+    depth: { base: 50, sm: 40, md: 45, lg: 50 },     // px values for each screen size
+    bottomRadius: 25,
+    topRadius: 25,
+  }}
+  widthClass="w-full lg:w-[1000px] xl:w-[1300px]"
+  heightClass="h-auto lg:h-[520px] xl:h-[450px]"
+  shadowColor="#6a98ff"
+  className="z-10 px-3"
+>
+          {services.map((service) => (
+            <TabsContent key={service.id} value={service.id} className="pt-20 mt-0">
+              <div className="flex flex-col justify-center h-full w-full md:w-[90%] mx-auto items-center lg:items-start gap-8 lg:flex-row">
+                <div className="flex flex-col items-center flex-1 gap-12 sm:items-start">
                   <div className="flex flex-col items-start gap-6">
-                    <div className="flex flex-col items-start gap-2">
-                      <h3 className="flex items-center justify-center [font-family:'Helvetica_Neue-Medium',Helvetica] font-medium text-[#212833] text-[40px] tracking-[0] leading-[35px] whitespace-nowrap">
+                    <div className="flex flex-col items-center w-full gap-2 sm:items-start">
+                      <h3 className="font-helvetica font-medium text-[#212833] text-2xl md:text-[40px] tracking-[0] leading-[35px]">
                         {service.title}
                       </h3>
 
-                      <p className="flex items-center justify-center [font-family:'Helvetica_Neue-Regular',Helvetica] font-normal text-[#212833cc] text-xl tracking-[0] leading-7 whitespace-nowrap">
+                      <p className="font-helvetica font-normal text-[#212833cc] text-xs md:text-xl tracking-[0] leading-7">
                         {service.subtitle}
                       </p>
                     </div>
-
-                    <div className="flex flex-col items-start gap-3">
-                      <div className="flex items-center justify-center [font-family:'Helvetica_Neue-Medium',Helvetica] font-medium text-[#212833] text-xl tracking-[0] leading-7 whitespace-nowrap">
+<div className="flex flex-col items-center justify-center w-full sm:w-auto">
+                    <div className="flex flex-col items-center gap-3 sm:items-start">
+                      <div className="flex items-center justify-center font-helvetica font-medium text-[#212833] text-xl tracking-[0] leading-7 whitespace-nowrap">
                         Key Features:
                       </div>
 
-                      <div className="flex flex-col items-start gap-4">
-                        <div className="flex flex-wrap items-start gap-4">
+                      
+                        <div className="grid items-center justify-center grid-cols-1 gap-4 md:grid-cols-2 sm:justify-start sm:items-start">
+                        {service.features.map((feature, index) => (
                           <Badge
+                            key={index}
                             variant="outline"
-                            className="inline-flex items-center justify-center gap-2.5 px-3.5 py-[7px] bg-white rounded-[50px] border border-solid border-[#2128333d] h-auto [font-family:'Helvetica_Neue-Regular',Helvetica] font-normal text-[#212833cc] text-base tracking-[0] leading-7 whitespace-nowrap"
+                            className="flex items-center justify-center px-3.5 py-[7px] bg-white rounded-[50px] border border-solid border-[#2128333d] h-auto [font-family:'Helvetica_Neue-Regular',Helvetica] font-normal text-[#212833cc] text-sm tracking-[0] leading-7 whitespace-nowrap"
                           >
-                            <span className="[font-family:'Helvetica_Neue-Medium',Helvetica] font-medium">
-                              {service.features[0].boldText}
-                            </span>
-                            <span className="[font-family:'Helvetica_Neue-Regular',Helvetica]">
-                              {service.features[0].regularText}
+                            <span className="font-helvetica">
+                              {feature.text}
                             </span>
                           </Badge>
-
-                          <Badge
-                            variant="outline"
-                            className="inline-flex items-center justify-center gap-2.5 px-3.5 py-[7px] rounded-[40px] border border-solid border-[#2128333d] h-auto [font-family:'Helvetica_Neue-Regular',Helvetica] font-normal text-[#212833cc] text-base tracking-[0] leading-7 whitespace-nowrap"
-                          >
-                            <span className="[font-family:'Helvetica_Neue-Regular',Helvetica] font-normal text-[#212833cc] text-base tracking-[0] leading-7">
-                              {service.features[1].regularText}
-                            </span>
-                            <span className="[font-family:'Helvetica_Neue-Medium',Helvetica] font-medium">
-                              {service.features[1].boldText}
-                            </span>
-                          </Badge>
+                        ))}
                         </div>
-
-                        <div className="flex flex-wrap items-start gap-4">
-                          <Badge
-                            variant="outline"
-                            className="inline-flex items-center justify-center gap-2.5 px-3.5 py-[7px] bg-white rounded-[50px] border border-solid border-[#2128333d] h-auto [font-family:'Helvetica_Neue-Regular',Helvetica] font-normal text-[#212833cc] text-base tracking-[0] leading-7 whitespace-nowrap"
-                          >
-                            <span className="[font-family:'Helvetica_Neue-Regular',Helvetica] font-normal text-[#212833cc] text-base tracking-[0] leading-7">
-                              {service.features[2].regularText}
-                            </span>
-                            <span className="[font-family:'Helvetica_Neue-Medium',Helvetica] font-medium">
-                              {service.features[2].boldText}
-                            </span>
-                          </Badge>
-
-                          <Badge
-                            variant="outline"
-                            className="inline-flex items-center justify-center gap-2.5 px-3.5 py-[7px] rounded-[40px] border border-solid border-[#2128333d] h-auto [font-family:'Helvetica_Neue-Regular',Helvetica] font-normal text-[#212833cc] text-base tracking-[0] leading-7 whitespace-nowrap"
-                          >
-                            <span className="[font-family:'Helvetica_Neue-Medium',Helvetica] font-medium">
-                              {service.features[3].boldText}
-                            </span>
-                            <span className="[font-family:'Helvetica_Neue-Regular',Helvetica]">
-                              {service.features[3].regularText}
-                            </span>
-                          </Badge>
-                        </div>
-                      </div>
+                      
+                    </div>
                     </div>
                   </div>
 
-                  <div className="inline-flex items-center justify-center gap-[154px] flex-wrap">
-                    <div className="inline-flex flex-col items-start justify-center gap-1">
-                      <div className="flex items-center justify-center [font-family:'Helvetica_Neue-Medium',Helvetica] font-medium text-[#212833cc] text-sm tracking-[0] leading-5 whitespace-nowrap">
+                  <div className="flex flex-row items-center justify-center md:justify-start gap-8 md:gap-[154px] flex-wrap">
+                    <div className="flex flex-col items-center justify-center gap-1 sm:items-start">
+                      <div className="flex items-center justify-center font-helvetica font-medium text-[#212833cc] text-sm tracking-[0] leading-5 whitespace-nowrap">
                         Starting Price
                       </div>
 
-                      <div className="flex items-center justify-center [font-family:'Helvetica_Neue-Medium',Helvetica] font-medium text-[#004eff] text-[32px] tracking-[0] leading-[35px] whitespace-nowrap">
+                      <div className="flex items-center justify-center font-helvetica font-medium text-[#004eff] text-[32px] tracking-[0] leading-[35px] whitespace-nowrap">
                         {service.price}
                       </div>
                     </div>
 
                     <Button
                       variant="outline"
-                      className="inline-flex gap-2.5 pl-3 pr-1.5 py-1.5 rounded-[100px] border-[1.5px] border-solid border-[#004eff] items-center justify-center h-auto bg-transparent hover:bg-[#004eff]/10"
+                      className="hidden inline-flex gap-2.5 pl-3 pr-1.5 py-1.5 rounded-[100px] border-[1.5px] border-solid border-[#004eff] items-center justify-center h-auto bg-transparent hover:bg-[#004eff]/10"
                     >
-                      <span className="flex items-center justify-center [font-family:'Helvetica_Neue-Medium',Helvetica] font-medium text-[#004eff] text-base text-center tracking-[0] leading-6 whitespace-nowrap">
+                      <span className="flex items-center justify-center font-helvetica font-medium text-[#004eff] text-base text-center tracking-[0] leading-6 whitespace-nowrap">
                         Go to Incorporation
                       </span>
 
@@ -301,15 +258,15 @@ export const ServicesSection = (): JSX.Element => {
                 </div>
 
                 <img
-                  className="w-full lg:w-[28.71%] h-auto lg:h-[352px] object-cover"
+                  className="w-full max-w-md  lg:w-[28.71%] h-auto xl:h-[352px] lg:h-[290px] object-cover"
                   alt="Company registration"
                   src={service.image}
                 />
               </div>
             </TabsContent>
           ))}
-        </Tabs>
-      </div>
+        </NotchedCard>
+      </Tabs>
     </section>
   );
 };

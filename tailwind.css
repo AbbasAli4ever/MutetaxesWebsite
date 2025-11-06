@@ -218,3 +218,35 @@
     font-feature-settings: "rlig" 1, "calt" 1;
   }
 }
+
+@layer components {
+  .notched-card {
+    position: relative;
+    background: none;
+    border: 1px solid #E3E8FF;
+    border-radius: 22px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    overflow: hidden;
+    /* Cutout notch */
+    -webkit-mask: 
+      radial-gradient(circle 22px at 50% 0, transparent 99%, black 100%) top center,
+      linear-gradient(black, black) bottom;
+    -webkit-mask-composite: destination-out;
+            mask-composite: exclude;
+  }
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+.scrollbar-hide {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none;    /* Firefox */
+}
+
+
+
+
+
+
+

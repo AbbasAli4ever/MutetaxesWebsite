@@ -1,7 +1,7 @@
 import React from "react";
-import { Button } from "../../../../components/ui/button";
-import { Input } from "../../../../components/ui/input";
-import { Separator } from "../../../../components/ui/separator";
+import { Button } from "../components/ui/button";
+import { Input } from "../components/ui/input";
+import { Separator } from "../components/ui/separator";
 
 const contactInfo = [
   { label: "Phone:", value: "+852 XXXX XXXX" },
@@ -30,7 +30,7 @@ const certifications = [
   "ISO 27001 Certified",
 ];
 
-export const FooterSection = (): JSX.Element => {
+export const Footer = (): JSX.Element => {
   return (
     <div className="flex flex-col w-full items-start gap-2.5 px-3 sm:px-6 py-6">
     <footer className="flex flex-col items-start gap-6 w-full mx-auto bg-[#212833] rounded-3xl overflow-hidden px-6 sm:px-10 md:px-16 lg:px-24 pt-12 pb-6">
@@ -42,13 +42,13 @@ export const FooterSection = (): JSX.Element => {
             alt="Mutetaxes logo"
             src="/HomePage/mutetaxes-logo-1-1.svg"
           />
-          <p className="text-[#c6c8cb] text-sm sm:text-base leading-6">
+          <p className="text-[#c6c8cb] text-sm sm:text-base leading-6 font-helvetica">
             Your Complete Business Solution in Hong Kong
           </p>
         </div>
 
         <a
-          className="text-lg font-medium text-white sm:text-2xl"
+          className="text-lg font-medium text-white sm:text-2xl font-helvetica"
           href="mailto:hello@mutetaxes.hk"
           target="_blank"
           rel="noopener noreferrer"
@@ -63,7 +63,7 @@ export const FooterSection = (): JSX.Element => {
       <div className="grid w-full grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-5">
         {/* Contact */}
         <div>
-          <h3 className="mb-3 text-lg font-medium text-white sm:text-xl">
+          <h3 className="mb-3 text-lg font-medium text-white sm:text-xl font-helvetica">
             Contact:
           </h3>
           {contactInfo.map((item, index) => (
@@ -71,8 +71,8 @@ export const FooterSection = (): JSX.Element => {
               key={index}
               className="text-base text-[#c6c8cb] leading-[30px]"
             >
-              <span className="text-white">{item.label}</span>{" "}
-              <span>{item.value}</span>
+              <span className="text-white font-helvetica">{item.label}</span>{" "}
+              <span className="font-helvetica">{item.value}</span>
             </div>
           ))}
         </div>
@@ -85,7 +85,7 @@ export const FooterSection = (): JSX.Element => {
           {businessHours.map((hours, index) => (
             <div
               key={index}
-              className="text-base text-[#c6c8cb] leading-[30px]"
+              className="text-base text-[#c6c8cb] leading-[30px] font-helvetica"
             >
               {hours}
             </div>
@@ -94,13 +94,13 @@ export const FooterSection = (): JSX.Element => {
 
         {/* Services */}
         <div>
-          <h3 className="mb-3 text-lg font-medium text-white sm:text-xl">
+          <h3 className="mb-3 text-lg font-medium text-white sm:text-xl font-helvetica">
             Services:
           </h3>
           {services.map((service, index) => (
             <div
               key={index}
-              className="text-base text-[#c6c8cb] leading-[27px]"
+              className="text-base text-[#c6c8cb] leading-[27px] font-helvetica"
             >
               {service}
             </div>
@@ -109,13 +109,13 @@ export const FooterSection = (): JSX.Element => {
 
         {/* Resources */}
         <div>
-          <h3 className="mb-3 text-lg font-medium text-white sm:text-xl">
+          <h3 className="mb-3 text-lg font-medium text-white sm:text-xl font-helvetica">
             Resources:
           </h3>
           {resources.map((resource, index) => (
             <div
               key={index}
-              className="text-base text-[#c6c8cb] leading-[27px]"
+              className="text-base text-[#c6c8cb] leading-[27px] font-helvetica"
             >
               {resource}
             </div>
@@ -124,10 +124,10 @@ export const FooterSection = (): JSX.Element => {
 
         {/* Stay Updated */}
         <div>
-          <h3 className="mb-2 text-lg font-bold text-white sm:text-xl">
+          <h3 className="mb-2 text-lg font-bold text-white sm:text-xl font-helvetica">
             Stay Updated
           </h3>
-          <p className="mb-4 text-sm leading-5 text-gray-400">
+          <p className="mb-4 text-sm leading-5 text-gray-400 font-helvetica">
             Get Hong Kong business news and compliance deadlines delivered to
             your inbox
           </p>
@@ -138,7 +138,7 @@ export const FooterSection = (): JSX.Element => {
               placeholder="Your email address"
               className="w-full px-3 text-sm text-gray-400 bg-gray-800 border border-gray-700 rounded-full h-9"
             />
-            <Button className="h-9 w-full bg-[#004eff] rounded-full text-white text-sm hover:bg-[#0040cc]">
+            <Button className="h-9 w-full bg-[#004eff] rounded-full text-white text-sm hover:bg-[#0040cc] font-helvetica">
               Subscribe
             </Button>
           </div>
@@ -156,7 +156,7 @@ export const FooterSection = (): JSX.Element => {
               alt="Svg margin"
               src="/HomePage/svg-margin.svg"
             />
-            <span className="text-sm">{cert}</span>
+            <span className="text-sm font-helvetica">{cert}</span>
           </div>
         ))}
       </div>
@@ -165,7 +165,7 @@ export const FooterSection = (): JSX.Element => {
 
       {/* Footer bottom */}
       <div className="flex flex-col items-center justify-between w-full gap-4 sm:flex-row">
-        <p className="text-[#c6c8cb] text-sm sm:text-base md:text-xl text-center sm:text-left">
+        <p className="text-[#c6c8cb] text-sm sm:text-base md:text-xl text-center sm:text-left font-helvetica">
           Copyright © MuteTaxes 2025
         </p>
         <div className="flex items-center gap-2">

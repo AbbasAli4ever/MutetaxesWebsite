@@ -32,7 +32,7 @@ export const Navbar = (): JSX.Element => {
             <Link
               key={index}
               to={item.href}
-              className={`h-7 text-md xl:text-lg tracking-[-0.4px] font-normal leading-7 hover:opacity-70 transition-opacity ${
+              className={`font-helvetica h-7 text-md xl:text-lg tracking-[-0.4px] font-normal leading-7 hover:opacity-70 transition-opacity ${
                 location.pathname === item.href
                   ? "text-[#004eff]"
                   : "text-[#212833]"
@@ -49,13 +49,13 @@ export const Navbar = (): JSX.Element => {
             variant="outline"
             className="h-auto lg:px-3 lg:py-1.5 xl:px-[18px] xl:py-2 rounded-[40px] border border-solid border-[#21283366] bg-transparent hover:bg-transparent"
           >
-            <span className="font-medium text-[#212833] lg:text-sm xl:text-base leading-6">
+            <span className="font-helvetica font-medium text-[#212833] lg:text-sm xl:text-base leading-6">
               Sign In
             </span>
           </Button>
 
           <Button className="h-auto lg:px-3 lg:py-1.5 xl:px-[18px] xl:py-2 rounded-[40px] bg-[linear-gradient(129deg,rgba(104,150,255,1)_0%,rgba(0,78,255,1)_100%)] hover:opacity-90">
-            <span className="font-medium text-[#dde7ff] lg:text-sm xl:text-base leading-6">
+            <span className="font-helvetica font-medium text-[#dde7ff] lg:text-sm xl:text-base leading-6">
               Get Started
             </span>
           </Button>
@@ -78,7 +78,7 @@ export const Navbar = (): JSX.Element => {
               key={index}
               to={item.href}
               onClick={() => setIsMenuOpen(false)}
-              className={`block text-base font-normal leading-6 hover:opacity-70 transition-opacity ${
+              className={`font-helvetica block text-base font-normal leading-6 hover:opacity-70 transition-opacity ${
                 location.pathname === item.href
                   ? "text-[#004eff]"
                   : "text-[#212833]"
@@ -93,13 +93,13 @@ export const Navbar = (): JSX.Element => {
               variant="outline"
               className="h-auto px-[18px] py-2 rounded-[40px] border border-solid border-[#21283366] bg-transparent hover:bg-transparent"
             >
-              <span className="font-medium text-[#212833] text-base leading-6">
+              <span className="font-helvetica font-medium text-[#212833] text-base leading-6">
                 Sign In
               </span>
             </Button>
 
             <Button className="h-auto px-[18px] py-2 rounded-[40px] bg-[linear-gradient(129deg,rgba(104,150,255,1)_0%,rgba(0,78,255,1)_100%)] hover:opacity-90">
-              <span className="font-medium text-[#dde7ff] text-base leading-6">
+              <span className="font-helvetica font-medium text-[#dde7ff] text-base leading-6">
                 Get Started
               </span>
             </Button>

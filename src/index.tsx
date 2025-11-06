@@ -16,18 +16,20 @@ import { AuditSupport } from "./screens/AuditSupport";
 
 // Components
 import { Navbar } from "./UIComponents/Navbar";
+import { Footer } from "./UIComponents/Footer";
 
 // ✅ Layout that includes Navbar + dynamic content
 const AppLayout = () => {
 
   return (
-    <div className="relative">
+    <div className="relative bg-[#efefef]">
       <Navbar />
       {/* On the homepage, the hero section is positioned behind the transparent navbar.
           On other pages, padding is added to push content below the navbar. */}
       <main style={{ paddingTop:  0 }}>
         <Outlet />
       </main>
+<Footer/>
     </div>
   );
 };
