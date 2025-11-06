@@ -4,21 +4,22 @@ import { BankingInformationSection } from "./sections/BankingInformationSection"
 import { BenefitsSection } from "./sections/BenefitsSection";
 import { FooterSection } from "./sections/FooterSection";
 import { FrequentlyAskedQuestionsSection } from "./sections/FrequentlyAskedQuestionsSection";
-import { HeroBannerSection } from "./sections/HeroBannerSection";
+
 import { HongKongOverviewSection } from "./sections/HongKongOverviewSection";
 import { HowItWorksSection } from "./sections/HowItWorksSection";
 import { PackageDetailsSection } from "./sections/PackageDetailsSection";
 import { ServicesOverviewSection } from "./sections/ServicesOverviewSection";
 import { WhyChooseHongKongSection } from "./sections/WhyChooseHongKongSection";
+import { Navbar } from "../../UIComponents/Navbar";
+import { HeroBannerSection } from "./sections/HeroBannerSection";
 
 
 
 
 export const Incorporation = (): JSX.Element => {
   return (
-    <div className="bg-[#efefef] overflow-hidden w-full min-w-[1440px] relative">
+    <div className="bg-[#efefef] w-full relative">
       
-
       <HeroBannerSection />
       <ServicesOverviewSection />
       <WhyChooseHongKongSection />
@@ -28,7 +29,7 @@ export const Incorporation = (): JSX.Element => {
       <BankingInformationSection />
       <FrequentlyAskedQuestionsSection />
       <BenefitsSection />
-      <FooterSection />
+      {/* <FooterSection /> */}
 
      
     </div>

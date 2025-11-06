@@ -51,25 +51,25 @@ export const BankingInformationSection = (): JSX.Element => {
   return (
     <section className="w-full flex flex-col gap-[29px] py-10 mt-[100px]">
       <div className="flex flex-col items-center gap-6 max-w-[964px] mx-auto px-4">
-        <p className="[font-family:'Helvetica_Neue-Regular',Helvetica] font-normal text-[#21283399] text-2xl text-center tracking-[0] leading-7">
+        <p className="font-helvetica font-normal text-[#21283399] text-[1rem] lg:text-2xl text-center tracking-[0] leading-7">
           We help you navigate Hong Kong&#39;s banking requirements
         </p>
 
-        <h2 className="[font-family:'Georgia-Regular',Helvetica] font-normal text-[#212833] text-[64px] text-center tracking-[0] leading-[66px]">
+        <h2 className="font-georgia font-normal text-[#212833] text-[39px] lg:text-[64px] text-center tracking-[0] leading-tight lg:leading-[66px]">
           Bank Account Opening
           <br />
           Assistance
         </h2>
 
-        <p className="[font-family:'Helvetica_Neue-Regular',Helvetica] font-normal text-[#212833] text-2xl text-center tracking-[0] leading-7">
+        <p className="font-helvetica font-normal text-[#212833] text-2xl text-center tracking-[0] leading-7">
           We help you navigate Hong Kong&#39;s banking requirements
         </p>
       </div>
 
-      <div className="flex justify-center gap-6 max-w-[1146px] mx-auto px-4">
+      <div className="flex flex-col lg:flex lg:flex-row lg:justify-center gap-6 max-w-[1146px] mx-auto px-4">
         <Card className="w-full max-w-[561px] bg-white rounded-[14px] border border-solid border-[#0000001a]">
           <CardContent className="flex flex-col gap-[30px] p-6">
-            <h3 className="[font-family:'Helvetica_Neue-Medium',Helvetica] font-medium text-neutral-950 text-[22px] tracking-[0] leading-5">
+            <h3 className="font-helvetica font-normal text-neutral-950 text-[22px] tracking-[0] leading-5">
               For Directors/Shareholders
             </h3>
 
@@ -77,7 +77,7 @@ export const BankingInformationSection = (): JSX.Element => {
               {directorsShareholdersItems.map((item, index) => (
                 <div
                   key={index}
-                  className="flex items-center gap-2 p-3 rounded-[10px] border border-solid border-[#0000001a]"
+                  className="flex flex-col  lg:flex lg:flex-row lg:items-center gap-2 p-3 rounded-[10px] border border-solid border-[#0000001a]"
                 >
                   <img
                     className="flex-shrink-0 w-8 h-8"
@@ -86,11 +86,11 @@ export const BankingInformationSection = (): JSX.Element => {
                   />
 
                   <div className="flex flex-col gap-0.5">
-                    <div className="[font-family:'Helvetica_Neue-Regular',Helvetica] font-normal text-[#212833] text-base tracking-[0] leading-5 whitespace-pre-line">
+                    <div className="font-helvetica font-normal text-[#212833] text-base tracking-[0] leading-5 whitespace-pre-line">
                       {item.title}
                     </div>
                     {item.subtitle && (
-                      <div className="[font-family:'Arial-Regular',Helvetica] font-normal text-[#212833] text-[10px] tracking-[0] leading-[11px]">
+                      <div className="font-helvetica font-normal text-[#212833] text-[10px] tracking-[0] leading-[11px]">
                         {item.subtitle}
                       </div>
                     )}
@@ -103,7 +103,7 @@ export const BankingInformationSection = (): JSX.Element => {
 
         <Card className="w-full max-w-[561px] bg-white rounded-[14px] border border-solid border-[#0000001a]">
           <CardContent className="flex flex-col gap-[30px] p-6">
-            <h3 className="[font-family:'Helvetica_Neue-Medium',Helvetica] font-medium text-neutral-950 text-[22px] tracking-[0] leading-5">
+            <h3 className="font-helvetica font-normal text-neutral-950 text-[22px] tracking-[0] leading-5">
               For the Company
             </h3>
 
@@ -111,7 +111,7 @@ export const BankingInformationSection = (): JSX.Element => {
               {companyItems.map((item, index) => (
                 <div
                   key={index}
-                  className="flex items-center gap-2 p-3 rounded-[10px] border border-solid border-[#0000001a]"
+                  className="flex flex-col lg:flex lg:flex-row lg:items-center gap-2  p-3 rounded-[10px] border border-solid border-[#0000001a]"
                 >
                   <img
                     className="flex-shrink-0 w-8 h-8"
@@ -120,11 +120,11 @@ export const BankingInformationSection = (): JSX.Element => {
                   />
 
                   <div className="flex flex-col gap-0.5">
-                    <div className="[font-family:'Helvetica_Neue-Regular',Helvetica] font-normal text-[#212833] text-base tracking-[0] leading-5 whitespace-pre-line">
+                    <div className="font-helvetica font-normal text-[#212833] text-[15px] lg:text-base tracking-[0] leading-tight lg:leading-5 whitespace-pre-line">
                       {item.title}
                     </div>
                     {item.subtitle && (
-                      <div className="[font-family:'Helvetica_Neue-Regular',Helvetica] font-normal text-[#212833] text-sm tracking-[0] leading-[11px]">
+                      <div className="font-helvetica font-normal text-[#212833] text-sm tracking-[0] leading-[11px]">
                         {item.subtitle}
                       </div>
                     )}
