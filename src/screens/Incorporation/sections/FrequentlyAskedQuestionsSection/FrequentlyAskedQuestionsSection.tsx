@@ -5,7 +5,6 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "../../../../components/ui/accordion";
-
 const faqItems = [
   {
     id: "item-1",
@@ -38,42 +37,39 @@ const faqItems = [
       "Absolutely. Our platform is designed to manage multiple Hong Kong entities from a single dashboard, making it easy to oversee your entire portfolio of companies.",
   },
 ];
-
 export const FrequentlyAskedQuestionsSection = (): JSX.Element => {
   return (
-    <section className="flex flex-col w-full items-center gap-10 px-[120px] py-8 relative mt-[100px]">
-      <header className="flex flex-col max-w-[952px] items-center gap-4 relative">
-        <div className="relative flex flex-col items-start self-stretch w-full gap-4">
-          <div className="flex justify-center self-stretch [font-family:'Helvetica_Neue-Regular',Helvetica] font-normal text-[#21283399] text-2xl text-center tracking-[0] leading-7 relative items-center">
-            FAQ
-          </div>
-
-          <h2 className="relative flex items-center justify-center self-stretch [font-family:'Georgia-Regular',Helvetica] font-normal text-[#212833] text-[64px] text-center tracking-[0] leading-[72px]">
-            Frequently Asked Questions
-          </h2>
-        </div>
+    <section className="flex flex-col w-full items-center gap-8 sm:gap-10 md:gap-12 px-4 sm:px-6 md:px-12 lg:px-20 xl:px-[120px] py-10 sm:py-12 md:py-16 relative">
+      {/* Header */}
+      <header className="flex flex-col max-w-[952px] w-full items-center text-center gap-3 sm:gap-4">
+        <p className="font-normal font-helvetica text-[#21283399] text-lg sm:text-xl md:text-2xl leading-6 sm:leading-7">
+          FAQ
+        </p>
+        <h2 className="font-normal font-georgia text-[#212833]  text-3xl sm:text-4xl md:text-5xl lg:text-[64px] leading-tight md:leading-[72px]">
+          Frequently Asked Questions
+        </h2>
       </header>
-
+      {/* Accordion Section */}
       <Accordion
         type="single"
         collapsible
-        className="flex flex-col gap-4 w-full max-w-[988px]"
+        className="flex flex-col gap-3 sm:gap-4 w-full max-w-[980px]"
       >
         {faqItems.map((item) => (
           <AccordionItem
             key={item.id}
             value={item.id}
-            className="overflow-hidden bg-white border-0 rounded-xl"
+            className="overflow-hidden bg-white border border-[#E5E7EB] rounded-xl shadow-sm"
           >
-            <AccordionTrigger className="flex items-center gap-4 px-6 py-6 hover:no-underline [&[data-state=open]>svg]:rotate-180">
-              <span className="flex-1 font-semibold text-left [font-family:'Helvetica_Neue-Medium',Helvetica] font-medium text-[#212833] text-base tracking-[-0.32px] leading-7">
+            <AccordionTrigger className="flex items-center gap-4 px-4 sm:px-5 md:px-6 py-4 sm:py-5 md:py-6 hover:no-underline [&[data-state=open]>svg]:rotate-180">
+              <span className="flex-1 text-left font-helvetica font-normal text-[#212833] text-sm sm:text-base md:text-[20px] leading-6 sm:leading-7 tracking-[-0.32px]">
                 {item.question}
               </span>
             </AccordionTrigger>
-            <AccordionContent className="px-6 pb-6">
-              <div className="[font-family:'Helvetica_Neue-Regular',Helvetica] font-normal text-[#212833] text-base tracking-[-0.32px] leading-7">
+            <AccordionContent className="px-4 pb-4 sm:px-5 md:px-6 sm:pb-5 md:pb-6">
+              <p className="font-normal font-helvetica text-[#212833] text-sm sm:text-base md:text-lg leading-6 sm:leading-7 tracking-[-0.32px]">
                 {item.answer}
-              </div>
+              </p>
             </AccordionContent>
           </AccordionItem>
         ))}
