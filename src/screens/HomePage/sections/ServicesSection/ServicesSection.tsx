@@ -14,7 +14,7 @@ const services = [
     id: "incorporation",
     label: "Incorporation",
     title: "Company Incorporation",
-    subtitle: "Register your Hong Kong limited company in as fast as 1 day",
+    subtitle: "Register your Hong Kong limited company in as fast as 5 day",
     features: [
       {
         text: "Company name search and reservation",
