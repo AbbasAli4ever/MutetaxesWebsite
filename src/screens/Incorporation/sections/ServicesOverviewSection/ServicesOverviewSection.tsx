@@ -117,9 +117,9 @@ const businessBenefits = [
     id: 1,
     text: (
       <>
-        <span className="font-semibold">Corporate Tax:</span> 16.5%
+        <span className="font-semibold">100% Foreign</span> 
         <br />
-        8.25% On First Hk$2m
+        Ownership Permitted
       </>
     ),
   },
@@ -127,9 +127,9 @@ const businessBenefits = [
     id: 2,
     text: (
       <>
-        <span className="font-semibold">No Vat/gst</span> Keeping
+        <span className="font-semibold">No Minimal Capital</span> 
         <br />
-        prices Competitive
+        Requirement (Start with Hk$1)
       </>
     ),
   },
@@ -137,8 +137,8 @@ const businessBenefits = [
     id: 3,
     text: (
       <>
-        No Withholding tax On <br />
-        <span className="font-semibold">Dividends</span>
+        Only one Director needed (Any Nationality)  <br />
+        <span className="font-semibold"></span>
       </>
     ),
   },
@@ -146,8 +146,8 @@ const businessBenefits = [
     id: 4,
     text: (
       <>
-        Territorial Tax System
-        <br />- Only <span className="font-semibold">Hk Income</span> Taxed
+        No Residency <br />
+         <span className="font-semibold">Requirements</span> 
       </>
     ),
   },
@@ -155,8 +155,8 @@ const businessBenefits = [
     id: 5,
     text: (
       <>
-        Extensive Network of <br />
-        <span className="font-semibold">Tax Treaties</span>
+        Common Law System
+        <span className="font-semibold"></span>
       </>
     ),
   },
@@ -167,9 +167,9 @@ const worldBenefits = [
     id: 1,
     text: (
       <>
-        <span className="font-semibold">Corporate Tax:</span> 16.5%
-        <br />
-        8.25% On First Hk$2m
+        <span className="font-medium">70+ International Banks</span> 
+       
+       
       </>
     ),
   },
@@ -177,9 +177,9 @@ const worldBenefits = [
     id: 2,
     text: (
       <>
-        <span className="font-semibold">No Vat/gst</span> Keeping
+        <span className="font-medium">Rank #3 Globally For Ease </span> 
         <br />
-        prices Competitive
+        of Doing Buisness
       </>
     ),
   },
@@ -187,8 +187,8 @@ const worldBenefits = [
     id: 3,
     text: (
       <>
-        No Withholding tax On <br />
-        <span className="font-semibold">Dividends</span>
+        Award-Winning <br />
+        <span className="font-medium">Airport And Port</span>
       </>
     ),
   },
@@ -196,8 +196,8 @@ const worldBenefits = [
     id: 4,
     text: (
       <>
-        Territorial Tax System
-        <br />- Only <span className="font-semibold">Hk Income</span> Taxed
+        Advanced Digital
+        <br /> <span className="font-medium">infrastructure</span> 
       </>
     ),
   },
@@ -205,8 +205,8 @@ const worldBenefits = [
     id: 5,
     text: (
       <>
-        Extensive Network of <br />
-        <span className="font-semibold">Tax Treaties</span>
+        English As Official <br />
+        <span className="font-medium">Buisness Language</span>
       </>
     ),
   },
@@ -338,7 +338,7 @@ export const ServicesOverviewSection = (): JSX.Element => {
                 <div className="relative w-6 h-6 mt-1 flex items-center justify-center bg-[#d9e5ff] rounded-full flex-shrink-0">
                   <CheckIcon className="w-4 h-4 text-[#004eff]" />
                 </div>
-                <div className="font-helvetica font-medium text-[#212833e6] text-xl leading-[30px]">
+                <div className="font-helvetica font-medium text-[#212833E5] text-xl leading-[30px]">
                   {benefit.text}
                 </div>
               </div>
