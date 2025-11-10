@@ -129,7 +129,7 @@ export const ServicesOverviewSection = (): JSX.Element => {
   return (
     <section className="flex flex-col w-full items-center gap-14 px-4 md:px-8 lg:px-[120px] py-8">
       <header className="inline-flex gap-4 flex-col items-center max-w-[994px]">
-        <div className="flex flex-col items-start w-full gap-4 mt-[130px]">
+        <div className="flex flex-col items-start w-full gap-4 lg:mt-[130px]">
           <p className="flex items-center justify-center w-full [font-family:'Helvetica_Neue-Regular',Helvetica] font-normal text-[#21283399] text-2xl text-center tracking-[0] leading-7">
             Why Outsource
           </p>

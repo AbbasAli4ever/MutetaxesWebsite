@@ -99,7 +99,7 @@ export const IntroductionSection = (): JSX.Element => {
       <div className="inline-flex flex-col items-center gap-14 relative flex-[0_0_auto]">
         <div className="inline-flex gap-4 relative flex-[0_0_auto] flex-col items-center">
           <div className="flex flex-col items-start gap-4 relative self-stretch w-full flex-[0_0_auto]">
-            <div className="relative flex items-center justify-center self-stretch [font-family:'Helvetica_Neue-Regular',Helvetica] font-normal text-[#21283399] text-2xl text-center tracking-[0] leading-7 mt-[130px]">
+            <div className="relative flex items-center justify-center self-stretch [font-family:'Helvetica_Neue-Regular',Helvetica] font-normal text-[#21283399] text-2xl text-center tracking-[0] leading-7 lg:mt-[130px]">
               Transition
             </div>
 

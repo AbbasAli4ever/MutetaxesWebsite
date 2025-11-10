@@ -20,11 +20,11 @@ export const BenefitsSection = (): JSX.Element => {
           {/* Heading */}
           <h2 className="text-[#212833] font-normal font-georgia leading-tight sm:leading-[60px] md:leading-[60px] xl:leading-[72px] tracking-[0] max-w-[90%] sm:max-w-[700px] md:max-w-[835px] text-3xl sm:text-4xl md:text-5xl lg:text-[54px] xl:text-[64px] -mt-[500px] md:-mt-20 lg:mt-0">
             <span>
-              Ready to Start Your
+              Ready to Incorporate Your
               <br className="hidden sm:block" />
             </span>
             <span className="text-[#004EFF] "> Hong Kong </span>
-            <span>Business?</span>
+            <span>Company?</span>
           </h2>
           {/* Description */}
           <p className="text-[#212833e6] font-helvetica font-normal text-base sm:text-lg md:text-[18px] xl:text-[22px] leading-relaxed sm:leading-7 tracking-[0] max-w-[90%] sm:max-w-[600px] md:max-w-[702px]">

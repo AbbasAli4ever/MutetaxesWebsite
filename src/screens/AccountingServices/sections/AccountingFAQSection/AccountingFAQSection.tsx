@@ -44,7 +44,7 @@ export const AccountingFAQSection = (): JSX.Element => {
     <section className="flex flex-col w-full items-center gap-10 px-[120px] py-8 relative">
       <header className="flex flex-col max-w-[952px] items-center gap-4 relative">
         <div className="relative flex flex-col items-start self-stretch w-full gap-4">
-          <div className="flex justify-center self-stretch [font-family:'Helvetica_Neue-Regular',Helvetica] font-normal text-[#21283399] text-2xl text-center tracking-[0] leading-7 relative items-center mt-[130px]">
+          <div className="flex justify-center self-stretch [font-family:'Helvetica_Neue-Regular',Helvetica] font-normal text-[#21283399] text-2xl text-center tracking-[0] leading-7 relative items-center lg:mt-[130px]">
             FAQ
           </div>
 

@@ -238,7 +238,7 @@ const tabsData = [
 export const ServicesOverviewSection = (): JSX.Element => {
   return (
     <section className="flex flex-col justify-between w-full py-8">
-      <div className="flex mx-auto w-full max-w-[952px] flex-col items-center gap-4 px-4">
+      <div className="flex mx-auto w-full max-w-[952px] flex-col items-center gap-4 px-4 lg:mt-[130px]">
         <div className="flex flex-col items-start w-full gap-4">
           <div className="flex items-center justify-center w-full font-helvetica font-normal text-[#21283399] text-2xl text-center tracking-[0] leading-7">
             Why Incorporate In Hong Kong
@@ -256,72 +256,101 @@ export const ServicesOverviewSection = (): JSX.Element => {
         </p>
       </div>
 
-      <div className="relative w-full max-w-[1276px] mx-auto px-4 flex flex-col items-center">
-  <Tabs defaultValue={tabsData[0].value} className="relative z-10 w-full mt-[48px] flex flex-col items-center">
-    
-    {/* TabsList ABOVE the card (same as example) */}
+   <Tabs
+  defaultValue={tabsData[0].value}
+  className="relative z-10 w-full mt-[48px] flex flex-col items-center"
+>
+  {/* --- Tabs ABOVE card on large screens --- */}
+  <div className="hidden lg:flex w-full justify-center mb-[-40px] z-20">
     <TabsList
       className="
-        relative z-20 flex items-center justify-start 
-        w-[63%] lg:w-[90%] h-auto gap-2 mx-auto 
-        overflow-x-auto bg-transparent sm:w-full 
-        sm:overflow-x-visible md:justify-center 
-        lg:-mb-14 md:-mb-11 scrollbar-hide 
+        flex items-center justify-center w-full max-w-[950px] gap-3 bg-transparent
       "
     >
       {tabsData.map((tab) => (
         <TabsTrigger
           key={tab.value}
           value={tab.value}
-          className={`inline-flex items-center justify-center z-30 gap-2.5 p-1.5 md:p-2 lg:p-3 rounded-[50px] h-auto 
-            data-[state=active]:shadow-[0px_24px_34px_#004eff47] 
-            data-[state=active]:bg-[linear-gradient(131deg,rgba(104,150,255,1)_0%,rgba(0,78,255,1)_100%)] 
-            data-[state=inactive]:bg-white 
-            font-helvetica font-normal text-xs md:text-[17px] text-center tracking-[0] leading-6 whitespace-nowrap 
-            data-[state=active]:text-white data-[state=inactive]:text-[#212833] mb-2
+          className={`inline-flex items-center justify-center gap-2.5 px-6 py-3 rounded-[50px]
+            data-[state=active]:shadow-[0px_24px_34px_#004eff47]
+            data-[state=active]:bg-[linear-gradient(131deg,rgba(104,150,255,1)_0%,rgba(0,78,255,1)_100%)]
+            data-[state=inactive]:bg-white
+            font-helvetica font-normal text-[14px] text-center
+            data-[state=active]:text-white data-[state=inactive]:text-[#212833]
+            whitespace-nowrap transition-all duration-200 lg:mb-[-50px]
           `}
         >
           {tab.label}
         </TabsTrigger>
       ))}
     </TabsList>
+  </div>
 
-    {/* Notched Card BELOW tabs */}
-    <NotchedCard
-      className="z-10 mx-auto mt-0 pt-0 md:border-t-0 lg:pt-0 px-3"
-      widthClass="w-[320px] md:w-[700px] lg:w-[1226px]"
-      heightClass="h-[627px] md:h-[426px] lg:h-[350px]"
-      borderColor="bg-[#D7E3FF]"
-      shadowColor="#D7E3FF"
-      notch={{
-        width: { base: 0, sm: 200, md: 700, lg: 750 },
-        depth: { base: 50, sm: 40, md: 45, lg: 50 },
-        bottomRadius: 25,
-        topRadius: 25,
-      }}
-    >
-      {/* TabsContent inside the NotchedCard (matches example) */}
-      {tabsData.map((tab) => (
-        <TabsContent key={tab.value} value={tab.value} className="pt-[76px] mt-0">
-          <div className="relative flex items-center justify-center w-full">
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-[60px] gap-y-[52px] lg:p-[5rem]">
-              {tab.benefits.map((benefit) => (
-                <div key={benefit.id} className="inline-flex items-start gap-4">
-                  <div className="relative w-6 h-6 mt-1 flex items-center justify-center bg-[#d9e5ff] rounded-full flex-shrink-0">
-                    <CheckIcon className="w-4 h-4 text-[#004eff]" />
-                  </div>
-                  <div className="font-helvetica font-medium text-[#212833e6] text-xl leading-[30px]">
-                    {benefit.text}
-                  </div>
+  {/* --- The Notched Card --- */}
+  <NotchedCard
+    className="z-10 mx-auto pt-6 md:pt-8 px-4 md:px-6"
+    widthClass="w-[320px] md:w-[700px] lg:w-[1226px]"
+    heightClass="h-auto"
+    borderColor="bg-[#D7E3FF]"
+    shadowColor="#D7E3FF]"
+    notch={{
+      width: { base: 0, sm: 200, md: 700, lg: 770 },
+      depth: { base: 50, sm: 40, md: 45, lg: 50 },
+      bottomRadius: 25,
+      topRadius: 25,
+    }}
+  >
+    {/* --- Tabs INSIDE card on small/medium screens --- */}
+    <div className="block lg:hidden">
+      <TabsList
+        className="
+          flex items-center justify-start md:justify-center 
+          w-full gap-2 mb-6 overflow-x-auto scrollbar-hide 
+          bg-transparent
+        "
+      >
+        {tabsData.map((tab) => (
+          <TabsTrigger
+            key={tab.value}
+            value={tab.value}
+            className={`inline-flex items-center justify-center gap-2.5 px-3 py-2 rounded-[50px]
+              data-[state=active]:shadow-[0px_24px_34px_#004eff47]
+              data-[state=active]:bg-[linear-gradient(131deg,rgba(104,150,255,1)_0%,rgba(0,78,255,1)_100%)]
+              data-[state=inactive]:bg-white
+              font-helvetica font-normal text-xs md:text-[17px] text-center
+              data-[state=active]:text-white data-[state=inactive]:text-[#212833]
+              whitespace-nowrap
+            `}
+          >
+            {tab.label}
+          </TabsTrigger>
+        ))}
+      </TabsList>
+    </div>
+
+    {/* --- Tabs Content (shared) --- */}
+    {tabsData.map((tab) => (
+      <TabsContent key={tab.value} value={tab.value} className="mt-4 pb-10">
+        <div className="relative flex items-center justify-center w-full">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-[60px] gap-y-[52px] lg:p-[3rem]">
+            {tab.benefits.map((benefit) => (
+              <div key={benefit.id} className="inline-flex items-start gap-4">
+                <div className="relative w-6 h-6 mt-1 flex items-center justify-center bg-[#d9e5ff] rounded-full flex-shrink-0">
+                  <CheckIcon className="w-4 h-4 text-[#004eff]" />
                 </div>
-              ))}
-            </div>
+                <div className="font-helvetica font-medium text-[#212833e6] text-xl leading-[30px]">
+                  {benefit.text}
+                </div>
+              </div>
+            ))}
           </div>
-        </TabsContent>
-      ))}
-    </NotchedCard>
-  </Tabs>
-</div>
+        </div>
+      </TabsContent>
+    ))}
+  </NotchedCard>
+</Tabs>
+
+
 
 
     </section>
