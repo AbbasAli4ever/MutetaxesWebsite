@@ -1,169 +1,194 @@
 import React from "react";
-import { Card, CardContent } from "../../../../AuditComponents/ui/card";
+import { Card, CardContent } from "../../../../components/ui/card";
+import NotchedCard from "../../../../UIComponents/NotchedCard";
 
-const checklistData = [
+const advantagesData = [
   {
     title: "Financial Records",
     icon: "/Audit/valuepropositionsection-7.svg",
-    background: "/Audit/subtract-8.svg",
+    background: "/HomePage/subtract-6.svg",
     items: [
-      "General Ledger",
-      "Trial Balance",
-      "Bank Statements (all Accounts)",
-      "Bank Reconciliations",
-      "Journal Entries",
+      {
+        icon: "/HomePage/frame.svg",
+        text: "General ledger",
+      },
+      {
+        icon: "/HomePage/frame.svg",
+        text: "Trial balance",
+      },
+      {
+        icon: "/HomePage/frame.svg",
+        text: "Bank statements (all accounts)",
+      },
+      {
+        icon: "/HomePage/frame.svg",
+        text: "Bank reconciliations",
+      },
+      {
+        icon: "/HomePage/frame.svg",
+        text: "Journal entries",
+      },
     ],
   },
   {
     title: "Supporting Documents",
-    icon: "/Audit/valuepropositionsection-12.svg",
-    background: "/Audit/subtract-7.svg",
+    icon: "/Audit/valuepropositionsection-3.svg",
+    background: "/HomePage/frame-1171278986.svg",
     items: [
-      "Sales Invoices",
-      "Purchase Invoices",
-      "Contracts And Agreements",
-      "Fixed Asset Register",
-      "Inventory Records",
+      {
+        icon: "/HomePage/frame.svg",
+        text: "Sales invoices",
+      },
+      {
+        icon: "/HomePage/frame.svg",
+        text: "Purchase invoices",
+      },
+      {
+        icon: "/HomePage/frame.svg",
+        text: "Contracts and agreements",
+      },
+      {
+        icon: "/HomePage/frame.svg",
+        text: "Fixed asset register",
+      },
+      {
+        icon: "/HomePage/frame.svg",
+        text: "Inventory records",
+      },
     ],
   },
   {
     title: "Corporate Records",
     icon: "/Audit/valuepropositionsection-9.svg",
-    background: "/Audit/subtract-10.svg",
+    background: "/HomePage/subtract-8.svg",
     items: [
-      "Board Minutes",
-      "Shareholder Resolutions",
-      "Statutory Registers",
-      "Insurance Policies",
-      "Employment Records",
+      {
+        icon: "/HomePage/frame.svg",
+        text: "Board minutes",
+      },
+      {
+        icon: "/HomePage/frame.svg",
+        text: "Shareholder resolutions",
+      },
+      {
+        icon: "/HomePage/frame.svg",
+        text: "Statutory registers",
+      },
+      {
+        icon: "/HomePage/frame.svg",
+        text: "Insurance policies",
+      },
+      {
+        icon: "/HomePage/frame.svg",
+        text: "Employment records",
+      },
     ],
   },
-  {
+   {
     title: "Tax Records",
     icon: "/Audit/valuepropositionsection-10.svg",
-    background: "/Audit/subtract-11.svg",
+    background: "/HomePage/subtract-8.svg",
     items: [
-      "Tax Returns",
-      "Ird Correspondence",
-      "Tax Payment Records",
-      "Mpf Contributions",
+      {
+        icon: "/HomePage/frame.svg",
+        text: "Tax returns",
+      },
+      {
+        icon: "/HomePage/frame.svg",
+        text: "IRD correspondence",
+      },
+      {
+        icon: "/HomePage/frame.svg",
+        text: "Tax payment records",
+      },
+      {
+        icon: "/HomePage/frame.svg",
+        text: "MPF contributions",
+      },
+      
     ],
   },
 ];
 
 export const SupportInfoSection = (): JSX.Element => {
   return (
-    <section className="flex flex-col w-full items-center gap-14 px-[120px] py-8">
-      <header className="inline-flex flex-col items-center gap-4">
+    <section className="flex flex-col w-full gap-16 py-8 sm:gap-24">
+      <header className="flex flex-col items-center gap-4 max-w-[952px] mx-auto px-4">
         <div className="flex flex-col items-start w-full gap-4">
-          <div className="flex items-center justify-center w-full [font-family:'Helvetica_Neue-Regular',Helvetica] font-normal text-[#21283399] text-2xl text-center tracking-[0] leading-7">
+          <p className="w-full text-center font-helvetica font-normal text-[#21283399] text-xl md:text-2xl tracking-[0] leading-7">
             Audit Preparation
-          </div>
+          </p>
 
-          <h1 className="flex items-center justify-center w-full max-w-[994px] mx-auto [font-family:'Georgia-Regular',Helvetica] font-normal text-[#212833] text-[64px] text-center tracking-[0] leading-[72px]">
+          <h2 className="w-full text-center font-georgia font-normal text-[#212833] text-4xl md:text-5xl lg:text-[64px] tracking-[0] leading-tight lg:leading-[72px]">
             Audit Preparation Checklist
-          </h1>
-
-          <div className="flex items-center justify-center w-full [font-family:'Helvetica_Neue-Regular',Helvetica] font-normal text-[#212833] text-2xl text-center tracking-[0] leading-7">
-            Essential Documents Needed For Your Audit
-          </div>
+          </h2>
         </div>
+
+        <p className="text-center max-w-[702px] font-helvetica font-normal text-[#212833] text-lg md:text-xl lg:text-[22px] tracking-[-0.64px] leading-relaxed lg:leading-[35px]">
+          Essential documents needed for your audit
+        </p>
       </header>
 
-      <div className="flex flex-col items-start gap-8">
-        <div className="grid grid-cols-3 gap-8">
-          {checklistData.slice(0, 3).map((category, index) => (
-            <Card
-              key={index}
-              className="w-[390px] h-[432px] relative border-0 shadow-none bg-transparent"
+      <div className="grid w-full grid-cols-1 gap-4 px-3 mx-auto sm:grid-cols-2 lg:grid-cols-3 sm:gap-10 xl:gap-y-20 max-w-[1300px]">
+        {advantagesData.map((advantage, index) => (
+          <div className="relative pt-20" key={index}>
+             <img
+              className="absolute w-[150px] sm:w-[150px] md:w-[155px] xl:w-[162px] h-auto z-20 left-1/2 -ml-[51px] md:-ml-[52px] lg:-ml-[52px] xl:-ml-14 -mt-14"
+              alt={advantage.title}
+              src={advantage.icon}
+            />
+            <NotchedCard
+              notch={{
+                width: { base: 150, sm: 150, md: 150, lg: 150 },
+                depth: { base: 40, sm: 35, md: 40, lg: 50 },
+                bottomRadius: 25,
+                topRadius: 25,
+              }}
+              widthClass="w-full max-w-[400px] sm:w-[300px] md:w-[300px] lg:w-[320px] xl:w-[400px]"
+              heightClass="h-[300px] sm:h-[300px] lg:h-[300px] xl:h-[400px]"
+              shadowColor="#6a98ff"
+              className="z-10"
             >
-              <CardContent className="relative w-full h-full p-0">
-                <img
-                  className="absolute top-[42px] left-0 w-[390px] h-[390px]"
-                  alt="Background shape"
-                  src={category.background}
-                />
-
-                <img
-                  className="absolute top-[-13px] left-[138px] w-[162px] h-[162px]"
-                  alt={`${category.title} icon`}
-                  src={category.icon}
-                />
-
-                <div className="absolute top-32 left-[25px] flex flex-col items-start gap-8 w-[344px]">
-                  <h3 className="flex items-center justify-start w-full [font-family:'Helvetica_Neue-Medium',Helvetica] font-semibold text-[#212833] text-2xl tracking-[0] leading-[34.1px]">
-                    {category.title}
+              <CardContent className="relative flex flex-col items-center justify-center pt-16 xl:pt-24">
+                {/* Content */}
+                <div className="flex flex-col items-start sm:items-start pb-[40px] relative z-10 text-center sm:text-left">
+                  <h3 className="font-helvetica font-medium text-[#212833] text-2xl sm:text-[26px] md:text-[25px] lg:text-[25px] xl:text-[32px] leading-snug">
+                    {advantage.title}
                   </h3>
 
-                  <ul className="flex flex-col items-start w-full gap-3">
-                    {category.items.map((item, itemIndex) => (
+                  <ul className="flex flex-col gap-[7px] xl:gap-[16.46px] mt-[10px]">
+                    {advantage.items.map((item, itemIndex) => (
                       <li
                         key={itemIndex}
-                        className="flex w-full items-center gap-2.5"
+                        className="flex items-start gap-1 sm:gap-[13.72px]"
                       >
                         <img
-                          className="flex-shrink-0 w-6 h-6"
+                          className="w-[25px] xl:w-[28.93px] h-[25px] xl:h-[28.93px] flex-shrink-0"
                           alt="Checkmark"
-                          src="/Audit/frame.svg"
+                          src={item.icon}
                         />
-                        <span className="flex items-center justify-start flex-1 [font-family:'Helvetica_Neue-Regular',Helvetica] font-normal text-[#212833e6] text-xl tracking-[0] leading-8">
-                          {item}
+                        <span className="font-helvetica font-normal text-[#212833e6] text-[14px] xl:text-[19.2px] tracking-[0] leading-[25.3px]">
+                          
+                            <span
+                             
+                              className={
+                                
+                                  "font-helvetica font-medium"
+                                  
+                              }
+                            >
+                              {item.text}
+                            </span>
+                         
                         </span>
                       </li>
                     ))}
                   </ul>
                 </div>
               </CardContent>
-            </Card>
-          ))}
-        </div>
-
-        <div className="flex items-start gap-8">
-          {checklistData.slice(3, 4).map((category, index) => (
-            <Card
-              key={index}
-              className="w-[390px] h-[432px] relative border-0 shadow-none bg-transparent"
-            >
-              <CardContent className="relative w-full h-full p-0">
-                <img
-                  className="absolute top-[42px] left-0 w-[390px] h-[390px]"
-                  alt="Background shape"
-                  src={category.background}
-                />
-
-                <img
-                  className="absolute top-[-13px] left-[138px] w-[162px] h-[162px]"
-                  alt={`${category.title} icon`}
-                  src={category.icon}
-                />
-
-                <div className="absolute top-32 left-[25px] flex flex-col items-start gap-8 w-[344px]">
-                  <h3 className="flex items-center justify-start w-full [font-family:'Helvetica_Neue-Medium',Helvetica] font-semibold text-[#212833] text-2xl tracking-[0] leading-[34.1px]">
-                    {category.title}
-                  </h3>
-
-                  <ul className="flex flex-col items-start w-full gap-3">
-                    {category.items.map((item, itemIndex) => (
-                      <li
-                        key={itemIndex}
-                        className="flex w-full items-center gap-2.5"
-                      >
-                        <img
-                          className="flex-shrink-0 w-6 h-6"
-                          alt="Checkmark"
-                          src="/Audit/frame.svg"
-                        />
-                        <span className="flex items-center justify-start flex-1 [font-family:'Helvetica_Neue-Regular',Helvetica] font-normal text-[#212833e6] text-xl tracking-[0] leading-8">
-                          {item}
-                        </span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              </CardContent>
-            </Card>
-          ))}
-        </div>
+            </NotchedCard>
+          </div>
+        ))}
       </div>
     </section>
   );

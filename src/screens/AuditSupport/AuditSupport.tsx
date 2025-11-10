@@ -19,18 +19,18 @@ const navigationItems = [
 
 export const AuditSupport = (): JSX.Element => {
   return (
-    <div className="bg-[#efefef] overflow-hidden w-full min-w-[1440px] relative">
+    <div className="bg-[#efefef] w-full relative">
 
 
       <HeroSection />
-      <IncludedServicesSection />
+       <IncludedServicesSection />
       <AuditPackagesSection />
       <SupportInfoSection />
       <WhyHongKongSection />
       <ServicesIncludedSection />
       <BankingInfoSection />
       <FaqSection />
-      <BenefitsSection />
+      <BenefitsSection /> 
       {/* <FooterSection /> */}
     </div>
   );

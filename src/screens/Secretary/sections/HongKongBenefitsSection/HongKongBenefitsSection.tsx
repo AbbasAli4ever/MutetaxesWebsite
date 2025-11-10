@@ -243,18 +243,20 @@ export const HongKongBenefitsSection = (): JSX.Element => {
     <section className="flex flex-col w-full gap-10 py-8">
       <div className="flex flex-col items-center gap-4 max-w-[952px] mx-auto px-4">
         <div className="flex flex-col items-start w-full gap-4">
-          <div className="w-full text-center [font-family:'Helvetica_Neue-Regular',Helvetica] font-normal text-[#21283399] text-2xl tracking-[0] leading-7">
-            Company Structure Pricing
-          </div>
-          <h2 className="w-full text-center [font-family:'Georgia-Regular',Helvetica] font-normal text-[#212833] text-[64px] tracking-[0] leading-[72px]">
-            Choose Your Company Structure
+          <p className="w-full text-center font-helvetica font-normal text-[#21283399] text-xl md:text-2xl tracking-[0] leading-7">
+            Secretary Pricing
+          </p>
+
+          <h2 className="w-full text-center font-georgia font-normal text-[#212833] text-4xl md:text-5xl lg:text-[64px] tracking-[0] leading-tight lg:leading-[72px]">
+            Choose Your Company Secretary Package
           </h2>
         </div>
-        <p className="text-center max-w-[702px] text-[#212833] text-[22px] tracking-[-0.64px] leading-[35px] [font-family:'Helvetica_Neue-Regular',Helvetica] font-normal">
-          Select the right entity type for your business needs
+
+        <p className="text-center max-w-[702px] font-helvetica font-normal text-[#212833] text-lg md:text-xl lg:text-[22px] tracking-[-0.64px] leading-relaxed lg:leading-[35px]">
+          Flexible packages designed for every business stage
         </p>
       </div>
-      <div className="flex justify-center items-start gap-6 max-w-[1140px] mx-auto px-4">
+      <div className="flex lg:flex-nowrap flex-wrap justify-center items-start gap-6 max-w-[1200px] mx-auto px-4">
         {pricingData.map((plan, index) => (
           <Card
             key={index}
@@ -311,7 +313,7 @@ export const HongKongBenefitsSection = (): JSX.Element => {
               </div>
 </CardContent>
               <div className="absolute flex items-center justify-center w-full mt-auto bottom-10">
-                <div className=" items-center justify-center">
+                <div className="items-center justify-center ">
    <Button
                   variant={plan.buttonVariant}
                   className={`h-auto w-[217px] rounded-[28.01px] py-[15px] px-6 ${

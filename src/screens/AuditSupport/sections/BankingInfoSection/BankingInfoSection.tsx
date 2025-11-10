@@ -33,17 +33,19 @@ export const BankingInfoSection = (): JSX.Element => {
   return (
     <section className="w-full flex flex-col gap-[53px] py-8">
       <div className="flex flex-col items-center gap-6 max-w-[964px] mx-auto px-4">
-        <div className="[font-family:'Helvetica_Neue-Regular',Helvetica] font-normal text-[#21283399] text-2xl text-center tracking-[0] leading-7 whitespace-nowrap">
-          Audit Issues
+       <div className="flex flex-col items-start w-full gap-4">
+          <p className="w-full text-center font-helvetica font-normal text-[#21283399] text-xl md:text-2xl tracking-[0] leading-7">
+            Audit Issues
+          </p>
+
+          <h2 className="w-full text-center font-georgia font-normal text-[#212833] text-4xl md:text-5xl lg:text-[64px] tracking-[0] leading-tight lg:leading-[72px]">
+            Common Audit
+            <br />
+            Issues We Prevent
+          </h2>
         </div>
 
-        <h2 className="[font-family:'Georgia-Regular',Helvetica] font-normal text-[#212833] text-[64px] text-center tracking-[0] leading-[66px]">
-          Common Audit
-          <br />
-          Issues We Prevent
-        </h2>
-
-        <p className="[font-family:'Helvetica_Neue-Regular',Helvetica] font-normal text-[#212833] text-2xl text-center tracking-[0] leading-7 whitespace-nowrap">
+        <p className="text-center max-w-[702px] font-helvetica font-normal text-[#212833] text-lg md:text-xl lg:text-[22px] tracking-[-0.64px] leading-relaxed lg:leading-[35px]">
           Avoid these costly mistakes that delay audits and increase fees
         </p>
       </div>

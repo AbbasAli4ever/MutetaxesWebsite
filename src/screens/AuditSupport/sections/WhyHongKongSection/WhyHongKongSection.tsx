@@ -71,24 +71,24 @@ const pricingPlans = [
 export const WhyHongKongSection = (): JSX.Element => {
   return (
     <section className="w-full flex flex-col items-center gap-[58px] py-8">
-      <header className="flex flex-col items-center gap-4 max-w-[702px] px-4">
-        <div className="flex flex-col items-center justify-center w-full gap-4">
-          <p className="[font-family:'Helvetica_Neue-Regular',Helvetica] font-normal text-[#21283399] text-2xl text-center tracking-[0] leading-7">
+      <header className="flex flex-col items-center gap-4 max-w-[902px] px-4">
+        <div className="flex flex-col items-start w-full gap-4">
+          <p className="w-full text-center font-helvetica font-normal text-[#21283399] text-xl md:text-2xl tracking-[0] leading-7">
             Packages
           </p>
 
-          <h2 className="[font-family:'Georgia-Regular',Helvetica] font-normal text-[#212833] text-[64px] text-center tracking-[0] leading-[72px] whitespace-nowrap">
+          <h2 className="w-full text-center font-georgia font-normal text-[#212833] text-4xl md:text-5xl lg:text-[64px] tracking-[0] leading-tight lg:leading-[72px]">
             Audit Support Packages
           </h2>
         </div>
 
-        <p className="[font-family:'Helvetica_Neue-Regular',Helvetica] font-normal text-[#212833] text-[22px] text-center tracking-[-0.64px] leading-[35px] w-full">
+        <p className="text-center max-w-[702px] font-helvetica font-normal text-[#212833] text-lg md:text-xl lg:text-[22px] tracking-[-0.64px] leading-relaxed lg:leading-[35px]">
           Choose the plan that fits your needs and scale as you grow
         </p>
       </header>
 
       <div className="relative w-full max-w-[1272px] px-4">
-        <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-4">
+        <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
           {pricingPlans.map((plan, index) => (
             <div key={index} className="relative">
               {plan.featured && (

@@ -38,15 +38,15 @@ export const BankingServicesSection = (): JSX.Element => {
   return (
     <section className="flex flex-col w-full gap-12 py-10">
       <div className="flex flex-col items-center gap-6 max-w-[980px] mx-auto px-4">
-        <div className="[font-family:'Helvetica_Neue-Regular',Helvetica] font-normal text-[#21283399] text-2xl text-center tracking-[0] leading-7">
-          Compliance Partner
-        </div>
+         <p className="w-full text-center font-helvetica font-normal text-[#21283399] text-xl md:text-2xl tracking-[0] leading-7">
+            Compliance Partner
+          </p>
 
-        <h2 className="[font-family:'Georgia-Regular',Helvetica] font-normal text-[#212833] text-[64px] text-center tracking-[0] leading-[66px]">
-          Your Trusted Compliance Partner
-        </h2>
+          <h2 className="w-full text-center font-georgia font-normal text-[#212833] text-4xl md:text-5xl lg:text-[64px] tracking-[0] leading-tight lg:leading-[72px]">
+            Your Trusted Compliance Partner
+          </h2>
 
-        <p className="[font-family:'Helvetica_Neue-Regular',Helvetica] font-normal text-[#212833] text-2xl text-center tracking-[0] leading-7">
+        <p className="text-center max-w-[702px] font-helvetica font-normal text-[#212833] text-lg md:text-xl lg:text-[22px] tracking-[-0.64px] leading-relaxed lg:leading-[35px]">
           Why businesses choose Mute Taxes for company secretary services
         </p>
       </div>

@@ -13,16 +13,16 @@ import { FooterSection } from "../HomePage/sections/FooterSection";
 
 export const Secretary = (): JSX.Element => {
   return (
-  <div className="bg-[#efefef] w-full min-w-[1440px] relative">
+  <div className="bg-[#efefef] w-full relative">
 
       <HeroBannerSection />
-      <ServicesOverviewSection />
-      <ServicesDetailsSection />
+       <ServicesOverviewSection />
+       <ServicesDetailsSection />
       <HongKongBenefitsSection />
       <AdvantagesSection />
       <BankingServicesSection />
       <FaqSection />
-      <BenefitsSection />
+      <BenefitsSection /> 
       {/* <FooterSection /> */}
     </div>
   );

@@ -1,15 +1,21 @@
 import React from "react";
 import { Card, CardContent } from "../../../../SacretaryComponents/ui/card";
+import NotchedCard from "../../../../UIComponents/NotchedCard";
 
 const cardsData = [
   {
     id: 1,
     icon: "/Secretary/valuepropositionsection-7.svg",
-    title: "Mandatory Under\nhong Kong Law",
+    title: (<div>
+      Mandatory Under <br/> 
+      hong Kong Law
+    </div>),
     description:
       "Every Hong Kong Company Must Appoint A Company Secretary Within 6 Months Of Incorporation Under The Companies Ordinance (cap. 622).",
     background: "/Secretary/subtract-5.svg",
     type: "text",
+    shadowColor: "#6a98ff",
+    borderColor: "#d7e3ff"
   },
   {
     id: 2,
@@ -17,6 +23,8 @@ const cardsData = [
     title: "Who Can Be A Company Secretary",
     background: "/Secretary/subtract-6.svg",
     type: "list",
+    shadowColor: "#6a98ff",
+    borderColor: "#d7e3ff",
     items: [
       {
         icon: "check",
@@ -37,6 +45,8 @@ const cardsData = [
     title: "Consequences Of Non-compliance",
     background: "/Secretary/subtract-7.svg",
     type: "warning-list",
+    shadowColor: "#fbc3bf",
+    borderColor: "#d7e3ff",
     items: [
       "Daily Fines Up To Hk$25,000",
       "Director Prosecution Risk",
@@ -49,59 +59,64 @@ const cardsData = [
 
 export const ServicesOverviewSection = (): JSX.Element => {
   return (
-    <section className="flex flex-col w-full items-center gap-14 px-[120px] py-8 relative">
+    <section className="flex flex-col w-full items-center gap-14 max-w-[1200px] mx-auto py-8 relative">
       <header className="inline-flex flex-col items-center gap-4 relative flex-[0_0_auto]">
-        <div className="flex flex-col items-start gap-4 relative self-stretch w-full flex-[0_0_auto]">
-          <p className="relative flex items-center justify-center self-stretch mt-[-1.00px] [font-family:'Helvetica_Neue-Regular',Helvetica] font-light text-[#21283399] text-[24px] text-center tracking-[0] leading-7">
+        <div className="flex flex-col items-start w-full gap-4">
+          <p className="w-full text-center font-helvetica font-normal text-[#21283399] text-xl md:text-2xl tracking-[0] leading-7">
             Secretary Requirements
           </p>
 
-          <h2 className="relative flex items-center justify-center w-[994px] [font-family:'Georgia-Regular',Helvetica] font-normal text-[#212833] text-[64px] text-center tracking-[0] leading-[72px]">
-            Understanding Hong Kong&#39;s Company Secretary Requirements
+          <h2 className="w-full text-center font-georgia font-normal text-[#212833] text-4xl md:text-5xl lg:text-[64px] tracking-[0] leading-tight lg:leading-[72px]">
+            Understanding Hong Kong's 
+            <br />
+            Company Secretary Requirements
           </h2>
-
-          <p className="relative flex items-center justify-center self-stretch [font-family:'Helvetica_Neue-Regular',Helvetica] font-light text-[#212833] text-[24px] text-center tracking-[0] leading-7">
-            Legal Obligations Every Hong Kong Company Must Comply With
-          </p>
         </div>
+
+        <p className="text-center max-w-[702px] font-helvetica font-normal text-[#212833] text-lg md:text-xl lg:text-[22px] tracking-[-0.64px] leading-relaxed lg:leading-[35px]">
+          Legal obligations every Hong Kong company must comply with
+        </p>
       </header>
 
-      <div className="inline-flex items-start gap-8 relative flex-[0_0_auto] ml-[-17.00px] mr-[-17.00px]">
-        {cardsData.map((card) => (
-          <Card
-            key={card.id}
-            className="relative w-[390px] h-[454px] border-0 shadow-none bg-transparent"
-          >
-            <CardContent className="relative w-full h-full p-0">
+      <div className="grid w-full grid-cols-1 gap-4 px-2 lg:gap-10 xl:gap-24 xl:gap-y-20 sm:grid-cols-2 lg:grid-cols-3">
+        {cardsData.map((card, index) => (
+          <div className="relative pt-20" key={index}>
               <img
-                className="absolute left-0 top-[42px] w-[390px] h-[412px]"
-                alt="Card background"
-                src={card.background}
-              />
-
-              <img
-                className="absolute top-[-13px] left-[138px] w-[162px] h-[162px]"
-                alt={card.title}
+                className="absolute w-[150px] sm:w-[150px] md:w-[155px] xl:w-[162px] h-auto z-20 left-1/2 -ml-[51px] md:-ml-[52px] lg:-ml-[52px] xl:-ml-14 -mt-14"
+                 alt={card.title}
                 src={card.icon}
               />
-
-              <div className="flex flex-col w-[334px] items-start gap-8 absolute top-32 left-[25px]">
-                <h3 className="relative  flex items-start justify-start self-stretch mt-[-1.22px] [font-family:'Helvetica_Neue-Medium',Helvetica] font-medium text-[#212833] text-[24px] tracking-[0] leading-[34.1px] whitespace-pre-line">
+              <NotchedCard
+                notch={{
+                width: { base: 150, sm: 150, md: 150, lg: 150 },
+                depth: { base: 40, sm: 35, md: 40, lg: 50 },
+                bottomRadius: 25,
+                topRadius: 25,
+              }}
+                widthClass="w-full max-w-[400px] sm:w-[300px] md:w-[300px] lg:w-[300px] xl:w-[400px]"
+                heightClass="h-[380px] sm:h-[380px] lg:h-[350px] xl:h-[430px]"
+                shadowColor={card.shadowColor}
+                borderColor={`bg-[${card.borderColor}]`}
+                className="z-10"
+              >
+                <CardContent className="relative flex flex-col items-center justify-center pt-16 xl:pt-24">
+              <div className="flex flex-col items-center sm:items-start gap-6 pb-[40px] relative z-10 text-center sm:text-left ">
+                <h3 className="font-helvetica font-semibold text-[#212833] text-2xl sm:text-[24px] md:text-[20px] xl:text-[24px] leading-snug">
                   {card.title}
                 </h3>
 
                 {card.type === "text" && (
-                  <p className="relative flex  items-center justify-center w-[336.23px] mr-[-2.67px] [font-family:'Helvetica_Neue-Regular',Helvetica] font-extralight text-[#212833e6] text-xl tracking-[0] leading-[31.5px]">
+                  <p className="font-helvetica font-normal text-[#212833e6] text-base sm:text-base md:text-[15px] xl:text-[20px] leading-relaxed">
                     {card.description}
                   </p>
                 )}
 
                 {card.type === "list" && (
-                  <div className="flex flex-col w-[344px] items-start gap-6 relative flex-[0_0_auto]">
+                  <div className="flex flex-col  mx-auto items-start gap-6 relative flex-[0_0_auto]">
                     {card.items?.map((item, index) => (
                       <div
                         key={index}
-                        className="flex w-[344px] items-start gap-2.5 relative flex-[0_0_auto]"
+                        className="flex  items-start gap-2.5 relative flex-[0_0_auto]"
                       >
                         <img
                           className="relative w-6 h-6"
@@ -109,37 +124,32 @@ export const ServicesOverviewSection = (): JSX.Element => {
                           src="/Secretary/frame.svg"
                         />
 
-                       <p className="relative  [font-family:'Helvetica_Neue-Medium',Helvetica] font-normal text-[#212833e6] text-xl tracking-[0] leading-8">
-  <span className="font-medium ">{item.boldText}</span>{" "}
-  <span className="[font-family:'Helvetica_Neue-Regular',Helvetica] font-extralight">
-    {item.regularText}
-  </span>
-</p>
-
+                        <p className="font-helvetica font-normal text-[#212833e6] text-base sm:text-base md:text-[15px] xl:text-[20px] leading-relaxed">
+                          <span className="font-semibold ">{item.boldText}</span>{" "}
+                          <span className="[font-family:'Helvetica_Neue-Regular',Helvetica] font-extralight">
+                            {item.regularText}
+                          </span>
+                        </p>
                       </div>
                     ))}
                   </div>
                 )}
 
                 {card.type === "warning-list" && (
-                  <div className="inline-flex flex-col items-start gap-4 relative flex-[0_0_auto]">
+                  <div className="inline-flex flex-col items-start mx-auto gap-4 relative flex-[0_0_auto]">
                     {card.items?.map((item, index) => (
                       <div
                         key={index}
-                        className="flex flex-col w-[344px] items-start gap-6 relative flex-[0_0_auto]"
+                        className="flex flex-col items-start gap-6 relative flex-[0_0_auto]"
                       >
-                        <div className="flex w-[344px] items-center gap-2.5 relative flex-[0_0_auto]">
-                         
-                                <img
-                          className="relative w-6 h-6 "
-                          alt="Check icon"
-                          src="/Secretary/Framecrose.png"
-                        />
+                        <div className="flex items-center gap-2.5 relative flex-[0_0_auto]">
+                          <img
+                            className="relative w-6 h-6 "
+                            alt="Check icon"
+                            src="/Secretary/Framecrose.png"
+                          />
 
-                            
-                       
-
-                          <p className="relative flex items-start justify-start w-[310px] [font-family:'Helvetica_Neue-Regular',Helvetica] font-light text-[#212833e6] text-xl tracking-[0] ">
+                          <p className="font-helvetica font-normal text-[#212833e6] text-base sm:text-base md:text-[15px] xl:text-[20px] leading-relaxed ">
                             {item}
                           </p>
                         </div>
@@ -149,7 +159,8 @@ export const ServicesOverviewSection = (): JSX.Element => {
                 )}
               </div>
             </CardContent>
-          </Card>
+              </NotchedCard>
+            </div>
         ))}
       </div>
     </section>

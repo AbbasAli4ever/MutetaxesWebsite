@@ -1,196 +1,144 @@
 import React from "react";
 import { Card, CardContent } from "../../../../SacretaryComponents/ui/card";
+import SideNotchCard from "../../../../UIComponents/SIdeNotchCard";
 
-const featuresList = [
-  "Real-time Compliance Status",
-  "Upcoming Deadline Alerts",
-  "Document Repository",
-  "Task Management",
-  "Digital Signatures",
-  "Secure Messaging",
-];
-
-const mobileAccessList = [
-  "Ios/android Apps",
-  "Document Approval On-the-go",
-  "Push Notifications",
-  "Offline Access",
+const advantageCards = [
+  {
+    title: "Features",
+    backgroundSrc: "/Secretary/subtract-3.svg",
+    iconSrc: "/Secretary/greenicon.png",
+    sideImgSrc: "/Secretary/b1.png",
+    items: [
+      "Real-time Compliance Status",
+      "Upcoming Deadline Alerts",
+      "Document Repository",
+      "Task Management",
+      "Digital Signatures",
+      "Secure Messaging",
+    ],
+  },
+  {
+    title: "Mobile Access",
+    backgroundSrc: "/Secretary/subtract-4.svg",
+    iconSrc: "/Secretary/valuepropositionsection-6.svg",
+    sideImgSrc: "/Secretary/b2.png",
+    items: [
+      "Ios/android Apps",
+      "Document Approval On-the-go",
+      "Push Notifications",
+      "Offline Access",
+    ],
+  },
 ];
 
 export const AdvantagesSection = (): JSX.Element => {
   return (
     <section className="w-full py-20">
-      <div className="flex flex-col max-w-[1226px] mx-auto items-center gap-16 px-4">
+      <div className="flex flex-col max-w-[1260px] mx-auto items-center gap-16 px-4">
         <header className="flex flex-col max-w-[882px] items-center gap-4">
-          <div className="[font-family:'Helvetica_Neue-Regular',Helvetica] font-normal text-[#21283399] text-2xl text-center tracking-[0] leading-[28.1px]">
+          <p className="w-full text-center font-helvetica font-normal text-[#21283399] text-xl md:text-2xl tracking-[0] leading-7">
             Dashboard
-          </div>
+          </p>
 
-          <h2 className="[font-family:'Georgia-Regular',Helvetica] font-normal text-[#212833] text-[64.3px] text-center tracking-[0] leading-[72.4px]">
+          <h2 className="w-full text-center font-georgia font-normal text-[#212833] text-4xl md:text-5xl lg:text-[64px] tracking-[0] leading-tight lg:leading-[72px]">
             Modern Compliance Management Dashboard
           </h2>
 
-          <p className="max-w-[702px] [font-family:'Helvetica_Neue-Regular',Helvetica] font-normal text-[#212833] text-[22px] text-center tracking-[-0.64px] leading-[35px]">
-            Manage your company&#39;s compliance from anywhere, anytime
-          </p>
+           <p className="text-center max-w-[702px] font-helvetica font-normal text-[#212833] text-lg md:text-xl lg:text-[22px] tracking-[-0.64px] leading-relaxed lg:leading-[35px]">
+          Manage your company's compliance from anywhere, anytime
+        </p>
         </header>
 
-        <div className="flex flex-wrap items-start justify-center w-full gap-6">
-          <Card className="relative w-full max-w-[580px] h-auto overflow-hidden border-0 shadow-none bg-transparent">
-            <CardContent className="relative p-0 h-[426.69px]">
-              <img
-                className="absolute left-0 top-[42px] w-full h-[385px]"
-                alt="Features background"
-                src="/Secretary/subtract-3.svg"
-              />
+        <div className="flex flex-col items-start justify-center w-full lg:flex-row">
+          {advantageCards.map((card, index) => (
+           <div className="relative pt-20 w-full md:w-[520px] lg:w-[470px] xl:w-[580px] mx-auto" key={index}>
+                <img
+                  className="absolute w-[175px] sm:w-[175px] md:w-[175px] xl:w-[182px] h-auto z-20 -left-3 md:-left-10 lg:-left-3 top-[18px]"
+                  alt={"icon"}
+                  src={card.iconSrc}
+                />
+                <SideNotchCard
+                  notch={{
+                    width: { base: 53, sm: 53, md: 53, lg: 53 },
+                    depth: { base: 103, sm: 103, md: 103, lg: 103 },
+                    topLeft: 30,
+                    topRight: 0,
+                    bottomLeft: 20,
+                    bottomRight: 20,
+                  }}
+                  widthClass="w-full md:w-[580px] lg:w-[470px] xl:w-[580px]"
+                  heightClass="h-[600px] md:h-[400px]"
+                  borderColor="bg-blue-200"
+                  shadowColor="#6a98ff"
+                  borderWidth={2}
+                  className={``}
+                >
+                  <CardContent className="relative w-full h-full p-0">
+<img
+                    src={card.sideImgSrc}
+                    alt="Right side background"
+                    className="absolute right-0 -bottom-24 xl:-bottom-20 w-[280px] xl:w-[320px] h-[380px] object-contain"
+                  />
+                <div className="absolute top-[90px] left-[28px] sm:left-[33px] flex flex-col gap-4 w-auto h-full">
+                  
 
-              <img
-                className="absolute top-[-13px] -left-3 w-[162px] h-[162px]"
-                alt="Features icon"
-                src="/Secretary/greenicon.png"
-              />
+                  <h3 className="[font-family:'Helvetica_Neue-Medium',Helvetica] font-medium text-[#212833] text-[32px] tracking-[0] leading-[34.1px]">
+                    {card.title}
+                  </h3>
 
-              <div className="absolute top-[131px] left-[33px] flex flex-col gap-4 w-full"
-   >    
-        <img
-    src="/Secretary/b1.png"
-    alt="Right side background"
-    className="absolute right-0 top-0 w-[320px] h-[380px] object-contain"
-  />
-                
-                <h3 className="[font-family:'Helvetica_Neue-Medium',Helvetica] font-medium text-[#212833] text-[32px] tracking-[0] leading-[34.1px]">
-                  Features
-                </h3>
-
-                <ul className="flex flex-col gap-3">
-                  {featuresList.map((feature, index) => (
-                    <li key={index} className="flex items-center gap-2.5">
-                      <img
-                        className="flex-shrink-0 w-6 h-6"
-                        alt="CheckIcon icon"
-                        src="/Secretary/frame.svg"
-                      />
-                      <span className="[font-family:'Helvetica_Neue-Regular',Helvetica] font-normal text-[#212833e6] text-base tracking-[0] leading-[18.5px]">
-                        {feature}
-                      </span>
-                    </li>
-                  ))}
-                </ul>
+                  <ul className="flex flex-col gap-3">
+                    {card.items.map((item, itemIndex) => (
+                      <li key={itemIndex} className="flex items-center gap-2.5">
+                        <img
+                          className="flex-shrink-0 w-6 h-6"
+                          alt="CheckIcon icon"
+                          src="/Secretary/frame.svg"
+                        />
+                        <span className="[font-family:'Helvetica_Neue-Regular',Helvetica] font-normal text-[#212833e6] text-base tracking-[0] leading-[18.5px]">
+                          {item}
+                        </span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </CardContent>
+                </SideNotchCard>
               </div>
-            </CardContent>
-          </Card>
+          ))}
+        </div>
 
-          {/* <Card className="relative w-full max-w-[580px] h-auto overflow-hidden border-0 shadow-none bg-transparent">
-            <CardContent className="relative p-0 h-[426.69px]">
-              <img
-                className="absolute left-px top-[42px] w-full h-[385px]"
-                alt="Mobile access background"
-                src="/Secretary/subtract-4.svg"
-              />
+        <div className="relative w-full max-w-[1185px] h-auto min-h-[127px] rounded-[20px] overflow-hidden bg-[linear-gradient(131deg,rgba(104,150,255,1)_0%,rgba(0,78,255,1)_100%)] px-6 py-6 md:px-10 md:py-8">
+  {/* Decorative blurred circles */}
+  <div className="absolute inset-0 overflow-hidden">
+    <div className="absolute top-[50%] left-[50%] w-[600px] h-[600px] md:w-[800px] md:h-[800px] xl:w-[949px] xl:h-[949px] -translate-x-1/2 -translate-y-1/2 rotate-[12.34deg] blur-[27.38px] bg-[linear-gradient(226deg,rgba(0,78,255,0.9)_0%,rgba(222,232,255,0.18)_100%)]" />
+    <div className="absolute top-[55%] left-[50%] w-[600px] h-[600px] md:w-[800px] md:h-[800px] xl:w-[949px] xl:h-[949px] -translate-x-1/2 -translate-y-1/2 rotate-[12.34deg] blur-[27.38px] bg-[linear-gradient(226deg,rgba(0,78,255,0.9)_0%,rgba(222,232,255,0.18)_100%)]" />
+  </div>
 
-              <img
-                className="absolute top-[-13px] -left-3.5 w-[162px] h-[162px]"
-                alt="Mobile access icon"
-                src="/Secretary/valuepropositionsection-6.svg"
-              />
+  {/* Text content */}
+  <div className="relative flex flex-col gap-2 md:gap-3 xl:gap-4">
+    <h3 className="font-medium text-white text-[22px] sm:text-[26px] md:text-[30px] lg:text-[32px] leading-[1.2]">
+      Bank-level Security
+    </h3>
+    <p className="font-medium sm:w-full w-[80%] text-white text-[16px] sm:text-[18px] md:text-[20px] lg:text-[21px] leading-[1.3]">
+      ISO 27001 Certified Data Protection
+    </p>
+  </div>
 
-              <div className="absolute top-[131px] left-[33px] flex flex-col gap-4 w-[334px]">
-                <h3 className="[font-family:'Helvetica_Neue-Medium',Helvetica] font-medium text-[#212833] text-[32px] tracking-[0] leading-[34.1px]">
-                  Mobile Access
-                </h3>
-
-                <ul className="flex flex-col gap-3">
-                  {mobileAccessList.map((item, index) => (
-                    <li key={index} className="flex items-center gap-2.5">
-                      <img
-                        className="flex-shrink-0 w-6 h-6"
-                        alt="CheckIcon icon"
-                        src="/Secretary/frame.svg"
-                      />
-                      <span className="[font-family:'Helvetica_Neue-Regular',Helvetica] font-normal text-[#212833e6] text-base tracking-[0] leading-[18.5px]">
-                        {item}
-                      </span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </CardContent>
-          </Card> */}
-          <Card
-  className="relative w-full max-w-[580px] h-auto overflow-hidden border-0 shadow-none bg-transparent"
->
-  <CardContent
-    className="relative p-0 h-[426.69px] bg-no-repeat bg-right bg-contain"
-   
-  >
-    {/* Background layer images */}
-    <img
-      className="absolute left-px top-[42px] w-full h-[385px]"
-      alt="Mobile access background"
-      src="/Secretary/subtract-4.svg"
-    />
-
-    <img
-      className="absolute top-[-13px] -left-3.5 w-[162px] h-[162px]"
-      alt="Mobile access icon"
-      src="/Secretary/valuepropositionsection-6.svg"
-    />
-
-    {/* Text content */}
-    <div className="absolute top-[131px] left-[33px] flex flex-col gap-4 w-full"
-   >
+  {/* Icon inside two circular divs */}
+  <div className="absolute flex items-center justify-center top-7 right-3 sm:right-4 md:top-5 md:right-6">
+    <div className="flex items-center justify-center p-2 rounded-full sm:p-4 bg-white/10">
+      <div className="flex items-center justify-center p-2 rounded-full sm:p-4 bg-white/20">
         <img
-    src="/Secretary/b2.png"
-    alt="Right side background"
-    className="absolute right-0 top-0 w-[320px] h-[380px] object-contain"
-  />
-      <h3 className="[font-family:'Helvetica_Neue-Medium',Helvetica] font-medium text-[#212833] text-[32px] tracking-[0] leading-[34.1px]">
-        Mobile Access
-      </h3>
-
-      <ul className="flex flex-col gap-3">
-        {mobileAccessList.map((item, index) => (
-          <li key={index} className="flex items-center gap-2.5">
-            <img
-              className="flex-shrink-0 w-6 h-6"
-              alt="CheckIcon icon"
-              src="/Secretary/frame.svg"
-            />
-            <span className="[font-family:'Helvetica_Neue-Regular',Helvetica] font-normal text-[#212833e6] text-base tracking-[0] leading-[18.5px]">
-              {item}
-            </span>
-          </li>
-        ))}
-      </ul>
+          src="/Secretary/frame-49.svg"
+          alt="Security icon"
+          className="w-[28px] h-[28px] md:w-[36px] md:h-[36px] lg:w-[44px] lg:h-[44px]"
+        />
+      </div>
     </div>
-  </CardContent>
-</Card>
+  </div>
+</div>
 
-        </div>
 
-        <div className="relative w-full max-w-[1185px] h-[127px] rounded-[20px] overflow-hidden bg-[linear-gradient(131deg,rgba(104,150,255,1)_0%,rgba(0,78,255,1)_100%)]">
-          <div className="absolute top-[23px] left-[583px] h-[1180px] w-[1130px]">
-            <div className="absolute top-[90px] left-[90px] w-[949px] h-[949px] rounded-[474.32px] rotate-[12.34deg] blur-[27.38px] bg-[linear-gradient(226deg,rgba(0,78,255,0.9)_0%,rgba(222,232,255,0.18)_100%)]" />
-
-            <div className="absolute top-[140px] left-[90px] w-[949px] h-[949px] rounded-[474.32px] rotate-[12.34deg] blur-[27.38px] bg-[linear-gradient(226deg,rgba(0,78,255,0.9)_0%,rgba(222,232,255,0.18)_100%)]" />
-          </div>
-
-          <div className="absolute top-[calc(50%_-_34px)] left-[43px] flex flex-col gap-4">
-            <h3 className="[font-family:'Helvetica_Neue-Medium',Helvetica] font-medium text-white text-[32px] tracking-[0] leading-[26.0px] whitespace-nowrap">
-              Bank-level Security
-            </h3>
-
-            <p className="[font-family:'Helvetica_Neue-Medium',Helvetica] font-medium text-white text-[21px] tracking-[0] leading-[26.0px] whitespace-nowrap">
-              Iso 27001 Certified Data Protection
-            </p>
-          </div>
-
-          <img
-            className="absolute top-[31px] left-[1062px] w-[68px] h-[68px]"
-            alt="Security icon"
-            src="/Secretary/frame-49.svg"
-          />
-        </div>
       </div>
     </section>
   );
