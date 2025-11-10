@@ -7,7 +7,7 @@ export interface NotchConfig {
 }
 interface NotchedCardProps {
   notch?: NotchConfig;
-  children?: React.ReactNode;
+  children?: React.ReactNode; 
   borderWidth?: number;
   borderColor?: string;
   shadowColor?: string;
