@@ -26,9 +26,9 @@ const statisticsBadges = [
 export const HeroBannerSection = (): JSX.Element => {
   return (
     <section className="relative w-full bg-[#dbe6fe] md:bg-transparent h-auto">
-<div className="relative w-screen h-[750px] md:h-[955px] lg:h-[1100px] pt-5 overflow-hidden">
+<div className="relative w-full xl:w-[97vw] mx-auto h-[950px] sm:h-[700px] md:h-[850px] lg:h-[1100px] pt-5 overflow-hidden">
         <img
-          className="object-cover w-full h-full"
+          className="hidden object-cover w-full h-full md:object-fill md:block"
           alt="G illustration"
           src="/HomePage/HeroBG.png"
         />
