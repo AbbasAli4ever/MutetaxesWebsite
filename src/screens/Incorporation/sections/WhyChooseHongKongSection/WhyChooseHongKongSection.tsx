@@ -94,11 +94,11 @@ export const WhyChooseHongKongSection = (): JSX.Element => {
           </div>
 
           <div className="flex flex-col gap-[7px]">
-            <h3 className="font-helvetica font-normal text-[#222222] text-xl tracking-[0] leading-7 whitespace-nowrap">
+            <h3 className="font-helvetica font-medium text-[#222222] text-xl tracking-[0] leading-7 whitespace-nowrap">
               {plan.title}
             </h3>
 
-            <p className="[-webkit-text-stroke:0.9px_#707070] font-helvetica font-normal text-[#65676c] text-lg tracking-[0.45px] leading-6 whitespace-pre-line">
+            <p className=" font-helvetica font-normal text-[#65676c] text-lg tracking-[0.45px] leading-6 whitespace-pre-line">
               {plan.description}
             </p>
           </div>

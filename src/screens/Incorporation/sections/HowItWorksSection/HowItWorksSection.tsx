@@ -7,7 +7,7 @@ const steps = [
     number: "Day 1",
     title: "Initial Consultation",
     icon: "/HomePage/frame-1171278983.svg",
-    items: ["Kyc Documents Collection", "Incorporation Forms Drafting", " articles Of Association", "Director/shareholder Details",],
+    items: ["Free Consultation", "Buisness Structure Advice", " Name Availability Check", "Document Requirements Explained","Service Agreement"],
     background: "/Incorporate/subtract-7.svg",
     alignment: "right",
   },

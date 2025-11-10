@@ -333,7 +333,7 @@ export const ServicesOverviewSection = (): JSX.Element => {
                 <div className="relative w-6 h-6 mt-1 flex items-center justify-center bg-[#d9e5ff] rounded-full flex-shrink-0">
                   <CheckIcon className="w-4 h-4 text-[#004eff]" />
                 </div>
-                <div className="font-helvetica font-medium text-[#212833e6] text-xl leading-[30px]">
+                <div className="font-helvetica font-medium text-[#212833E5] text-xl leading-[30px]">
                   {benefit.text}
                 </div>
               </div>

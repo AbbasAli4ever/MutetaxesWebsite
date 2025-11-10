@@ -9,7 +9,7 @@ const steps = [
     title: "Consultation",
     description:
       "Free 30-minute Consultation to Understand Your Needs and Recommend The Right structure And Services.",
-    icon: "/HomePage/frame-1171278983-1.svg",
+    icon: "/HomePage/message-icon.png",
     background: "/HomePage/subtract.svg",
     alignment: "right",
   },
@@ -27,7 +27,7 @@ const steps = [
     title: "Ongoing Support",
     description:
       "Access Your Digital Dashboard, Receive Your Company Kit, And Enjoy Continuous Compliance Support.",
-    icon: "/HomePage/frame-1171278983.svg",
+    icon: "/HomePage/headphone.png",
     background: "/HomePage/subtract.svg",
     alignment: "right",
   },
