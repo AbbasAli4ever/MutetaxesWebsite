@@ -6,15 +6,16 @@ import {
   TabsList,
   TabsTrigger,
 } from "../../../../IncorporateComponents/ui/tabs";
+import NotchedCard from "../../../../components/ui/NotchedCard";
 
 const taxBenefits = [
   {
     id: 1,
     text: (
       <>
-        <span className="font-semibold">Sales And Purchase</span>
+        <span className="font-semibold">Sales and purchase</span>
         <br />
-        Invoice Recording
+        invoice recording
       </>
     ),
   },
@@ -22,9 +23,9 @@ const taxBenefits = [
     id: 2,
     text: (
       <>
-        <span className="font-semibold">Bank Transaction Import</span> 
+       <span className="font-semibold">Bank transaction</span> import
         <br />
-        And Reconciliation
+        and reconciliation
       </>
     ),
   },
@@ -32,8 +33,9 @@ const taxBenefits = [
     id: 3,
     text: (
       <>
-        Expense Categorization And <br />
-        <span className="font-semibold">Tracking</span>
+       Expense <span className="font-semibold">categorization</span> and 
+        <br />
+        tracking
       </>
     ),
   },
@@ -41,7 +43,9 @@ const taxBenefits = [
     id: 4,
     text: (
       <>
-        Multi-Currency Transaction Management
+        <span className="font-semibold">Multi-Currency</span> Transaction
+        <br />
+        Management
       </>
     ),
   },
@@ -49,8 +53,9 @@ const taxBenefits = [
     id: 5,
     text: (
       <>
-        Receipt Digitization <br />
-        <span className="font-semibold">And Filing</span>
+        Receipt digitization
+<br />
+        and <span className="font-semibold">filing</span>
       </>
     ),
   },
@@ -58,8 +63,7 @@ const taxBenefits = [
     id: 6,
     text: (
       <>
-        Petty Cash Managenment <br />
-        {/* <span className="font-semibold">And Filing</span> */}
+        Petty cash <span className="font-semibold">management</span>
       </>
     ),
   },
@@ -245,64 +249,117 @@ const tabsData = [
 export const FeaturesIncludedSection = (): JSX.Element => {
   return (
     <section className="flex flex-col justify-between w-full py-8">
-      <div className="flex mx-auto w-full max-w-[952px] flex-col items-center gap-4 px-4">
-        <div className="flex flex-col items-start w-full gap-6">
-          <div className="flex items-center justify-center w-full [font-family:'Helvetica_Neue-Regular',Helvetica] font-normal text-[#21283399] text-2xl text-center tracking-[0] leading-7 lg:mt-[130px]">
-            Accounting Solutions
+      <div className="flex mx-auto w-full max-w-[952px] flex-col items-center gap-4 px-4 lg:mt-[130px]">
+        <div className="flex flex-col items-start w-full gap-4">
+          <div className="flex items-center justify-center w-full font-helvetica font-normal text-[#21283399] text-2xl text-center tracking-[0] leading-7">
+            Why Incorporate In Hong Kong
           </div>
 
-          <h2 className="flex items-center justify-center w-full [font-family:'Georgia-Regular',Helvetica] font-normal text-[#212833] text-[64px] text-center tracking-[0] leading-[72px]">
-            Comprehensive Accounting Solutions
+          <h2 className="flex items-center justify-center w-full font-georgia font-normal text-[#212833] text-[32px]  lg:text-[64px] text-center tracking-[0] leading-tight lg:leading-[72px]">
+            Hong Kong - Asia&#39;s Premier Business Jurisdiction
           </h2>
         </div>
 
-        <p className="flex items-center justify-center w-full max-w-[702px] [font-family:'Helvetica_Neue-Regular',Helvetica] font-normal text-[#212833] text-[22px] text-center tracking-[-0.64px] leading-[30px] mb-[20px]">
-          Full-service accounting tailored to your business needs
+        <p className="flex items-center justify-center w-full max-w-[702px] font-helvetica font-normal text-[#212833] text-[18px] lg:text-[22px] text-center tracking-[-0.64px] leading-[30px]">
+          Discover the unmatched advantages of establishing
+          <br />
+          your company in Hong Kong
         </p>
       </div>
 
-      <div className="w-full max-w-[1276px] min-h-[500px] mx-auto relative bg-[url(/Incorporate/subtract-6.svg)] bg-contain bg-no-repeat bg-center px-4 overflow-hidden">
-        <Tabs
-          defaultValue={tabsData[0].value}
-          className="w-full"
+   <Tabs
+  defaultValue={tabsData[0].value}
+  className="relative z-10 w-full mt-[48px] flex flex-col items-center"
+>
+  {/* --- Tabs ABOVE card on large screens --- */}
+  <div className="hidden lg:flex w-full justify-center mb-[-40px] z-20">
+    <TabsList
+      className="
+        flex items-center justify-center w-full max-w-[950px] gap-3 bg-transparent
+      "
+    >
+      {tabsData.map((tab) => (
+        <TabsTrigger
+          key={tab.value}
+          value={tab.value}
+          className={`inline-flex items-center justify-center gap-2.5 px-6 py-3 rounded-[50px]
+            data-[state=active]:shadow-[0px_24px_34px_#004eff47]
+            data-[state=active]:bg-[linear-gradient(131deg,rgba(104,150,255,1)_0%,rgba(0,78,255,1)_100%)]
+            data-[state=inactive]:bg-white
+            font-helvetica font-normal text-[14px] text-center
+            data-[state=active]:text-white data-[state=inactive]:text-[#212833]
+            whitespace-nowrap transition-all duration-200 lg:mb-[-60px]
+          `}
         >
-          <div className="flex items-start justify-center mb-6">
-            <TabsList className="items-center gap-1.5 bg-transparent h-auto p-0 mx-auto flex justify-center mt-14 mb-10">
-              {tabsData.map((tab) => (
-                <TabsTrigger
-                  key={tab.value}
-                  value={tab.value}
-                  className="inline-flex items-center justify-center gap-2.5 px-3 py-3 rounded-[50px] data-[state=active]:bg-[linear-gradient(131deg,rgba(104,150,255,1)_0%,rgba(0,78,255,1)_100%)] data-[state=active]:text-white data-[state=active]:shadow-[0px_24px_34px_#004eff47] data-[state=inactive]:bg-white data-[state=inactive]:text-[#212833] [font-family:'Helvetica_Neue-Medium',Helvetica] data-[state=active]:font-medium data-[state=inactive]:[font-family:'Helvetica_Neue-Regular',Helvetica] data-[state=inactive]:font-normal text-[14px] text-center tracking-[0] leading-6 whitespace-nowrap h-auto"
-                >
-                  {tab.label}
-                </TabsTrigger>
-              ))}
-            </TabsList>
-          </div>
+          {tab.label}
+        </TabsTrigger>
+      ))}
+    </TabsList>
+  </div>
 
-          {tabsData.map((tab) => (
-            <TabsContent key={tab.value} value={tab.value} className="mt-0">
-              <div className="relative flex items-center justify-center w-full">
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-[60px] gap-y-[52px] p-8">
-                  {tab.benefits.map((benefit) => (
-                    <div
-                      key={benefit.id}
-                      className="inline-flex items-start gap-4"
-                    >
-                      <div className="relative w-6 h-6 mt-1 flex items-center justify-center bg-[#d9e5ff] rounded-full flex-shrink-0">
-                        <CheckIcon className="w-4 h-4 text-[#004eff]" />
-                      </div>
-                      <div className="[font-family:'Helvetica_Neue-Medium',Helvetica] font-medium text-[#212833e6] text-xl leading-[30px]">
-                        {benefit.text}
-                      </div>
-                    </div>
-                  ))}
+  {/* --- The Notched Card --- */}
+  <NotchedCard
+    className="z-10 px-4 pt-6 mx-auto md:pt-8 md:px-6"
+    widthClass="w-[320px] md:w-[700px] lg:w-[1226px]"
+    heightClass="h-auto"
+    borderColor="bg-[#D7E3FF]"
+    shadowColor="#D7E3FF]"
+    notch={{
+      width: { base: 0, sm: 200, md: 700, lg: 900 },
+      depth: { base: 50, sm: 40, md: 45, lg: 50 },
+      bottomRadius: 25,
+      topRadius: 25,
+    }}
+  >
+    {/* --- Tabs INSIDE card on small/medium screens --- */}
+    <div className="block lg:hidden">
+      <TabsList
+        className="flex items-center justify-start w-full gap-2 mb-6 overflow-x-auto bg-transparent md:justify-center scrollbar-hide"
+      >
+        {tabsData.map((tab) => (
+          <TabsTrigger
+            key={tab.value}
+            value={tab.value}
+            className={`inline-flex items-center justify-center gap-2.5 px-3 py-2 rounded-[50px]
+              data-[state=active]:shadow-[0px_24px_34px_#004eff47]
+              data-[state=active]:bg-[linear-gradient(131deg,rgba(104,150,255,1)_0%,rgba(0,78,255,1)_100%)]
+              data-[state=inactive]:bg-white
+              font-helvetica font-normal text-xs md:text-[17px] text-center
+              data-[state=active]:text-white data-[state=inactive]:text-[#212833]
+              whitespace-nowrap
+            `}
+          >
+            {tab.label}
+          </TabsTrigger>
+        ))}
+      </TabsList>
+    </div>
+
+    {/* --- Tabs Content (shared) --- */}
+    {tabsData.map((tab) => (
+      <TabsContent key={tab.value} value={tab.value} className="pb-10 mt-4">
+        <div className="relative flex items-center justify-center w-full">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-[60px] gap-y-[52px] lg:p-[3rem]">
+            {tab.benefits.map((benefit) => (
+              <div key={benefit.id} className="inline-flex items-start gap-4">
+                <div className="relative w-6 h-6 mt-1 flex items-center justify-center bg-[#d9e5ff] rounded-full flex-shrink-0">
+                  <CheckIcon className="w-4 h-4 text-[#004eff]" />
+                </div>
+                <div className="font-helvetica font-medium text-[#212833e6] text-xl leading-[30px]">
+                  {benefit.text}
                 </div>
               </div>
-            </TabsContent>
-          ))}
-        </Tabs>
-      </div>
+            ))}
+          </div>
+        </div>
+      </TabsContent>
+    ))}
+  </NotchedCard>
+</Tabs>
+
+
+
+
     </section>
   );
 };

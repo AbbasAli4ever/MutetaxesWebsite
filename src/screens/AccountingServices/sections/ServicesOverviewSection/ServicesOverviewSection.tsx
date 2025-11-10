@@ -1,125 +1,113 @@
-import { CheckIcon } from "lucide-react";
 import React from "react";
-import { Card, CardContent } from "../../../../AccountingComponents/ui/card";
+import { Card, CardContent } from "../../../../components/ui/card";
+import NotchedCard from "../../../../UIComponents/NotchedCard";
 
-const servicesData = [
+const advantagesData = [
   {
     title: "Cost Savings",
-    icon: "/AccountingServices/vector1.png",
-    background: "/AccountingServices/subtract-5.svg",
-    features: [
+    icon: "/Audit/valuepropositionsection-7.svg",
+    background: "/HomePage/subtract-6.svg",
+    items: [
       {
-        text: "",
-        boldText: "",
-        regularText: " 50% less than in-house staff",
+        icon: "/HomePage/frame.svg",
+        text: "50% less than in-house staff",
       },
       {
-        text: "",
-        boldText: "",
-        regularText: "No recruitment costs ",
+        icon: "/HomePage/frame.svg",
+        text: "No recruitment costs",
       },
       {
-        text: "",
-        boldText: "No training expenses",
-        regularText: " ",
+        icon: "/HomePage/frame.svg",
+        text: "No training expenses",
       },
       {
-        text: "Product Profitability Analysis",
-        boldText: "",
-        regularText: "No software licenses ",
+        icon: "/HomePage/frame.svg",
+        text: "No software licenses",
       },
       {
-        text: "Product Profitability Analysis",
-        boldText: "",
-        regularText: "Predictable monthly fees ",
+        icon: "/HomePage/frame.svg",
+        text: "Predictable monthly fees",
       },
     ],
   },
   {
     title: "Expertise",
-    icon: "/AccountingServices/vector-2.png",
-    background: "/AccountingServices/subtract-1.svg",
-    features: [
+    icon: "/Audit/valuepropositionsection-3.svg",
+    background: "/HomePage/frame-1171278986.svg",
+    items: [
       {
-        text: "HKICPA qualified Accountants",
-        boldText: "HKICPA qualified Accountants  ",
-        regularText: "",
+        icon: "/HomePage/frame.svg",
+        text: "HKICPA qualified accountants",
       },
       {
-        text: "",
-        boldText: " ",
-        regularText: "Latest compliance knowledge",
+        icon: "/HomePage/frame.svg",
+        text: "Latest compliance knowledge",
       },
       {
-        text: "",
-        boldText: " ",
-        regularText: "Industry best practices",
+        icon: "/HomePage/frame.svg",
+        text: "Industry best practices",
       },
       {
-        text: "",
-        boldText: " ",
-        regularText: "Continuous training",
+        icon: "/HomePage/frame.svg",
+        text: "Continuous training",
       },
       {
-        text: "",
-        boldText: " ",
-        regularText: "Technical support",
+        icon: "/HomePage/frame.svg",
+        text: "Technical support",
       },
     ],
   },
   {
     title: "Technology",
-    icon: "/AccountingServices/vector-3.png",
-    background: "/AccountingServices/subtract-4.svg",
-    features: [
+    icon: "/Audit/valuepropositionsection-9.svg",
+    background: "/HomePage/subtract-8.svg",
+    items: [
       {
-        text: "",
-        boldText: "",
-        regularText: "Latest cloud software ",
-      },
-      { text: "", boldText: " ", regularText: "Automated processes" },
-      { text: "", boldText: " ", regularText: "Real-time reporting" },
-      {
-        text: "",
-        boldText: " ",
-        regularText: "Mobile access",
+        icon: "/HomePage/frame.svg",
+        text: "Latest cloud software",
       },
       {
-        text: "",
-        boldText: " ",
-        regularText: "System integrations",
+        icon: "/HomePage/frame.svg",
+        text: "Automated processes",
+      },
+      {
+        icon: "/HomePage/frame.svg",
+        text: "Real-time reporting",
+      },
+      {
+        icon: "/HomePage/frame.svg",
+        text: "Mobile access",
+      },
+      {
+        icon: "/HomePage/frame.svg",
+        text: "System integrations",
       },
     ],
   },
   {
     title: "Peace of Mind",
-    icon: "/AccountingServices/vector-6.png",
-    background: "/AccountingServices/subtract-6.svg",
-    features: [
+    icon: "/Audit/valuepropositionsection-10.svg",
+    background: "/HomePage/subtract-8.svg",
+    items: [
       {
-        text: "",
-        boldText: "",
-        regularText: "Accurate records",
+        icon: "/HomePage/frame.svg",
+        text: "Accurate records",
       },
       {
-        text: "",
-        boldText: " ",
-        regularText: "Timely reporting",
+        icon: "/HomePage/frame.svg",
+        text: "Timely reporting",
       },
       {
-        text: "",
-        boldText: "",
-        regularText: "Regulatory compliance ",
+        icon: "/HomePage/frame.svg",
+        text: "Regulatory compliance",
       },
       {
-        text: "",
-        boldText: " ",
-        regularText: "Data security",
+        icon: "/HomePage/frame.svg",
+        text: "Data security",
       },
-       {
-        text: "",
-        boldText: " ",
-        regularText: "Business continuity",
+      {
+        icon: "/HomePage/frame.svg",
+        text: "Business continuity",
       },
     ],
   },
@@ -127,79 +115,73 @@ const servicesData = [
 
 export const ServicesOverviewSection = (): JSX.Element => {
   return (
-    <section className="flex flex-col w-full items-center gap-14 px-4 md:px-8 lg:px-[120px] py-8">
-      <header className="inline-flex gap-4 flex-col items-center max-w-[994px]">
-        <div className="flex flex-col items-start w-full gap-4 lg:mt-[130px]">
-          <p className="flex items-center justify-center w-full [font-family:'Helvetica_Neue-Regular',Helvetica] font-normal text-[#21283399] text-2xl text-center tracking-[0] leading-7">
+    <section className="flex flex-col w-full gap-16 py-8 sm:gap-24">
+      <header className="flex flex-col items-center gap-4 max-w-[1052px] mx-auto px-4">
+        <div className="flex flex-col items-start w-full gap-4">
+          <p className="w-full text-center font-helvetica font-normal text-[#21283399] text-xl md:text-2xl tracking-[0] leading-7">
             Why Outsource
           </p>
 
-          <h1 className="flex items-center justify-center w-full [font-family:'Georgia-Regular',Helvetica] font-normal text-[#212833] text-4xl md:text-5xl lg:text-[64px] text-center tracking-[0] leading-tight lg:leading-[72px]">
-            Why Outsource Your Accounting
-          </h1>
-
-          <p className="flex items-center justify-center w-full [font-family:'Helvetica_Neue-Regular',Helvetica] font-normal text-[#212833] text-2xl text-center tracking-[0] leading-7">
-            Focus on growing your business while we handle the numbers
-          </p>
+          <h2 className="w-full text-center font-georgia font-normal text-[#212833] text-4xl md:text-5xl lg:text-[64px] tracking-[0] leading-tight lg:leading-[72px]">
+            Why Outsource Your Accounting{" "}
+          </h2>
         </div>
+
+        <p className="text-center max-w-[702px] font-helvetica font-normal text-[#212833] text-lg md:text-xl lg:text-[22px] tracking-[-0.64px] leading-relaxed lg:leading-[35px]">
+          Focus on growing your business while we handle the numbers{" "}
+        </p>
       </header>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 w-full max-w-[1200px]">
-        {servicesData.map((service, index) => (
-          <Card
-            key={index}
-            className="relative w-full h-auto overflow-visible bg-transparent border-0 shadow-none"
-          >
-            <CardContent className="relative p-0">
-              <div className="relative w-full pt-[41px]">
-                <img
-                  className="w-full h-[360px] object-contain"
-                  alt={`${service.title} background`}
-                  src={service.background}
-                />
-
-                <div className="absolute top-[2px] left-[57%] -translate-x-1/2 -translate-y-[13px] w-[162px] h-[162px]">
-                  <img
-                    className="w-full h-full"
-                    alt={`${service.title} icon`}
-                    src={service.icon}
-                  />
-                </div>
-
-                <div className="absolute top-[124px] left-[26px] right-[26px] flex flex-col gap-5">
-                  <h3 className="[font-family:'Helvetica_Neue-Medium',Helvetica] font-medium text-[#212833] text-2xl tracking-[0] leading-[34.1px]">
-                    {service.title}
+      <div className="grid w-full grid-cols-1 gap-4 px-3 mx-auto sm:grid-cols-2 lg:grid-cols-3 sm:gap-10 xl:gap-y-20 max-w-[1300px]">
+        {advantagesData.map((advantage, index) => (
+          <div className="relative pt-20" key={index}>
+            <img
+              className="absolute w-[150px] sm:w-[150px] md:w-[155px] xl:w-[162px] h-auto z-20 left-1/2 -ml-[51px] md:-ml-[52px] lg:-ml-[52px] xl:-ml-14 -mt-14"
+              alt={advantage.title}
+              src={advantage.icon}
+            />
+            <NotchedCard
+              notch={{
+                width: { base: 150, sm: 150, md: 150, lg: 150 },
+                depth: { base: 40, sm: 35, md: 40, lg: 50 },
+                bottomRadius: 25,
+                topRadius: 25,
+              }}
+              widthClass="w-full max-w-[400px] sm:w-[300px] md:w-[300px] lg:w-[320px] xl:w-[400px]"
+              heightClass="h-[300px] sm:h-[300px] lg:h-[300px] xl:h-[400px]"
+              shadowColor="#6a98ff"
+              className="z-10"
+            >
+              <CardContent className="relative flex flex-col items-stat=rt justify-center pt-16 xl:pt-24">
+                {/* Content */}
+                <div className="flex flex-col items-start sm:items-start pb-[40px] relative z-10 text-center sm:text-left">
+                  <h3 className="font-helvetica font-semibold mb-3 text-[#212833] text-2xl sm:text-[26px] md:text-[25px] lg:text-[25px] leading-snug">
+                    {advantage.title}
                   </h3>
 
-                  <ul className="flex flex-col gap-3">
-                    {service.features.map((feature, featureIndex) => (
+                  <ul className="flex flex-col gap-[7px] xl:gap-[16.46px] mt-[10px]">
+                    {advantage.items.map((item, itemIndex) => (
                       <li
-                        key={featureIndex}
-                        className="flex items-center gap-2.5"
+                        key={itemIndex}
+                        className="flex items-start gap-1 sm:gap-[13.72px]"
                       >
-                        <div className="flex items-center justify-center flex-shrink-0 w-6 h-6">
-                          <img
-                            className="flex-shrink-0 w-5 h-5"
-                            alt="Check"
-                            src="/Incorporate/frame.svg"
-                          />
-                        </div>
-
-                        <span className="flex-1 [font-family:'Helvetica_Neue-Regular',Helvetica] text-[#212833e6] text-xl tracking-[0] leading-8">
-                          <span className="[font-family:'Helvetica_Neue-Regular',Helvetica] font-normal">
-                            {feature.regularText}
-                          </span>
-                          <span className="[font-family:'Helvetica_Neue-Medium',Helvetica] font-medium">
-                            {feature.boldText}
+                        <img
+                          className="w-[25px] xl:w-[23.93px] h-[25px] xl:h-[23.93px] flex-shrink-0"
+                          alt="Checkmark"
+                          src={item.icon}
+                        />
+                        <span className="font-helvetica font-normal text-[#212833e6] text-[14px] xl:text-[19.2px] tracking-[0] leading-[25.3px]">
+                          <span className={"font-helvetica font-medium"}>
+                            {item.text}
                           </span>
                         </span>
                       </li>
                     ))}
                   </ul>
                 </div>
-              </div>
-            </CardContent>
-          </Card>
+              </CardContent>
+            </NotchedCard>
+          </div>
         ))}
       </div>
     </section>

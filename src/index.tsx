@@ -6,6 +6,9 @@ import {
   Outlet,
  
 } from "react-router-dom";
+import "@fontsource/inter/400.css"; // normal
+import "@fontsource/inter/500.css"; // medium
+import "@fontsource/inter/700.css"; 
 
 // Screens
 import { HomePage } from "./screens/HomePage";

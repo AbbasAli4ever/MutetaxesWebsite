@@ -1,26 +1,25 @@
 import React from "react";
 
 export interface NotchConfig {
-  width?: { base: number; sm?: number; md?: number; lg?: number }; // responsive widths in px
-  depth?: { base: number; sm?: number; md?: number; lg?: number }; // responsive depths in px
+  width?: { base: number; sm?: number; md?: number; lg?: number };
+  depth?: { base: number; sm?: number; md?: number; lg?: number };
   bottomRadius?: number;
   topRadius?: number;
 }
-
 
 interface NotchedCardProps {
   notch?: NotchConfig;
   children?: React.ReactNode;
   borderWidth?: number;
-  borderColor?: string;
+  borderColor?: string; // can be a HEX, RGB, or CSS color name
   shadowColor?: string;
   className?: string;
-  widthClass?: string; // e.g. "w-full md:w-[400px]"
-  heightClass?: string; // e.g. "h-[400px] md:h-[500px]"
+  widthClass?: string;
+  heightClass?: string;
 }
 
 export default function NotchedCard({
-   notch = {
+  notch = {
     width: { base: 250, sm: 200, md: 230, lg: 250 },
     depth: { base: 40, sm: 35, md: 40, lg: 45 },
     bottomRadius: 25,
@@ -28,7 +27,7 @@ export default function NotchedCard({
   },
   children,
   borderWidth = 3,
-  borderColor = "bg-[#d7e3ff]",
+  borderColor,
   shadowColor = "#d7e3ff",
   className = "",
   widthClass = "w-full md:w-[400px]",
@@ -48,7 +47,7 @@ export default function NotchedCard({
     return () => observer.disconnect();
   }, []);
 
-  // Helper to get responsive pixel value based on screen width
+  // Helper: determine the correct responsive value
   const getResponsiveValue = (values: { base: number; sm?: number; md?: number; lg?: number }) => {
     const w = window.innerWidth;
     if (w >= 1024 && values.lg) return values.lg;
@@ -63,7 +62,6 @@ export default function NotchedCard({
     const h = cardHeight - inset * 2;
     const r = cornerRadius - inset;
 
-    // Dynamically adjust notch size based on screen width
     const nWidth = getResponsiveValue(notch.width ?? { base: 250 });
     const nDepth = getResponsiveValue(notch.depth ?? { base: 40 });
 
@@ -89,9 +87,11 @@ export default function NotchedCard({
       Q ${w + inset},${h + inset} ${w - r + inset},${h + inset}
       L ${r + inset},${h + inset}
       Q ${inset},${h + inset} ${inset},${h - r + inset}
-      
     `.trim().replace(/\s+/g, " ");
   };
+
+  // ✅ Ensure fallback to default color if none passed
+  const resolvedBorderColor = borderColor?.trim() || "#d7e3ff";
 
   return (
     <div className={`flex items-center justify-center ${className}`}>
@@ -110,20 +110,21 @@ export default function NotchedCard({
       >
         {/* Border layer */}
         <div
-          className={`absolute inset-0 ${borderColor}`}
+          className="absolute inset-0"
           style={{
+            backgroundColor: resolvedBorderColor, // ✅ always uses correct fallback
             clipPath: `path('${generatePath(0)}')`,
           }}
         />
 
         {/* Main card */}
         <div
-          className={`relative bg-white  ${widthClass} ${heightClass}`}
+          className={`relative bg-white ${widthClass} ${heightClass}`}
           style={{
             clipPath: `path('${generatePath(borderWidth)}')`,
           }}
         >
-          <div className={`${className}`}>{children}</div>
+          <div className={className}>{children}</div>
         </div>
       </div>
     </div>

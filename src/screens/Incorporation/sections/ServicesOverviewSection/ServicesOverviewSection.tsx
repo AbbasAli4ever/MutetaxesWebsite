@@ -117,9 +117,9 @@ const businessBenefits = [
     id: 1,
     text: (
       <>
-        <span className="font-semibold">Corporate Tax:</span> 16.5%
+        100%<span className="font-semibold"> foreign </span>
         <br />
-        8.25% On First Hk$2m
+        ownership permitted
       </>
     ),
   },
@@ -127,9 +127,8 @@ const businessBenefits = [
     id: 2,
     text: (
       <>
-        <span className="font-semibold">No Vat/gst</span> Keeping
-        <br />
-        prices Competitive
+        No minimum capital<span className="font-semibold"><br/> requirement (start with HK$1)</span>
+        
       </>
     ),
   },
@@ -137,8 +136,8 @@ const businessBenefits = [
     id: 3,
     text: (
       <>
-        No Withholding tax On <br />
-        <span className="font-semibold">Dividends</span>
+       
+        <span className="font-semibold">Only 1 director needed (any</span> <br /> nationality)
       </>
     ),
   },
@@ -146,8 +145,8 @@ const businessBenefits = [
     id: 4,
     text: (
       <>
-        Territorial Tax System
-        <br />- Only <span className="font-semibold">Hk Income</span> Taxed
+       
+          <span className="font-semibold">No residency</span> <br /> requirements
       </>
     ),
   },
@@ -155,8 +154,8 @@ const businessBenefits = [
     id: 5,
     text: (
       <>
-        Extensive Network of <br />
-        <span className="font-semibold">Tax Treaties</span>
+        Common
+        <span className="font-semibold"> law system</span>
       </>
     ),
   },
@@ -167,9 +166,8 @@ const worldBenefits = [
     id: 1,
     text: (
       <>
-        <span className="font-semibold">Corporate Tax:</span> 16.5%
-        <br />
-        8.25% On First Hk$2m
+        <span className="font-semibold">70+ international </span> banks
+        
       </>
     ),
   },
@@ -177,18 +175,18 @@ const worldBenefits = [
     id: 2,
     text: (
       <>
-        <span className="font-semibold">No Vat/gst</span> Keeping
-        <br />
-        prices Competitive
+        <span className="font-semibold">Ranked #3 globally </span> for ease <br/> of doing business
+        
       </>
     ),
   },
-  {
+ {
     id: 3,
     text: (
       <>
-        No Withholding tax On <br />
-        <span className="font-semibold">Dividends</span>
+        
+        <span className="font-semibold">Award-winning</span> <br/>
+        airport and port
       </>
     ),
   },
@@ -196,8 +194,8 @@ const worldBenefits = [
     id: 4,
     text: (
       <>
-        Territorial Tax System
-        <br />- Only <span className="font-semibold">Hk Income</span> Taxed
+        Advanced digital <br />
+        <span className="font-semibold">infrastructure</span>
       </>
     ),
   },
@@ -205,11 +203,12 @@ const worldBenefits = [
     id: 5,
     text: (
       <>
-        Extensive Network of <br />
-        <span className="font-semibold">Tax Treaties</span>
+        English as official
+        <br /><span className="font-semibold"> business language</span> 
       </>
     ),
   },
+ 
 ];
 
 const tabsData = [
@@ -277,7 +276,7 @@ export const ServicesOverviewSection = (): JSX.Element => {
             data-[state=inactive]:bg-white
             font-helvetica font-normal text-[14px] text-center
             data-[state=active]:text-white data-[state=inactive]:text-[#212833]
-            whitespace-nowrap transition-all duration-200 lg:mb-[-50px]
+            whitespace-nowrap transition-all duration-200 lg:mb-[-60px]
           `}
         >
           {tab.label}
@@ -288,13 +287,13 @@ export const ServicesOverviewSection = (): JSX.Element => {
 
   {/* --- The Notched Card --- */}
   <NotchedCard
-    className="z-10 mx-auto pt-6 md:pt-8 px-4 md:px-6"
+    className="z-10 px-4 pt-6 mx-auto md:pt-8 md:px-6"
     widthClass="w-[320px] md:w-[700px] lg:w-[1226px]"
     heightClass="h-auto"
     borderColor="bg-[#D7E3FF]"
     shadowColor="#D7E3FF]"
     notch={{
-      width: { base: 0, sm: 200, md: 700, lg: 770 },
+      width: { base: 0, sm: 200, md: 700, lg: 800 },
       depth: { base: 50, sm: 40, md: 45, lg: 50 },
       bottomRadius: 25,
       topRadius: 25,
@@ -303,11 +302,7 @@ export const ServicesOverviewSection = (): JSX.Element => {
     {/* --- Tabs INSIDE card on small/medium screens --- */}
     <div className="block lg:hidden">
       <TabsList
-        className="
-          flex items-center justify-start md:justify-center 
-          w-full gap-2 mb-6 overflow-x-auto scrollbar-hide 
-          bg-transparent
-        "
+        className="flex items-center justify-start w-full gap-2 mb-6 overflow-x-auto bg-transparent md:justify-center scrollbar-hide"
       >
         {tabsData.map((tab) => (
           <TabsTrigger
@@ -330,7 +325,7 @@ export const ServicesOverviewSection = (): JSX.Element => {
 
     {/* --- Tabs Content (shared) --- */}
     {tabsData.map((tab) => (
-      <TabsContent key={tab.value} value={tab.value} className="mt-4 pb-10">
+      <TabsContent key={tab.value} value={tab.value} className="pb-10 mt-4">
         <div className="relative flex items-center justify-center w-full">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-[60px] gap-y-[52px] lg:p-[3rem]">
             {tab.benefits.map((benefit) => (

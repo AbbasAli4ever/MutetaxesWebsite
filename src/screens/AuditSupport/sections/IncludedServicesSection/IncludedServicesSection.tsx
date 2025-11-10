@@ -14,7 +14,7 @@ const cardsData = [
     background: "/Secretary/subtract-5.svg",
     type: "text",
     shadowColor: "#6a98ff",
-    borderColor: "#d7e3ff"
+    borderColor: "#ffc7a1"
   },
   {
     id: 2,
@@ -37,7 +37,7 @@ const cardsData = [
     background: "/Secretary/subtract-7.svg",
     type: "warning-list",
     shadowColor: "#fbc3bf",
-    borderColor: "#d7e3ff",
+    borderColor: "#fbc3bf",
     items: [
       "Fines up to HK$300,000",
       "Director prosecution",
@@ -87,7 +87,7 @@ export const IncludedServicesSection = (): JSX.Element => {
                 widthClass="w-full max-w-[400px] sm:w-[300px] md:w-[300px] lg:w-[300px] xl:w-[400px]"
                 heightClass="h-[380px] sm:h-[380px] lg:h-[350px] xl:h-[400px]"
                 shadowColor={card.shadowColor}
-                borderColor={`bg-[${card.borderColor}]`}
+                borderColor={card.borderColor}
                 className="z-10"
               >
                 <CardContent className="relative flex flex-col items-start justify-center pt-16 xl:pt-24">
