@@ -75,7 +75,7 @@ export const HeroBannerSection = (): JSX.Element => {
                   <img
                     src="/HomePage/ellipse-3-1.png"
                     alt="Hong Kong Icon"
-                    className="w-8 h-8 md:w-[3rem] md:h-[3rem] lg:w-12 lg:h-12 rounded-full"
+                    className="w-8 h-8 object-cover md:w-[3rem] md:h-[3rem] lg:w-12 lg:h-12 rounded-full"
                   />
                   <span className="font-georgia text-[#004eff]">
                     Hong Kong

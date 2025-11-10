@@ -51,7 +51,7 @@ export const PackageDetailsSection = (): JSX.Element => {
   return (
     <section className="flex flex-col w-full items-center gap-10 px-4  py-8">
       {/* Headings */}
-      <div className="flex flex-col w-full max-w-[952px] items-center gap-4">
+      <div className="flex flex-col w-full max-w-[952px] items-center gap-4 lg:mt-[130px]">
         <h3 className="w-full text-center font-normal font-helvetica text-[#21283399] text-2xl leading-7">
           What&apos;s Included
         </h3>
@@ -86,23 +86,31 @@ export const PackageDetailsSection = (): JSX.Element => {
                   bottomRight: 20,
                 }}
               >
-                <div className="relative h-full px-8 flex flex-col justify-start">
+                <div className="relative h-full px-8 flex flex-col justify-start ">
                   {/* Gradient for center card */}
-                  {card.hasGradient && (
-                    <>
-                      <div className="absolute top-[180px] left-[-150px] w-[500px] h-[500px] rounded-[250px] rotate-[12.34deg] blur-[60px] bg-[linear-gradient(226deg,rgba(0,78,255,0.8)_0%,rgba(222,232,255,0)_100%)] z-0" />
-                    </>
-                  )}
+                   {card.hasGradient && (
+      <>
+        {/* Mobile + Tablet version (smaller and subtler) */}
+        <div className="absolute md:hidden bottom-[-150px] left-1/2 -translate-x-1/2 w-[400px] h-[400px] rounded-full blur-[80px] opacity-60 bg-[linear-gradient(226deg,rgba(0,78,255,0.6)_0%,rgba(222,232,255,0)_100%)] pointer-events-none" />
+
+        {/* Large screen version */}
+        <div className="hidden md:block absolute bottom-[-180px] left-1/2 -translate-x-1/2 w-[949px] h-[949px] rounded-[474px] rotate-[12deg] blur-[77px] bg-[linear-gradient(226deg,rgba(0,78,255,1)_0%,rgba(222,232,255,0)_100%)] pointer-events-none" />
+      </>
+    )}
+
 
                   {/* Icon */}
-                  <img
-                    className="absolute  w-[70px] h-[70px] top-4 left-1 lg:left-4 z-20"
-                    alt={card.title}
-                    src={card.icon}
-                  />
+                  <div className="absolute -top-1 -left-2 z-20  flex items-center justify-center">
+                    <img
+                      alt={card.title}
+                      src={card.icon}
+                      className="w-full h-full object-contain"
+                    />
+                  </div>
+
 
                   {/* Title */}
-                  <h3 className="font-helvetica font-medium text-[#212833] text-[20px] leading-[26px] lg:mb-4 p-8 lg:p-0 lg:mt-[100px] text-center lg:text-left   z-20">
+                  <h3 className="font-helvetica font-medium text-[#212833] text-[20px] leading-[26px] lg:mb-4 p-8 lg:p-0 lg:mt-[100px] text-left ml-[20px] z-20">
                     {card.title}
                   </h3>
 

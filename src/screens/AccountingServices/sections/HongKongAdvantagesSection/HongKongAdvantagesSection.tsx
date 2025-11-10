@@ -83,7 +83,7 @@ export const HongKongAdvantagesSection = (): JSX.Element => {
       {/* Section heading */}
       <div className="flex flex-col items-center gap-4 max-w-[952px] mx-auto px-4">
         <div className="flex flex-col items-start w-full gap-4">
-          <div className="w-full text-center [font-family:'Helvetica_Neue-Regular',Helvetica] font-normal text-[#21283399] text-2xl tracking-[0] leading-7 mt-[130px]">
+          <div className="w-full text-center [font-family:'Helvetica_Neue-Regular',Helvetica] font-normal text-[#21283399] text-2xl tracking-[0] leading-7 lg:mt-[130px]">
             Packages
           </div>
 

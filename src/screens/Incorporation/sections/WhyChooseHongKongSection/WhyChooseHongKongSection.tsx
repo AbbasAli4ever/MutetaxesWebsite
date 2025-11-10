@@ -50,7 +50,7 @@ const pricingData = [
 export const WhyChooseHongKongSection = (): JSX.Element => {
   return (
     <section className="flex flex-col w-full px-auto lg:gap-10 lg:py-8">
-      <div className="flex flex-col items-center gap-4 max-w-[952px] mx-auto px-4">
+      <div className="flex flex-col items-center gap-4 max-w-[952px] mx-auto px-4 lg:mt-[130px]">
         <div className="flex flex-col items-start w-full gap-4">
           <div className="w-full text-center font-helvetica font-normal text-[#21283399] text-2xl tracking-[0] leading-7">
             Company Structure Pricing

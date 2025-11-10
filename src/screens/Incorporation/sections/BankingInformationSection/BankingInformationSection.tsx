@@ -49,13 +49,13 @@ const companyItems = [
 
 export const BankingInformationSection = (): JSX.Element => {
   return (
-    <section className="w-full flex flex-col gap-[29px] py-10 mt-[100px]">
+    <section className="w-full flex flex-col gap-[29px] py-10 lg:mt-[100px]">
       <div className="flex flex-col items-center gap-6 max-w-[964px] mx-auto px-4">
         <p className="font-helvetica font-normal text-[#21283399] text-[1rem] lg:text-2xl text-center tracking-[0] leading-7">
           We help you navigate Hong Kong&#39;s banking requirements
         </p>
 
-        <h2 className="font-georgia font-normal text-[#212833] text-[39px] lg:text-[64px] text-center tracking-[0] leading-tight lg:leading-[66px]">
+        <h2 className="font-georgia font-normal text-[#212833] text-[37px] lg:text-[64px] text-center tracking-[0] leading-tight lg:leading-[66px]">
           Bank Account Opening
           <br />
           Assistance

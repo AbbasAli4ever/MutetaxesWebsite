@@ -63,10 +63,10 @@ const pricingTiers = [
 
 export const HongKongOverviewSection = (): JSX.Element => {
   return (
-    <section className="flex flex-col w-full gap-10 py-8 mt-[100px]">
+    <section className="flex flex-col w-full gap-10 py-8 lg:mt-[100px]">
       <header className="flex flex-col items-center gap-4 px-4 max-w-[1016px] mx-auto">
         <div className="flex flex-col items-center w-full gap-4">
-          <p className="font-helvetica font-normal text-[#21283399] text-2xl text-center tracking-[0] leading-7">
+          <p className="font-helvetica font-normal text-[#21283399] lg:text-2xl text-center tracking-[0] leading-7">
             Incorporation Pricing
           </p>
 

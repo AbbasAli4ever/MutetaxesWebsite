@@ -31,7 +31,7 @@ export const PricingPlansSection = (): JSX.Element => {
     <section className="flex justify-center w-full py-8">
       <div className="flex w-full max-w-[1226px] flex-col items-center gap-16 px-4">
         <header className="flex flex-col w-full max-w-[882px] items-center gap-4">
-          <div className="[font-family:'Helvetica_Neue-Regular',Helvetica] font-normal text-[#21283399] text-2xl text-center tracking-[0] leading-[28.1px] mt-[130px]">
+          <div className="[font-family:'Helvetica_Neue-Regular',Helvetica] font-normal text-[#21283399] text-2xl text-center tracking-[0] leading-[28.1px] lg:mt-[130px]">
             Dashboard
           </div>
 

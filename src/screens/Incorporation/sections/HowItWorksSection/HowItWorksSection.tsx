@@ -41,7 +41,7 @@ export const HowItWorksSection = (): JSX.Element => {
   return (
     <section className="relative w-full py-8">
       <div className="flex flex-col w-full max-w-[952px] mx-auto items-center gap-4 px-4">
-        <div className="flex flex-col items-start w-full gap-4">
+        <div className="flex flex-col items-start w-full gap-4 lg:mt-[100px]">
           <h3 className="w-full text-center font-helvetica font-normal text-[#21283399] text-2xl tracking-[0] leading-7">
             {" "}
             Timeline{" "}
@@ -57,7 +57,7 @@ export const HowItWorksSection = (): JSX.Element => {
         </div>
       </div>
 
-      <div className="relative w-full max-w-[1440px] mx-auto mt-[120px] px-16 lg:px-0">
+      <div className="relative w-full max-w-[1440px] mx-auto mt-[50px] lg:mt-[120px] px-16 lg:px-0">
         <div className="relative min-h-[1150px]">
           <div className="absolute left-1/2 top-0 w-1 h-[1268px] bg-[linear-gradient(180deg,rgba(58,118,255,1)_38%,rgba(239,239,239,1)_94%)] -translate-x-1/2" />
 
@@ -69,10 +69,10 @@ export const HowItWorksSection = (): JSX.Element => {
         index === 0
           ? "top-0"
           : index === 1
-          ? "top-[317px] md:top-[292px]"
+          ? "top-[369px] md:top-[292px]"
           : index === 2
-          ? "top-[639px] md:top-[590px]"
-          : "top-[961px] md:top-[900px]"
+          ? "top-[729px] md:top-[590px]"
+          : "top-[1093px] md:top-[900px]"
       } left-1/2 -translate-x-1/2 w-24 h-12 bg-white rounded-[91.43px] overflow-hidden shadow-[0px_4px_4px_#004eff26] z-10`}
     >
       <div className="absolute top-[60px] left-1/2 -translate-x-1/2 w-16 h-16 bg-[#004eff] rounded-[32px] blur-[17px]" />
@@ -87,17 +87,17 @@ export const HowItWorksSection = (): JSX.Element => {
         index === 0
           ? "top-8 md:-top-3"
           : index === 1
-          ? "top-[352px] md:top-[286px]"
+          ? "top-[396px] md:top-[286px]"
           : index === 2
-          ? "top-[674px] md:top-[586px]"
-          : "top-[994px] md:top-[896px]"
+          ? "top-[754px] md:top-[586px]"
+          : "top-[1119px] md:top-[896px]"
       } ${
         step.alignment === "right"
           ? "md:left-[calc(50%+73px)]"
           : "md:right-[calc(50%+82px)]"
       } w-[292px] border-0 shadow-none bg-transparent`}
     >
-      <CardContent className="relative w-[300px] h-[300px] flex flex-col">
+      <CardContent className="relative w-[300px] h-[300px] flex flex-col pt-8 lg:pt-0">
         {/* Background */}
         <img
           src={step.background}
@@ -125,7 +125,7 @@ export const HowItWorksSection = (): JSX.Element => {
               step.alignment === "right"
                 ? "justify-center ml-0 md:ml-12 md:mt-2"
                 : "justify-start mt-2"
-            } font-helvetica font-normal text-[#212833] text-[22px] tracking-[0] leading-[23px] whitespace-pre-wrap`}
+            } font-helvetica font-normal text-[#212833] text-[22px] tracking-[0] leading-[23px] lg:whitespace-pre-wrap`}
           >
             {step.title}
           </div>
@@ -156,7 +156,7 @@ export const HowItWorksSection = (): JSX.Element => {
 
         </div>
 
-        <div className="flex justify-center mt-[174px] lg:mt-[121px]">
+        <div className="flex justify-center mt-[350px] lg:mt-[121px]">
           <Button className="inline-flex items-center justify-center gap-2.5 pl-3 pr-1.5 py-1.5 rounded-[100px] bg-[linear-gradient(131deg,rgba(104,150,255,1)_0%,rgba(0,78,255,1)_100%)] h-auto border-0 hover:opacity-90">
             <span className="font-helvetica font-normal text-white text-base text-center tracking-[0] leading-6 whitespace-nowrap">
               Incorporate Now

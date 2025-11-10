@@ -247,7 +247,7 @@ export const FeaturesIncludedSection = (): JSX.Element => {
     <section className="flex flex-col justify-between w-full py-8">
       <div className="flex mx-auto w-full max-w-[952px] flex-col items-center gap-4 px-4">
         <div className="flex flex-col items-start w-full gap-6">
-          <div className="flex items-center justify-center w-full [font-family:'Helvetica_Neue-Regular',Helvetica] font-normal text-[#21283399] text-2xl text-center tracking-[0] leading-7 mt-[130px]">
+          <div className="flex items-center justify-center w-full [font-family:'Helvetica_Neue-Regular',Helvetica] font-normal text-[#21283399] text-2xl text-center tracking-[0] leading-7 lg:mt-[130px]">
             Accounting Solutions
           </div>
 
