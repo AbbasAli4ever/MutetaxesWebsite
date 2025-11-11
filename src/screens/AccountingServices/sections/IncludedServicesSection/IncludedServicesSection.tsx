@@ -5,14 +5,14 @@ import NotchedCard from "../../../../UIComponents/NotchedCard";
 const advantagesData = [
   {
     title: "E-Commerce & Retail",
-    icon: "/Audit/valuepropositionsection-7.svg",
+    icon: "/AccountingServices/cart1.png",
     background: "/HomePage/subtract-6.svg",
     items: [
       {
         icon: "/HomePage/frame.svg",
         text: (
           <div>
-            <span className="font-semibold">Multi-channel</span> sales tracking
+            <span className="font-medium">Multi-channel</span>  <span className="font-normal">sales tracking</span>
           </div>
         ),
       },
@@ -20,7 +20,7 @@ const advantagesData = [
         icon: "/HomePage/frame.svg",
         text: (
           <div>
-            Inventory <span className="font-semibold"> management</span>
+           <span className="font-normal">Inventory</span>  <span className="font-medium"> management</span>
           </div>
         ),
       },
@@ -28,7 +28,7 @@ const advantagesData = [
         icon: "/HomePage/frame.svg",
         text: (
           <div>
-            <span className="font-semibold">Marketplace</span> reconciliation
+            <span className="font-medium">Marketplace</span> <span className="font-normal">reconciliation</span> 
           </div>
         ),
       },
@@ -36,8 +36,8 @@ const advantagesData = [
         icon: "/HomePage/frame.svg",
         text: (
           <div>
-            Product profitability{" "}
-            <span className="font-semibold">analysis</span>{" "}
+           <span className="font-normal">Product profitability{" "}</span> 
+            <span className="font-medium">analysis</span>{" "}
           </div>
         ),
       },
@@ -45,15 +45,15 @@ const advantagesData = [
   },
   {
     title: "Technology & SaaS",
-    icon: "/Audit/valuepropositionsection-3.svg",
+     icon: "/AccountingServices/bracket.png",
     background: "/HomePage/frame-1171278986.svg",
     items: [
       {
         icon: "/HomePage/frame.svg",
         text: (
           <div>
-            Revenue{" "}
-            <span className="font-semibold"> {"recognition (IFRS 15)"} </span>
+            <span className="font-normal">Revenue{" "}</span>
+            <span className="font-medium"> {"Recognition (IFRS 15)"} </span>
           </div>
         ),
       },
@@ -61,7 +61,7 @@ const advantagesData = [
         icon: "/HomePage/frame.svg",
         text: (
           <div>
-            <span className="font-semibold">R&D </span> expense tracking
+            <span className="font-medium">R&D </span> <span className="font-normal">expense tracking</span>
           </div>
         ),
       },
@@ -69,7 +69,7 @@ const advantagesData = [
         icon: "/HomePage/frame.svg",
         text: (
           <div>
-            Subscription <span className="font-semibold"> metrics</span>
+            <span className="font-normal">Subscription</span> <span className="font-medium"> metrics</span>
           </div>
         ),
       },
@@ -77,7 +77,7 @@ const advantagesData = [
         icon: "/HomePage/frame.svg",
         text: (
           <div>
-            <span className="font-semibold">MRR/ARR </span>reporting
+            <span className="font-medium">MRR/ARR </span> <span className="font-normal">reporting</span>
           </div>
         ),
       },
@@ -85,14 +85,14 @@ const advantagesData = [
   },
   {
     title: "Professional Services",
-    icon: "/Audit/valuepropositionsection-10.svg",
+     icon: "/AccountingServices/buket.png",
     background: "/HomePage/subtract-8.svg",
     items: [
       {
         icon: "/HomePage/frame.svg",
         text: (
           <div>
-            Project <span className="font-semibold"> accounting</span>
+            <span className="font-normal">Project</span> <span className="font-medium"> Accounting</span>
           </div>
         ),
       },
@@ -100,7 +100,7 @@ const advantagesData = [
         icon: "/HomePage/frame.svg",
         text: (
           <div>
-            <span className="font-semibold">Time </span> & billing{" "}
+            <span className="font-medium">Time </span> <span className="font-normal"> & billing{" "}</span> 
           </div>
         ),
       },
@@ -108,7 +108,7 @@ const advantagesData = [
         icon: "/HomePage/frame.svg",
         text: (
           <div>
-            WIP <span className="font-semibold"> management</span>
+            <span className="font-normal">WIP</span> <span className="font-medium"> management</span>
           </div>
         ),
       },
@@ -116,7 +116,7 @@ const advantagesData = [
         icon: "/HomePage/frame.svg",
         text: (
           <div>
-            <span className="font-semibold">Client </span> profitability{" "}
+            <span className="font-medium">Client </span> <span className="font-normal">profitability{" "}</span> 
           </div>
         ),
       },
@@ -124,14 +124,14 @@ const advantagesData = [
   },
   {
     title: "Trading & Import/Export",
-    icon: "/Audit/valuepropositionsection-9.svg",
+     icon: "/AccountingServices/arrow-in.png",
     background: "/HomePage/subtract-8.svg",
     items: [
       {
         icon: "/HomePage/frame.svg",
         text: (
           <div>
-            Multi-currency <span className="font-semibold">accounting</span>
+           <span className="font-normal">Multi-currency</span>  <span className="font-medium">accounting</span>
           </div>
         ),
       },
@@ -139,7 +139,7 @@ const advantagesData = [
         icon: "/HomePage/frame.svg",
         text: (
           <div>
-            <span className="font-semibold">Landed cost </span> calculation
+            <span className="font-medium">Landed cost </span>  <span className="font-normal">calculation</span>
           </div>
         ),
       },
@@ -147,7 +147,7 @@ const advantagesData = [
         icon: "/HomePage/frame.svg",
         text: (
           <div>
-            Letter of credit <span className="font-semibold">tracking</span>
+           <span className="font-normal">Letter of credit</span>  <span className="font-medium">tracking</span>
           </div>
         ),
       },
@@ -155,7 +155,7 @@ const advantagesData = [
         icon: "/HomePage/frame.svg",
         text: (
           <div>
-            <span className="font-semibold">Customs duty </span> accounting
+            <span className="font-medium">Customs duty </span> <span className="font-normal">Accounting</span>
           </div>
         ),
       },
@@ -205,7 +205,7 @@ export const IncludedServicesSection = (): JSX.Element => {
               <CardContent className="relative flex flex-col items-center justify-center pt-16 xl:pt-24">
                 {/* Content */}
                 <div className="flex flex-col items-start sm:items-start pb-[40px] relative z-10 text-center sm:text-left">
-                  <h3 className="font-helvetica font-medium text-[#212833] text-2xl sm:text-[26px] md:text-[25px] lg:text-[25px] xl:text-[32px] leading-snug">
+                  <h3 className="font-helvetica font-medium text-[#212833] text-2xl sm:text-[26px] md:text-[25px] lg:text-[25px] xl:text-[24px] leading-snug pb-4">
                     {advantage.title}
                   </h3>
 
@@ -220,7 +220,7 @@ export const IncludedServicesSection = (): JSX.Element => {
                           alt="Checkmark"
                           src={item.icon}
                         />
-                        <span className="font-helvetica font-normal text-[#212833e6] text-[14px] xl:text-[19.2px] tracking-[0] leading-[25.3px]">
+                        <span className="font-helvetica font-normal text-[#212833e6] text-[14px] xl:text-[20px] tracking-[0] leading-[25.3px]">
                           <span className={"font-helvetica font-medium"}>
                             {item.text}
                           </span>

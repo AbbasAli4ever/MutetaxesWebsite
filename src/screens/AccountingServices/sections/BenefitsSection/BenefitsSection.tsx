@@ -3,10 +3,10 @@ import { Badge } from "../../../../components/ui/badge";
 import { Button } from "../../../../components/ui/button";
 
 const benefits = [
-  { text: "Fast 5-day setup" },
-  { text: "No hidden fees" },
-  { text: "100% online process" },
-  { text: "Expert support" },
+  { text: "HKICPA qualified" },
+  { text: "Cloud-based platform" },
+  { text: "Real-time reporting" },
+  { text: "Fixed monthly pricing" },
 ];
 
 export const BenefitsSection = (): JSX.Element => {
@@ -23,16 +23,16 @@ export const BenefitsSection = (): JSX.Element => {
           {/* Heading */}
           <h2 className="text-[#212833] font-normal font-georgia leading-tight sm:leading-[60px] md:leading-[60px] xl:leading-[72px] tracking-[0] max-w-[90%] sm:max-w-[700px] md:max-w-[835px] text-3xl sm:text-4xl md:text-5xl lg:text-[54px] xl:text-[64px] -mt-[500px] md:-mt-20 lg:mt-0">
             <span>
-              Ready to Start Your
+              Get Your Accounting in 
               <br className="hidden sm:block" />
             </span>
-            <span className="text-[#004eff]"> Hong Kong </span>
-            <span>Business?</span>
+            <span className=""> Order Today </span>
+            
           </h2>
 
           {/* Description */}
           <p className="text-[#212833e6] font-helvetica font-normal text-base sm:text-lg md:text-[18px] xl:text-[22px] leading-relaxed sm:leading-7 tracking-[0] max-w-[90%] sm:max-w-[600px] md:max-w-[702px]">
-            Get your company incorporated and operational in as fast as 5 days
+            Professional accounting that grows with your business
           </p>
 
           {/* Benefits */}
@@ -73,7 +73,7 @@ export const BenefitsSection = (): JSX.Element => {
               className="px-[24px] sm:px-[18px] md:px[26px] py-[20px] sm:py-[20px] xl:py-[26px] rounded-[40px] border-2 border-solid border-[#004eff]"
             >
               <span className="bg-[linear-gradient(140deg,rgba(104,150,255,1)_0%,rgba(0,78,255,1)_100%)] [-webkit-background-clip:text] bg-clip-text [-webkit-text-fill-color:transparent] [text-fill-color:transparent] font-helvetica font-medium text-sm sm:text-xs xl:text-base leading-6 whitespace-nowrap">
-                Book Free Consultation
+                Get Free Quote
               </span>
             </Button>
           </div>
@@ -81,7 +81,7 @@ export const BenefitsSection = (): JSX.Element => {
       </div>
 
       {/* Footer Text */}
-      <div className="flex items-center justify-center w-full px-4 mt-24 text-center">
+      <div className="flex items-center justify-center w-full px-4 mt-4 text-center">
         <p className="font-helvetica font-normal text-[#212833e6] text-sm sm:text-base leading-5 sm:leading-6">
           Join 1,000+ businesses that trust Mute Taxes for their
           <br className="hidden sm:block" />

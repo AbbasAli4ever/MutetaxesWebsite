@@ -4,29 +4,31 @@ import SideNotchCard from "../../../../UIComponents/SIdeNotchCard";
 
 const advantageCards = [
   {
-    title: "Features",
+    title: "Pre-Audit Preparation",
     backgroundSrc: "/Secretary/subtract-3.svg",
-    iconSrc: "/Secretary/greenicon.png",
+    iconSrc: "/Audit/box.png",
     sideImgSrc: "/Secretary/b1.png",
     items: [
-      "Real-time Compliance Status",
-      "Upcoming Deadline Alerts",
-      "Document Repository",
-      "Task Management",
-      "Digital Signatures",
-      "Secure Messaging",
+      "Trial balance preparation",
+      "Account reconciliations",
+      "Working papers compilation",
+      "Supporting documentation",
+      "Variance analysis",
+      "Internal review",
     ],
   },
   {
-    title: "Mobile Access",
+    title: "During Audit Support",
     backgroundSrc: "/Secretary/subtract-4.svg",
-    iconSrc: "/Secretary/valuepropositionsection-6.svg",
+    iconSrc: "/Audit/handfre.png",
     sideImgSrc: "/Secretary/b2.png",
     items: [
-      "Ios/android Apps",
-      "Document Approval On-the-go",
-      "Push Notifications",
-      "Offline Access",
+      "Auditor liaison",
+      "Query management",
+      "Document provision",
+      "Sample coordination",
+      "Confirmation handling",
+      "Issue resolution",
     ],
   },
 ];
@@ -52,15 +54,15 @@ export const AuditPackagesSection = (): JSX.Element => {
       <div className="flex flex-col max-w-[1260px] mx-auto items-center gap-6 px-4">
         <header className="flex flex-col max-w-[882px] items-center gap-4">
           <p className="w-full text-center font-helvetica font-normal text-[#21283399] text-xl md:text-2xl tracking-[0] leading-7">
-            Dashboard
+            Solutions
           </p>
 
           <h2 className="w-full text-center font-georgia font-normal text-[#212833] text-4xl md:text-5xl lg:text-[64px] tracking-[0] leading-tight lg:leading-[72px]">
-            Modern Compliance Management Dashboard
+            Comprehensive Audit Support Solutions
           </h2>
 
            <p className="text-center max-w-[702px] font-helvetica font-normal text-[#212833] text-lg md:text-xl lg:text-[22px] tracking-[-0.64px] leading-relaxed lg:leading-[35px]">
-          Manage your company's compliance from anywhere, anytime
+          End-to-end support for a seamless audit experience
         </p>
         </header>
 
@@ -68,7 +70,7 @@ export const AuditPackagesSection = (): JSX.Element => {
           {advantageCards.map((card, index) => (
            <div className="relative pt-20 w-full md:w-[520px] lg:w-[470px] xl:w-[580px] mx-auto" key={index}>
                 <img
-                  className="absolute w-[175px] sm:w-[175px] md:w-[175px] xl:w-[182px] h-auto z-20 -left-3 md:-left-10 lg:-left-3 top-[18px]"
+                  className="absolute w-[141px] sm:w-[175px] md:w-[175px] xl:w-[182px] h-auto z-20  md:-left-10 lg:-left-3 top-[46px] left-[0.25rem] lg:top-[18px]"
                   alt={"icon"}
                   src={card.iconSrc}
                 />
@@ -89,15 +91,15 @@ export const AuditPackagesSection = (): JSX.Element => {
                   className={``}
                 >
                   <CardContent className="relative w-full h-full p-0">
-<img
+{/* <img
                     src={card.sideImgSrc}
                     alt="Right side background"
                     className="absolute right-0 -bottom-24 xl:-bottom-20 w-[280px] xl:w-[320px] h-[380px] object-contain"
-                  />
+                  /> */}
                 <div className="absolute top-[90px] left-[28px] sm:left-[33px] flex flex-col gap-4 w-auto h-full">
                   
 
-                  <h3 className="[font-family:'Helvetica_Neue-Medium',Helvetica] font-medium text-[#212833] text-[32px] tracking-[0] leading-[34.1px]">
+                  <h3 className="font-helvetica font-medium text-[#212833] text-[32px] tracking-[0] leading-[34.1px]">
                     {card.title}
                   </h3>
 

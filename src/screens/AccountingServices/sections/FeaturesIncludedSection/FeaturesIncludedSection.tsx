@@ -16,7 +16,9 @@ const taxBenefits = [
     text: (
       <>
         <span className="font-medium text-[#212833E5]">Sales and purchase</span>
+        <span className="font-medium text-[#212833E5]">Sales and purchase</span>
         <br />
+        <span className="font-normal">invoice recording</span>
         <span className="font-normal">invoice recording</span>
       </>
     ),
@@ -46,7 +48,9 @@ const taxBenefits = [
     text: (
       <>
         <span className="font-medium">Multi-Currency</span> <span className="font-normal">Transaction</span>
+        <span className="font-medium">Multi-Currency</span> <span className="font-normal">Transaction</span>
         <br />
+        <span className="font-normal">Management</span>
         <span className="font-normal">Management</span>
       </>
     ),
@@ -58,6 +62,7 @@ const taxBenefits = [
        <span className="font-normal">Receipt digitization</span>
 <br />
        <span className="font-normal">and</span>  <span className="font-medium">filing</span>
+       <span className="font-normal">and</span>  <span className="font-medium">filing</span>
       </>
     ),
   },
@@ -65,6 +70,7 @@ const taxBenefits = [
     id: 6,
     text: (
       <>
+       <span className="font-normal">Petty cash</span>  <span className="font-medium">management</span>
        <span className="font-normal">Petty cash</span>  <span className="font-medium">management</span>
       </>
     ),
@@ -76,7 +82,9 @@ const strategicBenefits = [
     text: (
       <>
         <span className="font-meium">Monthly Profit</span><span className="font-normal">&</span>
+        <span className="font-meium">Monthly Profit</span><span className="font-normal">&</span>
         <br />
+        <span className="font-normal">Loss statements</span>
         <span className="font-normal">Loss statements</span>
       </>
     ),
@@ -86,7 +94,9 @@ const strategicBenefits = [
     text: (
       <>
         <span className="font-normal">Balance Sheet</span>
+        <span className="font-normal">Balance Sheet</span>
         <br />
+        <span className="font-medium">Prepration</span>
         <span className="font-medium">Prepration</span>
       </>
     ),
@@ -104,6 +114,8 @@ const strategicBenefits = [
     id: 4,
     text: (
       <>
+        <span className="font-normal">Management</span>
+        <br /> <span className="font-medium"> Accounts</span>
         <span className="font-normal">Management</span>
         <br /> <span className="font-medium"> Accounts</span>
       </>
@@ -138,6 +150,7 @@ const businessBenefits = [
         <span className="font-medium">Accounts</span> <span className="font-normal">Receiveable</span>
         <br />
         <span className="font-normal">Tracking</span>
+        <span className="font-normal">Tracking</span>
       </>
     ),
   },
@@ -146,7 +159,9 @@ const businessBenefits = [
     text: (
       <>
         <span className="font-normal">Accounts</span> <span className="font-medium">Payable</span>
+        <span className="font-normal">Accounts</span> <span className="font-medium">Payable</span>
         <br />
+        <span className="font-medium">Processing</span>
         <span className="font-medium">Processing</span>
       </>
     ),

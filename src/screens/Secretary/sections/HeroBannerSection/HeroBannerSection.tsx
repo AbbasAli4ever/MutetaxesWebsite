@@ -72,13 +72,13 @@ export const HeroBannerSection = (): JSX.Element => {
               </div>
             </Badge>
 
-            <h1 className="font-helvetica font-bold text-5xl sm:text-5xl md:text-6xl lg:text-[74px] text-center tracking-[-1.95px] leading-tight md:leading-snug lg:leading-[83px]">
+            <h1 className="font-helvetica font-medium text-5xl sm:text-5xl md:text-6xl lg:text-[74px] text-center tracking-[-1.95px] leading-tight md:leading-snug lg:leading-[83px]">
               <span className=" text-[#212833] ">
                 Licensed Company Secretary{" "} 
                 <br />  
               </span>
                
-              <div className="flex flex-col items-center justify-center gap-1 font-bold sm:flex-row ">
+              <div className="flex flex-col items-center justify-center gap-1 font-medium sm:flex-row ">
              <span>
                 services in
               </span>

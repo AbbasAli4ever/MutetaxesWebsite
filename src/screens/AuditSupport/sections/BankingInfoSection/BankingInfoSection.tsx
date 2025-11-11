@@ -63,7 +63,7 @@ export const BankingInfoSection = (): JSX.Element => {
                 </div>
 
                 <div className="flex flex-col flex-1 gap-3">
-                  <h3 className="[font-family:'Helvetica_Neue-Medium',Helvetica] font-semibold text-[#212833] text-[22px] tracking-[0] leading-[29px] whitespace-pre-line">
+                  <h3 className="[font-family:'Helvetica_Neue-Medium',Helvetica] font-medium text-[#212833] text-[22px] tracking-[0] leading-[29px] whitespace-pre-line">
                     {issue.title}
                   </h3>
 

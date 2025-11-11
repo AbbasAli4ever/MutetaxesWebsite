@@ -18,7 +18,7 @@ const advantagesData = [
       },
       {
         icon: "/HomePage/frame.svg",
-        text: "Bank statements (all accounts)",
+        text: "Bank statements ",
       },
       {
         icon: "/HomePage/frame.svg",
@@ -125,7 +125,7 @@ export const SupportInfoSection = (): JSX.Element => {
         </div>
 
         <p className="text-center max-w-[702px] font-helvetica font-normal text-[#212833] text-lg md:text-xl lg:text-[22px] tracking-[-0.64px] leading-relaxed lg:leading-[35px]">
-          Essential documents needed for your audit
+          Essential Documents Needed For Your Audit
         </p>
       </header>
 
@@ -145,14 +145,14 @@ export const SupportInfoSection = (): JSX.Element => {
                 topRadius: 25,
               }}
               widthClass="w-full max-w-[400px] sm:w-[300px] md:w-[300px] lg:w-[320px] xl:w-[400px]"
-              heightClass="h-[300px] sm:h-[300px] lg:h-[300px] xl:h-[400px]"
+              heightClass="h-[500px] sm:h-[300px] lg:h-[300px] xl:h-[400px]"
               shadowColor="#6a98ff"
               className="z-10"
             >
-              <CardContent className="relative flex flex-col items-center justify-center pt-16 xl:pt-24">
+              <CardContent className="relative flex flex-col items-start justify-center pt-16 xl:pt-24">
                 {/* Content */}
-                <div className="flex flex-col items-start sm:items-start pb-[40px] relative z-10 text-center sm:text-left">
-                  <h3 className="font-helvetica font-medium text-[#212833] text-2xl sm:text-[26px] md:text-[25px] lg:text-[25px] xl:text-[32px] leading-snug">
+                <div className="flex flex-col items-start sm:items-start pb-[40px] relative z-10 text-start sm:text-left">
+                  <h3 className="font-helvetica font-medium text-[#212833] text-2xl sm:text-[26px] md:text-[25px] lg:text-[25px] xl:text-[24px] leading-loose pb-4">
                     {advantage.title}
                   </h3>
 
@@ -173,7 +173,7 @@ export const SupportInfoSection = (): JSX.Element => {
                              
                               className={
                                 
-                                  "font-helvetica font-medium"
+                                  "font-helvetica font-normal text-[20px]"
                                   
                               }
                             >

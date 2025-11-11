@@ -129,7 +129,7 @@ Every Business Stage
           <div className="flex flex-col gap-5 mb-10">
             <div className="flex flex-col gap-4">
               <div
-                className={`[font-family:'Helvetica_Neue-Medium',Helvetica] font-medium text-[40.2px] tracking-[0] leading-[normal] ${
+                className={`font-helvetica font-medium text-[40.2px] tracking-[0] leading-[normal] ${
                   plan.featured ? "text-[#004eff]" : "text-[#222222]"
                 }`}
               >
@@ -138,11 +138,11 @@ Every Business Stage
             </div>
 
             <div className="flex flex-col gap-[7px]">
-              <h3 className="[font-family:'Helvetica_Neue-Medium',Helvetica] font-medium text-[#222222] text-2xl tracking-[0] leading-7 whitespace-nowrap">
+              <h3 className="font-helvetica font-medium text-[#222222] text-2xl tracking-[0] leading-7 whitespace-nowrap">
                 {plan.title}
               </h3>
 
-              <p className="[font-family:'Helvetica_Neue-Regular',Helvetica] font-normal text-[#65676c] text-lg tracking-[0.45px] leading-6 whitespace-pre-line">
+              <p className="font-helvetica font-normal text-[#65676c] text-[18px] tracking-[0.45px] leading-6 whitespace-pre-line">
                 {plan.description}
               </p>
 

@@ -6,7 +6,7 @@ import { Badge } from "../../../../components/ui/badge";
 const advantagesData = [
   {
     title: "Setup",
-    icon: "/Audit/valuepropositionsection-7.svg",
+    icon: "/AccountingServices/clock.png",
     badge:"week1",
     background: "/HomePage/subtract-6.svg",
     items: [
@@ -34,7 +34,7 @@ const advantagesData = [
   },
   {
     title: "Migration",
-    icon: "/Audit/valuepropositionsection-3.svg",
+    icon: "/AccountingServices/spinner.png",
     badge:"week2",
     background: "/HomePage/frame-1171278986.svg",
     items: [
@@ -62,7 +62,7 @@ const advantagesData = [
   },
   {
     title: "Operations",
-    icon: "/Audit/valuepropositionsection-9.svg",
+   icon: "/AccountingServices/true.png",
     badge:"ongoing",
     background: "/HomePage/subtract-8.svg",
     items: [
@@ -97,13 +97,13 @@ export const IntroductionSection = (): JSX.Element => {
             Transition
           </p>
 
-          <h2 className="w-full text-center font-georgia font-normal text-[#212833] text-4xl md:text-5xl lg:text-[64px] tracking-[0] leading-tight lg:leading-[72px]">
+          <h2 className="w-full text-center font-georgia font-medium text-[#212833] text-4xl md:text-5xl lg:text-[64px] tracking-[0] leading-tight lg:leading-[72px]">
             Seamless Transition in 2 Weeks
           </h2>
         </div>
 
         <p className="text-center max-w-[702px] font-helvetica font-normal text-[#212833] text-lg md:text-xl lg:text-[22px] tracking-[-0.64px] leading-relaxed lg:leading-[35px]">
-          Quick, painless onboarding with full support every step of the way
+          Quick, Painless Onboarding With Full Support Every Step Of The Way
         </p>
       </header>
 

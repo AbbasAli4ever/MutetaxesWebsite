@@ -5,7 +5,7 @@ import NotchedCard from "../../../../UIComponents/NotchedCard";
 const advantagesData = [
   {
     title: "Cost Savings",
-    icon: "/Audit/valuepropositionsection-7.svg",
+    icon: "/AccountingServices/arrow-down.png",
     background: "/HomePage/subtract-6.svg",
     items: [
       {
@@ -32,7 +32,7 @@ const advantagesData = [
   },
   {
     title: "Expertise",
-    icon: "/Audit/valuepropositionsection-3.svg",
+    icon: "/AccountingServices/badgeg.png",
     background: "/HomePage/frame-1171278986.svg",
     items: [
       {
@@ -59,7 +59,7 @@ const advantagesData = [
   },
   {
     title: "Technology",
-    icon: "/Audit/valuepropositionsection-9.svg",
+    icon: "/AccountingServices/saver.png",
     background: "/HomePage/subtract-8.svg",
     items: [
       {
@@ -86,7 +86,7 @@ const advantagesData = [
   },
   {
     title: "Peace of Mind",
-    icon: "/Audit/valuepropositionsection-10.svg",
+    icon: "/AccountingServices/sqaure.png",
     background: "/HomePage/subtract-8.svg",
     items: [
       {
@@ -128,7 +128,7 @@ export const ServicesOverviewSection = (): JSX.Element => {
         </div>
 
         <p className="text-center max-w-[702px] font-helvetica font-normal text-[#212833] text-lg md:text-xl lg:text-[22px] tracking-[-0.64px] leading-relaxed lg:leading-[35px]">
-          Focus on growing your business while we handle the numbers{" "}
+          Focus On Growing Your Business While We Handle The Numbers{" "}
         </p>
       </header>
 
@@ -155,7 +155,7 @@ export const ServicesOverviewSection = (): JSX.Element => {
               <CardContent className="relative flex flex-col items-stat=rt justify-center pt-16 xl:pt-24">
                 {/* Content */}
                 <div className="flex flex-col items-start sm:items-start pb-[40px] relative z-10 text-center sm:text-left">
-                  <h3 className="font-helvetica font-semibold mb-3 text-[#212833] text-2xl sm:text-[26px] md:text-[25px] lg:text-[25px] leading-snug">
+                  <h3 className="font-helvetica font-medium mb-3 text-[#212833] text-2xl sm:text-[26px] md:text-[25px] lg:text-[25px] leading-snug">
                     {advantage.title}
                   </h3>
 
