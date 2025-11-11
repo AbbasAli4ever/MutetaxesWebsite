@@ -3,10 +3,10 @@ import { Badge } from "../../../../components/ui/badge";
 import { Button } from "../../../../components/ui/button";
 
 const benefits = [
-  { text: "Fast 5-day setup" },
-  { text: "No hidden fees" },
-  { text: "100% online process" },
-  { text: "Expert support" },
+  { text: "15-30% cost reduction" },
+  { text: "Faster completion" },
+  { text: "Clean audit opinions" },
+  { text: "Expert coordination" },
 ];
 
 export const BenefitsSection = (): JSX.Element => {
@@ -23,16 +23,16 @@ export const BenefitsSection = (): JSX.Element => {
           {/* Heading */}
           <h2 className="text-[#212833] font-normal font-georgia leading-tight sm:leading-[60px] md:leading-[60px] xl:leading-[72px] tracking-[0] max-w-[90%] sm:max-w-[700px] md:max-w-[835px] text-3xl sm:text-4xl md:text-5xl lg:text-[54px] xl:text-[64px] -mt-[500px] md:-mt-20 lg:mt-0">
             <span>
-              Ready to Start Your
+              Make Your Next Audit 
               <br className="hidden sm:block" />
             </span>
-            <span className="text-[#004eff]"> Hong Kong </span>
-            <span>Business?</span>
+           
+            <span>Stress-Free</span>
           </h2>
 
           {/* Description */}
           <p className="text-[#212833e6] font-helvetica font-normal text-base sm:text-lg md:text-[18px] xl:text-[22px] leading-relaxed sm:leading-7 tracking-[0] max-w-[90%] sm:max-w-[600px] md:max-w-[702px]">
-            Get your company incorporated and operational in as fast as 5 days
+            Professional preparation that saves time and money
           </p>
 
           {/* Benefits */}
@@ -59,7 +59,7 @@ export const BenefitsSection = (): JSX.Element => {
           <div className="absolute flex flex-col flex-wrap items-center justify-center gap-2 mt-6 -bottom-20 lg:-bottom-4 xl:bottom-0 md:flex-row xl:gap-3 sm:gap-1 sm:mt-8">
             <Button className="inline-flex items-center justify-center gap-2 pl-3 pr-2 sm:pr-1.5 py-6 xl:py-7 rounded-[100px] bg-[linear-gradient(131deg,rgba(104,150,255,1)_0%,rgba(0,78,255,1)_100%)]">
               <span className="text-sm font-medium leading-6 text-white font-helvetica sm:text-xs xl:text-base whitespace-nowrap">
-                Incorporate Now - €279
+                Get Audit Support - €799
               </span>
               <img
                 className="w-[30px] sm:w-[28px] h-[30px] sm:h-[28px] xl:h-[38px] xl:w-[38px]"
@@ -73,7 +73,7 @@ export const BenefitsSection = (): JSX.Element => {
               className="px-[24px] sm:px-[18px] md:px[26px] py-[20px] sm:py-[20px] xl:py-[26px] rounded-[40px] border-2 border-solid border-[#004eff]"
             >
               <span className="bg-[linear-gradient(140deg,rgba(104,150,255,1)_0%,rgba(0,78,255,1)_100%)] [-webkit-background-clip:text] bg-clip-text [-webkit-text-fill-color:transparent] [text-fill-color:transparent] font-helvetica font-medium text-sm sm:text-xs xl:text-base leading-6 whitespace-nowrap">
-                Book Free Consultation
+                Free Assessment
               </span>
             </Button>
           </div>

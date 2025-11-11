@@ -15,7 +15,7 @@ const steps = [
     number: "Days 2-3",
     title: "Document\npreparation",
     items: ["Kyc Documents Collection", "Incorporation Forms Drafting", " articles Of Association", "Director/shareholder Details",],
-    icon: "/HomePage/icon-uper.png",
+    icon: "/Incorporate/frame-1171278984-1.svg",
     background: "/Incorporate/subtract-2.svg",
     alignment: "left",
   },
@@ -31,7 +31,7 @@ const steps = [
     number: "Days 6-7",
     title: "Ongoing Support",
     items: ["Certificate Issuance", "Company Kit Preparation", "Chops And Seals Creation", "Digital Platform Setup", "Handover And Training",],
-    icon: "/HomePage/icon.svg",
+    icon: "/Incorporate/frame-1171278984.svg",
     background: "/Incorporate/subtract-2.svg",
     alignment: "left",
   },
@@ -102,7 +102,7 @@ export const HowItWorksSection = (): JSX.Element => {
         <img
           src={step.background}
           alt=""
-          className="absolute inset-0 w-full h-full hidden sm:hidden md:block"
+          className="absolute inset-0 hidden w-full h-full sm:hidden md:block"
         />
 
         {/* White Square for Small Only */}

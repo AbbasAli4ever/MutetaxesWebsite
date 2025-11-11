@@ -49,7 +49,7 @@ export const FaqSection = (): JSX.Element => {
         </p>
 
         <h2 className="font-normal text-[#212833] font-georgia text-3xl sm:text-4xl md:text-5xl lg:text-[64px] leading-tight md:leading-[72px]">
-          Frequently Asked Questions
+          Company Secretary FAQs
         </h2>
       </header>
 
@@ -66,7 +66,7 @@ export const FaqSection = (): JSX.Element => {
             className="overflow-hidden bg-white border border-[#e5e7eb] rounded-xl shadow-sm"
           >
             <AccordionTrigger className="flex items-center gap-4 px-4 sm:px-5 md:px-6 py-4 sm:py-5 md:py-6 hover:no-underline [&[data-state=open]>svg]:rotate-180">
-              <span className="font-helvetica flex-1 text-left font-semibold text-[#212833] text-sm sm:text-base md:text-[15px] leading-6 sm:leading-7 tracking-[-0.32px]">
+              <span className="font-helvetica flex-1 text-left font-medium text-[#212833] text-sm sm:text-base md:text-[15px] leading-6 sm:leading-7 tracking-[-0.32px]">
                 {item.question}
               </span>
             </AccordionTrigger>

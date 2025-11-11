@@ -19,13 +19,13 @@ export const AccountingServices = (): JSX.Element => {
 
       <HeroBannerSection />
       <FeaturesIncludedSection />
-      <PricingPlansSection />
+       <PricingPlansSection />
       <HongKongAdvantagesSection />
-      <IncludedServicesSection />
-      <IntroductionSection />
+     <IncludedServicesSection />
+       <IntroductionSection />
       <ServicesOverviewSection />
-      <AccountingFAQSection />
-      <BenefitsSection />
+     <AccountingFAQSection />
+      <BenefitsSection /> 
       {/* <ContactFooterSection /> */}
     </div>
   );

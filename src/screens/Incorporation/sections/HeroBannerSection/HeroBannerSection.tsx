@@ -26,9 +26,9 @@ const statisticsBadges = [
 export const HeroBannerSection = (): JSX.Element => {
   return (
     <section className="relative w-full bg-[#dbe6fe] md:bg-transparent h-auto">
-<div className="relative w-screen h-[750px] md:h-[955px] lg:h-[1100px] pt-5 overflow-hidden">
+<div className="relative w-full xl:w-[97vw] mx-auto h-[950px] sm:h-[700px] md:h-[850px] lg:h-[1100px] pt-5 overflow-hidden">
         <img
-          className="object-cover w-full h-full"
+          className="hidden object-cover w-full h-full md:object-fill md:block"
           alt="G illustration"
           src="/HomePage/HeroBG.png"
         />
@@ -55,7 +55,7 @@ export const HeroBannerSection = (): JSX.Element => {
 
 
 
-      <div className="absolute top-24 md:top-40 lg:top-[207px] left-1/2 -translate-x-1/2 flex flex-col w-full max-w-[900px] px-4 items-center justify-center gap-6">
+      <div className="absolute top-24 md:top-40 lg:top-[207px] left-1/2 -translate-x-1/2 flex flex-col w-full max-w-[1000px] px-4 items-center justify-center gap-6">
         <div className="flex flex-col items-center justify-center gap-6">
           <div className="relative flex flex-col items-center gap-6">
             <Badge className="h-auto px-[11px] py-2 bg-[#28b44608] rounded-[50px] border border-solid border-[#28b446] hover:bg-[#28b44608]">
@@ -69,7 +69,7 @@ export const HeroBannerSection = (): JSX.Element => {
 
             <h1 className="[font-family:'Helvetica_Neue-Medium',Helvetica] font-normal text-[1.8rem] md:text-5xl lg:text-[74px] text-center tracking-[-1.95px] leading-tight md:leading-snug lg:leading-[83px]">
               {/* First line: Register Your + Hong Kong + Icon */}
-              <div className="flex flex-wrap justify-center items-center gap-3">
+              <div className="flex flex-wrap items-center justify-center gap-3 font-medium">
                 <span className="font-medium font-helvetica text-[#212833]">Register Your</span>
                 <span className="flex items-center gap-2">
                   <img
@@ -103,7 +103,7 @@ export const HeroBannerSection = (): JSX.Element => {
             /> */}
           </div>
 
-          <div className="flex flex-col gap-4  lg:flex-row lg:items-center lg:gap-4 xl:flex xl:items-center">
+          <div className="flex flex-col gap-4 lg:flex-row lg:items-center lg:gap-4 xl:flex xl:items-center">
             <Button className="h-auto gap-[35px] pl-3 pr-1.5 py-2 rounded-[100px] bg-[linear-gradient(131deg,rgba(104,150,255,1)_0%,rgba(0,78,255,1)_100%)] hover:opacity-90">
               <span className="font-helvetica font-normal text-white text-base text-center tracking-[0] leading-6">
                 Incorporate Now

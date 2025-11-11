@@ -13,7 +13,7 @@ module.exports = {
           "var(--body-text-medium-semi-bold-font-family)",
         "body-text-xsmall-medium": "var(--body-text-xsmall-medium-font-family)",
         georgia: ['Georgia', 'serif'],
-         helvetica: ['"Helvetica Neue"', 'Helvetica', 'Arial', 'sans-serif'],
+         helvetica: ['Inter', '"Helvetica Neue"', 'Helvetica', 'Arial', 'sans-serif'],
         sans: [
           "ui-sans-serif",
           "system-ui",
@@ -24,6 +24,7 @@ module.exports = {
           '"Noto Color Emoji"',
         ],
       },
+      
       boxShadow: { "regular-shadow-medium": "var(--regular-shadow-medium)" },
       colors: {
         border: "hsl(var(--border))",

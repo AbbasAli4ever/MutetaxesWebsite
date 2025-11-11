@@ -90,10 +90,10 @@ export const BankingServicesSection = (): JSX.Element => {
                   src={feature.icon}
                 />
                 <div className="flex flex-col flex-1 gap-3">
-                  <h3 className="[font-family:'Helvetica_Neue-Medium',Helvetica] font-medium text-[#212833] text-2xl tracking-[0] leading-5">
+                  <h3 className="font-helvetica font-medium text-[#212833] text-2xl tracking-[0] leading-5">
                     {feature.title}
                   </h3>
-                  <p className="[font-family:'Helvetica_Neue-Regular',Helvetica]  text-[#212833] text-base font-extralight tracking-[0] leading-[17px]">
+                  <p className="font-helvetica  text-[#212833] text-base font-extralight tracking-[0] leading-[17px]">
                     {feature.description}
                   </p>
                 </div>

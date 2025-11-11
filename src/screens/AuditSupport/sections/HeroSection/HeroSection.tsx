@@ -76,7 +76,7 @@ export const HeroSection = (): JSX.Element => {
             </Badge>
 
             <h1 className="font-helvetica font-bold text-5xl sm:text-5xl md:text-5xl lg:text-[74px] text-center tracking-[-1.95px] leading-tight md:leading-snug lg:leading-[83px]">
-              <div className="flex flex-col items-center justify-center gap-3 font-bold sm:flex-row ">
+              <div className="flex flex-col items-center justify-center gap-3 font-medium sm:flex-row ">
               <span className=" text-[#212833] ">
                 Streamline Your
                   
@@ -91,7 +91,7 @@ export const HeroSection = (): JSX.Element => {
               </span>
               </div>
               
-             <span>
+             <span className="font-georgia font-normal text-[#004eff]">
                 Statutory Audit
               </span>
               

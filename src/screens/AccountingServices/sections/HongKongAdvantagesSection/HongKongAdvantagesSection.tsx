@@ -79,29 +79,27 @@ const pricingData = [
 
 export const HongKongAdvantagesSection = (): JSX.Element => {
   return (
-    <section className="flex flex-col w-full gap-10 py-8">
+    <section className="flex flex-col items-center justify-center w-full gap-10 py-8">
       {/* Section heading */}
-      <div className="flex flex-col items-center gap-4 max-w-[952px] mx-auto px-4">
-        <div className="flex flex-col items-start w-full gap-4">
-          <div className="w-full text-center [font-family:'Helvetica_Neue-Regular',Helvetica] font-normal text-[#21283399] text-2xl tracking-[0] leading-7 lg:mt-[130px]">
+      <div className="flex flex-col items-center gap-4 max-w-[952px] mx-auto px-4 mb-5">
+         <p className="w-full text-center font-helvetica font-normal text-[#21283399] text-xl md:text-2xl tracking-[0] leading-7">
             Packages
-          </div>
+          </p>
 
-          <h2 className="w-full text-center [font-family:'Georgia-Regular',Helvetica] font-normal text-[#212833] text-[64px] tracking-[0] leading-[72px]">
-            Flexible Packages for
-            Every Business Stage
+          <h2 className="w-full text-center font-georgia font-normal text-[#212833] text-4xl md:text-5xl lg:text-[64px] tracking-[0] leading-tight lg:leading-[72px]">
+            Flexible Packages for <br />
+Every Business Stage
           </h2>
-        </div>
 
-        <p className="text-center max-w-[702px] text-[#212833] text-[22px] tracking-[-0.64px] leading-[35px] [font-family:'Helvetica_Neue-Regular',Helvetica] font-normal">
-          Choose the plan that fits your needs and scale as you grow
-        </p>
+          <p className="text-center max-w-[702px] font-helvetica font-normal text-[#212833] text-lg md:text-xl lg:text-[22px] tracking-[-0.64px] leading-relaxed lg:leading-[35px]">
+            Choose the plan that fits your needs and scale as you grow
+          </p>
       </div>
 
       {/* Pricing Cards */}
-      <div className="relative flex justify-center items-start gap-6 px-4 max-w-[1300px] mx-auto w-full">
+      <div className="relative grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 justify-items-center gap-6 px-4 max-w-[1300px] mx-auto w-full">
   {pricingData.map((plan, index) => (
-    <div key={index} className="relative flex-1 max-w-[330px]">
+    <div key={index} className="relative w-full max-w-[330px]">
       
       {/* ✅ Most Popular Badge */}
       {plan.featured && (
@@ -122,7 +120,7 @@ export const HongKongAdvantagesSection = (): JSX.Element => {
       >
         {/* ✅ Blue blur stays inside the card only */}
         {plan.featured && (
-          <div className="absolute inset-0 overflow-hidden pointer-events-none z-0">
+          <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
             <div className="absolute -top-[250px] left-[150px] w-[700px] h-[700px] rounded-full blur-[80px] bg-[rgba(0,78,255,0.6)]" />
           </div>
         )}
@@ -131,7 +129,7 @@ export const HongKongAdvantagesSection = (): JSX.Element => {
           <div className="flex flex-col gap-5 mb-10">
             <div className="flex flex-col gap-4">
               <div
-                className={`[font-family:'Helvetica_Neue-Medium',Helvetica] font-medium xl:text-[40.2px] text-[50.2px] tracking-[0] leading-[normal] ${
+                className={`font-helvetica font-medium text-[40.2px] tracking-[0] leading-[normal] ${
                   plan.featured ? "text-[#004eff]" : "text-[#222222]"
                 }`}
               >
@@ -140,11 +138,11 @@ export const HongKongAdvantagesSection = (): JSX.Element => {
             </div>
 
             <div className="flex flex-col gap-[7px]">
-              <h3 className="[font-family:'Helvetica_Neue-Medium',Helvetica] font-medium text-[#222222] text-2xl tracking-[0] leading-7 whitespace-nowrap">
+              <h3 className="font-helvetica font-medium text-[#222222] text-2xl tracking-[0] leading-7 whitespace-nowrap">
                 {plan.title}
               </h3>
 
-              <p className="[font-family:'Helvetica_Neue-Regular',Helvetica] font-normal text-[#65676c] text-lg tracking-[0.45px] leading-6 whitespace-pre-line">
+              <p className="font-helvetica font-normal text-[#65676c] text-[18px] tracking-[0.45px] leading-6 whitespace-pre-line">
                 {plan.description}
               </p>
 
@@ -180,7 +178,7 @@ export const HongKongAdvantagesSection = (): JSX.Element => {
         </CardContent>
 
         {/* Button + Support */}
-        <div className="absolute flex-col items-center justify-center w-full mt-auto bottom-10 z-10">
+        <div className="absolute z-10 flex-col items-center justify-center w-full mt-auto bottom-10">
           <Button
             variant={plan.buttonVariant}
             className={`h-auto w-[217px] rounded-[28.01px] py-[15px] px-6 ${
@@ -193,7 +191,7 @@ export const HongKongAdvantagesSection = (): JSX.Element => {
               {plan.buttonText}
             </span>
           </Button>
-          <div className="text-center mt-3">
+          <div className="mt-3 text-center">
             <h1 className="text-sm text-black">
               {plan.supportHeading
                 ? `${plan.supportHeading}:`

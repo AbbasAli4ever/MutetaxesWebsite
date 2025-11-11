@@ -9,7 +9,7 @@ const cardsData = [
     title: "Cost Savings",
     description:
       (<span>
-        <span className="font-semibold">15-30% reduction</span> in total audit
+        <span className="font-medium">15-30% reduction</span> in total audit
 fees through efficient preparation
       </span>),
     background: "/Secretary/subtract-5.svg",
@@ -23,7 +23,7 @@ fees through efficient preparation
     title: "Time Savings",
     description:
       (<span>
-        <span className="font-semibold">15-30% reduction</span> in total audit
+        <span className="font-medium">15-30% reduction</span> in total audit
 fees through efficient preparation
       </span>),
     background: "/Secretary/subtract-5.svg",
@@ -37,7 +37,7 @@ fees through efficient preparation
     title: "Quality Assurance",
     description:
       (<span>
-        <span className="font-semibold">15-30% reduction</span>  in total audit
+        <span className="font-medium">15-30% reduction</span>  in total audit
 fees through efficient preparation.
       </span>),
     background: "/Secretary/subtract-5.svg",
@@ -51,7 +51,7 @@ fees through efficient preparation.
     title: "Peace of Mind",
     description:
       (<span>
-        <span className="font-semibold">15-30% reduction</span>  in total audit
+        <span className="font-medium">15-30% reduction</span>  in total audit
 fees through efficient preparation
       </span>),
     background: "/Secretary/subtract-5.svg",
@@ -78,7 +78,7 @@ export const ServicesIncludedSection = (): JSX.Element => {
         </div>
 
         <p className="text-center max-w-[702px] font-helvetica font-normal text-[#212833] text-lg md:text-xl lg:text-[22px] tracking-[-0.64px] leading-relaxed lg:leading-[35px]">
-          Legal obligations every Hong Kong company must comply with
+          Legal Obligations Every Hong Kong Company Must Comply With
         </p>
       </header>
 
@@ -105,7 +105,7 @@ export const ServicesIncludedSection = (): JSX.Element => {
               >
                 <CardContent className="relative flex flex-col items-start justify-center pt-16 xl:pt-24">
               <div className="flex flex-col items-center sm:items-start gap-6 pb-[40px] relative z-10 text-center sm:text-left ">
-                <h3 className="font-helvetica font-semibold text-[#212833] text-2xl sm:text-[24px] md:text-[20px] xl:text-[24px] leading-snug">
+                <h3 className="font-helvetica font-medium text-[#212833] text-2xl sm:text-[24px] md:text-[20px] xl:text-[24px] leading-snug">
                   {card.title}
                 </h3>
 

@@ -1,175 +1,180 @@
-import { CheckIcon } from "lucide-react";
 import React from "react";
-import { Badge } from "../../../../AccountingComponents/ui/badge";
-import { Card, CardContent } from "../../../../AccountingComponents/ui/card";
+import { Card, CardContent } from "../../../../components/ui/card";
+import NotchedCard from "../../../../UIComponents/NotchedCard";
+import { Badge } from "../../../../components/ui/badge";
 
-const transitionCards = [
+const advantagesData = [
   {
     title: "Setup",
-    badge: "Week 1",
-    icon: "/AccountingServices/valuepropositionsection-8.svg",
-    background: "/AccountingServices/subtract-8.svg",
+    icon: "/AccountingServices/clock.png",
+    badge:"week1",
+    background: "/HomePage/subtract-6.svg",
     items: [
-      { text: "Initial Consultation", boldWords: ["Initial"] },
-      { text: "Information Gathering", boldWords: ["Gathering"] },
-      { text: "System Selection", boldWords: ["System"] },
-      { text: "Chart Of Accounts Design", boldWords: ["Accounts Design"] },
-      { text: "Bank Feed Connection", boldWords: ["Bank Feed"] },
+      {
+        icon: "/HomePage/frame.svg",
+        text: "Initial consultation",
+      },
+      {
+        icon: "/HomePage/frame.svg",
+        text: "Information gathering",
+      },
+      {
+        icon: "/HomePage/frame.svg",
+        text: "System selection",
+      },
+      {
+        icon: "/HomePage/frame.svg",
+        text: "Chart of accounts design",
+      },
+      {
+        icon: "/HomePage/frame.svg",
+        text: "Bank feed connection",
+      },
     ],
   },
   {
     title: "Migration",
-    badge: "Week 2",
-    icon: "/AccountingServices/valuepropositionsection-9.svg",
-    background: "/AccountingServices/subtract-9.svg",
+    icon: "/AccountingServices/spinner.png",
+    badge:"week2",
+    background: "/HomePage/frame-1171278986.svg",
     items: [
-      { text: "Historical Data Import", boldWords: ["Data Import"] },
-      { text: "Opening Balances", boldWords: ["Opening"] },
-      { text: "Validation & Testing", boldWords: ["Testing"] },
-      { text: "Training Session", boldWords: ["Training"] },
-      { text: "Go-Live", boldWords: ["Live"] },
+      {
+        icon: "/HomePage/frame.svg",
+        text: "Historical data import",
+      },
+      {
+        icon: "/HomePage/frame.svg",
+        text: "Opening balances",
+      },
+      {
+        icon: "/HomePage/frame.svg",
+        text: "Validation & testing",
+      },
+      {
+        icon: "/HomePage/frame.svg",
+        text: "Training session",
+      },
+      {
+        icon: "/HomePage/frame.svg",
+        text: "Go-live",
+      },
     ],
   },
   {
     title: "Operations",
-    badge: "Ongoing",
-    icon: "/AccountingServices/valuepropositionsection-10.svg",
-    background: "/AccountingServices/subtract-12.svg",
+   icon: "/AccountingServices/true.png",
+    badge:"ongoing",
+    background: "/HomePage/subtract-8.svg",
     items: [
-      { text: "Daily Transaction Processing", boldWords: ["Processing"] },
-      { text: "Weekly Status Updates", boldWords: ["Weekly"] },
       {
-        text: "Monthly Financial Statements",
-        boldWords: ["Financial Statements"],
+        icon: "/HomePage/frame.svg",
+        text: "Daily transaction processing",
       },
-      { text: "Quarterly Reviews", boldWords: ["Quarterly"] },
+      {
+        icon: "/HomePage/frame.svg",
+        text: "Weekly status updates",
+      },
+      {
+        icon: "/HomePage/frame.svg",
+        text: "Monthly financial statements",
+      },
+      {
+        icon: "/HomePage/frame.svg",
+        text: "Quarterly reviews",
+      },
+      
     ],
   },
+  
 ];
-
-const renderTextWithBold = (text: string, boldWords: string[]) => {
-  const result = text;
-  const parts: { text: string; bold: boolean }[] = [];
-  let currentIndex = 0;
-
-  boldWords.forEach((boldWord) => {
-    const index = result.indexOf(boldWord, currentIndex);
-    if (index !== -1) {
-      if (index > currentIndex) {
-        parts.push({
-          text: result.substring(currentIndex, index),
-          bold: false,
-        });
-      }
-      parts.push({ text: boldWord, bold: true });
-      currentIndex = index + boldWord.length;
-    }
-  });
-
-  if (currentIndex < result.length) {
-    parts.push({ text: result.substring(currentIndex), bold: false });
-  }
-
-  return (
-    <>
-      {parts.map((part, idx) =>
-        part.bold ? (
-          <span
-            key={idx}
-            className="[font-family:'Helvetica_Neue-Medium',Helvetica] font-medium"
-          >
-            {part.text}
-          </span>
-        ) : (
-          <span
-            key={idx}
-            className="[font-family:'Helvetica_Neue-Regular',Helvetica]"
-          >
-            {part.text}
-          </span>
-        ),
-      )}
-    </>
-  );
-};
 
 export const IntroductionSection = (): JSX.Element => {
   return (
-    <section className="flex flex-col w-full items-center gap-14 px-[120px] py-8 relative">
-      <div className="inline-flex flex-col items-center gap-14 relative flex-[0_0_auto]">
-        <div className="inline-flex gap-4 relative flex-[0_0_auto] flex-col items-center">
-          <div className="flex flex-col items-start gap-4 relative self-stretch w-full flex-[0_0_auto]">
-            <div className="relative flex items-center justify-center self-stretch [font-family:'Helvetica_Neue-Regular',Helvetica] font-normal text-[#21283399] text-2xl text-center tracking-[0] leading-7 lg:mt-[130px]">
-              Transition
-            </div>
+    <section className="flex flex-col w-full gap-16 py-8 sm:gap-24">
+      <header className="flex flex-col items-center gap-4 max-w-[952px] mx-auto px-4">
+        <div className="flex flex-col items-start w-full gap-4">
+          <p className="w-full text-center font-helvetica font-normal text-[#21283399] text-xl md:text-2xl tracking-[0] leading-7">
+            Transition
+          </p>
 
-            <h2 className="relative flex items-center justify-center w-full max-w-[994px] mx-auto [font-family:'Georgia-Regular',Helvetica] font-normal text-[#212833] text-[64px] text-center tracking-[0] leading-[72px]">
-              Seamless Transition in 2 Weeks
-            </h2>
-
-            <p className="relative flex items-center justify-center self-stretch [font-family:'Helvetica_Neue-Regular',Helvetica] font-normal text-[#212833] text-2xl text-center tracking-[0] leading-7">
-              Quick, Painless Onboarding With Full Support Every Step Of The Way
-            </p>
-          </div>
+          <h2 className="w-full text-center font-georgia font-medium text-[#212833] text-4xl md:text-5xl lg:text-[64px] tracking-[0] leading-tight lg:leading-[72px]">
+            Seamless Transition in 2 Weeks
+          </h2>
         </div>
 
-        <div className="inline-flex flex-col items-start gap-8 relative flex-[0_0_auto]">
-          <div className="inline-flex items-center gap-8 relative flex-[0_0_auto]">
-            {transitionCards.map((card, index) => (
-              <Card
-                key={index}
-                className="relative w-[390px] h-[454.15px] border-0 shadow-none bg-transparent"
-              >
-                <CardContent className="relative w-full h-full p-0">
-                  <img
-                    className="absolute top-[42px] left-0 w-[390px] h-[412px]"
-                    alt="Background"
-                    src={card.background}
-                  />
+        <p className="text-center max-w-[702px] font-helvetica font-normal text-[#212833] text-lg md:text-xl lg:text-[22px] tracking-[-0.64px] leading-relaxed lg:leading-[35px]">
+          Quick, Painless Onboarding With Full Support Every Step Of The Way
+        </p>
+      </header>
 
-                  <div className="inline-flex flex-col items-start gap-8 absolute top-[124px] left-[26px]">
-                    <div className="flex items-center justify-between relative self-stretch w-full flex-[0_0_auto]">
+      <div className="grid w-full grid-cols-1 gap-4 px-3 mx-auto sm:grid-cols-2 lg:grid-cols-3 sm:gap-10 xl:gap-y-20 max-w-[1300px]">
+        {advantagesData.map((advantage, index) => (
+          <div className="relative pt-20" key={index}>
+             <img
+              className="absolute w-[150px] sm:w-[150px] md:w-[155px] xl:w-[162px] h-auto z-20 left-1/2 -ml-[51px] md:-ml-[52px] lg:-ml-[52px] xl:-ml-14 -mt-14"
+              alt={advantage.title}
+              src={advantage.icon}
+            />
+            <NotchedCard
+              notch={{
+                width: { base: 150, sm: 150, md: 150, lg: 150 },
+                depth: { base: 40, sm: 35, md: 40, lg: 50 },
+                bottomRadius: 25,
+                topRadius: 25,
+              }}
+              widthClass="w-full max-w-[400px] sm:w-[300px] md:w-[300px] lg:w-[320px] xl:w-[400px]"
+              heightClass="h-[300px] sm:h-[300px] lg:h-[300px] xl:h-[400px]"
+              shadowColor="#6a98ff"
+              className="z-10"
+            >
+              <CardContent className="relative flex flex-col items-start justify-center pt-16 xl:pt-20">
+                {/* Content */}
+                <div className="flex flex-col w-full items-start sm:items-start pb-[40px] relative z-10 text-center sm:text-left">
+                 <div className="flex items-center justify-between relative self-stretch w-full flex-[0_0_auto] mb-2 xl:mb-5">
                       <h3 className="relative flex items-center justify-center w-fit [font-family:'Helvetica_Neue-Medium',Helvetica] font-medium text-[#212833] text-2xl tracking-[0] leading-[34.1px] whitespace-nowrap">
-                        {card.title}
+                        {advantage.title}
                       </h3>
 
                       <Badge className="inline-flex items-center justify-center gap-2.5 px-3 py-2 relative flex-[0_0_auto] bg-[#004eff1a] rounded-[20px] hover:bg-[#004eff1a] border-0">
                         <span className="relative w-fit [font-family:'Helvetica_Neue-Medium',Helvetica] font-medium text-[#004eff] text-sm tracking-[0] leading-[17px] whitespace-nowrap">
-                          {card.badge}
+                          {advantage.badge}
                         </span>
                       </Badge>
                     </div>
 
-                    <ul className="flex flex-col w-[344px] items-start gap-3 relative flex-[0_0_auto]">
-                      {card.items.map((item, itemIndex) => (
-                        <li
-                          key={itemIndex}
-                          className="flex gap-2.5 items-center relative w-full flex-[0_0_auto]"
-                        >
-                          <img
-                            className="flex-shrink-0 w-5 h-5"
-                            alt="Check"
-                            src="/Incorporate/frame.svg"
-                          />
-
-                          <div className="relative flex items-center justify-start flex-1 [font-family:'Helvetica_Neue-Regular',Helvetica] font-normal text-[#212833e6] text-xl tracking-[0] leading-8">
-                            {renderTextWithBold(item.text, item.boldWords)}
-                          </div>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-
-                  <img
-                    className="absolute top-[-13px] left-[139px] w-[162px] h-[162px]"
-                    alt="Icon"
-                    src={card.icon}
-                  />
-                </CardContent>
-              </Card>
-            ))}
+                  <ul className="flex flex-col gap-[7px] xl:gap-[16.46px] mt-[10px]">
+                    {advantage.items.map((item, itemIndex) => (
+                      <li
+                        key={itemIndex}
+                        className="flex items-start gap-1 sm:gap-[13.72px]"
+                      >
+                        <img
+                          className="w-[25px] xl:w-[28.93px] h-[25px] xl:h-[28.93px] flex-shrink-0"
+                          alt="Checkmark"
+                          src={item.icon}
+                        />
+                        <span className="font-helvetica font-normal text-[#212833e6] text-[14px] xl:text-[19.2px] tracking-[0] leading-[25.3px]">
+                          
+                            <span
+                             
+                              className={
+                                
+                                  "font-helvetica font-medium"
+                                  
+                              }
+                            >
+                              {item.text}
+                            </span>
+                         
+                        </span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </CardContent>
+            </NotchedCard>
           </div>
-        </div>
+        ))}
       </div>
     </section>
   );
