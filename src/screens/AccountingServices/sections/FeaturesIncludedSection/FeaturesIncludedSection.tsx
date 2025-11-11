@@ -1,21 +1,23 @@
-import { CheckIcon } from "lucide-react";
 import React, { useState } from "react";
+import { Badge } from "../../../../components/ui/badge";
+import { Button } from "../../../../components/ui/button";
+import { CheckIcon } from "lucide-react";
 import {
   Tabs,
   TabsContent,
   TabsList,
   TabsTrigger,
-} from "../../../../IncorporateComponents/ui/tabs";
-import NotchedCard from "../../../../components/ui/NotchedCard";
+} from "../../../../components/ui/tabs";
+import NotchedCard from "../../../../UIComponents/NotchedCard";
 
 const taxBenefits = [
   {
     id: 1,
     text: (
       <>
-        <span className="font-semibold">Sales and purchase</span>
+        <span className="font-medium text-[#212833E5]">Sales and purchase</span>
         <br />
-        invoice recording
+        <span className="font-normal">invoice recording</span>
       </>
     ),
   },
@@ -23,9 +25,9 @@ const taxBenefits = [
     id: 2,
     text: (
       <>
-       <span className="font-semibold">Bank transaction</span> import
+       <span className="font-medium">Bank transaction</span> <span className="font-normal">import</span>
         <br />
-        and reconciliation
+      <span className="font-normal">and reconciliation</span>
       </>
     ),
   },
@@ -33,9 +35,9 @@ const taxBenefits = [
     id: 3,
     text: (
       <>
-       Expense <span className="font-semibold">categorization</span> and 
+      <span className="font-normal">Expense</span>  <span className="font-medium">categorization</span> <span className="font-normal">and</span>
         <br />
-        tracking
+       <span className="font-normal">tracking</span>
       </>
     ),
   },
@@ -43,9 +45,9 @@ const taxBenefits = [
     id: 4,
     text: (
       <>
-        <span className="font-semibold">Multi-Currency</span> Transaction
+        <span className="font-medium">Multi-Currency</span> <span className="font-normal">Transaction</span>
         <br />
-        Management
+        <span className="font-normal">Management</span>
       </>
     ),
   },
@@ -53,9 +55,9 @@ const taxBenefits = [
     id: 5,
     text: (
       <>
-        Receipt digitization
+       <span className="font-normal">Receipt digitization</span>
 <br />
-        and <span className="font-semibold">filing</span>
+       <span className="font-normal">and</span>  <span className="font-medium">filing</span>
       </>
     ),
   },
@@ -63,20 +65,19 @@ const taxBenefits = [
     id: 6,
     text: (
       <>
-        Petty cash <span className="font-semibold">management</span>
+       <span className="font-normal">Petty cash</span>  <span className="font-medium">management</span>
       </>
     ),
   },
 ];
-
 const strategicBenefits = [
   {
     id: 1,
     text: (
       <>
-        Gateway To<span className="font-semibold">1.4 Billion</span>
+        <span className="font-meium">Monthly Profit</span><span className="font-normal">&</span>
         <br />
-        Chinese Consumers
+        <span className="font-normal">Loss statements</span>
       </>
     ),
   },
@@ -84,9 +85,9 @@ const strategicBenefits = [
     id: 2,
     text: (
       <>
-        <span className="font-semibold">CEPA Agreement</span> For
+        <span className="font-normal">Balance Sheet</span>
         <br />
-        China Market Access
+        <span className="font-medium">Prepration</span>
       </>
     ),
   },
@@ -94,10 +95,8 @@ const strategicBenefits = [
     id: 3,
     text: (
       <>
-        <span className="font-semibold">Hub</span>
-        For Belt & Road
-        <br />
-        Initiative
+        <span className="font-normal">Cash Flow </span>
+        <span className="font-medium">Statements</span>
       </>
     ),
   },
@@ -105,8 +104,8 @@ const strategicBenefits = [
     id: 4,
     text: (
       <>
-        Free Trade Agreements
-        <br /> With<span className="font-semibold"> ASEAN</span>
+        <span className="font-normal">Management</span>
+        <br /> <span className="font-medium"> Accounts</span>
       </>
     ),
   },
@@ -114,23 +113,31 @@ const strategicBenefits = [
     id: 5,
     text: (
       <>
-        <span className="font-semibold">4-Hour Flight </span>
-        To Half The
+        <span className="font-normal">Budget Vs </span>
+       <span className="font-medium">Actual</span>
         <br />
-        World's Population
+        <span className="font-medium">Analysis</span>
+      </>
+    ),
+  },
+  {
+    id: 5,
+    text: (
+      <>
+        <span className="font-normal">Custom </span>
+       <span className="font-medium">Financial Reports</span>
       </>
     ),
   },
 ];
-
 const businessBenefits = [
   {
     id: 1,
     text: (
       <>
-        <span className="font-semibold">Corporate Tax:</span> 16.5%
+        <span className="font-medium">Accounts</span> <span className="font-normal">Receiveable</span>
         <br />
-        8.25% On First Hk$2m
+        <span className="font-normal">Tracking</span>
       </>
     ),
   },
@@ -138,9 +145,9 @@ const businessBenefits = [
     id: 2,
     text: (
       <>
-        <span className="font-semibold">No Vat/gst</span> Keeping
+        <span className="font-normal">Accounts</span> <span className="font-medium">Payable</span>
         <br />
-        prices Competitive
+        <span className="font-medium">Processing</span>
       </>
     ),
   },
@@ -148,8 +155,8 @@ const businessBenefits = [
     id: 3,
     text: (
       <>
-        No Withholding tax On <br />
-        <span className="font-semibold">Dividends</span>
+        <span className="font-normal">Customer </span>
+        <span className="font-medium">Invoicing</span>
       </>
     ),
   },
@@ -157,8 +164,8 @@ const businessBenefits = [
     id: 4,
     text: (
       <>
-        Territorial Tax System
-        <br />- Only <span className="font-semibold">Hk Income</span> Taxed
+        <span className="font-normal">Vendor</span> <span className="font-medium">Paymnet</span>
+        <br />  <span className="font-normal">Scheduling</span>
       </>
     ),
   },
@@ -166,21 +173,28 @@ const businessBenefits = [
     id: 5,
     text: (
       <>
-        Extensive Network of <br />
-        <span className="font-semibold">Tax Treaties</span>
+       <span className="font-normal">Cash Flow </span>
+        <span className="font-medium">Management</span>
+      </>
+    ),
+  },
+  {
+    id: 5,
+    text: (
+      <>
+       <span className="font-medium">Credit</span>
+        <span className="font-normal">Control</span>
       </>
     ),
   },
 ];
-
 const worldBenefits = [
   {
     id: 1,
     text: (
       <>
-        <span className="font-semibold">Corporate Tax:</span> 16.5%
-        <br />
-        8.25% On First Hk$2m
+        <span className="font-medium">Tax Provision </span>
+        <span className="font-normal">Calculation</span>
       </>
     ),
   },
@@ -188,9 +202,8 @@ const worldBenefits = [
     id: 2,
     text: (
       <>
-        <span className="font-semibold">No Vat/gst</span> Keeping
-        <br />
-        prices Competitive
+        <span className="font-normal">Profits Tax</span>
+       <span className="font-medium">Prepration</span>
       </>
     ),
   },
@@ -198,8 +211,7 @@ const worldBenefits = [
     id: 3,
     text: (
       <>
-        No Withholding tax On <br />
-        <span className="font-semibold">Dividends</span>
+        <span className="font-normal">Tax Depreciation Schedules</span>
       </>
     ),
   },
@@ -207,8 +219,8 @@ const worldBenefits = [
     id: 4,
     text: (
       <>
-        Territorial Tax System
-        <br />- Only <span className="font-semibold">Hk Income</span> Taxed
+       <span className="font-medium">Offshore </span>
+         <span className="font-normal">Claim Support</span>
       </>
     ),
   },
@@ -216,8 +228,15 @@ const worldBenefits = [
     id: 5,
     text: (
       <>
-        Extensive Network of <br />
-        <span className="font-semibold">Tax Treaties</span>
+        <span className="font-normal">IRD Correspondense</span>
+      </>
+    ),
+  },
+  {
+    id: 5,
+    text: (
+      <>
+        <span className="font-normal">Tax-Efficient Planing</span>
       </>
     ),
   },
@@ -225,141 +244,105 @@ const worldBenefits = [
 
 const tabsData = [
   {
-    value: "Bookkeeping & Transaction Processing",
+    value: "bookkeeping-transaction-processing",
     label: "Bookkeeping & Transaction Processing",
     benefits: taxBenefits,
   },
   {
-    value: "Financial Reporting",
+    value: "financial-reporting",
     label: "Financial Reporting",
     benefits: strategicBenefits,
   },
   {
-    value: "Accounts Management",
+    value: "accounts-management",
     label: "Accounts Management",
     benefits: businessBenefits,
   },
   {
-    value: "Tax Accounting",
+    value: "tax-accounting",
     label: "Tax Accounting",
     benefits: worldBenefits,
   },
 ];
 
 export const FeaturesIncludedSection = (): JSX.Element => {
-  return (
-    <section className="flex flex-col justify-between w-full py-8">
-      <div className="flex mx-auto w-full max-w-[952px] flex-col items-center gap-4 px-4 lg:mt-[130px]">
-        <div className="flex flex-col items-start w-full gap-4">
-          <div className="flex items-center justify-center w-full font-helvetica font-normal text-[#21283399] text-2xl text-center tracking-[0] leading-7">
-            Why Incorporate In Hong Kong
-          </div>
+  const [activeTab, setActiveTab] = useState("bookkeeping-transaction-processing"); // ✅ match tab value
 
-          <h2 className="flex items-center justify-center w-full font-georgia font-normal text-[#212833] text-[32px]  lg:text-[64px] text-center tracking-[0] leading-tight lg:leading-[72px]">
-            Hong Kong - Asia&#39;s Premier Business Jurisdiction
+  return (
+    <section className="flex flex-col w-full gap-10 py-8">
+      {/* Header */}
+      <div className="flex flex-col items-center gap-4 px-4 max-w-[952px] mx-auto">
+        <div className="flex flex-col items-start w-full gap-4">
+          <div className="w-full flex items-center justify-center font-helvetica font-normal text-[#21283399] text-2xl text-center tracking-[0] leading-7">
+            Our Services
+          </div>
+          <h2 className="w-full flex items-center justify-center font-georgia font-normal text-[#212833] text-[40px] md:text-[50px] lg:text-[64px] text-center tracking-[0] leading-[42px] md:leading-[60px] lg:leading-[72px]">
+            Everything You Need to Run Your Hong Kong Business
           </h2>
         </div>
-
-        <p className="flex items-center justify-center w-full max-w-[702px] font-helvetica font-normal text-[#212833] text-[18px] lg:text-[22px] text-center tracking-[-0.64px] leading-[30px]">
-          Discover the unmatched advantages of establishing
-          <br />
-          your company in Hong Kong
+        <p className="flex items-center justify-center max-w-[702px] font-helvetica font-normal text-[#212833] text-lg md:text-xl lg:text-[22px] text-center tracking-[-0.64px] leading-relaxed lg:leading-[35px]">
+          Comprehensive solutions tailored for modern businesses
         </p>
       </div>
 
-   <Tabs
-  defaultValue={tabsData[0].value}
-  className="relative z-10 w-full mt-[48px] flex flex-col items-center"
->
-  {/* --- Tabs ABOVE card on large screens --- */}
-  <div className="hidden lg:flex w-full justify-center mb-[-40px] z-20">
-    <TabsList
-      className="
-        flex items-center justify-center w-full max-w-[950px] gap-3 bg-transparent
-      "
-    >
-      {tabsData.map((tab) => (
-        <TabsTrigger
-          key={tab.value}
-          value={tab.value}
-          className={`inline-flex items-center justify-center gap-2.5 px-6 py-3 rounded-[50px]
-            data-[state=active]:shadow-[0px_24px_34px_#004eff47]
-            data-[state=active]:bg-[linear-gradient(131deg,rgba(104,150,255,1)_0%,rgba(0,78,255,1)_100%)]
-            data-[state=inactive]:bg-white
-            font-helvetica font-normal text-[14px] text-center
-            data-[state=active]:text-white data-[state=inactive]:text-[#212833]
-            whitespace-nowrap transition-all duration-200 lg:mb-[-60px]
-          `}
-        >
-          {tab.label}
-        </TabsTrigger>
-      ))}
-    </TabsList>
-  </div>
-
-  {/* --- The Notched Card --- */}
-  <NotchedCard
-    className="z-10 px-4 pt-6 mx-auto md:pt-8 md:px-6"
-    widthClass="w-[320px] md:w-[700px] lg:w-[1226px]"
-    heightClass="h-auto"
-    borderColor="bg-[#D7E3FF]"
-    shadowColor="#D7E3FF]"
-    notch={{
-      width: { base: 0, sm: 200, md: 700, lg: 900 },
-      depth: { base: 50, sm: 40, md: 45, lg: 50 },
-      bottomRadius: 25,
-      topRadius: 25,
-    }}
-  >
-    {/* --- Tabs INSIDE card on small/medium screens --- */}
-    <div className="block lg:hidden">
-      <TabsList
-        className="flex items-center justify-start w-full gap-2 mb-6 overflow-x-auto bg-transparent md:justify-center scrollbar-hide"
+      {/* Tabs */}
+      <Tabs
+        value={activeTab}
+        onValueChange={setActiveTab}
+        className="relative z-10 w-full mt-12"
       >
-        {tabsData.map((tab) => (
-          <TabsTrigger
-            key={tab.value}
-            value={tab.value}
-            className={`inline-flex items-center justify-center gap-2.5 px-3 py-2 rounded-[50px]
-              data-[state=active]:shadow-[0px_24px_34px_#004eff47]
-              data-[state=active]:bg-[linear-gradient(131deg,rgba(104,150,255,1)_0%,rgba(0,78,255,1)_100%)]
-              data-[state=inactive]:bg-white
-              font-helvetica font-normal text-xs md:text-[17px] text-center
-              data-[state=active]:text-white data-[state=inactive]:text-[#212833]
-              whitespace-nowrap
-            `}
-          >
-            {tab.label}
-          </TabsTrigger>
-        ))}
-      </TabsList>
-    </div>
+        <TabsList className="relative z-20 flex items-center scrollbar-hide justify-start w-[90%] h-auto gap-2 mx-auto overflow-x-auto bg-transparent sm:w-full sm:overflow-x-visible md:justify-center -mb-14 md:-mb-12 lg:-mb-15 xl:-mb-[55px]">
+          {tabsData.map((service) => (
+            <TabsTrigger
+              key={service.value}
+              value={service.value} // ✅ use tab.value not label
+              className="inline-flex items-center justify-center z-30 gap-2.5 p-1.5 md:p-2 lg:p-3 rounded-[50px] h-auto data-[state=active]:shadow-none sm:data-[state=active]:shadow-[0px_24px_34px_#004eff47] data-[state=active]:bg-[linear-gradient(131deg,rgba(104,150,255,1)_0%,rgba(0,78,255,1)_100%)] bg-white  data-[state=inactive]:bg-[#efefef] sm:data-[state=inactive]:bg-white font-helvetica font-normal text-xs md:text-[15px] text-center tracking-[0] leading-6 whitespace-nowrap data-[state=active]:text-white data-[state=inactive]:text-[#212833] mb-2"
+            >
+              {service.label}
+            </TabsTrigger>
+          ))}
+        </TabsList>
 
-    {/* --- Tabs Content (shared) --- */}
-    {tabsData.map((tab) => (
-      <TabsContent key={tab.value} value={tab.value} className="pb-10 mt-4">
-        <div className="relative flex items-center justify-center w-full">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-[60px] gap-y-[52px] lg:p-[3rem]">
-            {tab.benefits.map((benefit) => (
-              <div key={benefit.id} className="inline-flex items-start gap-4">
-                <div className="relative w-6 h-6 mt-1 flex items-center justify-center bg-[#d9e5ff] rounded-full flex-shrink-0">
-                  <CheckIcon className="w-4 h-4 text-[#004eff]" />
-                </div>
-                <div className="font-helvetica font-medium text-[#212833e6] text-xl leading-[30px]">
-                  {benefit.text}
+        <NotchedCard
+          notch={{
+            width: { base: 0, sm: 200, md: 700, lg: 875 },
+            depth: { base: 50, sm: 40, md: 45, lg: 50 },
+            bottomRadius: 25,
+            topRadius: 25,
+          }}
+          widthClass="w-full lg:w-[1000px] xl:w-[1300px]"
+          heightClass="h-auto lg:h-[400px] xl:h-[400px]"
+          shadowColor="#6a98ff"
+          className="z-10 px-3"
+        >
+          {tabsData.map((tab) => (
+            <TabsContent
+              key={tab.value}
+              value={tab.value} // ✅ matches trigger
+              className="px-10 pt-32 pb-10"
+            >
+              <div className="relative flex items-center justify-center w-full">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-[60px] gap-y-[52px]">
+                  {tab.benefits.map((benefit) => (
+                    <div
+                      key={benefit.id}
+                      className="inline-flex items-start gap-4"
+                    >
+                      <div className="relative w-6 h-6 mt-1 flex items-center justify-center bg-[#d9e5ff] rounded-full flex-shrink-0">
+                        <CheckIcon className="w-4 h-4 text-[#004eff]" />
+                      </div>
+                      <div className="font-helvetica font-medium text-[#212833E5] text-xl leading-[30px]">
+                        {benefit.text}
+                      </div>
+                    </div>
+                  ))}
                 </div>
               </div>
-            ))}
-          </div>
-        </div>
-      </TabsContent>
-    ))}
-  </NotchedCard>
-</Tabs>
-
-
-
-
+            </TabsContent>
+          ))}
+        </NotchedCard>
+      </Tabs>
     </section>
   );
 };
+

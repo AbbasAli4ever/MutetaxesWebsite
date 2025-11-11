@@ -7,6 +7,7 @@ const advantagesData = [
     title: "Business-friendly",
     icon: "/HomePage/HK1.png",
     background: "/HomePage/subtract-6.svg",
+    hasgradient: false,
     items: [
       {
         icon: "/HomePage/frame.svg",
@@ -43,6 +44,7 @@ const advantagesData = [
     title: "Tax Advantages",
     icon: "/HomePage/HK2.png",
     background: "/HomePage/frame-1171278986.svg",
+    hasgradient: true,
     items: [
       {
         icon: "/HomePage/frame.svg",
@@ -75,6 +77,7 @@ const advantagesData = [
     title: "Strategic Location",
     icon: "/HomePage/HK3.png",
     background: "/HomePage/subtract-8.svg",
+    hasgradient: false,
     items: [
       {
         icon: "/HomePage/frame-5.svg",
@@ -132,8 +135,8 @@ export const WhyHongKongSection = (): JSX.Element => {
 
       <div className="grid w-full grid-cols-1 gap-4 px-3 mx-auto sm:grid-cols-2 lg:grid-cols-3 sm:gap-10 xl:gap-y-20 max-w-[1300px]">
         {advantagesData.map((advantage, index) => (
-          <div className="relative pt-20" key={index}>
-             <img
+          <div className="relative pt-20 group" key={index}>
+            <img
               className="absolute w-[150px] sm:w-[150px] md:w-[155px] xl:w-[162px] h-auto z-20 left-1/2 -ml-[51px] md:-ml-[52px] lg:-ml-[52px] xl:-ml-14 -mt-14"
               alt={advantage.title}
               src={advantage.icon}
@@ -146,18 +149,28 @@ export const WhyHongKongSection = (): JSX.Element => {
                 topRadius: 25,
               }}
               widthClass="w-full max-w-[400px] sm:w-[300px] md:w-[300px] lg:w-[320px] xl:w-[400px]"
-              heightClass="h-[300px] sm:h-[300px] lg:h-[300px] xl:h-[400px]"
+              heightClass="h-[340px] sm:h-[340px] lg:h-[340px] xl:h-[400px]"
               shadowColor="#6a98ff"
               className="z-10"
             >
+              <div className="absolute w-full h-full overflow-hidden">
+                {advantage.hasgradient && (
+                  <>
+                    {/* Mobile + Tablet version (smaller and subtler) - hidden on group hover */}
+                    <div className="absolute block bottom-[-300px] left-1/2 -translate-x-1/2 w-[250px] h-[400px] rounded-full blur-[60px] bg-[#467eff] pointer-events-none opacity-100 transition-opacity duration-300 ease-in-out group-hover:opacity-0" />
+
+                    {/* Large screen version */}
+                  </>
+                )}
+              </div>
               <CardContent className="relative flex flex-col items-center justify-center pt-16 xl:pt-24">
                 {/* Content */}
-                <div className="flex flex-col items-center sm:items-start gap-1 pb-[40px] relative z-10 text-center sm:text-left">
+                <div className="flex flex-col items-center sm:items-start gap-1 pb-[40px] relative z-10 sm:text-left">
                   <h3 className="font-helvetica font-medium text-[#212833] text-2xl sm:text-[26px] md:text-[25px] lg:text-[25px] xl:text-[32px] leading-snug">
                     {advantage.title}
                   </h3>
 
-                  <ul className="flex flex-col gap-[7px] xl:gap-[16.46px] mt-[30px]">
+                  <ul className="flex flex-col gap-[7px] xl:gap-[16.46px] mt-[10px]">
                     {advantage.items.map((item, itemIndex) => (
                       <li
                         key={itemIndex}
@@ -173,9 +186,7 @@ export const WhyHongKongSection = (): JSX.Element => {
                             <span
                               key={segIndex}
                               className={
-                                segment.bold
-                                  ? "font-helvetica font-medium"
-                                  : ""
+                                segment.bold ? "font-helvetica font-medium" : ""
                               }
                             >
                               {segment.text}

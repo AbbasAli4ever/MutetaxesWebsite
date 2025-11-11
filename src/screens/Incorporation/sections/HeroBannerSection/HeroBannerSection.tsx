@@ -6,17 +6,17 @@ import { Button } from "../../../../IncorporateComponents/ui/button";
 const statisticsBadges = [
   {
     text: "100% Approval Rate",
-    className: "left-[53%] lg:bottom-[14%] lg:left-[62%]",
+    className: "bottom-[14%] left-[53%] lg:bottom-[14%] lg:left-[62%]",
     shadow: "shadow-[0px_11.91px_22.12px_#004eff52]",
   },
   {
     text: "50+ Countries Served",
-    className: "left-[3%] bottom-[0%] lg:bottom-[8%] lg:left-[50%]",
+    className: "left-[3%] bottom-[14%] lg:bottom-[8%] lg:left-[50%]",
     shadow: "shadow-[17.63px_11.92px_17.63px_#004eff52]",
   },
   {
     text: "2,500+ Companies Formed",
-    className: "bottom[17%] left-[1%] lg:bottom-[10%] lg:left-[33%]",
+    className: "bottom-[20%] left-[20%] lg:bottom-[10%] lg:left-[33%]",
     shadow: "shadow-[0px_11.91px_22.12px_#004eff52]",
   },
 ];

@@ -21,15 +21,12 @@ const services = [
       },
       {
         text: "Complete government registration",
-        
       },
       {
         text: "Company kit with chops and seals",
-        
       },
       {
         text: "First year registered office included",
-       
       },
     ],
     price: "€279",
@@ -43,19 +40,15 @@ const services = [
     features: [
       {
         text: "Annual return filing",
-      
       },
       {
         text: "Board resolutions and minutes",
-        
       },
       {
         text: "Regulatory compliance management",
-        
       },
       {
         text: "Registered office address",
-        
       },
     ],
     price: "€99/month",
@@ -69,19 +62,15 @@ const services = [
     features: [
       {
         text: "Monthly bookkeeping and reconciliation",
-     
       },
       {
         text: "Financial statements preparation",
-        
       },
       {
         text: "Tax-ready accounting",
-        
       },
       {
         text: "Cloud-based platform access",
-     
       },
     ],
     price: "€279/month",
@@ -95,19 +84,15 @@ const services = [
     features: [
       {
         text: "Profits tax return filing",
-        
       },
       {
         text: "Tax planning advisory",
-       
       },
       {
         text: "IRD correspondence",
-      
       },
       {
         text: "Offshore claims assistance",
-    
       },
     ],
     price: "€399/year",
@@ -121,19 +106,15 @@ const services = [
     features: [
       {
         text: "Document preparation",
-       
       },
       {
         text: "Auditor coordination",
- 
       },
       {
         text: "Working papers compilation",
-
       },
       {
         text: "Query resolution support",
-
       },
     ],
     price: "€799",
@@ -166,12 +147,12 @@ export const ServicesSection = (): JSX.Element => {
         onValueChange={setActiveTab}
         className="relative z-10 w-full mt-12"
       >
-<TabsList className="relative z-20 flex items-center scrollbar-hide justify-start w-[90%] h-auto gap-2 mx-auto overflow-x-auto bg-transparent sm:w-full sm:overflow-x-visible md:justify-center -mb-14 sm:-mb-11">
+        <TabsList className="relative z-20 flex items-center scrollbar-hide justify-start w-[90%] h-auto gap-2 mx-auto overflow-x-auto bg-transparent sm:w-full sm:overflow-x-visible md:justify-center -mb-14 sm:-mb-14">
           {services.map((service) => (
             <TabsTrigger
               key={service.id}
               value={service.id}
-              className={`inline-flex items-center justify-center z-30 gap-2.5 p-1.5 md:p-2 lg:p-3 rounded-[50px] h-auto data-[state=active]:shadow-none sm:data-[state=active]:shadow-[0px_24px_34px_#004eff47] data-[state=active]:bg-[linear-gradient(131deg,rgba(104,150,255,1)_0%,rgba(0,78,255,1)_100%)] bg-white  data-[state=inactive]:bg-[#efefef] sm:data-[state=inactive]:bg-white font-helvetica font-normal text-xs md:text-[17px] text-center tracking-[0] leading-6 whitespace-nowrap data-[state=active]:text-white data-[state=inactive]:text-[#212833] mb-2`}
+              className={`inline-flex items-center justify-center z-30 gap-2.5 p-1.5 md:p-2 lg:p-3 rounded-[50px] h-auto data-[state=active]:shadow-none sm:data-[state=active]:shadow-[0px_24px_34px_#004eff47] data-[state=active]:bg-[linear-gradient(131deg,rgba(104,150,255,1)_0%,rgba(0,78,255,1)_100%)] bg-white  data-[state=inactive]:bg-[#efefef] sm:data-[state=inactive]:bg-white font-helvetica font-normal text-xs md:text-[16px] text-center tracking-[0] leading-6 whitespace-nowrap data-[state=active]:text-white data-[state=inactive]:text-[#212833] mb-2`}
             >
               {service.label}
             </TabsTrigger>
@@ -179,19 +160,23 @@ export const ServicesSection = (): JSX.Element => {
         </TabsList>
 
         <NotchedCard
-        notch={{
-    width: { base:0, sm: 200, md: 700, lg: 750 }, // px values for each screen size
-    depth: { base: 50, sm: 40, md: 45, lg: 50 },     // px values for each screen size
-    bottomRadius: 25,
-    topRadius: 25,
-  }}
-  widthClass="w-full lg:w-[1000px] xl:w-[1300px]"
-  heightClass="h-auto lg:h-[520px] xl:h-[450px]"
-  shadowColor="#6a98ff"
-  className="z-10 px-3"
->
+          notch={{
+            width: { base: 0, sm: 200, md: 700, lg: 750 }, // px values for each screen size
+            depth: { base: 50, sm: 40, md: 45, lg: 50 }, // px values for each screen size
+            bottomRadius: 25,
+            topRadius: 25,
+          }}
+          widthClass="w-full lg:w-[1000px] xl:w-[1300px]"
+          heightClass="h-auto lg:h-[520px] xl:h-[450px]"
+          shadowColor="#6a98ff"
+          className="z-10 px-3"
+        >
           {services.map((service) => (
-            <TabsContent key={service.id} value={service.id} className="pt-20 mt-0">
+            <TabsContent
+              key={service.id}
+              value={service.id}
+              className="pt-20 mt-0"
+            >
               <div className="flex flex-col justify-center h-full w-full md:w-[90%] mx-auto items-center lg:items-start gap-8 lg:flex-row">
                 <div className="flex flex-col items-center flex-1 gap-12 sm:items-start">
                   <div className="flex flex-col items-start gap-6">
@@ -204,28 +189,26 @@ export const ServicesSection = (): JSX.Element => {
                         {service.subtitle}
                       </p>
                     </div>
-<div className="flex flex-col items-center justify-center w-full sm:w-auto">
-                    <div className="flex flex-col items-center gap-3 sm:items-start">
-                      <div className="flex items-center justify-center font-helvetica font-medium text-[#212833] text-xl tracking-[0] leading-7 whitespace-nowrap">
-                        Key Features:
-                      </div>
-
-                      
-                        <div className="grid items-center justify-center grid-cols-1 gap-4 md:grid-cols-2 sm:justify-start sm:items-start">
-                        {service.features.map((feature, index) => (
-                          <Badge
-                            key={index}
-                            variant="outline"
-                            className="flex items-center justify-center px-3.5 py-[7px] bg-white rounded-[50px] border border-solid border-[#2128333d] h-auto [font-family:'Helvetica_Neue-Regular',Helvetica] font-normal text-[#212833cc] text-sm tracking-[0] leading-7 whitespace-nowrap"
-                          >
-                            <span className="font-helvetica">
-                              {feature.text}
-                            </span>
-                          </Badge>
-                        ))}
+                    <div className="flex flex-col items-center justify-center w-full sm:w-auto">
+                      <div className="flex flex-col items-center gap-3 sm:items-start">
+                        <div className="flex items-center justify-center font-helvetica font-medium text-[#212833] text-xl tracking-[0] leading-7 whitespace-nowrap">
+                          Key Features:
                         </div>
-                      
-                    </div>
+
+                        <div className="grid items-center justify-center grid-cols-1 gap-4 md:grid-cols-2 sm:justify-start sm:items-start">
+                          {service.features.map((feature, index) => (
+                            <Badge
+                              key={index}
+                              variant="outline"
+                              className="flex items-center justify-center px-3.5 py-[7px] bg-white rounded-[50px] border border-solid border-[#2128333d] h-auto [font-family:'Helvetica_Neue-Regular',Helvetica] font-normal text-[#212833cc] text-sm tracking-[0] leading-7 whitespace-nowrap"
+                            >
+                              <span className="font-helvetica">
+                                {feature.text}
+                              </span>
+                            </Badge>
+                          ))}
+                        </div>
+                      </div>
                     </div>
                   </div>
 
