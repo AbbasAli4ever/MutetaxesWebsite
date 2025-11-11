@@ -33,13 +33,19 @@ export const HeroBannerSection = (): JSX.Element => {
                 </span>
               </div>
             </Badge>
-            <h1 className="[font-family:'Helvetica_Neue-Medium',Helvetica] font-normal text-[74px] text-center tracking-[-1.95px] leading-[83px]">
+            <h1 className="font-helvetica font-medium text-[74px] text-center tracking-[-1.95px] leading-[83px]">
               <span className="font-medium text-[#212833] block tracking-[-1px]">
                 Expert Accounting Services
               </span>
-              <span className="[font-family:'Georgia-Regular',Helvetica] text-[#004EFF] block">
-                for &nbsp;&nbsp;&nbsp;{" "} Hong Kong Businesses
-              </span>
+             <span className="block text-[#004EFF]">
+  <span className="font-helvetica text-[#212833]">
+    for&nbsp;&nbsp;&nbsp;
+  </span>
+  <span className="[font-family:'Georgia-Regular',Georgia]">
+    Hong Kong Businesses
+  </span>
+</span>
+
             </h1>
             <p className="[font-family:'Helvetica_Neue-Regular',Helvetica] font-normal text-[#212833] text-[27px] text-center tracking-[-0.64px] leading-[35px] whitespace-nowrap">
               From bookkeeping to financial reporting - accurate, timely, and compliant

@@ -289,7 +289,7 @@ export const ServicesOverviewSection = (): JSX.Element => {
   {/* --- The Notched Card --- */}
   <NotchedCard
     className="z-10 mx-auto pt-6 md:pt-8 px-4 md:px-6"
-    widthClass="w-[320px] md:w-[700px] lg:w-[1226px]"
+    widthClass="w-[280px] md:w-[700px] lg:w-[1226px]"
     heightClass="h-auto"
     borderColor="bg-[#D7E3FF]"
     shadowColor="#D7E3FF]"

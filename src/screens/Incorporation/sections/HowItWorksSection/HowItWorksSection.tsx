@@ -93,8 +93,8 @@ export const HowItWorksSection = (): JSX.Element => {
           : "top-[1119px] md:top-[896px]"
       } ${
         step.alignment === "right"
-          ? "md:left-[calc(50%+73px)]"
-          : "md:right-[calc(50%+82px)]"
+          ? " left-[calc(50%-152px)] md:left-[calc(50%+73px)]"
+          : "right-[calc(50%-142px)] md:right-[calc(50%+82px)]"
       } w-[292px] border-0 shadow-none bg-transparent`}
     >
       <CardContent className="relative w-[300px] h-[300px] flex flex-col pt-8 lg:pt-0">
