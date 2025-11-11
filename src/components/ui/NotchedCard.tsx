@@ -11,7 +11,7 @@ interface NotchedCardProps {
   borderWidth?: number;
   borderColor?: string;
   shadowColor?: string;
-  className?: string;
+  className?: string; 
   widthClass?: string; // e.g. "w-full md:w-[400px]"
   heightClass?: string; // e.g. "h-[400px] md:h-[500px]"
 }
