@@ -6,35 +6,35 @@ import {
   AccordionTrigger,
 } from "../../../../components/ui/accordion";
 const faqItems = [
-  {
+   {
     id: "item-1",
     question: "How long does company incorporation take?",
     answer:
-      "Our streamlined process allows for company incorporation in as fast as 5 business days, assuming all documentation is in order and there are no delays from the Hong Kong Companies Registry.",
+      "Standard incorporation takes 5-7 business days. Express service available in 1 day.",
   },
   {
     id: "item-2",
     question: "Do I need to be in Hong Kong to start a company?",
     answer:
-      "No, you do not need to be physically present in Hong Kong. The entire incorporation process can be completed 100% online from anywhere in the world with our platform.",
+      "No, we can handle everything remotely. No physical presence required.",
   },
   {
     id: "item-3",
     question: "What's included in the €279 starting price?",
     answer:
-      "The €279 Incorporation package includes company name search, preparation of all incorporation documents, Certificate of Incorporation, Business Registration Certificate, and first-year registered office address and company secretary services.",
+      "Basic bookkeeping, monthly statements, expense tracking, and platform access.",
   },
   {
     id: "item-4",
     question: "Can you help with bank account opening?",
     answer:
-      "Yes, we partner with leading digital banks and traditional banks in Hong Kong to facilitate remote bank account opening for our clients. We can guide you through the process and requirements.",
+      "Yes, we provide comprehensive bank introduction services and documentation support.",
   },
   {
     id: "item-5",
     question: "Do you support multiple entities?",
     answer:
-      "Absolutely. Our platform is designed to manage multiple Hong Kong entities from a single dashboard, making it easy to oversee your entire portfolio of companies.",
+      "Yes, we offer multi-entity management with consolidated reporting.",
   },
 ];
 export const FrequentlyAskedQuestionsSection = (): JSX.Element => {
