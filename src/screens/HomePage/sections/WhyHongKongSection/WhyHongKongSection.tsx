@@ -113,7 +113,7 @@ const advantagesData = [
 
 export const WhyHongKongSection = (): JSX.Element => {
   return (
-    <section className="flex flex-col w-full gap-16 py-8 sm:gap-24">
+    <section className="flex flex-col w-full py-8 mt-32">
       <header className="flex flex-col items-center gap-4 max-w-[952px] mx-auto px-4">
         <div className="flex flex-col items-start w-full gap-4">
           <p className="w-full text-center font-helvetica font-normal text-[#21283399] text-xl md:text-2xl tracking-[0] leading-7">

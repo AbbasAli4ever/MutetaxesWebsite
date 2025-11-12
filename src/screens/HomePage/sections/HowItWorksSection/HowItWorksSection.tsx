@@ -35,7 +35,7 @@ const steps = [
 
 export const HowItWorksSection = (): JSX.Element => {
   return (
-    <section className="relative w-full py-8">
+    <section className="relative w-full py-8 mt-32">
       <div className="flex flex-col w-full max-w-[952px] mx-auto items-center gap-4 px-4">
         <div className="flex flex-col items-start w-full gap-4">
           <div className="w-full flex items-center justify-center font-helvetica font-normal text-[#21283399] text-2xl text-center tracking-[0] leading-7">
@@ -51,7 +51,7 @@ export const HowItWorksSection = (): JSX.Element => {
       </div>
 
       <div className="relative w-full max-w-[1440px] mx-auto mt-[120px] px-4">
-        <div className="relative min-h-[900px] md:min-h-[768px]">
+        <div className="relative min-h-[900px] md:min-h-[708px]">
           <div className="absolute left-1/2 top-0 w-1 h-[768px] bg-[linear-gradient(180deg,rgba(58,118,255,1)_38%,rgba(239,239,239,1)_94%)] -translate-x-1/2" />
 
           {steps.map((step, index) => (
@@ -134,12 +134,12 @@ export const HowItWorksSection = (): JSX.Element => {
         </div>
 
         <div className="flex justify-center mt-[81px]">
-          <Button className="inline-flex items-center justify-center gap-2.5 pl-3 pr-1.5 py-1.5 rounded-[100px] bg-[linear-gradient(131deg,rgba(104,150,255,1)_0%,rgba(0,78,255,1)_100%)] h-auto border-0 hover:opacity-90">
+          <Button className="group inline-flex items-center justify-center gap-2.5 pl-3 pr-1.5 py-1.5 rounded-[100px] bg-[linear-gradient(131deg,rgba(104,150,255,1)_0%,rgba(0,78,255,1)_100%)] h-auto border-0 hover:opacity-90">
             <span className="font-helvetica font-medium text-white text-base text-center tracking-[0] leading-6 whitespace-nowrap">
               Incorporate Now
             </span>
             <img
-              className="w-[38px] h-[38px]"
+              className="w-[38px] h-[38px] transition-all duration-500 ease-in-out group-hover:-rotate-45"
               alt="Arrow"
               src="/HomePage/arrow.svg"
             />

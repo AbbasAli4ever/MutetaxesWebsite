@@ -43,7 +43,7 @@ export const TestimonialsSection = (): JSX.Element => {
   };
 
   return (
-    <section className="relative w-full py-16 md:py-20">
+    <section className="relative w-full py-16 mt-16 md:py-20">
       <div className="flex flex-col max-w-[1226px] mx-auto items-start gap-8 md:gap-10 px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <header className="flex flex-col items-start w-full gap-4 lg:flex-row lg:items-center lg:gap-40">
@@ -70,7 +70,7 @@ export const TestimonialsSection = (): JSX.Element => {
                   </h3>
 
                   <div className="flex flex-col gap-10 sm:gap-12">
-                    <blockquote className="font-helvetica w-full max-w-[678px] text-[#212833] text-[20px] sm:text-[24px] md:text-[28px] lg:text-[32px] xl:text-[34px] leading-snug sm:leading-[34px] md:leading-[38px] lg:leading-[40.8px]">
+                    <blockquote className="font-helvetica w-full h-[170px] sm:h-[160px] lg:h-[245px] xl:h-[203px] max-w-[678px] text-[#212833] text-[20px] sm:text-[24px] md:text-[28px] lg:text-[32px] xl:text-[34px] leading-snug sm:leading-[34px] md:leading-[38px] lg:leading-[40.8px]">
                       {testimonials[activeIndex].quote}
                     </blockquote>
 
@@ -121,7 +121,7 @@ export const TestimonialsSection = (): JSX.Element => {
           </div>
 
           {/* Right Card */}
-          <Card className="w-full xl:w-[412px] h-auto lg:h-[450px] xl:h-[410px] rounded-[20px] overflow-hidden border-0 relative mx-auto xl:mx-0">
+          <Card className="w-full lg:w-[370px] xl:w-[412px] h-auto lg:h-[450px] xl:h-[410px] rounded-[20px] overflow-hidden border-0 relative mx-auto xl:mx-0">
             <img
               className="absolute inset-0 object-cover w-full h-full"
               alt="Decorative gradient"

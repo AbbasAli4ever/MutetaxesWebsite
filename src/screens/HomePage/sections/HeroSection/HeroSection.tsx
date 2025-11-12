@@ -6,14 +6,16 @@ import { Link } from "react-router-dom";
 export const HeroSection = (): JSX.Element => {
   return (
     <section className="relative w-full bg-[#dbe6fe] md:bg-transparent h-auto">
-      <div className="relative w-full xl:w-[97vw] mx-auto h-[950px] sm:h-[700px] md:h-[850px] lg:h-[1100px] pt-5 overflow-hidden">
+      <div className="relative w-full xl:w-[97vw] mx-auto h-[1040px] sm:h-[700px] md:h-[850px] lg:h-[1100px] pt-5 overflow-hidden">
         <img
           className="hidden object-cover w-full h-full md:object-fill md:block"
           alt="G illustration"
           src="/HomePage/HeroBG.png"
         />
         <video
-          className="absolute bottom-0 -translate-x-1/2 left-1/2 w-full max-w-[450px] md:max-w-[650px] lg:max-w-[950px]"
+          className="absolute bottom-0 -translate-x-1/2 left-1/2 w-full max-w-[450px] md:max-w-[650px] lg:max-w-[950px]
+[mask-image:linear-gradient(to_top,black_90%,transparent_100%),linear-gradient(to_right,transparent_0%,black_5%,black_95%,transparent_100%)]
+[mask-composite:intersect]"
           autoPlay
           muted
           loop
@@ -21,7 +23,7 @@ export const HeroSection = (): JSX.Element => {
         />
       </div>
 
-      <div className="absolute top-24 md:top-40 lg:top-[207px] left-1/2 -translate-x-1/2 flex flex-col w-full max-w-[900px] px-4 items-center justify-center gap-6">
+      <div className="absolute top-24 md:top-40 lg:top-[180px] left-1/2 -translate-x-1/2 flex flex-col w-full max-w-[900px] px-4 items-center justify-center gap-6">
         <div className="flex flex-col items-center justify-center gap-6">
           <div className="relative flex flex-col items-center gap-6">
             <Badge className="h-auto px-[11px] py-2 bg-[#28b44608] rounded-[50px] border border-solid border-[#28b446] hover:bg-[#28b44608]">
@@ -35,22 +37,19 @@ export const HeroSection = (): JSX.Element => {
 
             <h1 className="font-helvetica font-medium text-5xl sm:text-5xl md:text-6xl lg:text-[74px] text-center tracking-[-1.95px] leading-tight md:leading-snug lg:leading-[83px]">
               <span className=" text-[#212833] ">
-                Your Complete Business{" "} 
-                <br />  
+                Your Complete Business <br />
               </span>
-               
+
               <div className="flex flex-col items-center justify-center gap-1 font-medium sm:flex-row ">
-             <span>
-                Solution in
-              </span>
-              <img
-              className="w-12 h-12 md:w-[70px] md:h-[70px] object-cover rounded-full"
-              alt="Ellipse"
-              src="/HomePage/ellipse-3-1.png"
-            />
-              <span className="font-georgia font-normal text-[#004eff]">
-                Hong Kong
-              </span>
+                <span>Solution in</span>
+                <img
+                  className="w-12 h-12 md:w-[70px] md:h-[70px] object-cover rounded-full"
+                  alt="Ellipse"
+                  src="/HomePage/ellipse-3-1.png"
+                />
+                <span className="font-georgia font-normal text-[#004eff]">
+                  Hong Kong
+                </span>
               </div>
             </h1>
 
@@ -58,16 +57,18 @@ export const HeroSection = (): JSX.Element => {
               From company formation to compliance - we handle your business
               essentials so you can focus on growth
             </p>
-
-            
           </div>
 
           <div className="flex flex-col items-center gap-4 sm:flex-row">
-            <Button className="h-auto gap-[35px] pl-3 pr-1.5 py-2 rounded-[100px] bg-[linear-gradient(131deg,rgba(104,150,255,1)_0%,rgba(0,78,255,1)_100%)] hover:opacity-90">
+            <Button className="group h-auto gap-[35px] pl-3 pr-1.5 py-2 rounded-[100px] bg-[linear-gradient(131deg,rgba(104,150,255,1)_0%,rgba(0,78,255,1)_100%)] hover:opacity-90">
               <span className="font-helvetica font-medium text-white text-base text-center tracking-[0] leading-6">
                 Incorporate Now
               </span>
-              <img className="w-[38px] h-[38px]" alt="Arrow" src="/HomePage/arrow.svg" />
+              <img
+                className="w-[38px] h-[38px] transition-all duration-500 ease-in-out group-hover:-rotate-45"
+                alt="Arrow"
+                src="/HomePage/arrow.svg"
+              />
             </Button>
 
             <Button

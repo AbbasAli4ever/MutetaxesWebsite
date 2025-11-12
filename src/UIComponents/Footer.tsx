@@ -33,7 +33,7 @@ const certifications = [
 export const Footer = (): JSX.Element => {
   return (
     <div className="flex flex-col w-full items-start gap-2.5 px-3 sm:px-6 py-6">
-    <footer className="flex flex-col items-start gap-6 w-full mx-auto bg-[#212833] rounded-3xl overflow-hidden px-6 sm:px-10 md:px-16 lg:px-24 pt-12 pb-6">
+    <footer className="flex flex-col mt-16 lg:mt-64 items-start gap-6 w-full mx-auto bg-[#212833] rounded-3xl overflow-hidden px-6 sm:px-10 md:px-16 lg:px-24 pt-12 pb-6">
       {/* Logo + Email */}
       <div className="flex flex-col items-start justify-between w-full gap-4 md:flex-row md:items-center">
         <div className="flex flex-col items-start gap-2">

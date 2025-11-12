@@ -85,7 +85,7 @@ export const PricingPlansSection = (): JSX.Element => {
                   bottomRight: 20,
                 }}
                 widthClass="w-full md:w-[580px] lg:w-[470px] xl:w-[580px]"
-                heightClass="h-[600px] md:h-[400px]"
+                heightClass="h-[420px] md:h-[400px]"
                 borderColor="bg-blue-200"
                 shadowColor="#6a98ff"
                 borderWidth={2}

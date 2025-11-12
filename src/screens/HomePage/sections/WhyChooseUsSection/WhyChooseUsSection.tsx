@@ -49,7 +49,7 @@ export const WhyChooseUsSection = (): JSX.Element => {
         </div>
 
         {/* Features Grid */}
-        <div className="grid w-full grid-cols-1 gap-4 sm:gap-10 xl:gap-y-20 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="grid w-full grid-cols-1 gap-x-4 sm:grid-cols-2 lg:grid-cols-3">
           {features.map((feature, index) => (
             <div className="relative pt-20" key={index}>
               <img
@@ -72,13 +72,13 @@ export const WhyChooseUsSection = (): JSX.Element => {
                 <CardContent className="relative flex flex-col items-center justify-center pt-16 xl:pt-24">
                   {/* Content */}
                   <div
-                    className="flex flex-col items-center sm:items-start gap-1 px-4 sm:px-6 pb-[40px] relative z-10 text-center sm:text-left"
+                    className="flex flex-col items-center sm:items-start gap-1 px-4 sm:px-4 pb-[0px] relative z-10 text-center sm:text-left"
                   >
                   <h3 className="font-helvetica font-medium text-[#212833] text-2xl sm:text-[24px] md:text-[25px] xl:text-[32px] leading-snug">
                     {feature.title}
                   </h3>
 
-                  <p className="font-helvetica font-normal text-[#212833e6] text-base px-5 sm:px-0 sm:text-base md:text-[15px] xl:text-[20px] leading-relaxed">
+                  <p className="font-helvetica font-normal text-[#212833e6] text-base sm:text-base md:text-[15px] xl:text-[20px] leading-snug sm:leading-snug md:leading-snug lg:leading-snug xl:leading-8">
                     {feature.description}
                   </p>
                   </div>

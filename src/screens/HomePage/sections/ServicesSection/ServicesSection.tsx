@@ -126,7 +126,7 @@ export const ServicesSection = (): JSX.Element => {
   const [activeTab, setActiveTab] = useState("incorporation");
 
   return (
-    <section className="flex flex-col w-full gap-10 py-8">
+    <section className="flex flex-col w-full gap-10 py-8 mt-16">
       <div className="flex flex-col items-center gap-4 px-4 max-w-[952px] mx-auto">
         <div className="flex flex-col items-start w-full gap-4">
           <div className="w-full flex items-center justify-center font-helvetica font-normal text-[#21283399] text-2xl text-center tracking-[0] leading-7">
@@ -145,9 +145,9 @@ export const ServicesSection = (): JSX.Element => {
       <Tabs
         value={activeTab}
         onValueChange={setActiveTab}
-        className="relative z-10 w-full mt-12"
+        className="relative z-10 w-full mt-0"
       >
-        <TabsList className="relative z-20 flex items-center scrollbar-hide justify-start w-[90%] h-auto gap-2 mx-auto overflow-x-auto bg-transparent sm:w-full sm:overflow-x-visible md:justify-center -mb-14 sm:-mb-14">
+        <TabsList className="relative z-20 flex items-center scrollbar-hide justify-start w-[90%] h-auto gap-2 mx-auto overflow-x-auto bg-transparent sm:w-full sm:overflow-x-visible md:justify-center -mb-14 md:-mb-12 lg:-mb-14">
           {services.map((service) => (
             <TabsTrigger
               key={service.id}
@@ -225,14 +225,14 @@ export const ServicesSection = (): JSX.Element => {
 
                     <Button
                       variant="outline"
-                      className="hidden inline-flex gap-2.5 pl-3 pr-1.5 py-1.5 rounded-[100px] border-[1.5px] border-solid border-[#004eff] items-center justify-center h-auto bg-transparent hover:bg-[#004eff]/10"
+                      className="group inline-flex gap-2.5 pl-3 pr-1.5 py-1.5 transition-all duration-500 ease-in-out hover:bg-[#3b77ff] rounded-[100px] border-[1.5px] border-solid border-[#004eff] items-center justify-center h-auto bg-transparent "
                     >
-                      <span className="flex items-center justify-center font-helvetica font-medium text-[#004eff] text-base text-center tracking-[0] leading-6 whitespace-nowrap">
+                      <span className="flex items-center justify-center font-helvetica font-medium text-[#004eff] transition-all duration-500 ease-in-out group-hover:text-white text-base text-center tracking-[0] leading-6 whitespace-nowrap">
                         Go to Incorporation
                       </span>
 
                       <img
-                        className="w-[38px] h-[38px]"
+                        className="w-[38px] h-[38px] transition-all duration-500 ease-in-out group-hover:-rotate-45"
                         alt="Arrow"
                         src="/HomePage/arrow.svg"
                       />

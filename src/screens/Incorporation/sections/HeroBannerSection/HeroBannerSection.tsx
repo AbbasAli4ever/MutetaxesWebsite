@@ -104,11 +104,11 @@ export const HeroBannerSection = (): JSX.Element => {
           </div>
 
           <div className="flex flex-col gap-4 lg:flex-row lg:items-center lg:gap-4 xl:flex xl:items-center">
-            <Button className="h-auto gap-[35px] pl-3 pr-1.5 py-2 rounded-[100px] bg-[linear-gradient(131deg,rgba(104,150,255,1)_0%,rgba(0,78,255,1)_100%)] hover:opacity-90">
+            <Button className="group h-auto gap-[35px] pl-3 pr-1.5 py-2 rounded-[100px] bg-[linear-gradient(131deg,rgba(104,150,255,1)_0%,rgba(0,78,255,1)_100%)] hover:opacity-90">
               <span className="font-helvetica font-normal text-white text-base text-center tracking-[0] leading-6">
                 Incorporate Now
               </span>
-              <img className="w-[38px] h-[38px]" alt="Arrow" src="/HomePage/arrow.svg" />
+              <img className="w-[38px] h-[38px] transition-all duration-500 ease-in-out group-hover:-rotate-45" alt="Arrow" src="/HomePage/arrow.svg" />
             </Button>
 
             <Button

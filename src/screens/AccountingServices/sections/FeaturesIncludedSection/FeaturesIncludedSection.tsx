@@ -311,7 +311,7 @@ export const FeaturesIncludedSection = (): JSX.Element => {
             <TabsTrigger
               key={service.value}
               value={service.value} // ✅ use tab.value not label
-              className="inline-flex items-center justify-center z-30 gap-2.5 p-1.5 md:p-2 lg:p-3 rounded-[50px] h-auto data-[state=active]:shadow-none sm:data-[state=active]:shadow-[0px_24px_34px_#004eff47] data-[state=active]:bg-[linear-gradient(131deg,rgba(104,150,255,1)_0%,rgba(0,78,255,1)_100%)] bg-white  data-[state=inactive]:bg-[#efefef] sm:data-[state=inactive]:bg-white font-helvetica font-normal text-xs md:text-[15px] text-center tracking-[0] leading-6 whitespace-nowrap data-[state=active]:text-white data-[state=inactive]:text-[#212833] mb-2"
+              className="inline-flex items-center justify-center z-30 gap-2.5 p-1.5 md:p-2 lg:p-3 rounded-[50px] h-auto data-[state=active]:shadow-none sm:data-[state=active]:shadow-[0px_24px_34px_#004eff47] data-[state=active]:bg-[linear-gradient(131deg,rgba(104,150,255,1)_0%,rgba(0,78,255,1)_100%)] bg-white  data-[state=inactive]:bg-[#efefef] sm:data-[state=inactive]:bg-white font-helvetica font-normal text-xs md:text-[12px] lg:text-[15px] text-center tracking-[0] leading-6 whitespace-nowrap data-[state=active]:text-white data-[state=inactive]:text-[#212833] mb-2"
             >
               {service.label}
             </TabsTrigger>
@@ -326,7 +326,7 @@ export const FeaturesIncludedSection = (): JSX.Element => {
             topRadius: 25,
           }}
           widthClass="w-full lg:w-[1000px] xl:w-[1300px]"
-          heightClass="h-auto lg:h-[400px] xl:h-[400px]"
+          heightClass="h-auto lg:h-[520px] xl:h-[430px]"
           shadowColor="#6a98ff"
           className="z-10 px-3"
         >

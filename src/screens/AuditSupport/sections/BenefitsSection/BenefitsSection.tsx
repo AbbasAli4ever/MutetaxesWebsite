@@ -12,7 +12,7 @@ const benefits = [
 export const BenefitsSection = (): JSX.Element => {
   return (
     <section className="relative w-full rounded-[30px] px-4 sm:px-6 md:px-8">
-      <div className="relative w-full h-[250px] sm:h-[300px] md:h-[300px] lg:h-auto xl:w-[95vw] mx-auto mt-96 md:mt-20 lg:mt-10 xl:mt-0">
+      <div className="relative w-full h-[210px] sm:h-[300px] md:h-[300px] lg:h-auto xl:w-[95vw] mx-auto mt-96 md:mt-20 lg:mt-10 xl:mt-0">
         <img
           className="object-cover w-full h-auto"
           alt="Union"
@@ -56,13 +56,13 @@ export const BenefitsSection = (): JSX.Element => {
           </div>
 
           {/* Buttons */}
-          <div className="absolute flex flex-col flex-wrap items-center justify-center gap-2 mt-6 -bottom-20 lg:-bottom-4 xl:bottom-0 md:flex-row xl:gap-3 sm:gap-1 sm:mt-8">
-            <Button className="inline-flex items-center justify-center gap-2 pl-3 pr-2 sm:pr-1.5 py-6 xl:py-7 rounded-[100px] bg-[linear-gradient(131deg,rgba(104,150,255,1)_0%,rgba(0,78,255,1)_100%)]">
+          <div className="absolute flex flex-col flex-wrap items-center justify-center gap-2 mt-6 -bottom-20 lg:-bottom-8 xl:bottom-0 md:flex-row xl:gap-1 sm:gap-1 sm:mt-8">
+            <Button className="group inline-flex items-center justify-center gap-2 pl-3 pr-2 sm:pr-1.5 py-6 xl:py-7 rounded-[100px] bg-[linear-gradient(131deg,rgba(104,150,255,1)_0%,rgba(0,78,255,1)_100%)]">
               <span className="text-sm font-medium leading-6 text-white font-helvetica sm:text-xs xl:text-base whitespace-nowrap">
                 Get Audit Support - €799
               </span>
               <img
-                className="w-[30px] sm:w-[28px] h-[30px] sm:h-[28px] xl:h-[38px] xl:w-[38px]"
+                className="w-[30px] sm:w-[28px] h-[30px] sm:h-[28px] xl:h-[38px] xl:w-[38px] transition-all duration-500 ease-in-out group-hover:-rotate-45"
                 alt="Arrow"
                 src="/HomePage/arrow.svg"
               />
