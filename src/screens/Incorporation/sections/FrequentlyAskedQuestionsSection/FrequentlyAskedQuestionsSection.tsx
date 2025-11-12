@@ -62,12 +62,12 @@ export const FrequentlyAskedQuestionsSection = (): JSX.Element => {
             className="overflow-hidden bg-white border border-[#E5E7EB] rounded-xl shadow-sm"
           >
             <AccordionTrigger className="flex items-center gap-4 px-4 sm:px-5 md:px-6 py-4 sm:py-5 md:py-6 hover:no-underline [&[data-state=open]>svg]:rotate-180">
-              <span className="flex-1 text-left font-helvetica font-normal text-[#212833] text-sm sm:text-base md:text-[20px] leading-6 sm:leading-7 tracking-[-0.32px]">
+              <span className="font-helvetica flex-1 text-left font-medium text-[#212833] text-sm sm:text-base md:text-[15px] leading-6 sm:leading-7 tracking-[-0.32px]">
                 {item.question}
               </span>
             </AccordionTrigger>
             <AccordionContent className="px-4 pb-4 sm:px-5 md:px-6 sm:pb-5 md:pb-6">
-              <p className="font-normal font-helvetica text-[#212833] text-sm sm:text-base md:text-lg leading-6 sm:leading-7 tracking-[-0.32px]">
+              <p className="font-helvetica font-normal text-[#212833] text-sm sm:text-base md:text-[15px] leading-6 sm:leading-7 tracking-[-0.32px]">
                 {item.answer}
               </p>
             </AccordionContent>
