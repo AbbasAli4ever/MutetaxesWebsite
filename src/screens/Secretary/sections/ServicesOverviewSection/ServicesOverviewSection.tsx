@@ -11,7 +11,7 @@ const cardsData = [
       hong Kong Law
     </div>),
     description:
-      "Every Hong Kong Company Must Appoint A Company Secretary Within 6 Months Of Incorporation Under The Companies Ordinance (cap. 622).",
+      "Every Hong Kong Company MUST Appoint A Company Secretary Within 6 Months Of Incorporation Under The Companies Ordinance (cap. 622).",
     background: "/Secretary/subtract-5.svg",
     type: "text",
     shadowColor: "#6a98ff",
@@ -46,7 +46,7 @@ const cardsData = [
     background: "/Secretary/subtract-7.svg",
     type: "warning-list",
     shadowColor: "#fbc3bf",
-    borderColor: "#d7e3ff",
+    borderColor: "#fbc3bf",
     items: [
       "Daily Fines Up To Hk$25,000",
       "Director Prosecution Risk",
@@ -59,7 +59,7 @@ const cardsData = [
 
 export const ServicesOverviewSection = (): JSX.Element => {
   return (
-    <section className="flex flex-col w-full items-center gap-14 max-w-[1200px] mx-auto py-8 relative">
+    <section className="flex flex-col w-full items-center gap-14 max-w-[1200px] mx-auto py-8 relative mt-0 lg:mt-[130px]">
       <header className="inline-flex flex-col items-center gap-4 relative flex-[0_0_auto]">
         <div className="flex flex-col items-start w-full gap-4">
           <p className="w-full text-center font-helvetica font-normal text-[#21283399] text-xl md:text-2xl tracking-[0] leading-7">
@@ -96,7 +96,7 @@ export const ServicesOverviewSection = (): JSX.Element => {
               widthClass="w-full max-w-[400px] sm:w-[300px] md:w-[300px] lg:w-[300px] xl:w-[400px]"
               heightClass="h-[380px] sm:h-[380px] lg:h-[350px] xl:h-[430px]"
               shadowColor={card.shadowColor}
-              borderColor={`bg-[${card.borderColor}]`}
+              borderColor={card.borderColor}
               className="z-10"
             >
               <CardContent className="relative flex flex-col items-center justify-center pt-16 xl:pt-24">
@@ -106,7 +106,7 @@ export const ServicesOverviewSection = (): JSX.Element => {
                   </h3>
 
                   {card.type === "text" && (
-                    <p className="font-helvetica font-normal text-[#212833e6] text-base sm:text-base md:text-[15px] xl:text-[20px] leading-relaxed">
+                    <p className="font-helvetica font-normal text-[#212833e6] text-base sm:text-base md:text-[15px] xl:text-[20px] xl:leading-[30px]">
                       {card.description}
                     </p>
                   )}
@@ -139,7 +139,7 @@ export const ServicesOverviewSection = (): JSX.Element => {
 
 
                  {card.type === "warning-list" && (
-  <div className="flex flex-col mx-auto items-start gap-4">
+  <div className="flex flex-col items-start gap-4 mx-auto">
     {card.items?.map((item, index) => {
       if (typeof item !== "string") return null; // safety check
 

@@ -20,7 +20,7 @@ const advantageCards = [
   {
     title: "Mobile Access",
     backgroundSrc: "/Secretary/subtract-4.svg",
-    iconSrc: "/Secretary/valuepropositionsection-6.svg",
+    iconSrc: "/Secretary/mobileicon.png",
     sideImgSrc: "/Secretary/b2.png",
     items: [
       "Ios/android Apps",
@@ -34,7 +34,7 @@ const advantageCards = [
 export const AdvantagesSection = (): JSX.Element => {
   return (
     <section className="w-full py-20">
-      <div className="flex flex-col max-w-[1260px] mx-auto items-center gap-16 px-4">
+      <div className="flex flex-col max-w-[1260px] mx-auto items-center gap-6 px-4">
         <header className="flex flex-col max-w-[882px] items-center gap-4">
           <p className="w-full text-center font-helvetica font-normal text-[#21283399] text-xl md:text-2xl tracking-[0] leading-7">
             Dashboard
@@ -107,12 +107,9 @@ export const AdvantagesSection = (): JSX.Element => {
           ))}
         </div>
 
-        <div className="relative w-full max-w-[1185px] h-auto min-h-[127px] rounded-[20px] overflow-hidden bg-[linear-gradient(131deg,rgba(104,150,255,1)_0%,rgba(0,78,255,1)_100%)] px-6 py-6 md:px-10 md:py-8">
+        <div className="relative w-full max-w-[1185px] h-auto min-h-[127px] rounded-[20px] overflow-hidden bg-[#145cff] px-6 py-6 md:px-10 md:py-6">
   {/* Decorative blurred circles */}
-  <div className="absolute inset-0 overflow-hidden">
-    <div className="absolute top-[50%] left-[50%] w-[600px] h-[600px] md:w-[800px] md:h-[800px] xl:w-[949px] xl:h-[949px] -translate-x-1/2 -translate-y-1/2 rotate-[12.34deg] blur-[27.38px] bg-[linear-gradient(226deg,rgba(0,78,255,0.9)_0%,rgba(222,232,255,0.18)_100%)]" />
-    <div className="absolute top-[55%] left-[50%] w-[600px] h-[600px] md:w-[800px] md:h-[800px] xl:w-[949px] xl:h-[949px] -translate-x-1/2 -translate-y-1/2 rotate-[12.34deg] blur-[27.38px] bg-[linear-gradient(226deg,rgba(0,78,255,0.9)_0%,rgba(222,232,255,0.18)_100%)]" />
-  </div>
+  
 
   {/* Text content */}
   <div className="relative flex flex-col gap-2 md:gap-3 xl:gap-4">
@@ -125,13 +122,13 @@ export const AdvantagesSection = (): JSX.Element => {
   </div>
 
   {/* Icon inside two circular divs */}
-  <div className="absolute flex items-center justify-center top-7 right-3 sm:right-4 md:top-5 md:right-6">
+  <div className="absolute flex items-center justify-center top-7 right-3 sm:right-4 md:top-3 md:right-6">
     <div className="flex items-center justify-center p-2 rounded-full sm:p-4 bg-white/10">
       <div className="flex items-center justify-center p-2 rounded-full sm:p-4 bg-white/20">
         <img
-          src="/Secretary/frame-49.svg"
+          src="/Secretary/lock.png"
           alt="Security icon"
-          className="w-[28px] h-[28px] md:w-[36px] md:h-[36px] lg:w-[44px] lg:h-[44px]"
+          className="w-[28px] h-[28px] md:w-[36px] md:h-[36px] lg:w-[42px] lg:h-[44px]"
         />
       </div>
     </div>

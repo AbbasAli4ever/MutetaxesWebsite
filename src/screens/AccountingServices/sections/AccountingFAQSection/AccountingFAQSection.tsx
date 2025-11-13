@@ -41,7 +41,7 @@ const faqItems = [
 
 export const AccountingFAQSection = (): JSX.Element => {
   return (
-    <section className="flex flex-col w-full items-center gap-8 sm:gap-10 md:gap-12 px-4 sm:px-6 md:px-12 lg:px-20 xl:px-[120px] py-10 sm:py-12 md:py-16 relative">
+    <section className="flex mt-0 lg:mt-[130px] flex-col w-full items-center gap-8 sm:gap-10 md:gap-12 px-4 sm:px-6 md:px-12 lg:px-20 xl:px-[120px] py-10 sm:py-12 md:py-16 relative">
       {/* Header */}
       <header className="flex flex-col max-w-[952px] w-full items-center text-center gap-3 sm:gap-4">
         <p className="font-normal text-[#21283399] text-lg sm:text-xl md:text-2xl leading-6 sm:leading-7">

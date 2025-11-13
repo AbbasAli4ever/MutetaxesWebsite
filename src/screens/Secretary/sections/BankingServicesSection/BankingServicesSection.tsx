@@ -9,7 +9,7 @@ const features = [
   },
   {
     title: "100% Compliance Record",
-    description: "Licensed professionals with 15+\nyears experience",
+    description: "Licensed professionals with 15+ years experience",
     icon: "/Secretary/container.svg",
   },
   {
@@ -36,8 +36,8 @@ const features = [
 
 export const BankingServicesSection = (): JSX.Element => {
   return (
-    <section className="flex flex-col w-full gap-12 py-10">
-      <div className="flex flex-col items-center gap-6 max-w-[980px] mx-auto px-4">
+    <section className="flex flex-col w-full gap-12 py-10 mt-0 lg:mt-[130px]">
+      <div className="flex flex-col items-center gap-6 max-w-[1080px] mx-auto px-4">
          <p className="w-full text-center font-helvetica font-normal text-[#21283399] text-xl md:text-2xl tracking-[0] leading-7">
             Compliance Partner
           </p>
@@ -51,24 +51,24 @@ export const BankingServicesSection = (): JSX.Element => {
         </p>
       </div>
 
-      <div className="flex flex-col items-center gap-[13px] max-w-[1117px] mx-auto px-4 w-full">
+      <div className="flex flex-col items-center gap-[13px] max-w-[1217px] mx-auto px-4 w-full">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-[17px] w-full">
           {features.slice(0, 3).map((feature, index) => (
             <Card
               key={index}
-              className="bg-white rounded-[10px] border border-solid border-[#0000001a]"
+              className="bg-white rounded-[10px] border-2 border-solid border-[#d7e3ff]"
             >
-              <CardContent className="flex items-start gap-2 p-4">
+              <CardContent className="flex items-start gap-2 px-4 py-4">
                 <img
                   className="flex-shrink-0 w-8 h-8"
                   alt="Feature icon"
                   src={feature.icon}
                 />
                 <div className="flex flex-col flex-1 gap-3">
-                  <h3 className="[font-family:'Helvetica_Neue-Medium',Helvetica] font-medium text-[#212833] text-2xl tracking-[0] leading-5">
+                  <h3 className="font-helvetica font-medium text-[#212833] text-2xl tracking-[0] leading-5">
                     {feature.title}
                   </h3>
-                  <p className="[font-family:'Helvetica_Neue-Regular',Helvetica] font-normal text-[#212833] text-base tracking-[0] leading-[17px] whitespace-pre-line">
+                  <p className="font-helvetica font-normal max-w-[200px] text-[#212833] text-base tracking-[0] leading-[17px] whitespace-pre-line">
                     {feature.description}
                   </p>
                 </div>
@@ -81,7 +81,7 @@ export const BankingServicesSection = (): JSX.Element => {
           {features.slice(3, 6).map((feature, index) => (
             <Card
               key={index}
-              className="bg-white rounded-[10px] border border-solid border-[#0000001a]"
+              className="bg-white rounded-[10px] border-2 border-solid border-[#d7e3ff]"
             >
               <CardContent className="flex items-start gap-2 p-4">
                 <img

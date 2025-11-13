@@ -48,7 +48,7 @@ const statutoryRecordSections = [
 
 export const PricingPlansSection = (): JSX.Element => {
   return (
-    <section className="w-full py-20">
+    <section className="w-full py-20 mt-0 lg:mt-[130px]">
       <div className="flex flex-col max-w-[1260px] mx-auto items-center gap-6 px-4">
         <header className="flex flex-col max-w-[882px] items-center gap-4">
           <p className="w-full text-center font-helvetica font-normal text-[#21283399] text-xl md:text-2xl tracking-[0] leading-7">
@@ -121,7 +121,7 @@ export const PricingPlansSection = (): JSX.Element => {
           ))}
         </div>
 
-      <Card className="w-full max-w-[1226px] mx-auto rounded-[20px] overflow-hidden border-0 bg-[linear-gradient(131deg,rgba(104,150,255,1)_0%,rgba(0,78,255,1)_100%)] px-4 sm:px-8 py-6">
+      <Card className="w-full max-w-[1226px] mx-auto rounded-[20px] overflow-hidden border-0 bg-[#0f58ff] px-4 sm:px-8 py-6">
   <CardContent className="relative p-0 overflow-hidden">
     {/* Blurred background circle */}
    
@@ -131,7 +131,7 @@ export const PricingPlansSection = (): JSX.Element => {
       <div className="flex flex-col-reverse items-center justify-between w-full gap-8 lg:flex-row lg:items-start">
         {/* Left Section */}
         <div className="flex flex-col gap-4 w-full lg:w-[70%] text-left">
-          <h3 className="font-medium text-white text-2xl sm:text-3xl md:text-[32px] leading-tight">
+          <h3 className="font-helvetica font-medium text-white text-2xl sm:text-3xl md:text-[32px] leading-tight">
             Key Features
           </h3>
 
@@ -150,7 +150,7 @@ export const PricingPlansSection = (): JSX.Element => {
                     alt="Tick Icon"
                     src="/Secretary/greyticke.png"
                   />
-                  <p className="text-white/90 text-base sm:text-lg md:text-[18.2px] leading-snug">
+                  <p className="text-white/90 text-base sm:text-lg md:text-[16.2px] leading-snug font-helvetica">
                     {item}
                   </p>
                 </div>

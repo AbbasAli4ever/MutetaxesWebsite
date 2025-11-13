@@ -63,7 +63,7 @@ const pricingTiers = [
 
 export const HongKongOverviewSection = (): JSX.Element => {
   return (
-    <section className="flex flex-col w-full gap-10 py-8 lg:mt-[100px]">
+    <section className="flex flex-col w-full gap-10 py-8 lg:mt-[130px]">
       <header className="flex flex-col items-center gap-4 px-4 max-w-[1016px] mx-auto">
         <div className="flex flex-col items-center w-full gap-4">
           <p className="font-helvetica font-normal text-[#21283399] lg:text-2xl text-center tracking-[0] leading-7">
@@ -76,7 +76,7 @@ export const HongKongOverviewSection = (): JSX.Element => {
         </div>
 
         <p className="font-helvetica font-normal text-[#212833] text-[15px] lg:text-[22px] text-center tracking-[-0.64px] leading-[35px] max-w-[702px]">
-          We help you select the optimal structure for your business goals
+          A transparent, step-by-step process from start to finish
         </p>
       </header>
 
@@ -122,7 +122,7 @@ export const HongKongOverviewSection = (): JSX.Element => {
                       {tier.title}
                     </h3>
 
-                    <p className="[-webkit-text-stroke:0.9px_#707070] font-helvetica font-normal text-[#65676c] text-lg tracking-[0.45px] leading-6">
+                    <p className=" font-helvetica font-normal text-[#65676c] text-lg tracking-[0.45px] leading-6">
                       {tier.description}
                     </p>
                   </div>
@@ -191,7 +191,7 @@ export const HongKongOverviewSection = (): JSX.Element => {
 
                   <div className="font-helvetica font-normal text-[#212833e6] text-base tracking-[0] leading-[18.5px]">
                     <span>Supprot: </span>
-                    <span className="font-helvetica font-normal">
+                    <span className="font-normal font-helvetica">
                       {tier.support}
                     </span>
                   </div>

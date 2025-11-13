@@ -63,7 +63,7 @@ export const HeroBannerSection = (): JSX.Element => {
         ))}
         </div>
       </div>
-      <div className="absolute top-24 md:top-40 lg:top-[207px] left-1/2 -translate-x-1/2 flex flex-col w-full max-w-[1200px] px-4 items-center justify-center gap-6">
+      <div className="absolute top-24 md:top-40 lg:top-[180px] left-1/2 -translate-x-1/2 flex flex-col w-full max-w-[1200px] px-4 items-center justify-center gap-6">
         <div className="flex flex-col items-center justify-center gap-6">
           <div className="relative flex flex-col items-center gap-6">
             <Badge className="h-auto px-[11px] py-2 bg-[#28b44608] rounded-[50px] border border-solid border-[#28B446] hover:bg-[#28b44608]">
@@ -92,7 +92,7 @@ export const HeroBannerSection = (): JSX.Element => {
                 </span>
               </div>
             </h1>
-            <p className="w-full max-w-[702px] font-helvetica font-normal text-[#212833] text-lg md:text-xl lg:text-[27px] text-center tracking-[-0.64px] leading-normal md:leading-[35px]">
+            <p className="w-full max-w-[902px] font-helvetica font-normal text-[#212833] text-lg md:text-xl lg:text-[27px] text-center tracking-[-0.64px] leading-normal md:leading-[35px]">
               From bookkeeping to financial reporting - accurate, timely, and
               compliant{" "}
             </p>

@@ -50,9 +50,9 @@ const statutoryRecordSections = [
 
 export const AuditPackagesSection = (): JSX.Element => {
   return (
-    <section className="w-full py-20">
+    <section className="w-full py-20 mt-0 lg:mt-[130px]">
       <div className="flex flex-col max-w-[1260px] mx-auto items-center gap-6 px-4">
-        <header className="flex flex-col max-w-[882px] items-center gap-4">
+        <header className="flex flex-col max-w-[782px] items-center gap-4">
           <p className="w-full text-center font-helvetica font-normal text-[#21283399] text-xl md:text-2xl tracking-[0] leading-7">
             Solutions
           </p>
@@ -124,7 +124,7 @@ export const AuditPackagesSection = (): JSX.Element => {
           ))}
         </div>
 
-           <Card className="w-full max-w-[1226px] mx-auto rounded-[20px] overflow-hidden border-0 bg-[linear-gradient(131deg,rgba(104,150,255,1)_0%,rgba(0,78,255,1)_100%)] ">
+           <Card className="w-full max-w-[1226px] mx-auto rounded-[20px] overflow-hidden border-0 bg-[#2467ff] ">
           <CardContent className="relative p-0 overflow-hidden">
           <div className="absolute -bottom-[500px] -right-[200px] w-[700px] h-[700px] bg-white rounded-full blur-3xl opacity-40" />
             {/* Content */}

@@ -16,7 +16,7 @@ export const HeroBannerSection = (): JSX.Element => {
         obligations
       </div>
        ),
-    className: "bottom-[8%] sm:bottom-[10%] left-[2%] md:left-[8%] xl:left-[24%] rounded-l-[14.12px] rounded-br-[14.12px]",
+    className: "bottom-[2%] md:bottom-[8%] lg:bottom-[20%] left-[2%] md:left-[8%] xl:left-[0%] rounded-l-[14.12px] rounded-br-[14.12px]",
     shadow: "shadow-[0px_11.91px_22.12px_#004eff52]",
   },
 
@@ -28,7 +28,7 @@ export const HeroBannerSection = (): JSX.Element => {
         Your <span className="font-semibold">Annual report</span> is ready
       </div>
     ),
-    className: "bottom-[9%] sm:bottom-[12%] left-[50%] md:left-[60%] xl:left-[62%] rounded-r-[14.12px] rounded-bl-[14.12px]",
+    className: "bottom-[2%] lg:bottom-[20%] md:bottom-[10%] right-[2%] md:right-[10%] xl:right-0 rounded-r-[14.12px] rounded-bl-[14.12px]",
     shadow: "shadow-[0px_11.91px_22.12px_#004eff52]",
   },
 ];
@@ -47,20 +47,21 @@ export const HeroBannerSection = (): JSX.Element => {
           alt="G illustration"
           src="/Secretary/herobg.png"
         />
+        <div className="absolute bottom-0 h-[400px] w-full lg:w-[900px] xl:w-[1200px] left-1/2 -translate-x-1/2">
         {statisticsBadges.map((badge, index) => (
           <div
             key={index}
             className={`inline-flex items-center justify-center gap-[8.51px] px-[14.1px] py-[12.34px] absolute ${badge.className} bg-[#ffffffcc]  border-[0.85px] border-solid border-[#00000024] ${badge.shadow} backdrop-blur-[1.76px] backdrop-brightness-[100%] [-webkit-backdrop-filter:blur(1.76px)_brightness(100%)]`}
           >
-            <div className="relative flex items-center justify-center w-fit mt-[-0.85px] [font-family:'Helvetica_Neue-Medium',Helvetica] font-medium text-[#004EFF] text-[10px] sm:text-[17.8px] tracking-[0] leading-[17.0px] whitespace-nowrap">
+            <div className="relative flex items-center justify-center w-fit mt-[-0.85px] [font-family:'Helvetica_Neue-Medium',Helvetica] font-medium text-[#004EFF] text-[10px] sm:text-[17.8px] tracking-[0] leading-[10px] md:leading-[26.0px] whitespace-nowrap">
               {badge.text}
             </div>
           </div>
         ))}
-      
+      </div>
       </div>
 
-      <div className="absolute top-24 md:top-40 lg:top-[207px] left-1/2 -translate-x-1/2 flex flex-col w-full max-w-[1200px] px-4 items-center justify-center gap-6">
+      <div className="absolute top-24 md:top-40 lg:top-[180px] left-1/2 -translate-x-1/2 flex flex-col w-full max-w-[1200px] px-4 items-center justify-center gap-6">
         <div className="flex flex-col items-center justify-center gap-6">
           <div className="relative flex flex-col items-center gap-6">
             <Badge className="h-auto px-[11px] py-2 bg-[#28b44608] rounded-[50px] border border-solid border-[#28b446] hover:bg-[#28b44608]">

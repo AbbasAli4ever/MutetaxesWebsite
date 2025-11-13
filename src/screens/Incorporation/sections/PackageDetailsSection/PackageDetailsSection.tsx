@@ -67,7 +67,7 @@ export const PackageDetailsSection = (): JSX.Element => {
       </div>
 
       {/* Cards Section */}
-      <div className="grid w-full grid-cols-1 gap-4 mx-auto sm:gap-8 xl:gap-y-20 sm:grid-cols-2 lg:grid-cols-3">
+      <div className="grid w-full grid-cols-1 gap-4 mx-auto sm:gap-8 xl:gap-y-20 sm:grid-cols-2 lg:grid-cols-3 lg:mt-[-5rem]">
         {packageCards.map((card, cardIndex) => (
           <div
             className="relative pt-20 w-full lg:w-[320px] xl:w-[400px]"

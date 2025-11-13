@@ -9,7 +9,7 @@ const benefits = [
 ];
 export const BenefitsSection = (): JSX.Element => {
   return (
-    <section className="relative w-full rounded-[30px] px-4 sm:px-6 md:px-8">
+    <section className="relative w-full rounded-[30px] px-4 sm:px-6 md:px-8 mt-[130px]">
       <div className="relative w-full h-[210px] sm:h-[300px] md:h-[300px] lg:h-auto xl:w-[95vw] mx-auto mt-96 md:mt-20 lg:mt-10 xl:mt-0">
         <img
           className="object-cover w-full h-auto"
@@ -28,7 +28,8 @@ export const BenefitsSection = (): JSX.Element => {
           </h2>
           {/* Description */}
           <p className="text-[#212833e6] font-helvetica font-normal text-base sm:text-lg md:text-[18px] xl:text-[22px] leading-relaxed sm:leading-7 tracking-[0] max-w-[90%] sm:max-w-[600px] md:max-w-[702px]">
-            Get your company incorporated and operational in as fast as 5 days
+           
+Join thousands of successful businesses operating in Hong Kong
           </p>
           {/* Benefits */}
           <div className="flex flex-wrap items-center justify-center gap-2 mt-2 sm:gap-3 md:gap-4 sm:mt-4">
@@ -73,7 +74,7 @@ export const BenefitsSection = (): JSX.Element => {
         </div>
       </div>
       {/* Footer Text */}
-      <div className="flex items-center justify-center w-full px-4 mt-24 text-center">
+      <div className="flex items-center justify-center w-full px-4 mt-24 text-center lg:mt-10 xl:mt-4">
         <p className="font-helvetica font-normal text-[#212833e6] text-sm sm:text-base leading-5 sm:leading-6">
           Join 1,000+ businesses that trust Mute Taxes for their
           <br className="hidden sm:block" />

@@ -11,7 +11,7 @@ const benefits = [
 
 export const BenefitsSection = (): JSX.Element => {
   return (
-    <section className="relative w-full rounded-[30px] px-4 sm:px-6 md:px-8">
+    <section className="relative w-full rounded-[30px] px-4 sm:px-6 md:px-8 mt-0 lg:mt-[130px]">
       <div className="relative w-full h-[210px] sm:h-[300px] md:h-[300px] lg:h-auto xl:w-[95vw] mx-auto mt-96 md:mt-20 lg:mt-10 xl:mt-0">
         <img
           className="object-cover w-full h-auto"
@@ -81,7 +81,7 @@ export const BenefitsSection = (): JSX.Element => {
       </div>
 
       {/* Footer Text */}
-      <div className="flex items-center justify-center w-full px-4 mt-24 text-center">
+      <div className="flex items-center justify-center w-full px-4 mt-24 text-center lg:mt-10 xl:mt-4">
         <p className="font-helvetica font-normal text-[#212833e6] text-sm sm:text-base leading-5 sm:leading-6">
           Join 1,000+ businesses that trust Mute Taxes for their
           <br className="hidden sm:block" />

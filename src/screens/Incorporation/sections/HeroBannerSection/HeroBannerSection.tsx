@@ -6,17 +6,17 @@ import { Button } from "../../../../IncorporateComponents/ui/button";
 const statisticsBadges = [
   {
     text: "100% Approval Rate",
-    className: "bottom-[14%] left-[53%] lg:bottom-[14%] lg:left-[62%]",
+    className: "bottom-[35%] left-[53%] md:bottom-[40%] md:left-[70%]",
     shadow: "shadow-[0px_11.91px_22.12px_#004eff52]",
   },
   {
     text: "50+ Countries Served",
-    className: "left-[3%] bottom-[14%] lg:bottom-[8%] lg:left-[50%]",
+    className: "left-[3%] bottom-[35%] md:bottom-[10%] lg:bottom-[14%] md:left-[41%]",
     shadow: "shadow-[17.63px_11.92px_17.63px_#004eff52]",
   },
   {
     text: "2,500+ Companies Formed",
-    className: "bottom-[20%] left-[20%] lg:bottom-[10%] lg:left-[33%]",
+    className: "bottom-[50%] left-[15%] md:bottom-[17%] md:left-[8%]",
     shadow: "shadow-[0px_11.91px_22.12px_#004eff52]",
   },
 ];
@@ -26,7 +26,7 @@ const statisticsBadges = [
 export const HeroBannerSection = (): JSX.Element => {
   return (
     <section className="relative w-full bg-[#dbe6fe] md:bg-transparent h-auto">
-<div className="relative w-full xl:w-[97vw] mx-auto h-[950px] sm:h-[700px] md:h-[850px] lg:h-[1100px] pt-5 overflow-hidden">
+<div className="relative w-full xl:w-[97vw] mx-auto h-[950px] sm:h-[700px] md:h-[950px] lg:h-[1100px] pt-5 overflow-hidden">
         <img
           className="hidden object-cover w-full h-full md:object-fill md:block"
           alt="G illustration"
@@ -39,23 +39,25 @@ export const HeroBannerSection = (): JSX.Element => {
           alt="G illustration"
           src="/Incorporate/rectangle-259.png"
         />
+        <div className="absolute bottom-0 h-[400px] w-full lg:w-[900px] xl:w-[1200px] left-1/2 -translate-x-1/2">
         {statisticsBadges.map((badge, index) => (
           <div
             key={index}
             className={`inline-flex items-center justify-center gap-[8.51px] px-[14.1px] py-[12.34px] absolute ${badge.className} bg-[#ffffffcc] rounded-[119.12px] border-[0.85px] border-solid border-[#00000024] ${badge.shadow} backdrop-blur-[1.76px] backdrop-brightness-[100%] [-webkit-backdrop-filter:blur(1.76px)_brightness(100%)]`}
           >
-            <div className="relative flex items-center justify-center w-fit mt-[-0.85px] [font-family:'Helvetica_Neue-Medium',Helvetica] font-medium text-[#004eff] text-[12.8px] tracking-[0] leading-[17.0px] whitespace-nowrap">
+            <div className="relative flex items-center justify-center w-fit mt-[-0.85px] [font-family:'Helvetica_Neue-Medium',Helvetica] font-medium text-[#004eff] text-[12px] md:text-[17.8px] tracking-[0] leading-[17.0px] whitespace-nowrap">
               {badge.text}
             </div>
           </div>
         ))}
+        </div>
       </div>
 
 
 
 
 
-      <div className="absolute top-24 md:top-40 lg:top-[207px] left-1/2 -translate-x-1/2 flex flex-col w-full max-w-[1000px] px-4 items-center justify-center gap-6">
+      <div className="absolute top-24 md:top-40 lg:top-[180px] left-1/2 -translate-x-1/2 flex flex-col w-full max-w-[1000px] px-4 items-center justify-center gap-6">
         <div className="flex flex-col items-center justify-center gap-6">
           <div className="relative flex flex-col items-center gap-6">
             <Badge className="h-auto px-[11px] py-2 bg-[#28b44608] rounded-[50px] border border-solid border-[#28b446] hover:bg-[#28b44608]">
@@ -124,7 +126,7 @@ export const HeroBannerSection = (): JSX.Element => {
 
         <div className="flex flex-col items-center gap-2">
           <p className="font-helvetica font-normal text-[#212833] text-[1rem] lg:text-xl text-center tracking-[-0.64px] leading-6">
-            Trusted by 1,000+ Hong Kong companies.
+            Over 2,500 successful incorporations completed Join
           </p>
 
           <div className="flex items-center justify-center gap-2">

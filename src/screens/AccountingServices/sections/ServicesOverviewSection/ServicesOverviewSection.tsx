@@ -115,7 +115,7 @@ const advantagesData = [
 
 export const ServicesOverviewSection = (): JSX.Element => {
   return (
-    <section className="flex flex-col w-full gap-16 py-8 sm:gap-24">
+    <section className="flex flex-col w-full gap-16 py-8 sm:gap-4 mt-0 lg:mt-[130px]">
       <header className="flex flex-col items-center gap-4 max-w-[1052px] mx-auto px-4">
         <div className="flex flex-col items-start w-full gap-4">
           <p className="w-full text-center font-helvetica font-normal text-[#21283399] text-xl md:text-2xl tracking-[0] leading-7">
@@ -132,7 +132,7 @@ export const ServicesOverviewSection = (): JSX.Element => {
         </p>
       </header>
 
-      <div className="grid w-full grid-cols-1 gap-4 px-3 mx-auto sm:grid-cols-2 lg:grid-cols-3 sm:gap-10 xl:gap-y-20 max-w-[1300px]">
+      <div className="grid w-full grid-cols-1 gap-x-4 px-3 mx-auto sm:grid-cols-2 lg:grid-cols-3 sm:gap-x-10 max-w-[1300px]">
         {advantagesData.map((advantage, index) => (
           <div className="relative pt-20" key={index}>
             <img

@@ -14,7 +14,7 @@ const services = [
     id: "incorporation",
     label: "Incorporation",
     title: "Company Incorporation",
-    subtitle: "Register your Hong Kong limited company in as fast as 5 day",
+    subtitle: "Register your Hong Kong limited company in as fast as 1 day",
     features: [
       {
         text: "Company name search and reservation",
@@ -31,6 +31,7 @@ const services = [
     ],
     price: "€279",
     image: "/HomePage/incorp.png",
+    buttonText: "Incorporation",
   },
   {
     id: "secretary",
@@ -53,6 +54,7 @@ const services = [
     ],
     price: "€99/month",
     image: "/HomePage/sectry.jpg",
+    buttonText: "Company Secretary",
   },
   {
     id: "accounting",
@@ -75,6 +77,7 @@ const services = [
     ],
     price: "€279/month",
     image: "/HomePage/acount.jpg",
+    buttonText: "Accounting Services",
   },
   {
     id: "tax",
@@ -97,6 +100,7 @@ const services = [
     ],
     price: "€399/year",
     image: "/HomePage/taxfile.png",
+    buttonText: "Taxation",
   },
   {
     id: "audit",
@@ -119,6 +123,7 @@ const services = [
     ],
     price: "€799",
     image: "/HomePage/audit.png",
+    buttonText: "Audit Support",
   },
 ];
 
@@ -228,7 +233,7 @@ export const ServicesSection = (): JSX.Element => {
                       className="group inline-flex gap-2.5 pl-3 pr-1.5 py-1.5 transition-all duration-500 ease-in-out hover:bg-[#3b77ff] rounded-[100px] border-[1.5px] border-solid border-[#004eff] items-center justify-center h-auto bg-transparent "
                     >
                       <span className="flex items-center justify-center font-helvetica font-medium text-[#004eff] transition-all duration-500 ease-in-out group-hover:text-white text-base text-center tracking-[0] leading-6 whitespace-nowrap">
-                        Go to Incorporation
+                        {`Go to ${service.buttonText}`}
                       </span>
 
                       <img

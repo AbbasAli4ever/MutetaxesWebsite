@@ -13,7 +13,7 @@ const cardsData = [
       </span>),
     background: "/Secretary/subtract-5.svg",
     type: "text",
-    shadowColor: "#6a98ff",
+    shadowColor: "#ff9951",
     borderColor: "#ffc7a1"
   },
   {
@@ -50,7 +50,7 @@ const cardsData = [
 
 export const IncludedServicesSection = (): JSX.Element => {
   return (
-    <section className="flex flex-col w-full items-center gap-14 max-w-[1200px] mx-auto py-8 relative">
+    <section className="flex flex-col w-full items-center gap-4 max-w-[1200px] mx-auto py-8 relative mt-0 lg:mt-[130px]">
       <header className="inline-flex flex-col items-center gap-4 relative flex-[0_0_auto]">
         <div className="flex flex-col items-start w-full gap-4">
           <p className="w-full text-center font-helvetica font-normal text-[#21283399] text-xl md:text-2xl tracking-[0] leading-7">
@@ -85,19 +85,19 @@ export const IncludedServicesSection = (): JSX.Element => {
                 topRadius: 25,
               }}
               widthClass="w-full max-w-[400px] sm:w-[300px] md:w-[300px] lg:w-[300px] xl:w-[400px]"
-              heightClass="h-[380px] sm:h-[380px] lg:h-[350px] xl:h-[400px]"
+              heightClass="h-[380px] sm:h-[380px] lg:h-[350px] xl:h-[375px]"
               shadowColor={card.shadowColor}
               borderColor={card.borderColor}
               className="z-10"
             >
               <CardContent className="relative flex flex-col items-start justify-center pt-12 xl:pt-24">
                 <div className="flex flex-col items-center sm:items-start gap-6 pb-[40px] relative z-10 text-start sm:text-left ">
-                  <h3 className="font-helvetica font-medium text-[#212833] text-2xl sm:text-[24px] md:text-[20px] xl:text-[24px] leading-snug">
+                  <h3 className="font-helvetica font-medium text-[#212833] mt-5 xl:mt-0 text-2xl sm:text-[24px] md:text-[20px] xl:text-[24px] leading-snug">
                     {card.title}
                   </h3>
 
                   {card.type === "text" && (
-                    <p className="font-helvetica font-normal text-[#212833e6] text-base sm:text-base md:text-[15px] xl:text-[20px] leading-relaxed">
+                    <p className="font-helvetica font-normal text-[#212833e6] text-base sm:text-base md:text-[15px] xl:text-[20px] xl:leading-[30px]">
                       {card.description}
                     </p>
                   )}

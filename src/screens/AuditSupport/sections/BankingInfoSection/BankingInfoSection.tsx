@@ -31,7 +31,7 @@ const auditIssues = [
 
 export const BankingInfoSection = (): JSX.Element => {
   return (
-    <section className="w-full flex flex-col gap-[53px] py-8">
+    <section className="w-full flex flex-col gap-[53px] py-8 mt-0 lg:mt-[130px]">
       <div className="flex flex-col items-center gap-6 max-w-[964px] mx-auto px-4">
        <div className="flex flex-col items-start w-full gap-4">
           <p className="w-full text-center font-helvetica font-normal text-[#21283399] text-xl md:text-2xl tracking-[0] leading-7">

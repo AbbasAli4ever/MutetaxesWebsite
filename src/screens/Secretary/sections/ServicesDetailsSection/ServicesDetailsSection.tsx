@@ -5,7 +5,7 @@ import SideNotchCard from "../../../../UIComponents/SIdeNotchCard";
 
 const serviceCards = [
   {
-    icon: "/Secretary/valuepropositionsection-2.svg",
+    icon: "/Secretary/valueproposition8.png",
     title: "Annual Compliance Management",
     background: "bg-[url(/Secretary/Subtract.png)]",
     sections: [
@@ -31,7 +31,7 @@ const serviceCards = [
     ],
   },
   {
-    icon: "/Secretary/valuepropositionsection-3.svg",
+    icon: "/Secretary/valueproposition9.png",
     title: "Corporate Changes & Resolutions",
     background: "bg-[url(/Secretary/Subtract.png)]",
     sections: [
@@ -65,7 +65,7 @@ const serviceCards = [
     ],
   },
   {
-    icon: "/Secretary/valuepropositionsection-4.svg",
+    icon: "/Secretary/valueproposition10.png",
     title: "Meeting\nadministration",
     background: "bg-[url(/Secretary/Subtract.png)]",
     sections: [
@@ -116,7 +116,7 @@ const statutoryRecordSections = [
 
 export const ServicesDetailsSection = (): JSX.Element => {
   return (
-    <section className="flex flex-col w-full gap-10 px-1 sm:px-4 max-w-[1276px] mx-auto py-8">
+    <section className="flex flex-col w-full px-1 sm:px-4 max-w-[1276px] mx-auto py-8 mt-0 lg:mt-32">
       <div className="flex flex-col w-full max-w-[952px] mx-auto items-center gap-4">
        <div className="flex flex-col items-start w-full gap-4">
           <p className="w-full text-center font-helvetica font-normal text-[#21283399] text-xl md:text-2xl tracking-[0] leading-7">
@@ -137,9 +137,9 @@ export const ServicesDetailsSection = (): JSX.Element => {
         
           <div className="grid w-full grid-cols-1 gap-4 px-1 sm:px-4 sm:gap-8 xl:gap-y-20 sm:grid-cols-2 lg:grid-cols-3">
             {serviceCards.map((card, cardIndex) => (
-              <div className="relative pt-20 w-full lg:w-[320px] xl:w-[400px]" key={cardIndex}>
+              <div className="relative pt-10 w-full lg:w-[320px] xl:w-[400px]" key={cardIndex}>
                 <img
-                  className="absolute w-[125px] sm:w-[125px] md:w-[125px] xl:w-[132px] h-auto z-20 -left-3 lg:-left-3 top-[68px]"
+                  className="absolute w-[125px] sm:w-[125px] md:w-[125px] xl:w-[132px] h-auto z-20 -left-3 lg:-left-3 top-[28px]"
                   alt={"icon"}
                   src={card.icon}
                 />
@@ -161,7 +161,7 @@ export const ServicesDetailsSection = (): JSX.Element => {
                 >
                   <CardContent className="relative flex flex-col items-center h-full p-0">
                     <div className="flex gap-[5.57px] flex-col items-center justify-center ml-20 md:ml-24 xl:ml-4 pt-5">
-                      <h3 className="whitespace-pre-line [font-family:'Helvetica_Neue-Medium',Helvetica] w-full sm:w-[250px] font-medium text-[#212833] text-2xl tracking-[0] leading-9 ">
+                      <h3 className="whitespace-pre-line font-helvetica w-full sm:w-[250px] font-medium text-[#212833] text-2xl tracking-[0] leading-9 ">
                         {card.title}
                       </h3>
                     </div>
@@ -173,7 +173,7 @@ export const ServicesDetailsSection = (): JSX.Element => {
                           className="flex flex-col items-start gap-[13.86px] w-[280px]"
                         >
                           <div className="flex items-center justify-center gap-[11.55px]">
-                            <h4 className="[font-family:'Helvetica_Neue-Medium',Helvetica] font-medium text-xl leading-[21.3px] whitespace-nowrap text-[#212833e6] tracking-[0]">
+                            <h4 className="font-helvetica font-medium text-xl leading-[21.3px] whitespace-nowrap text-[#212833e6] tracking-[0]">
                               {section.subtitle}
                             </h4>
                           </div>

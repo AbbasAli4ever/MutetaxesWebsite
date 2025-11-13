@@ -5,9 +5,9 @@ import { Badge } from "../../../../IncorporateComponents/ui/badge";
 
 const pricingData = [
   {
-    price: "€279/month",
+    price: "€279",
     title: "Starter",
-    description: "Perfect for new businesses,freelancers",
+    description: "Perfect for new businesses, freelancers",
     badge: "Up to 50 transactions/month",
     features: [
       "Monthly bookkeeping",
@@ -22,7 +22,7 @@ const pricingData = [
     featured: false,
   },
   {
-    price: "€549/month",
+    price: "€549",
     title: "Growth",
     description: "Perfect for growing SMEs",
     badge: "Up to 200 transactions/month",
@@ -40,7 +40,7 @@ const pricingData = [
     featured: true,
   },
   {
-    price: "€999/month",
+    price: "€999",
     title: "Professionals",
     description: "Perfect for established businesses",
     badge: "Up to 500 transactions/month",
@@ -58,7 +58,7 @@ const pricingData = [
     featured: false,
   },
   {
-    price: "€2,499/month",
+    price: "€2,499",
     title: "Enterprise",
     description: "Perfect for complex operations",
     badge: "Unlimited transactions",
@@ -79,7 +79,7 @@ const pricingData = [
 
 export const HongKongAdvantagesSection = (): JSX.Element => {
   return (
-    <section className="flex flex-col items-center justify-center w-full gap-10 py-8">
+    <section className="flex flex-col items-center justify-center w-full gap-10 py-8 mt-0 lg:mt-[130px]">
       {/* Section heading */}
       <div className="flex flex-col items-center gap-4 max-w-[952px] mx-auto px-4 mb-5">
          <p className="w-full text-center font-helvetica font-normal text-[#21283399] text-xl md:text-2xl tracking-[0] leading-7">
@@ -134,6 +134,7 @@ Every Business Stage
                 }`}
               >
                 {plan.price}
+                <span className="text-[30px]">/month</span>
               </div>
             </div>
 
@@ -146,14 +147,14 @@ Every Business Stage
                 {plan.description}
               </p>
 
-              <div className="mt-2 px-4 py-2 rounded-full bg-[#004EFF1A] text-[#004EFF] text-sm [font-family:'Helvetica_Neue-Regular',Helvetica]">
+              <div className="absolute top-48 left-1/2 text-nowrap -translate-x-1/2 px-4 py-2 rounded-full bg-[#004EFF1A] text-[#004EFF] text-base font-helvetica">
                 {plan.badge}
               </div>
             </div>
           </div>
 
           {/* Features */}
-          <div className="flex flex-col gap-10 mb-10">
+          <div className="absolute flex flex-col gap-10 mb-10 top-[280px]">
             <div className="flex flex-col gap-5">
               <h4 className="[-webkit-text-stroke:0.9px_#707070] [font-family:'Helvetica_Neue-Medium',Helvetica] font-medium text-[#212833] text-[22px] tracking-[0.55px] leading-6">
                 Features

@@ -16,10 +16,10 @@ const taxBenefits = [
     text: (
       <>
         <span className="font-medium text-[#212833E5]">Sales and purchase</span>
-        <span className="font-medium text-[#212833E5]">Sales and purchase</span>
+       
         <br />
         <span className="font-normal">invoice recording</span>
-        <span className="font-normal">invoice recording</span>
+     
       </>
     ),
   },
@@ -48,10 +48,10 @@ const taxBenefits = [
     text: (
       <>
         <span className="font-medium">Multi-Currency</span> <span className="font-normal">Transaction</span>
-        <span className="font-medium">Multi-Currency</span> <span className="font-normal">Transaction</span>
+        
         <br />
         <span className="font-normal">Management</span>
-        <span className="font-normal">Management</span>
+      
       </>
     ),
   },
@@ -62,7 +62,7 @@ const taxBenefits = [
        <span className="font-normal">Receipt digitization</span>
 <br />
        <span className="font-normal">and</span>  <span className="font-medium">filing</span>
-       <span className="font-normal">and</span>  <span className="font-medium">filing</span>
+       
       </>
     ),
   },
@@ -71,7 +71,7 @@ const taxBenefits = [
     text: (
       <>
        <span className="font-normal">Petty cash</span>  <span className="font-medium">management</span>
-       <span className="font-normal">Petty cash</span>  <span className="font-medium">management</span>
+      
       </>
     ),
   },
@@ -82,10 +82,10 @@ const strategicBenefits = [
     text: (
       <>
         <span className="font-meium">Monthly Profit</span><span className="font-normal">&</span>
-        <span className="font-meium">Monthly Profit</span><span className="font-normal">&</span>
+       
         <br />
         <span className="font-normal">Loss statements</span>
-        <span className="font-normal">Loss statements</span>
+    
       </>
     ),
   },
@@ -94,10 +94,10 @@ const strategicBenefits = [
     text: (
       <>
         <span className="font-normal">Balance Sheet</span>
-        <span className="font-normal">Balance Sheet</span>
+       
         <br />
         <span className="font-medium">Prepration</span>
-        <span className="font-medium">Prepration</span>
+      
       </>
     ),
   },
@@ -116,8 +116,7 @@ const strategicBenefits = [
       <>
         <span className="font-normal">Management</span>
         <br /> <span className="font-medium"> Accounts</span>
-        <span className="font-normal">Management</span>
-        <br /> <span className="font-medium"> Accounts</span>
+        
       </>
     ),
   },
@@ -150,7 +149,7 @@ const businessBenefits = [
         <span className="font-medium">Accounts</span> <span className="font-normal">Receiveable</span>
         <br />
         <span className="font-normal">Tracking</span>
-        <span className="font-normal">Tracking</span>
+   
       </>
     ),
   },
@@ -159,10 +158,10 @@ const businessBenefits = [
     text: (
       <>
         <span className="font-normal">Accounts</span> <span className="font-medium">Payable</span>
-        <span className="font-normal">Accounts</span> <span className="font-medium">Payable</span>
+       
         <br />
         <span className="font-medium">Processing</span>
-        <span className="font-medium">Processing</span>
+      
       </>
     ),
   },
@@ -284,19 +283,19 @@ export const FeaturesIncludedSection = (): JSX.Element => {
   const [activeTab, setActiveTab] = useState("bookkeeping-transaction-processing"); // ✅ match tab value
 
   return (
-    <section className="flex flex-col w-full gap-10 py-8">
+    <section className="flex flex-col w-full gap-10 py-8 mt-0 lg:mt-[130px]">
       {/* Header */}
       <div className="flex flex-col items-center gap-4 px-4 max-w-[952px] mx-auto">
         <div className="flex flex-col items-start w-full gap-4">
           <div className="w-full flex items-center justify-center font-helvetica font-normal text-[#21283399] text-2xl text-center tracking-[0] leading-7">
-            Our Services
+            Accounting Solutions
           </div>
           <h2 className="w-full flex items-center justify-center font-georgia font-normal text-[#212833] text-[40px] md:text-[50px] lg:text-[64px] text-center tracking-[0] leading-[42px] md:leading-[60px] lg:leading-[72px]">
-            Everything You Need to Run Your Hong Kong Business
+            Comprehensive Accounting <br/>Solutions
           </h2>
         </div>
         <p className="flex items-center justify-center max-w-[702px] font-helvetica font-normal text-[#212833] text-lg md:text-xl lg:text-[22px] text-center tracking-[-0.64px] leading-relaxed lg:leading-[35px]">
-          Comprehensive solutions tailored for modern businesses
+          Full-service accounting tailored to your business needs
         </p>
       </div>
 

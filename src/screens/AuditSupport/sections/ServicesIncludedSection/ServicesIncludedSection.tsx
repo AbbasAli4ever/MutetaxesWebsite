@@ -63,7 +63,7 @@ fees through efficient preparation
 
 export const ServicesIncludedSection = (): JSX.Element => {
   return (
-    <section className="flex flex-col w-full items-center gap-14 max-w-[1200px] mx-auto py-8 relative mt-10">
+    <section className="flex flex-col w-full items-center gap-4 max-w-[1200px] mx-auto py-8 relative mt-10 lg:mt-[120px]">
       <header className="inline-flex flex-col items-center gap-4 max-w-[994px]">
        <div className="flex flex-col items-start w-full gap-4">
           <p className="w-full text-center font-helvetica font-normal text-[#21283399] text-xl md:text-2xl tracking-[0] leading-7">
@@ -82,7 +82,7 @@ export const ServicesIncludedSection = (): JSX.Element => {
         </p>
       </header>
 
-      <div className="grid grid-cols-1 gap-4 px-2 lg:gap-14 xl:gap-20 sm:grid-cols-2 lg:grid-cols-3">
+      <div className="grid grid-cols-1 px-2 gap-x-4 lg:gap-x-14 xl:gap-x-20 sm:grid-cols-2 lg:grid-cols-3">
         {cardsData.map((card, index) => (
           <div className="relative pt-20" key={index}>
               <img
@@ -100,7 +100,7 @@ export const ServicesIncludedSection = (): JSX.Element => {
                 widthClass="w-full max-w-[400px] sm:w-[300px] md:w-[300px] lg:w-[300px] xl:w-[400px]"
                 heightClass="h-[250px] sm:h-[250px] lg:h-[250px] xl:h-[250px]"
                 shadowColor={card.shadowColor}
-                borderColor={`bg-[${card.borderColor}]`}
+                borderColor={card.borderColor}
                 className="z-10"
               >
                 <CardContent className="relative flex flex-col items-start justify-center pt-16 xl:pt-24">

@@ -11,7 +11,7 @@ const benefits = [
 
 export const BenefitsSection = (): JSX.Element => {
   return (
-    <section className="relative w-full rounded-[30px] px-4 sm:px-6 md:px-8">
+    <section className="relative w-full rounded-[30px] px-4 sm:px-6 md:px-8 mt-0 lg:mt-[130px]">
       <div className="relative w-full h-[210px] sm:h-[300px] md:h-[300px] lg:h-auto xl:w-[95vw] mx-auto mt-96 md:mt-20 lg:mt-10 xl:mt-0">
         <img
           className="object-cover w-full h-auto"

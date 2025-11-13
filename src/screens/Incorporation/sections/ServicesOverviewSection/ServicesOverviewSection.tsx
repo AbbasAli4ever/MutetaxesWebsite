@@ -15,9 +15,9 @@ const taxBenefits = [
     id: 1,
     text: (
       <>
-        <span className="font-medium">Corporate Tax:</span> 16.5%
+        <span className="font-medium">Corporate Tax:</span> <span className="font-normal">16.5%</span>
         <br />
-        8.25% On First Hk$2m
+        <span className="font-normal">(8.25% On First Hk$2m)</span>
       </>
     ),
   },
@@ -25,9 +25,9 @@ const taxBenefits = [
     id: 2,
     text: (
       <>
-        <span className="font-medium">No Vat/gst</span> Keeping
+        <span className="font-medium">No VAT/GST</span>  <span className="font-normal">Keeping</span>
         <br />
-        prices Competitive
+        <span className="font-normal">prices Competitive</span>
       </>
     ),
   },
@@ -35,7 +35,7 @@ const taxBenefits = [
     id: 3,
     text: (
       <>
-        No Withholding tax On <br />
+        <span className="font-normal">No Withholding tax On</span>  <br />
         <span className="font-medium">Dividends</span>
       </>
     ),
@@ -44,8 +44,8 @@ const taxBenefits = [
     id: 4,
     text: (
       <>
-        Territorial Tax System
-        <br />- Only <span className="font-medium">Hk Income</span> Taxed
+        <span className="font-normal">Territorial Tax System</span>
+        <br />  <span className="font-normal">- Only</span> <span className="font-medium">Hk Income</span> Taxed
       </>
     ),
   },
@@ -53,21 +53,20 @@ const taxBenefits = [
     id: 5,
     text: (
       <>
-        Extensive Network of <br />
+        <span className="font-normal">Extensive Network of</span>  <br />
         <span className="font-medium">Tax Treaties</span>
       </>
     ),
   },
 ];
-
 const strategicBenefits = [
   {
     id: 1,
     text: (
       <>
-        Gateway To<span className="font-medium">1.4 Billion</span>
+       <span className="font-normal">Gateway To</span> <span className="font-medium">1.4 Billion</span>
         <br />
-        Chinese Consumers
+        <span className="font-normal">Chinese Consumers</span>
       </>
     ),
   },
@@ -75,9 +74,9 @@ const strategicBenefits = [
     id: 2,
     text: (
       <>
-        <span className="font-medium">CEPA Agreement</span> For
+        <span className="font-medium">CEPA Agreement</span>  <span className="font-normal">For</span>
         <br />
-        China Market Access
+         <span className="font-normal">China Market Access</span>
       </>
     ),
   },
@@ -86,9 +85,9 @@ const strategicBenefits = [
     text: (
       <>
         <span className="font-medium">Hub</span>
-        For Belt & Road
+        <span className="font-normal">For Belt & Road</span>
         <br />
-        Initiative
+         <span className="font-normal">Initiative</span>
       </>
     ),
   },
@@ -96,8 +95,8 @@ const strategicBenefits = [
     id: 4,
     text: (
       <>
-        Free Trade Agreements
-        <br /> With<span className="font-medium"> ASEAN</span>
+       <span className="font-normal">Free Trade Agreements</span>
+        <br /> <span className="font-normal">With</span> <span className="font-medium"> ASEAN</span>
       </>
     ),
   },
@@ -106,22 +105,21 @@ const strategicBenefits = [
     text: (
       <>
         <span className="font-medium">4-Hour Flight </span>
-        To Half The
+       <span className="font-normal">To Half The</span>
         <br />
-        World's Population
+       <span className="font-normal">World's Populatione</span>
       </>
     ),
   },
 ];
-
 const businessBenefits = [
   {
     id: 1,
     text: (
       <>
-        100%<span className="font-medium"> foreign </span>
+       <span className="font-normal">100%</span> <span className="font-medium"> foreign </span>
         <br />
-        ownership permitted
+       <span className="font-normal">ownership permitted</span>
       </>
     ),
   },
@@ -129,10 +127,7 @@ const businessBenefits = [
     id: 2,
     text: (
       <>
-        No minimum capital
-        <span className="font-medium">
-          <br /> requirement (start with HK$1)
-        </span>
+       <span className="font-normal">No minimum capital</span> <span className="font-medium"><br /> <span className="font-normal">requirement (start with HK$1)</span> </span>
       </>
     ),
   },
@@ -140,8 +135,7 @@ const businessBenefits = [
     id: 3,
     text: (
       <>
-        <span className="font-medium">Only 1 director needed (any</span>{" "}
-        <br /> nationality)
+        <span className="font-medium">Only 1 director needed (any</span> <br /> <span className="font-normal">nationality)</span>
       </>
     ),
   },
@@ -149,7 +143,7 @@ const businessBenefits = [
     id: 4,
     text: (
       <>
-        <span className="font-medium">No residency</span> <br /> requirements
+        <span className="font-medium">No residency</span> <br /> <span className="font-normal">requirements</span>
       </>
     ),
   },
@@ -157,19 +151,18 @@ const businessBenefits = [
     id: 5,
     text: (
       <>
-        Common
+       <span className="font-normal">Common</span>
         <span className="font-medium"> law system</span>
       </>
     ),
   },
 ];
-
 const worldBenefits = [
   {
     id: 1,
     text: (
       <>
-        <span className="font-medium">70+ international </span> banks
+        <span className="font-medium">70+ international </span> <span className="font-normal"> banks</span>
       </>
     ),
   },
@@ -177,8 +170,7 @@ const worldBenefits = [
     id: 2,
     text: (
       <>
-        <span className="font-medium">Ranked #3 globally </span> for ease{" "}
-        <br /> of doing business
+        <span className="font-medium">Ranked #3 globally </span> <span className="font-normal">for ease</span>  <br /> <span className="font-normal">of doing business</span>
       </>
     ),
   },
@@ -186,8 +178,8 @@ const worldBenefits = [
     id: 3,
     text: (
       <>
-        <span className="font-medium">Award-winning</span> <br />
-        airport and port
+        <span className="font-meidum">Award-winning</span> <br />
+       <span className="font-normal">airport and port</span>
       </>
     ),
   },
@@ -195,7 +187,7 @@ const worldBenefits = [
     id: 4,
     text: (
       <>
-        Advanced digital <br />
+       <span className="font-normal">Advanced digital</span>  <br />
         <span className="font-medium">infrastructure</span>
       </>
     ),
@@ -204,9 +196,8 @@ const worldBenefits = [
     id: 5,
     text: (
       <>
-        English as official
-        <br />
-        <span className="font-medium"> business language</span>
+       <span className="font-normal">English as official</span>
+        <br /><span className="font-medium"> business language</span>
       </>
     ),
   },
@@ -239,7 +230,7 @@ export const ServicesOverviewSection = (): JSX.Element => {
   const [activeTab, setActiveTab] = useState("tax-efficiency"); // ✅ match tab value
 
   return (
-    <section className="flex flex-col w-full gap-10 py-8">
+    <section className="flex flex-col w-full gap-10 py-8 mt-0 lg:mt-[120px]">
       {/* Header */}
       <div className="flex flex-col items-center gap-4 px-4 max-w-[952px] mx-auto">
         <div className="flex flex-col items-start w-full gap-4">

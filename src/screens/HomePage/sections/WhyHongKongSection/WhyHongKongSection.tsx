@@ -127,9 +127,8 @@ export const WhyHongKongSection = (): JSX.Element => {
           </h2>
         </div>
 
-        <p className="text-center max-w-[702px] font-helvetica font-normal text-[#212833] text-lg md:text-xl lg:text-[22px] tracking-[-0.64px] leading-relaxed lg:leading-[35px]">
-          Asia&#39;s premier business hub with unmatched advantages for
-          entrepreneurs
+        <p className="text-center max-w-[742px] font-helvetica font-normal text-[#212833] text-lg md:text-xl lg:text-[22px] tracking-[-0.64px] leading-relaxed lg:leading-[35px]">
+          Asia&#39;s premier business hub with unmatched advantages for entrepreneurs
         </p>
       </header>
 

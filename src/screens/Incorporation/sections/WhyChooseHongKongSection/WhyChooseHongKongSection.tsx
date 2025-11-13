@@ -82,7 +82,7 @@ export const WhyChooseHongKongSection = (): JSX.Element => {
       )}
 
       <CardContent className="relative z-10 flex flex-col h-full p-6">
-        <div className="flex flex-col gap-5 mb-10">
+        <div className="flex flex-col gap-5 mb-12">
           <div className="flex flex-col gap-4">
             <div
               className={`font-helvetica font-normal text-[54.2px] tracking-[0] leading-[normal] ${

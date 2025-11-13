@@ -70,7 +70,7 @@ const pricingPlans = [
 
 export const WhyHongKongSection = (): JSX.Element => {
   return (
-    <section className="w-full flex flex-col items-center gap-[58px] py-8">
+    <section className="w-full flex flex-col items-center gap-[58px] py-8 mt-0 lg:mt-[120px]">
       <header className="flex flex-col items-center gap-4 max-w-[902px] px-4">
         <div className="flex flex-col items-start w-full gap-4">
           <p className="w-full text-center font-helvetica font-normal text-[#21283399] text-xl md:text-2xl tracking-[0] leading-7">
