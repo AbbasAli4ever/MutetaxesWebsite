@@ -9,7 +9,7 @@ const navigationItems = [
   { label: "Accounting & Tax Services", href: "/accounting-services" },
   { label: "Audit Support", href: "/audit-support" },
 ];
-
+ 
 export const Navbar = (): JSX.Element => {
   const location = useLocation();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
