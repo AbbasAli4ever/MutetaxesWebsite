@@ -8,14 +8,19 @@ const steps = [
     number: "1",
     title: "Consultation",
     description:
-      "Free 30-minute Consultation to Understand Your Needs and Recommend The Right structure And Services.",
+      "Free 30-minute Consultation to Understand Your Needs and Recommend The Right Structure And Services.",
     icon: "/HomePage/message-icon.png",
     background: "/HomePage/subtract.svg",
     alignment: "right",
   },
   {
     number: "2",
-    title: "Setup & registration",
+    title: (
+  <>
+  <span className="leading-[29px] pt-2  "> <span className="">Setup &</span> <br /> Registration</span>
+    
+  </>
+),
     description:
       "We Handle All Documentation, Government Submissions, And Registrations While You Focus On Your Business.",
     icon: "/HomePage/icon.svg",
@@ -24,9 +29,20 @@ const steps = [
   },
   {
     number: "3",
-    title: "Ongoing Support",
-    description:
-      "Access Your Digital Dashboard, Receive Your Company Kit, And Enjoy Continuous Compliance Support.",
+     title: (
+  <>
+  <span className="ml-[20px]">Ongoing Support
+</span>
+    
+  </>
+),
+    description: (
+  <>
+  <span className="text-[14px]">Access Your Digital Dashboard, Receive Your Company Kit, And Enjoy Continuous Compliance Support.
+</span>
+    
+  </>
+),
     icon: "/HomePage/headphone.png",
     background: "/HomePage/subtract.svg",
     alignment: "right",
@@ -38,7 +54,7 @@ export const HowItWorksSection = (): JSX.Element => {
     <section className="relative w-full py-8 mt-32">
       <div className="flex flex-col w-full max-w-[952px] mx-auto items-center gap-4 px-4">
         <div className="flex flex-col items-start w-full gap-4">
-          <div className="w-full flex items-center justify-center font-helvetica font-normal text-[#21283399] text-2xl text-center tracking-[0] leading-7">
+          <div className="w-full flex items-center justify-center font-helvetica font-normal text-[#21283399] text-2xl text-center tracking-[0] leading-7 lg:mt-[130px]">
             How It&apos;s Work
           </div>
 
@@ -114,7 +130,7 @@ export const HowItWorksSection = (): JSX.Element => {
                   <div
                     className={`h-auto flex ${
                       step.alignment === "right"
-                        ? "justify-center ml-4"
+                        ? "justify-center -ml-2"
                         : "justify-start"
                     } font-helvetica font-medium text-[#212833] text-[22px] tracking-[0] leading-[48px] whitespace-pre-wrap`}
                   >
@@ -122,7 +138,7 @@ export const HowItWorksSection = (): JSX.Element => {
                   </div>
 
                   <div className={`flex w-56 items-center gap-2.5 text-start`}>
-                    <div className="relative flex items-center justify-center w-fit font-helvetica font-normal text-[#212833e6] text-base tracking-[0] leading-6">
+                    <div className="relative flex items-center justify-center w-fit font-helvetica font-normal text-[#212833e6] text-base lg:text-[15px] tracking-[0] leading-6">
                       {step.description}
                     </div>
                   </div>

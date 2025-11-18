@@ -48,7 +48,7 @@ const advantagesData = [
     items: [
       {
         icon: "/HomePage/frame.svg",
-        text: [{ text: "No Vat, Gst, Or Sales Tax", bold: true }],
+        text: [{ text: "No VAT, GST, Or Sales Tax", bold: true }],
       },
       {
         icon: "/HomePage/frame.svg",

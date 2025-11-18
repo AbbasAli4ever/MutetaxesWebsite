@@ -17,7 +17,7 @@ const taxBenefits = [
       <>
         <span className="font-medium">Corporate Tax:</span> <span className="font-normal">16.5%</span>
         <br />
-        <span className="font-normal">(8.25% On First Hk$2m)</span>
+        <span className="font-normal">(8.25% On First Hk$2M)</span>
       </>
     ),
   },
@@ -35,8 +35,8 @@ const taxBenefits = [
     id: 3,
     text: (
       <>
-        <span className="font-normal">No Withholding tax On</span>  <br />
-        <span className="font-medium">Dividends</span>
+        <span className="font-normal">No Withholding </span>  <br />
+        <span className="font-medium"><span className="font-normal">Tax On  </span>Dividends</span>
       </>
     ),
   },
@@ -53,8 +53,8 @@ const taxBenefits = [
     id: 5,
     text: (
       <>
-        <span className="font-normal">Extensive Network of</span>  <br />
-        <span className="font-medium">Tax Treaties</span>
+        <span className="font-normal">Extensive Network </span>  <br />
+        <span className="font-medium"><span className="font-normal">of</span> Tax Treaties</span>
       </>
     ),
   },
@@ -64,7 +64,7 @@ const strategicBenefits = [
     id: 1,
     text: (
       <>
-       <span className="font-normal">Gateway To</span> <span className="font-medium">1.4 Billion</span>
+        <span className="font-normal">Gateway To</span> <span className="font-medium">1.4 Billion</span>
         <br />
         <span className="font-normal">Chinese Consumers</span>
       </>
@@ -76,7 +76,7 @@ const strategicBenefits = [
       <>
         <span className="font-medium">CEPA Agreement</span>  <span className="font-normal">For</span>
         <br />
-         <span className="font-normal">China Market Access</span>
+        <span className="font-normal">China Market Access</span>
       </>
     ),
   },
@@ -85,9 +85,9 @@ const strategicBenefits = [
     text: (
       <>
         <span className="font-medium">Hub</span>
-        <span className="font-normal">For Belt & Road</span>
+        <span className="font-normal"> For Belt & Road</span>
         <br />
-         <span className="font-normal">Initiative</span>
+        <span className="font-normal">Initiative</span>
       </>
     ),
   },
@@ -95,7 +95,7 @@ const strategicBenefits = [
     id: 4,
     text: (
       <>
-       <span className="font-normal">Free Trade Agreements</span>
+        <span className="font-normal">Free Trade Agreements</span>
         <br /> <span className="font-normal">With</span> <span className="font-medium"> ASEAN</span>
       </>
     ),
@@ -105,9 +105,9 @@ const strategicBenefits = [
     text: (
       <>
         <span className="font-medium">4-Hour Flight </span>
-       <span className="font-normal">To Half The</span>
+        <span className="font-normal">To Half The</span>
         <br />
-       <span className="font-normal">World's Populatione</span>
+        <span className="font-normal">World's Populatione</span>
       </>
     ),
   },
@@ -117,9 +117,9 @@ const businessBenefits = [
     id: 1,
     text: (
       <>
-       <span className="font-normal">100%</span> <span className="font-medium"> foreign </span>
+        <span className="font-normal">100%</span> <span className="font-medium"> Foreign </span>
         <br />
-       <span className="font-normal">ownership permitted</span>
+        <span className="font-normal">ownership permitted</span>
       </>
     ),
   },
@@ -127,7 +127,7 @@ const businessBenefits = [
     id: 2,
     text: (
       <>
-       <span className="font-normal">No minimum capital</span> <span className="font-medium"><br /> <span className="font-normal">requirement (start with HK$1)</span> </span>
+        <span className="font-normal">No minimum capital</span> <span className="font-medium"><br /> <span className="font-normal">requirement (start with HK$1)</span> </span>
       </>
     ),
   },
@@ -135,7 +135,7 @@ const businessBenefits = [
     id: 3,
     text: (
       <>
-        <span className="font-medium">Only 1 director needed (any</span> <br /> <span className="font-normal">nationality)</span>
+        <span className="font-medium">Only 1 director needed <span className="font-normal">(Any</span> </span> <br /> <span className="font-normal">Nationality)</span>
       </>
     ),
   },
@@ -143,7 +143,7 @@ const businessBenefits = [
     id: 4,
     text: (
       <>
-        <span className="font-medium">No residency</span> <br /> <span className="font-normal">requirements</span>
+        <span className="font-medium">No Residency</span> <br /> <span className="font-normal">Requirements</span>
       </>
     ),
   },
@@ -151,8 +151,8 @@ const businessBenefits = [
     id: 5,
     text: (
       <>
-       <span className="font-normal">Common</span>
-        <span className="font-medium"> law system</span>
+        <span className="font-normal">Common</span>
+        <span className="font-medium"> Law System</span>
       </>
     ),
   },
@@ -162,7 +162,7 @@ const worldBenefits = [
     id: 1,
     text: (
       <>
-        <span className="font-medium">70+ international </span> <span className="font-normal"> banks</span>
+        <span className="font-medium">70+  </span> <span className="font-normal">international banks</span>
       </>
     ),
   },
@@ -170,7 +170,7 @@ const worldBenefits = [
     id: 2,
     text: (
       <>
-        <span className="font-medium">Ranked #3 globally </span> <span className="font-normal">for ease</span>  <br /> <span className="font-normal">of doing business</span>
+        <span className="font-medium">Ranked #3 Globally </span> <span className="font-normal">For Ease</span>  <br /> <span className="font-normal">Of Doing Business</span>
       </>
     ),
   },
@@ -178,8 +178,8 @@ const worldBenefits = [
     id: 3,
     text: (
       <>
-        <span className="font-meidum">Award-winning</span> <br />
-       <span className="font-normal">airport and port</span>
+        <span className="font-meidum">Award-Winning</span> <br />
+        <span className="font-normal">Airport And Port</span>
       </>
     ),
   },
@@ -187,8 +187,8 @@ const worldBenefits = [
     id: 4,
     text: (
       <>
-       <span className="font-normal">Advanced digital</span>  <br />
-        <span className="font-medium">infrastructure</span>
+        <span className="font-normal">Advanced Digital</span>  <br />
+        <span className="font-medium">Infrastructure</span>
       </>
     ),
   },
@@ -196,8 +196,8 @@ const worldBenefits = [
     id: 5,
     text: (
       <>
-       <span className="font-normal">English as official</span>
-        <br /><span className="font-medium"> business language</span>
+        <span className="font-normal">English As 0fficial</span>
+        <br /><span className="font-medium"> Business Language</span>
       </>
     ),
   },
@@ -235,14 +235,15 @@ export const ServicesOverviewSection = (): JSX.Element => {
       <div className="flex flex-col items-center gap-4 px-4 max-w-[952px] mx-auto">
         <div className="flex flex-col items-start w-full gap-4">
           <div className="w-full flex items-center justify-center font-helvetica font-normal text-[#21283399] text-2xl text-center tracking-[0] leading-7">
-            Our Services
-          </div>
+            Why Incorporate in Hong Kong  
+                    </div>
           <h2 className="w-full flex items-center justify-center font-georgia font-normal text-[#212833] text-[40px] md:text-[50px] lg:text-[64px] text-center tracking-[0] leading-[42px] md:leading-[60px] lg:leading-[72px]">
-            Everything You Need to Run Your Hong Kong Business
+            Hong Kong - Asia's Premier Business Jurisdiction
           </h2>
         </div>
-        <p className="flex items-center justify-center max-w-[702px] font-helvetica font-normal text-[#212833] text-lg md:text-xl lg:text-[22px] text-center tracking-[-0.64px] leading-relaxed lg:leading-[35px]">
-          Comprehensive solutions tailored for modern businesses
+        <p className="flex items-center justify-center max-w-[702px] lg:max-w-[550px] font-helvetica font-normal text-[#212833] text-lg md:text-xl lg:text-[22px] text-center tracking-[-0.64px] leading-relaxed lg:leading-[35px]">
+         Discover the unmatched advantages of establishing
+your company in Hong Kong
         </p>
       </div>
 

@@ -9,7 +9,7 @@ const pricingPlans = [
     name: "Basic",
     price: "€799",
     description: "Perfect for simple audits,\ndormant companies",
-    revenueRange: "Up To Hk$1m Annual Revenue",
+    revenueRange: "Up To Hk$1M Annual Revenue",
     support: "Email",
     features: [
       "Trial Balance Preparation",
@@ -24,7 +24,7 @@ const pricingPlans = [
     name: "Standard",
     price: "€1,499",
     description: "Perfect for typical SMEs",
-    revenueRange: "Up To Hk$10m Annual Revenue",
+    revenueRange: "Up To Hk$10M Annual Revenue",
     support: "Phone",
     features: [
       "Everything In Basic, Plus:",
@@ -40,7 +40,7 @@ const pricingPlans = [
     name: "Comprehensive",
     price: "€2,499",
     description: "Perfect for complex structures",
-    revenueRange: "Up To Hk$50m Annual Revenue",
+    revenueRange: "Up To Hk$50M Annual Revenue",
     support: "Priority Support",
     features: [
       "Everything In Standard, Plus:",
@@ -55,7 +55,7 @@ const pricingPlans = [
     name: "Enterprise",
     price: "€4,999+",
     description: "Perfect for large operations",
-    revenueRange: "Hk$50m+ Annual Revenue",
+    revenueRange: "Hk$50M+ Annual Revenue",
     support: "Dedicated Team",
     features: [
       "Everything In\ncomprehensive, Plus:",
@@ -191,13 +191,13 @@ export const WhyHongKongSection = (): JSX.Element => {
                     </Button>
 
                     <p className="[font-family:'Helvetica_Neue-Regular',Helvetica] font-normal text-[#212833e6] text-base tracking-[0] leading-[18.5px] text-center whitespace-nowrap">
-                      {plan.support.includes("Supprot:") ? (
+                      {plan.support.includes("Support:") ? (
                         <>
                           <span className="[font-family:'Helvetica_Neue-Regular',Helvetica] font-normal text-[#212833e6] text-base tracking-[0] leading-[18.5px]">
-                            Supprot:{" "}
+                            Support:{" "}
                           </span>
                           <span className="[font-family:'Helvetica_Neue-Medium',Helvetica] font-medium">
-                            {plan.support.replace("Supprot: ", "")}
+                            {plan.support.replace("Support: ", "")}
                           </span>
                         </>
                       ) : plan.support === "Phone" ? (

@@ -9,11 +9,10 @@ const advantageCards = [
     iconSrc: "/Secretary/greenicon.png",
     sideImgSrc: "/Secretary/b1.png",
     items: [
-      "Real-time Compliance Status",
+      "Real-Time Compliance Status",
       "Upcoming Deadline Alerts",
       "Document Repository",
       "Task Management",
-      "Digital Signatures",
       "Secure Messaging",
     ],
   },

@@ -52,7 +52,7 @@ export const TestimonialsSection = (): JSX.Element => {
               Testimonials
             </p>
 
-            <h2 className="w-full font-georgia max-w-[820px] font-normal text-[#212833] text-[30px] sm:text-[40px] md:text-[50px] lg:text-[64px] leading-tight md:leading-[60px] lg:leading-[70.4px]">
+            <h2 className="w-full font-georgia max-w-[820px] font-normal text-[#212833] text-[30px] sm:text-[40px] md:text-[50px] lg:text-[60px] leading-tight md:leading-[60px] lg:leading-[70.4px]">
               Trusted by Entrepreneurs Worldwide
             </h2>
           </div>
@@ -70,7 +70,7 @@ export const TestimonialsSection = (): JSX.Element => {
                   </h3>
 
                   <div className="flex flex-col gap-10 sm:gap-12">
-                    <blockquote className="font-helvetica w-full h-[170px] sm:h-[160px] lg:h-[245px] xl:h-[203px] max-w-[678px] text-[#212833] text-[20px] sm:text-[24px] md:text-[28px] lg:text-[32px] xl:text-[34px] leading-snug sm:leading-[34px] md:leading-[38px] lg:leading-[40.8px]">
+                    <blockquote className="font-helvetica w-full h-[170px] sm:h-[160px] lg:h-[245px] xl:h-[203px] max-w-[678px] text-[#212833] text-[20px] sm:text-[24px] md:text-[28px] lg:text-[32px] xl:text-[30px] leading-snug sm:leading-[34px] md:leading-[38px] lg:leading-[40.8px]">
                       {testimonials[activeIndex].quote}
                     </blockquote>
 
@@ -139,7 +139,7 @@ export const TestimonialsSection = (): JSX.Element => {
                     99%
                   </div>
 
-                  <p className="text-base leading-relaxed font-helvetica text-white/80 sm:text-lg md:text-xl">
+                  <p className="text-base leading-relaxed font-helvetica text-white/80 sm:text-lg md:text-[1.5rem]">
                     Customers recommend Mute Taxes for seamless company
                     incorporation, accounting, and compliance in{" "}
                     <span className="font-medium text-white">Hong Kong</span>

@@ -12,23 +12,53 @@ const advantagesData = [
     items: [
       {
         icon: "/HomePage/frame.svg",
-        text: "Initial consultation",
+        text: (
+      <>
+        <span className="font-medium text-[#212833E5]">Initial </span>
+        
+        <span className="font-normal">Consultation</span>
+      </>
+    ),
       },
       {
         icon: "/HomePage/frame.svg",
-        text: "Information gathering",
+        text: (
+      <>
+        <span className="font-normal text-[#212833E5]">Information </span>
+        
+        <span className="font-medium">Gathering</span>
+      </>
+    ),
       },
       {
         icon: "/HomePage/frame.svg",
-        text: "System selection",
+        text: (
+      <>
+        <span className="font-medium text-[#212833E5]">System </span>
+        
+        <span className="font-normal">Selection</span>
+      </>
+    ),
       },
       {
         icon: "/HomePage/frame.svg",
-        text: "Chart of accounts design",
+        text: (
+      <>
+        <span className="font-normal text-[#212833E5]">Chart Of  </span>
+        
+        <span className="font-medium">Accounts Design</span>
+      </>
+    ),
       },
       {
         icon: "/HomePage/frame.svg",
-        text: "Bank feed connection",
+        text: (
+      <>
+        <span className="font-medium text-[#212833E5]">Bank Feed  </span>
+        
+        <span className="font-normal">Connection</span>
+      </>
+    ),
       },
     ],
   },
@@ -40,23 +70,53 @@ const advantagesData = [
     items: [
       {
         icon: "/HomePage/frame.svg",
-        text: "Historical data import",
+        text: (
+      <>
+        <span className="font-normal text-[#212833E5]">Historical  </span>
+        
+        <span className="font-medium">Data Import</span>
+      </>
+    ),
       },
       {
         icon: "/HomePage/frame.svg",
-        text: "Opening balances",
+       text: (
+      <>
+        <span className="font-medium text-[#212833E5]">Opening  </span>
+        
+        <span className="font-normal">Balances</span>
+      </>
+    ),
       },
       {
         icon: "/HomePage/frame.svg",
-        text: "Validation & testing",
+       text: (
+      <>
+        <span className="font-normal text-[#212833E5]">Validation &  </span>
+        
+        <span className="font-medium">Testing</span>
+      </>
+    ),
       },
       {
         icon: "/HomePage/frame.svg",
-        text: "Training session",
+       text: (
+      <>
+        <span className="font-medium text-[#212833E5]">Training  </span>
+        
+        <span className="font-normal">Session</span>
+      </>
+    ),
       },
       {
         icon: "/HomePage/frame.svg",
-        text: "Go-live",
+       text: (
+      <>
+        <span className="font-normal text-[#212833E5]">Go-</span>
+        
+        <span className="font-medium">Live</span>
+      </>
+    ),
       },
     ],
   },
@@ -68,19 +128,43 @@ const advantagesData = [
     items: [
       {
         icon: "/HomePage/frame.svg",
-        text: "Daily transaction processing",
+        text: (
+      <>
+        <span className="font-normal text-[#212833E5]">Daily Transaction </span>
+        
+        <span className="font-medium">Processing</span>
+      </>
+    ),
       },
       {
         icon: "/HomePage/frame.svg",
-        text: "Weekly status updates",
+       text: (
+      <>
+        <span className="font-medium text-[#212833E5]">Weekly  </span>
+        
+        <span className="font-normal">Status Update</span>
+      </>
+    ),
       },
       {
         icon: "/HomePage/frame.svg",
-        text: "Monthly financial statements",
+        text: (
+      <>
+        <span className="font-normal text-[#212833E5]">Monthly  </span>
+        
+        <span className="font-medium">Financial Statement</span>
+      </>
+    ),
       },
       {
         icon: "/HomePage/frame.svg",
-        text: "Quarterly reviews",
+        text: (
+      <>
+        <span className="font-medium text-[#212833E5]">Quarterly  </span>
+        
+        <span className="font-normal">Reviews</span>
+      </>
+    ),
       },
       
     ],

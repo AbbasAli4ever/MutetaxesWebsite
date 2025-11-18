@@ -14,7 +14,7 @@ const features = [
     icon: "/HomePage/WhyLogo2.png",
     title: "Local Expertise",
     description:
-      "Hkicpa Qualified Accountants And Licensed Company Secretaries With 15+ Years Of Hong Kong Market Experience.",
+      "HkICPA Qualified Accountants And Licensed Company Secretaries With 15+ Years Of Hong Kong Market Experience.",
     background: "/HomePage/subtract-9.svg",
   },
   {
@@ -78,7 +78,7 @@ export const WhyChooseUsSection = (): JSX.Element => {
                     {feature.title}
                   </h3>
 
-                  <p className="font-helvetica font-normal text-[#212833e6] text-base sm:text-base md:text-[15px] xl:text-[20px] leading-snug sm:leading-snug md:leading-snug lg:leading-snug xl:leading-8">
+                  <p className="font-helvetica font-normal text-[#212833e6] text-base sm:text-base md:text-[15px] xl:text-[19px] leading-snug sm:leading-snug md:leading-snug lg:leading-snug xl:leading-8">
                     {feature.description}
                   </p>
                   </div>
