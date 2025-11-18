@@ -68,7 +68,7 @@ export const BankingServicesSection = (): JSX.Element => {
                   <h3 className="font-helvetica font-medium text-[#212833] text-2xl tracking-[0] leading-5">
                     {feature.title}
                   </h3>
-                  <p className="font-helvetica font-normal max-w-[200px] text-[#212833] text-base tracking-[0] leading-[17px] whitespace-pre-line">
+                  <p className="font-helvetica font-normal max-w-[200px] text-[#212833] text-base lg:text-[14px] tracking-[0] leading-[17px] whitespace-pre-line">
                     {feature.description}
                   </p>
                 </div>
@@ -93,7 +93,7 @@ export const BankingServicesSection = (): JSX.Element => {
                   <h3 className="font-helvetica font-medium text-[#212833] text-2xl tracking-[0] leading-5">
                     {feature.title}
                   </h3>
-                  <p className="font-helvetica  text-[#212833] text-base font-extralight tracking-[0] leading-[17px]">
+                  <p className="font-helvetica  text-[#212833] text-base lg:text-[16px] font-extralight tracking-[0] leading-[17px]">
                     {feature.description}
                   </p>
                 </div>

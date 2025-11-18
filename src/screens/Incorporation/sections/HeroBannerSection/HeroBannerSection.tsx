@@ -26,7 +26,7 @@ const statisticsBadges = [
 export const HeroBannerSection = (): JSX.Element => {
   return (
     <section className="relative w-full bg-[#dbe6fe] md:bg-transparent h-auto">
-<div className="relative w-full xl:w-[97vw] mx-auto h-[950px] sm:h-[700px] md:h-[950px] lg:h-[1100px] pt-5 overflow-hidden">
+      <div className="relative w-full xl:w-[97vw] mx-auto h-[950px] sm:h-[700px] md:h-[950px] lg:h-[1100px] pt-5 overflow-hidden">
         <img
           className="hidden object-cover w-full h-full md:object-fill md:block"
           alt="G illustration"
@@ -40,16 +40,16 @@ export const HeroBannerSection = (): JSX.Element => {
           src="/Incorporate/rectangle-259.png"
         />
         <div className="absolute bottom-0 h-[400px] w-full lg:w-[900px] xl:w-[1200px] left-1/2 -translate-x-1/2">
-        {statisticsBadges.map((badge, index) => (
-          <div
-            key={index}
-            className={`inline-flex items-center justify-center gap-[8.51px] px-[14.1px] py-[12.34px] absolute ${badge.className} bg-[#ffffffcc] rounded-[119.12px] border-[0.85px] border-solid border-[#00000024] ${badge.shadow} backdrop-blur-[1.76px] backdrop-brightness-[100%] [-webkit-backdrop-filter:blur(1.76px)_brightness(100%)]`}
-          >
-            <div className="relative flex items-center justify-center w-fit mt-[-0.85px] [font-family:'Helvetica_Neue-Medium',Helvetica] font-medium text-[#004eff] text-[12px] md:text-[17.8px] tracking-[0] leading-[17.0px] whitespace-nowrap">
-              {badge.text}
+          {statisticsBadges.map((badge, index) => (
+            <div
+              key={index}
+              className={`inline-flex items-center justify-center gap-[8.51px] px-[14.1px] py-[12.34px] absolute ${badge.className} bg-[#ffffffcc] rounded-[119.12px] border-[0.85px] border-solid border-[#00000024] ${badge.shadow} backdrop-blur-[1.76px] backdrop-brightness-[100%] [-webkit-backdrop-filter:blur(1.76px)_brightness(100%)]`}
+            >
+              <div className="relative flex items-center justify-center w-fit mt-[-0.85px] [font-family:'Helvetica_Neue-Medium',Helvetica] font-medium text-[#004eff] text-[12px] md:text-[17.8px] tracking-[0] leading-[17.0px] whitespace-nowrap">
+                {badge.text}
+              </div>
             </div>
-          </div>
-        ))}
+          ))}
         </div>
       </div>
 
@@ -93,9 +93,9 @@ export const HeroBannerSection = (): JSX.Element => {
             </h1>
 
 
-            <p className="w-[300px] lg:w-[702px] xl:w-[702px] font-helvetica font-normal text-[#212833] text-[15px] lg:text-[27px] text-center tracking-[-0.64px] lg:leading-[35px]">
-              From company formation to compliance - we handle your business
-              essentials so  you can focus on growth
+            <p className="w-[300px] lg:w-[698px] xl:w-[702px] font-helvetica font-normal text-[#212833] text-[15px] lg:text-[28px] text-center tracking-[-0.64px] lg:leading-[35px]">
+              Expert incorporation services with everything you need
+              to start your business
             </p>
 
             {/* <img
@@ -108,7 +108,7 @@ export const HeroBannerSection = (): JSX.Element => {
           <div className="flex flex-col gap-4 lg:flex-row lg:items-center lg:gap-4 xl:flex xl:items-center">
             <Button className="group h-auto gap-[35px] pl-3 pr-1.5 py-2 rounded-[100px] bg-[linear-gradient(131deg,rgba(104,150,255,1)_0%,rgba(0,78,255,1)_100%)] hover:opacity-90">
               <span className="font-helvetica font-normal text-white text-base text-center tracking-[0] leading-6">
-                Incorporate Now
+                Start Incorporate Now
               </span>
               <img className="w-[38px] h-[38px] transition-all duration-500 ease-in-out group-hover:-rotate-45" alt="Arrow" src="/HomePage/arrow.svg" />
             </Button>
@@ -118,7 +118,7 @@ export const HeroBannerSection = (): JSX.Element => {
               className="h-auto px-[18px] py-[13px] rounded-[40px] border border-solid border-blue-500 bg-transparent hover:bg-transparent"
             >
               <span className="bg-[linear-gradient(140deg,rgba(104,150,255,1)_0%,rgba(0,78,255,1)_100%)] [-webkit-background-clip:text] bg-clip-text [-webkit-text-fill-color:transparent] [text-fill-color:transparent] font-helvetica font-normal text-base tracking-[0] leading-6">
-                Book Free Consultation
+                Download Free Guide
               </span>
             </Button>
           </div>

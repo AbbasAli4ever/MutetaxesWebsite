@@ -9,8 +9,8 @@ const cardsData = [
     title: "Cost Savings",
     description:
       (<span>
-        <span className="font-medium">15-30% reduction</span> in total audit
-fees through efficient preparation
+        <span className="font-medium">15-30% Reduction</span> In Total Audit
+Fees Through Efficient Preparation
       </span>),
     background: "/Secretary/subtract-5.svg",
     type: "text",
@@ -23,8 +23,8 @@ fees through efficient preparation
     title: "Time Savings",
     description:
       (<span>
-        <span className="font-medium">15-30% reduction</span> in total audit
-fees through efficient preparation
+        <span className="font-medium">15-30% Reduction</span> In Total Audit
+Fees Through Efficient Preparation
       </span>),
     background: "/Secretary/subtract-5.svg",
     type: "text",
@@ -37,8 +37,8 @@ fees through efficient preparation
     title: "Quality Assurance",
     description:
       (<span>
-        <span className="font-medium">15-30% reduction</span>  in total audit
-fees through efficient preparation.
+        <span className="font-medium">15-30% Reduction</span>  In Total Audit
+Fees Through Efficient Preparation.
       </span>),
     background: "/Secretary/subtract-5.svg",
     type: "text",
@@ -51,8 +51,8 @@ fees through efficient preparation.
     title: "Peace of Mind",
     description:
       (<span>
-        <span className="font-medium">15-30% reduction</span>  in total audit
-fees through efficient preparation
+        <span className="font-medium">15-30% Reduction</span>  In Total Audit
+Fees Through Efficient Preparation
       </span>),
     background: "/Secretary/subtract-5.svg",
     type: "text",

@@ -17,16 +17,32 @@ const services = [
     subtitle: "Register your Hong Kong limited company in as fast as 1 day",
     features: [
       {
-        text: "Company name search and reservation",
+        text: (
+      <>
+        <span className="font-medium">Company name</span> search and reservation
+      </>
+    ),
       },
       {
-        text: "Complete government registration",
+        text: (
+      <>
+        <span className="font-normal">Complete</span> <span className="font-medium">government registration</span>
+      </>
+    ),
       },
       {
-        text: "Company kit with chops and seals",
+       text: (
+      <>
+        <span className="font-normal">Company kit with</span> <span className="font-medium">chops and seals</span>
+      </>
+    ),
       },
       {
-        text: "First year registered office included",
+        text: (
+      <>
+        <span className="font-medium">First year</span> <span className="font-normal">registered office included</span>
+      </>
+    ),
       },
     ],
     price: "€279",
@@ -40,16 +56,32 @@ const services = [
     subtitle: "Stay 100% compliant with statutory requirements",
     features: [
       {
-        text: "Annual return filing",
+        text: (
+      <>
+        <span className="font-normal">Annual</span> <span className="font-medium">return filing</span>
+      </>
+    ),
       },
       {
-        text: "Board resolutions and minutes",
+       text: (
+      <>
+        <span className="font-medium">Board</span> <span className="font-normal">resolutions and minutes</span>
+      </>
+    ),
       },
       {
-        text: "Regulatory compliance management",
+        text: (
+      <>
+        <span className="font-normal">Regulatory</span> <span className="font-medium">compliance management</span>
+      </>
+    ),
       },
       {
-        text: "Registered office address",
+       text: (
+      <>
+        <span className="font-medium">Registered</span> <span className="font-normal">office address</span>
+      </>
+    ),
       },
     ],
     price: "€99/month",
@@ -63,16 +95,32 @@ const services = [
     subtitle: "Professional bookkeeping and financial reporting",
     features: [
       {
-        text: "Monthly bookkeeping and reconciliation",
+        text: (
+      <>
+        <span className="font-medium">Monthly bookkeeping</span> <span className="font-normal">and reconciliation</span>
+      </>
+    ),
       },
       {
-        text: "Financial statements preparation",
+       text: (
+      <>
+        <span className="font-medium">Financial statements</span> <span className="font-normal">preparation</span>
+      </>
+    ),
       },
       {
-        text: "Tax-ready accounting",
+        text: (
+      <>
+        <span className="font-normal">Tax-ready</span> <span className="font-medium">accounting</span>
+      </>
+    ),
       },
       {
-        text: "Cloud-based platform access",
+        text: (
+      <>
+        <span className="font-normal">Cloud-based</span> <span className="font-medium">platform access</span>
+      </>
+    ),
       },
     ],
     price: "€279/month",
@@ -86,16 +134,31 @@ const services = [
     subtitle: "Strategic tax planning and compliance",
     features: [
       {
-        text: "Profits tax return filing",
+text: (
+      <>
+        <span className="font-medium">Profits tax</span>  <span className="font-normal">return filing</span> 
+      </>
+    ),      },
+      {
+       text: (
+      <>
+        <span className="font-normal">Tax</span>  <span className="font-medium">planning</span> advisory
+      </>
+    ), 
       },
       {
-        text: "Tax planning advisory",
+        text: (
+      <>
+        <span className="font-normal">IRD</span>  <span className="font-medium">correspondence</span> 
+      </>
+    ), 
       },
       {
-        text: "IRD correspondence",
-      },
-      {
-        text: "Offshore claims assistance",
+        text: (
+      <>
+        <span className="font-medium">Offshore claims</span>  <span className="font-normal">assistance</span> 
+      </>
+    ), 
       },
     ],
     price: "€399/year",
@@ -109,17 +172,33 @@ const services = [
     subtitle: "Streamline your annual statutory audit",
     features: [
       {
-        text: "Document preparation",
+        text: (
+      <>
+        <span className="font-medium">Document</span> preparation
+      </>
+    ),
       },
       {
-        text: "Auditor coordination",
+       text: (
+      <>
+        <span className="font-normal">Auditor</span> <span className="font-medium">coordination</span>
+      </>
+    ),
       },
       {
-        text: "Working papers compilation",
+       text: (
+      <>
+        <span className="font-normal">Working papers</span> <span className="font-medium">compilation</span>
+      </>
+    ),
       },
       {
-        text: "Query resolution support",
-      },
+ text: (
+      <>
+        <span className="font-medium">
+Query resolution</span> <span className="font-normal">support</span>
+      </>
+    ),      },
     ],
     price: "€799",
     image: "/HomePage/audit.png",

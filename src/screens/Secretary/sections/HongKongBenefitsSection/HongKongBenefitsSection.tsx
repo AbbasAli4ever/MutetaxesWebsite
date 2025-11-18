@@ -189,11 +189,11 @@ const pricingData = [
     title: "Essential",
     description: "Perfect for dormant companies, holding companies",
     features: [
-      "Annual return filing",
-      "Business registration renewa",
-      "Registered office address",
-      "Statutory registers maintenance",
-      "Government correspondence",
+      "Annual Return Filing",
+      "Business Registration Renewa",
+      "Registered Office Address",
+      "Statutory Registers Maintenance",
+      "Government Correspondence",
     ],
     
     buttonVariant: "outline" as const,
@@ -207,7 +207,7 @@ const pricingData = [
     title: "Professional",
     description: "Perfect for active SMEs, trading companies",
     features: [
-      "Everything in Essential, plus",
+      "Everything in Essential, Plus",
        "Unlimited Corporate Changes",
       "Board Resolution Drafting",
       "Share Transfer Handling",
@@ -220,11 +220,11 @@ const pricingData = [
     featured: true,
   },
   {
-    price: "€899",
-    title: "Representative Office",
+    price: "€399",
+    title: "Enterprise",
     description: "Perfect for complex structures, multiple entities",
     features: [
-       "Everything in Essential, plus",
+       "Everything in Professional, Plus",
      "Agm/egm Coordination",
       "Significant Controller Services",
       "Monthly Compliance Reports",
@@ -252,7 +252,7 @@ export const HongKongBenefitsSection = (): JSX.Element => {
           </h2>
         </div>
 
-        <p className="text-center max-w-[702px] font-helvetica font-normal text-[#212833] text-lg md:text-xl lg:text-[22px] tracking-[-0.64px] leading-relaxed lg:leading-[35px]">
+        <p className="text-center max-w-[702px] font-helvetica font-normal text-[#212833] text-lg md:text-xl lg:text-[21px] lg:ml-[70px] tracking-[-0.64px] leading-relaxed lg:leading-[35px]">
           Flexible packages designed for every business stage
         </p>
       </div>
@@ -330,7 +330,7 @@ export const HongKongBenefitsSection = (): JSX.Element => {
                    <span className="[font-family:'Helvetica_Neue-Regular',Helvetica] font-normal  text-[#212833e6] text-base tracking-[0] leading-[18.5px]">
                      Supprot:{" "}
                    </span>
-                   <span className="[font-family:'Helvetica_Neue-Medium',Helvetica] font-medium">
+                   <span className="font-helvetica font-medium">
                      {plan.support}
                    </span>
                  </div>

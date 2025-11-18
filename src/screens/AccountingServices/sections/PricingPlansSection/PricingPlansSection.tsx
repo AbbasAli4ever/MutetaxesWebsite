@@ -9,12 +9,12 @@ const advantageCards = [
     iconSrc: "/AccountingServices/quickbook.png",
     sideImgSrc: "/Secretary/b1.png",
     items: [
-      "650+ integrations",
-      "Real-time collaboration",
-      "Automated bank feeds",
-      "Mobile access",
-      "Digital Signatures",
-      "Custom reporting",
+      "650+ Integrations",
+      "Real-Time Collaboration",
+      "Automated Bank Feeds",
+      "Mobile Access",
+    
+      "Custom Reporting",
     ],
   },
   {
@@ -23,11 +23,11 @@ const advantageCards = [
     iconSrc: "/AccountingServices/xero.png",
     sideImgSrc: "/Secretary/b2.png",
     items: [
-      "Beautiful interface",
-      "Unlimited users",
-      "Project tracking",
-      "Fixed asset register",
-      "Expense claims",
+      "Beautiful Interface",
+      "Unlimited Users",
+      "Project Tracking",
+      "Fixed Asset Register",
+      "Expense Claims",
     ],
   },
 ];
@@ -37,11 +37,11 @@ const statutoryRecordSections = [
     subtitle: "Mandatory Registers",
     items: [
       "Directors Register",
-      "Multi-currency support",
-      "Automated workflows",
-      "Real-time reporting",
-      "Bank reconciliation",
-      "Document storage",
+      "Multi-Currency Support",
+      "Automated Workflows",
+      "Real-Time Reporting",
+      "Bank Reconciliation",
+      "Document Storage",
     ],
   },
 ];
@@ -121,7 +121,7 @@ export const PricingPlansSection = (): JSX.Element => {
           ))}
         </div>
 
-      <Card className="w-full max-w-[1226px] mx-auto rounded-[20px] overflow-hidden border-0 bg-[#0f58ff] px-4 sm:px-8 py-6">
+      <Card className="w-full max-w-[1226px] mx-auto rounded-[20px] overflow-hidden border-0 bg-[#0f58ff] px-4 sm:px-8 py-6 lg:pb-0">
   <CardContent className="relative p-0 overflow-hidden">
     {/* Blurred background circle */}
    
@@ -160,11 +160,11 @@ export const PricingPlansSection = (): JSX.Element => {
         </div>
 
         {/* Right Section (Image) */}
-        <div className="flex justify-center  w-full lg:w-[40%]">
+        <div className=" flex justify-center  w-full lg:w-[40%] ">
           <img
             src="/AccountingServices/keyfeatureimg.png"
             alt="Decoration"
-            className="object-contain w-[220px] sm:w-[300px] md:w-[350px] lg:w-[350px] xl:w-[300px]"
+            className="object-contain w-[220px] sm:w-[300px] md:w-[350px] lg:w-[350px] xl:w-[300px] lg:ml-[100px] "
           />
         </div>
       </div>

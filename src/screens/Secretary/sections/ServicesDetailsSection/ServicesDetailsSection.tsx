@@ -10,12 +10,12 @@ const serviceCards = [
     background: "bg-[url(/Secretary/Subtract.png)]",
     sections: [
       {
-        subtitle: "Annual Return (nar1)",
+        subtitle: "Annual Return (NAR1)",
         items: [
           "Preparation And Filing Within 42 Days",
-          "Director/shareholder Information\nupdate",
+          "Director/Shareholder Information\nupdate",
           "Share Capital Confirmation",
-          "Digital Submission To Companies\nregistry",
+          "Digital Submission To Companies\nRegistry",
           "Inland Revenue Registration",
         ],
       },
@@ -38,8 +38,8 @@ const serviceCards = [
       {
         subtitle: "Director & Officer Changes",
         items: [
-          "Appointment Documentation (nd2a)",
-          "Resignation Processing (nd2b)",
+          "Appointment Documentation (ND2A)",
+          "Resignation Processing (ND2B)",
           "Register Updates",
           "Companies Registry Notification",
         ],
@@ -70,10 +70,10 @@ const serviceCards = [
     background: "bg-[url(/Secretary/Subtract.png)]",
     sections: [
       {
-        subtitle: "Annual Return (nar1)",
+        subtitle: "Annual Return (NAR1)",
         items: [
           "Preparation And Filing Within 42 Days",
-          "Director/shareholder Information Update",
+          "Director/Shareholder Information Update",
           "Share Capital Confirmation",
           "Digital Submission To Companies Registry",
           "Inland Revenue Registration",
@@ -189,7 +189,7 @@ export const ServicesDetailsSection = (): JSX.Element => {
                                 src="/Secretary/frame-2.svg"
                               />
 
-                              <p className="font-helvetica font-normal text-[#212833e6] text-wrap text-base sm:text-[16.2px] tracking-[0] leading-snug sm:leading-[21.3px] whitespace-pre-line">
+                              <p className="font-helvetica font-normal text-[#212833e6] text-wrap text-base sm:text-[16.2px] lg:text-[15px] tracking-[0] leading-snug sm:leading-[21.3px] whitespace-pre-line">
                                 {item}
                               </p>
                             </div>
@@ -249,11 +249,13 @@ export const ServicesDetailsSection = (): JSX.Element => {
         ))}
 
         {/* Decorative Image */}
-        <img
-          src="/Secretary/freee.png"
-          alt="Decoration"
-          className="z-10 object-contain w-full mt-5 sm:mt-0"
-        />
+       <div className="flex justify-end items-start col-span-1">
+    <img
+      src="/Secretary/freee.png"
+      alt="Decoration"
+      className="object-contain w-[80%] sm:w-[90%] lg:w-[110%]"
+    />
+  </div>
       </div>
     </div>
   </CardContent>
