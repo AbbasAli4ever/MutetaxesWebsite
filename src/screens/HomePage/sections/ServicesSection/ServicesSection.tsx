@@ -18,31 +18,31 @@ const services = [
     features: [
       {
         text: (
-      <>
-        <span className="font-medium">Company name</span> search and reservation
-      </>
-    ),
+          <>
+            <span className="font-medium">Company name</span> search and reservation
+          </>
+        ),
       },
       {
         text: (
-      <>
-        <span className="font-normal">Complete</span> <span className="font-medium">government registration</span>
-      </>
-    ),
-      },
-      {
-       text: (
-      <>
-        <span className="font-normal">Company kit with</span> <span className="font-medium">chops and seals</span>
-      </>
-    ),
+          <>
+            <span className="font-normal">Complete</span> <span className="font-medium">government registration</span>
+          </>
+        ),
       },
       {
         text: (
-      <>
-        <span className="font-medium">First year</span> <span className="font-normal">registered office included</span>
-      </>
-    ),
+          <>
+            <span className="font-normal">Company kit with</span> <span className="font-medium">chops and seals</span>
+          </>
+        ),
+      },
+      {
+        text: (
+          <>
+            <span className="font-medium">First year</span> <span className="font-normal">registered office included</span>
+          </>
+        ),
       },
     ],
     price: "€279",
@@ -57,31 +57,31 @@ const services = [
     features: [
       {
         text: (
-      <>
-        <span className="font-normal">Annual</span> <span className="font-medium">return filing</span>
-      </>
-    ),
-      },
-      {
-       text: (
-      <>
-        <span className="font-medium">Board</span> <span className="font-normal">resolutions and minutes</span>
-      </>
-    ),
+          <>
+            <span className="font-normal">Annual</span> <span className="font-medium">return filing</span>
+          </>
+        ),
       },
       {
         text: (
-      <>
-        <span className="font-normal">Regulatory</span> <span className="font-medium">compliance management</span>
-      </>
-    ),
+          <>
+            <span className="font-medium">Board</span> <span className="font-normal">resolutions and minutes</span>
+          </>
+        ),
       },
       {
-       text: (
-      <>
-        <span className="font-medium">Registered</span> <span className="font-normal">office address</span>
-      </>
-    ),
+        text: (
+          <>
+            <span className="font-normal">Regulatory</span> <span className="font-medium">compliance management</span>
+          </>
+        ),
+      },
+      {
+        text: (
+          <>
+            <span className="font-medium">Registered</span> <span className="font-normal">office address</span>
+          </>
+        ),
       },
     ],
     price: "€99/month",
@@ -96,31 +96,31 @@ const services = [
     features: [
       {
         text: (
-      <>
-        <span className="font-medium">Monthly bookkeeping</span> <span className="font-normal">and reconciliation</span>
-      </>
-    ),
-      },
-      {
-       text: (
-      <>
-        <span className="font-medium">Financial statements</span> <span className="font-normal">preparation</span>
-      </>
-    ),
+          <>
+            <span className="font-medium">Monthly bookkeeping</span> <span className="font-normal">and reconciliation</span>
+          </>
+        ),
       },
       {
         text: (
-      <>
-        <span className="font-normal">Tax-ready</span> <span className="font-medium">accounting</span>
-      </>
-    ),
+          <>
+            <span className="font-medium">Financial statements</span> <span className="font-normal">preparation</span>
+          </>
+        ),
       },
       {
         text: (
-      <>
-        <span className="font-normal">Cloud-based</span> <span className="font-medium">platform access</span>
-      </>
-    ),
+          <>
+            <span className="font-normal">Tax-ready</span> <span className="font-medium">accounting</span>
+          </>
+        ),
+      },
+      {
+        text: (
+          <>
+            <span className="font-normal">Cloud-based</span> <span className="font-medium">platform access</span>
+          </>
+        ),
       },
     ],
     price: "€279/month",
@@ -134,31 +134,32 @@ const services = [
     subtitle: "Strategic tax planning and compliance",
     features: [
       {
-text: (
-      <>
-        <span className="font-medium">Profits tax</span>  <span className="font-normal">return filing</span> 
-      </>
-    ),      },
-      {
-       text: (
-      <>
-        <span className="font-normal">Tax</span>  <span className="font-medium">planning</span> advisory
-      </>
-    ), 
+        text: (
+          <>
+            <span className="font-medium">Profits tax</span>  <span className="font-normal">return filing</span>
+          </>
+        ),
       },
       {
         text: (
-      <>
-        <span className="font-normal">IRD</span>  <span className="font-medium">correspondence</span> 
-      </>
-    ), 
+          <>
+            <span className="font-normal">Tax</span>  <span className="font-medium">planning</span> advisory
+          </>
+        ),
       },
       {
         text: (
-      <>
-        <span className="font-medium">Offshore claims</span>  <span className="font-normal">assistance</span> 
-      </>
-    ), 
+          <>
+            <span className="font-normal">IRD</span>  <span className="font-medium">correspondence</span>
+          </>
+        ),
+      },
+      {
+        text: (
+          <>
+            <span className="font-medium">Offshore claims</span>  <span className="font-normal">assistance</span>
+          </>
+        ),
       },
     ],
     price: "€399/year",
@@ -173,32 +174,33 @@ text: (
     features: [
       {
         text: (
-      <>
-        <span className="font-medium">Document</span> preparation
-      </>
-    ),
+          <>
+            <span className="font-medium">Document</span> preparation
+          </>
+        ),
       },
       {
-       text: (
-      <>
-        <span className="font-normal">Auditor</span> <span className="font-medium">coordination</span>
-      </>
-    ),
+        text: (
+          <>
+            <span className="font-normal">Auditor</span> <span className="font-medium">coordination</span>
+          </>
+        ),
       },
       {
-       text: (
-      <>
-        <span className="font-normal">Working papers</span> <span className="font-medium">compilation</span>
-      </>
-    ),
+        text: (
+          <>
+            <span className="font-normal">Working papers</span> <span className="font-medium">compilation</span>
+          </>
+        ),
       },
       {
- text: (
-      <>
-        <span className="font-medium">
-Query resolution</span> <span className="font-normal">support</span>
-      </>
-    ),      },
+        text: (
+          <>
+            <span className="font-medium">
+              Query resolution</span> <span className="font-normal">support</span>
+          </>
+        ),
+      },
     ],
     price: "€799",
     image: "/HomePage/audit.png",
@@ -217,7 +219,7 @@ export const ServicesSection = (): JSX.Element => {
             Our Services
           </div>
 
-          <h2 className="w-full flex items-center justify-center font-georgia font-normal text-[#212833] text-[40px] md:text-[50px] lg:text-[64px] text-center tracking-[0] leading-[42px] md:leading-[60px] lg:leading-[72px]">
+          <h2 className="w-full flex items-center justify-center font-georgia font-normal text-[#212833] text-[36px] md:text-[50px] lg:text-[64px] text-center tracking-[0] leading-[42px] md:leading-[60px] lg:leading-[72px]">
             Everything You Need to Run Your Hong Kong Business
           </h2>
         </div>
@@ -231,7 +233,7 @@ export const ServicesSection = (): JSX.Element => {
         onValueChange={setActiveTab}
         className="relative z-10 w-full mt-0"
       >
-        <TabsList className="relative z-20 flex items-center scrollbar-hide justify-start w-[90%] h-auto gap-2 mx-auto overflow-x-auto bg-transparent sm:w-full sm:overflow-x-visible md:justify-center -mb-14 md:-mb-12 lg:-mb-14">
+        <TabsList className="relative z-20 flex items-center  justify-start w-[90%] h-auto gap-2 mx-auto overflow-x-auto bg-transparent sm:w-full sm:overflow-x-visible md:justify-center -mb-14 md:-mb-12 lg:-mb-14">
           {services.map((service) => (
             <TabsTrigger
               key={service.id}
@@ -296,7 +298,7 @@ export const ServicesSection = (): JSX.Element => {
                     </div>
                   </div>
 
-                  <div className="flex flex-row items-center justify-center md:justify-start gap-8 md:gap-[154px] flex-wrap">
+                  <div className="flex flex-col lg:flex-row items-center justify-center md:justify-start gap-8 md:gap-[154px] flex-wrap">
                     <div className="flex flex-col items-center justify-center gap-1 sm:items-start">
                       <div className="flex items-center justify-center font-helvetica font-medium text-[#212833cc] text-sm tracking-[0] leading-5 whitespace-nowrap">
                         Starting Price

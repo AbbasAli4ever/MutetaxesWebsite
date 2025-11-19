@@ -44,7 +44,7 @@ Join thousands of successful businesses operating in Hong Kong
                   alt="Check"
                   src="/HomePage/svg.svg"
                 />
-                <span className="font-helvetica text-[#004EFF] text-xs sm:text-sm  leading-[18px] sm:leading-[21px] tracking-[0] whitespace-nowrap">
+                <span className="font-helvetica text-[#004EFF] text-xs font-normal sm:text-sm  leading-[18px] sm:leading-[21px] tracking-[0] whitespace-nowrap">
                   {benefit.text}
                 </span>
               </Badge>

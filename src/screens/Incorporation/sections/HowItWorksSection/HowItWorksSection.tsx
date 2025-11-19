@@ -20,11 +20,11 @@ const steps = [
   },
   {
     number: "Days 2-3",
-    title: "Document\npreparation",
+    title: "Document\nPreparation",
     items: [
       "Kyc Documents Collection",
       "Incorporation Forms Drafting",
-      " articles Of Association",
+      " Articles Of Association",
       "Director/shareholder Details",
     ],
     icon: "/Incorporate/frame-1171278984-1.svg",
@@ -33,7 +33,7 @@ const steps = [
   },
   {
     number: "Days 4-5",
-    title: "Government submission",
+    title: "Government Submission",
     items: [
       "Companies Registry Filing",
       "Business Registration Application",
@@ -76,7 +76,7 @@ export const HowItWorksSection = (): JSX.Element => {
           </h2>
         </div>
          <p className="font-helvetica font-normal text-[#212833] text-[15px] lg:text-[22px] text-center tracking-[-0.64px] leading-[35px] max-w-[702px]">
-         A transparent, step-by-step process from start to finish
+         A Transparent, Step-By-Step Process From Start To Finish
         </p>
       </div>
 

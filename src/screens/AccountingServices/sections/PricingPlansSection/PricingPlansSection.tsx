@@ -121,7 +121,7 @@ export const PricingPlansSection = (): JSX.Element => {
           ))}
         </div>
 
-      <Card className="w-full max-w-[1226px] mx-auto rounded-[20px] overflow-hidden border-0 bg-[#0f58ff] px-4 sm:px-8 py-6 lg:pb-0">
+      <Card className="w-full max-w-[1194px] mx-auto rounded-[20px] overflow-hidden border-0 bg-[#0f58ff] px-4 sm:px-8 py-6 lg:pb-0">
   <CardContent className="relative p-0 overflow-hidden">
     {/* Blurred background circle */}
    

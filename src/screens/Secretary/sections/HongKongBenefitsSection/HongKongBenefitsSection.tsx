@@ -328,7 +328,7 @@ export const HongKongBenefitsSection = (): JSX.Element => {
                 </Button>
                  <div className="[font-family:'Helvetica_Neue-Regular',Helvetica] font-normal text-[#212833e6] flex justify-center  mt-4 text-base tracking-[0] leading-[18.5px] whitespace-nowrap">
                    <span className="[font-family:'Helvetica_Neue-Regular',Helvetica] font-normal  text-[#212833e6] text-base tracking-[0] leading-[18.5px]">
-                     Supprot:{" "}
+                     Support:{" "}
                    </span>
                    <span className="font-helvetica font-medium">
                      {plan.support}

@@ -92,7 +92,7 @@ export const IncludedServicesSection = (): JSX.Element => {
               className="z-10"
             >
               <CardContent className="relative flex flex-col items-start justify-center pt-12 xl:pt-24">
-                <div className="flex flex-col items-center sm:items-start gap-6 pb-[40px] relative z-10 text-start sm:text-left ">
+                <div className="flex flex-col items-start sm:items-start gap-6 pb-[40px] relative z-10 ">
                   <h3 className="font-helvetica font-medium text-[#212833] mt-5 xl:mt-0 text-2xl sm:text-[24px] md:text-[20px] xl:text-[24px] leading-snug">
                     {card.title}
                   </h3>

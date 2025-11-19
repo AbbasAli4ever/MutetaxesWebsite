@@ -90,13 +90,13 @@ const advantagesData = [
         icon: "/HomePage/frame-5.svg",
         text: [
           { text: "Access To ", bold: false },
-          { text: "Asean Markets", bold: true },
+          { text: "ASEAN Markets", bold: true },
         ],
       },
       {
         icon: "/HomePage/frame-5.svg",
         text: [
-          { text: "World-class", bold: true },
+          { text: "World-Class", bold: true },
           { text: " Infrastructure", bold: false },
         ],
       },

@@ -76,27 +76,35 @@ export const HeroSection = (): JSX.Element => {
               </div>
             </Badge>
 
-            <h1 className="font-helvetica font-bold text-5xl sm:text-5xl md:text-5xl lg:text-[74px] text-center tracking-[-1.95px] leading-tight md:leading-snug lg:leading-[83px]">
-              <div className="flex flex-col items-center justify-center gap-3 font-medium sm:flex-row ">
-              <span className=" text-[#212833] tracking-[-4.95px]">
-                Streamline Your
-                  
-              </span>
-               <img
-              className="w-12 h-12 md:w-[70px] md:h-[70px] object-cover rounded-full"
-              alt="Ellipse"
-              src="/HomePage/ellipse-3-1.png"
-            />
-              <span className="font-georgia font-normal text-[#004eff]">
-                Hong Kong
-              </span>
-              </div>
-              
-             <span className="font-georgia font-normal text-[#004eff]">
-                Statutory Audit
-              </span>
-              
-            </h1>
+<h1 className="font-helvetica font-medium text-[28px] sm:text-5xl md:text-6xl lg:text-[74px] text-center tracking-[-1.95px] leading-tight md:leading-snug lg:leading-[83px]">
+  {/* First line: Streamline Your + Logo + Hong Kong */}
+  <div className="flex flex-col items-center justify-center gap-2 lg:flex-col">
+    <div className="flex items-center gap-2 flex-wrap justify-center lg:flex-nowrap">
+      <span className="text-[#212833] tracking-normal lg:tracking-[-4.95px]">
+        Streamline Your
+      </span>
+      <img
+        className="w-8 h-8 md:w-[70px] md:h-[70px] lg:w-12 lg:h-12 object-cover rounded-full"
+        alt="Ellipse"
+        src="/HomePage/ellipse-3-1.png"
+      />
+      <span className="font-georgia font-normal text-[#004eff]">
+        Hong Kong
+      </span>
+    </div>
+
+    {/* Second line: Statutory Audit */}
+    <div className="font-georgia font-normal text-[#004eff] mt-1 lg:mt-2">
+      Statutory Audit
+    </div>
+  </div>
+</h1>
+
+
+
+
+
+
 
             <p className="w-full max-w-[702px] font-helvetica font-normal text-[#212833] text-lg md:text-xl lg:text-[27px] text-center tracking-[-0.64px] leading-normal md:leading-[35px]">
               Professional audit preparation and coordination services

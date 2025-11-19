@@ -41,7 +41,7 @@ const pricingTiers = [
       { name: "Company Secretary (1 Year)", included: true },
       { name: "Accounting Setup", included: false },
       { name: "Tax Registration", included: false },
-      { name: "Express Service (1 Day)", included: false },
+      { name: "Express Service (1 Day)", included: true },
     ],
     buttonVariant: "default" as const,
     isPopular: true,
@@ -195,7 +195,7 @@ export const HongKongOverviewSection = (): JSX.Element => {
                   </Button>
 
                   <div className="font-helvetica font-normal text-[#212833e6] text-base tracking-[0] leading-[18.5px]">
-                    <span>Supprot: </span>
+                    <span>Support: </span>
                     <span className="font-medium font-helvetica">
                       {tier.support}
                     </span>

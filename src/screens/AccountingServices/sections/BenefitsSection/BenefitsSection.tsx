@@ -56,27 +56,27 @@ export const BenefitsSection = (): JSX.Element => {
           </div>
 
           {/* Buttons */}
-          <div className="absolute flex flex-col flex-wrap items-center justify-center gap-2 mt-6 -bottom-20 lg:-bottom-8 xl:bottom-0 md:flex-row xl:gap-1 sm:gap-1 sm:mt-8">
-            <Button className="group inline-flex items-center justify-center gap-2 pl-3 pr-2 sm:pr-1.5 py-6 xl:py-7 rounded-[100px] bg-[linear-gradient(131deg,rgba(104,150,255,1)_0%,rgba(0,78,255,1)_100%)]">
-              <span className="text-sm font-medium leading-6 text-white font-helvetica sm:text-xs xl:text-base whitespace-nowrap">
-                Incorporate Now - €279
-              </span>
-              <img
-                className="w-[30px] sm:w-[28px] h-[30px] sm:h-[28px] xl:h-[38px] xl:w-[38px] transition-all duration-500 ease-in-out group-hover:-rotate-45"
-                alt="Arrow"
-                src="/HomePage/arrow.svg"
-              />
-            </Button>
-
-            <Button
-              variant="outline"
-              className="px-[24px] sm:px-[18px] md:px[26px] py-[20px] sm:py-[20px] xl:py-[26px] rounded-[40px] border-2 border-solid border-[#004eff]"
-            >
-              <span className="bg-[linear-gradient(140deg,rgba(104,150,255,1)_0%,rgba(0,78,255,1)_100%)] [-webkit-background-clip:text] bg-clip-text [-webkit-text-fill-color:transparent] [text-fill-color:transparent] font-helvetica font-medium text-sm sm:text-xs xl:text-base leading-6 whitespace-nowrap">
-                Get Free Quote
-              </span>
-            </Button>
-          </div>
+           <div className="absolute flex flex-col flex-wrap items-center justify-center gap-2 mt-6 -bottom-20 lg:-bottom-8 xl:bottom-0 md:flex-row xl:gap-4 sm:gap-1 sm:mt-8">
+                      <Button className="group inline-flex items-center justify-center gap-2 pl-3 pr-2 sm:pr-1.5 py-6 xl:py-7 rounded-[100px] bg-[linear-gradient(131deg,rgba(104,150,255,1)_0%,rgba(0,78,255,1)_100%)]">
+                        <span className="text-sm font-medium leading-6 text-white font-helvetica sm:text-xs xl:text-base whitespace-nowrap">
+                          Start Now - €279/month
+                        </span>
+                        <img
+                          className="w-[30px] sm:w-[28px] h-[30px] sm:h-[28px] xl:h-[38px] xl:w-[38px] transition-all duration-500 ease-in-out group-hover:-rotate-45"
+                          alt="Arrow"
+                          src="/HomePage/arrow.svg"
+                        />
+                      </Button>
+          
+                      <Button
+                        variant="outline"
+                        className="px-[57px] sm:px-[18px] md:px[26px] py-[20px] sm:py-[20px] lg:px-[36px] xl:py-[26px] rounded-[40px] border-2 border-solid border-[#004eff]"
+                      >
+                        <span className="bg-[linear-gradient(140deg,rgba(104,150,255,1)_0%,rgba(0,78,255,1)_100%)] [-webkit-background-clip:text] bg-clip-text [-webkit-text-fill-color:transparent] [text-fill-color:transparent] font-helvetica font-medium text-sm sm:text-xs xl:text-base leading-6 whitespace-nowrap">
+                          Get Free Quote
+                        </span>
+                      </Button>
+                    </div>
         </div>
       </div>
 

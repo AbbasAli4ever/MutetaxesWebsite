@@ -70,7 +70,7 @@ export const BenefitsSection = (): JSX.Element => {
 
             <Button
               variant="outline"
-              className="px-[24px] sm:px-[18px] md:px[26px] py-[20px] sm:py-[20px] xl:py-[26px] rounded-[40px] border-2 border-solid border-[#004eff]"
+              className="px-[54px] sm:px-[18px] md:px[26px] py-[20px] sm:py-[20px] xl:py-[26px] rounded-[40px] border-2 border-solid border-[#004eff]"
             >
               <span className="bg-[linear-gradient(140deg,rgba(104,150,255,1)_0%,rgba(0,78,255,1)_100%)] [-webkit-background-clip:text] bg-clip-text [-webkit-text-fill-color:transparent] [text-fill-color:transparent] font-helvetica font-medium text-sm sm:text-xs xl:text-base leading-6 whitespace-nowrap">
                 Free Assessment

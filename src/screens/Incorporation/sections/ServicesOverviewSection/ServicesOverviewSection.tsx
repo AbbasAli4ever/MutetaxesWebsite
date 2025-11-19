@@ -17,7 +17,7 @@ const taxBenefits = [
       <>
         <span className="font-medium">Corporate Tax:</span> <span className="font-normal">16.5%</span>
         <br />
-        <span className="font-normal">(8.25% On First Hk$2M)</span>
+        <span className="font-normal">(8.25% On First HK$2M)</span>
       </>
     ),
   },
@@ -27,7 +27,7 @@ const taxBenefits = [
       <>
         <span className="font-medium">No VAT/GST</span>  <span className="font-normal">Keeping</span>
         <br />
-        <span className="font-normal">prices Competitive</span>
+        <span className="font-normal">Prices Competitive</span>
       </>
     ),
   },
@@ -45,7 +45,7 @@ const taxBenefits = [
     text: (
       <>
         <span className="font-normal">Territorial Tax System</span>
-        <br />  <span className="font-normal">- Only</span> <span className="font-medium">Hk Income</span> Taxed
+        <br />  <span className="font-normal">- Only</span> <span className="font-medium">HK Income</span><span className="font-normal">Taxed</span> 
       </>
     ),
   },
@@ -119,7 +119,7 @@ const businessBenefits = [
       <>
         <span className="font-normal">100%</span> <span className="font-medium"> Foreign </span>
         <br />
-        <span className="font-normal">ownership permitted</span>
+        <span className="font-normal">Ownership Permitted</span>
       </>
     ),
   },
@@ -127,7 +127,7 @@ const businessBenefits = [
     id: 2,
     text: (
       <>
-        <span className="font-normal">No minimum capital</span> <span className="font-medium"><br /> <span className="font-normal">requirement (start with HK$1)</span> </span>
+        <span className="font-normal">No Minimum Capital</span> <span className="font-medium"><br /> <span className="font-normal">Requirement (Start With HK$1)</span> </span>
       </>
     ),
   },
@@ -135,7 +135,7 @@ const businessBenefits = [
     id: 3,
     text: (
       <>
-        <span className="font-medium">Only 1 director needed <span className="font-normal">(Any</span> </span> <br /> <span className="font-normal">Nationality)</span>
+        <span className="font-medium">Only 1 Director Needed <span className="font-normal">(Any</span> </span> <br /> <span className="font-normal">Nationality)</span>
       </>
     ),
   },
@@ -241,7 +241,7 @@ export const ServicesOverviewSection = (): JSX.Element => {
             Hong Kong - Asia's Premier Business Jurisdiction
           </h2>
         </div>
-        <p className="flex items-center justify-center max-w-[702px] lg:max-w-[550px] font-helvetica font-normal text-[#212833] text-lg md:text-xl lg:text-[22px] text-center tracking-[-0.64px] leading-relaxed lg:leading-[35px]">
+        <p className="flex items-center justify-center max-w-[250px] lg:max-w-[550px] font-helvetica font-normal text-[#212833] text-lg md:text-xl lg:text-[22px] text-center tracking-[-0.64px] leading-relaxed lg:leading-[35px]">
          Discover the unmatched advantages of establishing
 your company in Hong Kong
         </p>
@@ -253,7 +253,7 @@ your company in Hong Kong
         onValueChange={setActiveTab}
         className="relative z-10 w-full mt-12"
       >
-        <TabsList className="relative z-20 flex items-center scrollbar-hide justify-start w-[90%] h-auto gap-2 mx-auto overflow-x-auto bg-transparent sm:w-full sm:overflow-x-visible md:justify-center -mb-14 md:-mb-12 lg:-mb-15 xl:-mb-[55px]">
+        <TabsList className="relative z-20 flex items-center  justify-start w-[90%] h-auto gap-2 mx-auto overflow-x-auto bg-transparent sm:w-full sm:overflow-x-visible md:justify-center -mb-14 md:-mb-12 lg:-mb-15 xl:-mb-[55px]">
           {tabsData.map((service) => (
             <TabsTrigger
               key={service.value}

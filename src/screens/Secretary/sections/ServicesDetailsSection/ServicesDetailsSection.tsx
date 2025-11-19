@@ -66,7 +66,7 @@ const serviceCards = [
   },
   {
     icon: "/Secretary/valueproposition10.png",
-    title: "Meeting\nadministration",
+    title: "Meeting\nAdministration",
     background: "bg-[url(/Secretary/Subtract.png)]",
     sections: [
       {
@@ -129,7 +129,7 @@ export const ServicesDetailsSection = (): JSX.Element => {
         </div>
 
         <p className="text-center max-w-[702px] font-helvetica font-normal text-[#212833] text-lg md:text-xl lg:text-[22px] tracking-[-0.64px] leading-relaxed lg:leading-[35px]">
-          Everything you need to start operating
+          Everything You Need To Start Operating
         </p>
       </div>
 
@@ -159,7 +159,7 @@ export const ServicesDetailsSection = (): JSX.Element => {
                   borderWidth={2}
                   className={``}
                 >
-                  <CardContent className="relative flex flex-col items-center h-full p-0">
+                  <CardContent className="relative flex flex-col items-start lg:items-center  h-full p-2 lg:p-0">
                     <div className="flex gap-[5.57px] flex-col items-center justify-center ml-20 md:ml-24 xl:ml-4 pt-5">
                       <h3 className="whitespace-pre-line font-helvetica w-full sm:w-[250px] font-medium text-[#212833] text-2xl tracking-[0] leading-9 ">
                         {card.title}
