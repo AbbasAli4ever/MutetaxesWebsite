@@ -35,25 +35,28 @@ export const HeroSection = (): JSX.Element => {
               </div>
             </Badge>
 
-            <h1 className="font-helvetica font-medium text-5xl sm:text-5xl md:text-6xl lg:text-[74px] text-center tracking-[-1.95px] leading-tight md:leading-snug lg:leading-[83px]">
-              <span className=" text-[#212833] ">
-                Your Complete Business <br />
-              </span>
+         <h1 className="font-helvetica font-medium text-[28px] sm:text-5xl md:text-6xl lg:text-[74px] text-center tracking-[-1.95px] leading-tight md:leading-snug lg:leading-[83px]">
+  {/* Line 1 */}
+  <span className="text-[#212833] block">
+    Your Complete Business
+  </span>
 
-              <div className="flex flex-col items-center justify-center gap-1 font-medium sm:flex-row ">
-                <span>Solution in</span>
-                <img
-                  className="w-12 h-12 md:w-[70px] md:h-[70px] object-cover rounded-full"
-                  alt="Ellipse"
-                  src="/HomePage/ellipse-3-1.png"
-                />
-                <span className="font-georgia font-normal text-[#004eff]">
-                  Hong Kong
-                </span>
-              </div>
-            </h1>
+  {/* Line 2 */}
+  <div className="flex items-center justify-center gap-1 mt-1 sm:mt-2 flex-wrap">
+    <span>Solution in</span>
+    <img
+      className="w-8 h-8 lg:w-12 lg:h-12 md:w-[70px] md:h-[70px] object-cover rounded-full"
+      alt="Ellipse"
+      src="/HomePage/ellipse-3-1.png"
+    />
+    <span className="font-georgia font-normal text-[#004eff]">
+      Hong Kong
+    </span>
+  </div>
+</h1>
 
-            <p className="w-full max-w-[702px] font-helvetica font-normal text-[#212833] text-lg md:text-xl lg:text-[27px] text-center tracking-[-0.64px] leading-normal md:leading-[35px]">
+
+            <p className="w-full max-w-[350px] lg:max-w-[702px] font-helvetica font-normal text-[#212833] text-lg md:text-xl lg:text-[27px] text-center tracking-[-0.64px] leading-normal md:leading-[35px]">
               From company formation to compliance - we handle your business
               essentials so you can focus on growth
             </p>

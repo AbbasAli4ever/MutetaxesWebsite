@@ -14,7 +14,7 @@ const features = [
     icon: "/HomePage/WhyLogo2.png",
     title: "Local Expertise",
     description:
-      "HkICPA Qualified Accountants And Licensed Company Secretaries With 15+ Years Of Hong Kong Market Experience.",
+      "HKICPA Qualified Accountants And Licensed Company Secretaries With 15+ Years Of Hong Kong Market Experience.",
     background: "/HomePage/subtract-9.svg",
   },
   {
@@ -43,7 +43,7 @@ export const WhyChooseUsSection = (): JSX.Element => {
             Why Choose Us
           </p>
 
-          <h2 className="font-georgia font-normal text-[#212833] text-3xl sm:text-4xl md:text-5xl lg:text-[64px] leading-tight md:leading-[72px]">
+          <h2 className="font-georgia font-normal text-[#212833] text-[36px] sm:text-4xl md:text-5xl lg:text-[64px] leading-tight md:leading-[72px]">
             Why 1,000+ Hong Kong Businesses Choose Mute Taxes
           </h2>
         </div>

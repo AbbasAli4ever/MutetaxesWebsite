@@ -9,30 +9,32 @@ const pricingPlans = [
     name: "Basic",
     price: "€799",
     description: "Perfect for simple audits,\ndormant companies",
-    revenueRange: "Up To Hk$1M Annual Revenue",
+    revenueRange: "Up To HK$1M Annual Revenue",
     support: "Email",
     features: [
-      "Trial Balance Preparation",
-      "Basic Reconciliations",
-      "Document Organization",
-      "Auditor Liaison",
-      "Report Review",
+      { text: "Trial Balance Preparation", bold: false },
+      { text: "Basic Reconciliations", bold: false },
+      { text: "Document Organization", bold: false },
+      { text: "Auditor Liaison", bold: false },
+      { text: "Report Review", bold: false },
     ],
+
     featured: false,
   },
   {
     name: "Standard",
     price: "€1,499",
     description: "Perfect for typical SMEs",
-    revenueRange: "Up To Hk$10M Annual Revenue",
+    revenueRange: "Up To HK$10M Annual Revenue",
     support: "Phone",
     features: [
-      "Everything In Basic, Plus:",
-      "Full Reconciliations",
-      "Working Papers Preparation",
-      "Sample Coordination",
-      "Management Letter Assistance",
+      { text: "Everything In Basic, Plus:", bold: true },
+      { text: "Full Reconciliations", bold: false },
+      { text: "Working Papers Preparation", bold: false },
+      { text: "Sample Coordination", bold: false },
+      { text: "Management Letter Assistance", bold: false },
     ],
+
     featured: true,
     featuredLabel: "Most Popular",
   },
@@ -40,30 +42,32 @@ const pricingPlans = [
     name: "Comprehensive",
     price: "€2,499",
     description: "Perfect for complex structures",
-    revenueRange: "Up To Hk$50M Annual Revenue",
+    revenueRange: "Up To HK$50M Annual Revenue",
     support: "Priority Support",
     features: [
-      "Everything In Standard, Plus:",
-      "Detailed Variance Analysis",
-      "On-site Support Available",
-      "Multiple Subsidiary Coordination",
-      "Priority Response",
+      { text: "Everything In Standard, Plus:", bold: true },
+      { text: "Detailed Variance Analysis", bold: false },
+      { text: "On-site Support Available", bold: false },
+      { text: "Multiple Subsidiary Coordination", bold: false },
+      { text: "Priority Response", bold: false },
     ],
+
     featured: false,
   },
   {
     name: "Enterprise",
     price: "€4,999+",
     description: "Perfect for large operations",
-    revenueRange: "Hk$50M+ Annual Revenue",
+    revenueRange: "HK$50M+ Annual Revenue",
     support: "Dedicated Team",
     features: [
-      "Everything In\ncomprehensive, Plus:",
-      "Dedicated Audit Manager",
-      "Group Consolidation Support",
-      "Full On-site Presence",
-      "Custom Reporting",
+      { text: "Everything In\ncomprehensive, Plus:", bold: true },
+      { text: "Dedicated Audit Manager", bold: false },
+      { text: "Group Consolidation Support", bold: false },
+      { text: "Full On-site Presence", bold: false },
+      { text: "Custom Reporting", bold: false },
     ],
+
     featured: false,
   },
 ];
@@ -100,11 +104,10 @@ export const WhyHongKongSection = (): JSX.Element => {
               )}
 
               <Card
-                className={`h-[812px] rounded-[20px] border-0 ${
-                  plan.featured
-                    ? "shadow-[0px_35px_104px_#004eff40] overflow-hidden relative"
-                    : "bg-white"
-                }`}
+                className={`h-[812px] rounded-[20px] border-0 ${plan.featured
+                  ? "shadow-[0px_35px_104px_#004eff40] overflow-hidden relative"
+                  : "bg-white"
+                  }`}
               >
                 {plan.featured && (
                   <div className="absolute top-[-270px] left-[200px] rotate-[-30deg] w-[500px] h-[600px] rounded-[474.32px]  blur-[77.38px] bg-[#004EFF]" />
@@ -114,9 +117,8 @@ export const WhyHongKongSection = (): JSX.Element => {
                   <div className="flex flex-col items-start gap-5 pt-10 px-[17px]">
                     <div className="flex flex-col items-start gap-4">
                       <h3
-                        className={`[font-family:'Helvetica_Neue-Medium',Helvetica] font-medium text-[54.2px] tracking-[0] leading-[normal] whitespace-nowrap ${
-                          plan.featured ? "text-[#004eff]" : "text-[#222222]"
-                        }`}
+                        className={`[font-family:'Helvetica_Neue-Medium',Helvetica] font-medium text-[54.2px] tracking-[0] leading-[normal] whitespace-nowrap ${plan.featured ? "text-[#004eff]" : "text-[#222222]"
+                          }`}
                       >
                         {plan.price}
                       </h3>
@@ -143,37 +145,34 @@ export const WhyHongKongSection = (): JSX.Element => {
 
                   <div className="flex flex-col items-start gap-10 mt-[37px] px-[17px] absolute top-72">
                     <div className="flex flex-col items-start w-full gap-5">
-                      <h5 className="[ [font-family:'Helvetica_Neue-Medium',Helvetica] font-semibold text-[#212833] text-[22px] tracking-[0.55px] leading-6">
+                      <h5 className="[ [font-family:'Helvetica_Neue-Medium',Helvetica] font-medium text-[#212833] text-[22px] tracking-[0.55px] leading-6">
                         Features
                       </h5>
 
                       <div className="flex flex-col items-start justify-center gap-3">
-                        {plan.features.map((feature, featureIndex) => (
-                          <div
-                            key={featureIndex}
-                            className="flex items-start justify-center gap-2.5"
-                          >
-                            <img src="/Audit/frame.svg" alt="tick icon" width={24} height={24} />
-                            <p
-                              className={`[font-family:'Helvetica_Neue-Regular',Helvetica] text-[#212833e6] text-base tracking-[0] leading-[18.5px] ${
-                                featureIndex === 0 &&
-                                (
-                                  plan.name === "Standard" ||
-                                    plan.name === "Comprehensive" ||
-                                    plan.name === "Enterprise"
-                                )
-                                  ? "[font-family:'Helvetica_Neue-Medium',Helvetica] font-medium"
-                                  : "font-normal"
-                              } ${
-                                feature.includes("\n")
-                                  ? "whitespace-pre-line"
-                                  : "whitespace-nowrap"
-                              }`}
+                        {plan.features.map((feature, featureIndex) => {
+                         
+                          return (
+                            <div
+                              key={featureIndex}
+                              className="flex items-start justify-center gap-2.5"
                             >
-                              {feature}
-                            </p>
-                          </div>
-                        ))}
+                              <img src="/Audit/frame.svg" alt="tick icon" width={24} height={24} />
+                              <p
+                                className={`
+        font-helvetica
+        text-[#212833e6] text-base tracking-[0] leading-[18.5px]
+        ${feature.bold ? "font-helvetica font-medium" : "font-normal"}
+        ${feature.text.includes("\n") ? "whitespace-pre-line" : "break-normal"}
+
+      `}
+                              >
+                                {feature.text}
+                              </p>
+                            </div>
+                          )
+
+                        })}
                       </div>
                     </div>
                   </div>
@@ -181,38 +180,18 @@ export const WhyHongKongSection = (): JSX.Element => {
                   <div className="mt-auto flex flex-col items-center gap-3 px-[42px] pb-[45px]">
                     <Button
                       variant="outline"
-                      className={`w-[217px] h-[54px] rounded-[28.01px] ${
-                        plan.featured
-                          ? "bg-[linear-gradient(129deg,rgba(104,150,255,1)_0%,rgba(0,78,255,1)_100%)] border-0 text-white hover:bg-[linear-gradient(129deg,rgba(104,150,255,1)_0%,rgba(0,78,255,1)_100%)] hover:text-white "
-                          : "bg-white border-[1.36px] border-solid border-black text-black hover:bg-white hover:text-black"
-                      } [font-family:'Helvetica_Neue-Regular',Helvetica] font-normal text-[16.3px] tracking-[0] leading-[normal]`}
+                      className={`w-[217px] h-[54px] rounded-[28.01px] ${plan.featured
+                        ? "bg-[linear-gradient(129deg,rgba(104,150,255,1)_0%,rgba(0,78,255,1)_100%)] border-0 text-white hover:bg-[linear-gradient(129deg,rgba(104,150,255,1)_0%,rgba(0,78,255,1)_100%)] hover:text-white "
+                        : "bg-white border-[1.36px] border-solid border-black text-black hover:bg-white hover:text-black"
+                        } [font-family:'Helvetica_Neue-Regular',Helvetica] font-normal text-[16.3px] tracking-[0] leading-[normal]`}
                     >
                       Get Started
                     </Button>
 
-                    <p className="[font-family:'Helvetica_Neue-Regular',Helvetica] font-normal text-[#212833e6] text-base tracking-[0] leading-[18.5px] text-center whitespace-nowrap">
-                      {plan.support.includes("Support:") ? (
-                        <>
-                          <span className="[font-family:'Helvetica_Neue-Regular',Helvetica] font-normal text-[#212833e6] text-base tracking-[0] leading-[18.5px]">
-                            Support:{" "}
-                          </span>
-                          <span className="[font-family:'Helvetica_Neue-Medium',Helvetica] font-medium">
-                            {plan.support.replace("Support: ", "")}
-                          </span>
-                        </>
-                      ) : plan.support === "Phone" ? (
-                        <>
-                          <span className="[font-family:'Helvetica_Neue-Regular',Helvetica] font-normal text-[#212833e6] text-base tracking-[0] leading-[18.5px]">
-                            Supprot:{" "}
-                          </span>
-                          <span className="[font-family:'Helvetica_Neue-Medium',Helvetica] font-medium">
-                            Phone
-                          </span>
-                        </>
-                      ) : (
-                        plan.support
-                      )}
-                    </p>
+                   <p className="font-helvetica font-normal text-[#212833e6] text-base tracking-[0] leading-[18.5px] text-center">
+  <span className="font-normal">Support: </span>
+  <span className="font-medium">{plan.support}</span>
+</p>
                   </div>
                 </CardContent>
               </Card>

@@ -12,7 +12,7 @@ const advantagesData = [
         icon: "/HomePage/frame.svg",
         text: (
           <div>
-            <span className="font-medium">Multi-Channel</span>  <span className="font-normal">Sales Tracking</span>
+            <span className="font-medium">Multi-channel</span>  <span className="font-normal">sales tracking</span>
           </div>
         ),
       },
@@ -20,7 +20,7 @@ const advantagesData = [
         icon: "/HomePage/frame.svg",
         text: (
           <div>
-           <span className="font-normal">Inventory</span>  <span className="font-medium"> Management</span>
+           <span className="font-normal">Inventory</span>  <span className="font-medium"> management</span>
           </div>
         ),
       },
@@ -28,7 +28,7 @@ const advantagesData = [
         icon: "/HomePage/frame.svg",
         text: (
           <div>
-            <span className="font-medium">Marketplace</span> <span className="font-normal">Reconciliation</span> 
+            <span className="font-medium">Marketplace</span> <span className="font-normal">reconciliation</span> 
           </div>
         ),
       },
@@ -36,8 +36,8 @@ const advantagesData = [
         icon: "/HomePage/frame.svg",
         text: (
           <div>
-           <span className="font-normal">Product Profitability{" "}</span> 
-            <span className="font-medium">Analysis</span>{" "}
+           <span className="font-normal">Product profitability{" "}</span> 
+            <span className="font-medium">analysis</span>{" "}
           </div>
         ),
       },
@@ -61,7 +61,7 @@ const advantagesData = [
         icon: "/HomePage/frame.svg",
         text: (
           <div>
-            <span className="font-medium">R&D </span> <span className="font-normal">Expense Tracking</span>
+            <span className="font-medium">R&D </span> <span className="font-normal">expense tracking</span>
           </div>
         ),
       },
@@ -69,7 +69,7 @@ const advantagesData = [
         icon: "/HomePage/frame.svg",
         text: (
           <div>
-            <span className="font-normal">Subscription</span> <span className="font-medium"> Metrics</span>
+            <span className="font-normal">Subscription</span> <span className="font-medium"> metrics</span>
           </div>
         ),
       },
@@ -77,7 +77,7 @@ const advantagesData = [
         icon: "/HomePage/frame.svg",
         text: (
           <div>
-            <span className="font-medium">MRR/ARR </span> <span className="font-normal">Reporting</span>
+            <span className="font-medium">MRR/ARR </span> <span className="font-normal">reporting</span>
           </div>
         ),
       },
@@ -100,7 +100,7 @@ const advantagesData = [
         icon: "/HomePage/frame.svg",
         text: (
           <div>
-            <span className="font-medium">Time </span> <span className="font-normal"> & Billing{" "}</span> 
+            <span className="font-medium">Time </span> <span className="font-normal"> & billing{" "}</span> 
           </div>
         ),
       },
@@ -108,7 +108,7 @@ const advantagesData = [
         icon: "/HomePage/frame.svg",
         text: (
           <div>
-            <span className="font-normal">WIP</span> <span className="font-medium"> Management</span>
+            <span className="font-normal">WIP</span> <span className="font-medium"> management</span>
           </div>
         ),
       },
@@ -116,7 +116,7 @@ const advantagesData = [
         icon: "/HomePage/frame.svg",
         text: (
           <div>
-            <span className="font-medium">Client </span> <span className="font-normal">Profitability{" "}</span> 
+            <span className="font-medium">Client </span> <span className="font-normal">profitability{" "}</span> 
           </div>
         ),
       },
@@ -131,7 +131,7 @@ const advantagesData = [
         icon: "/HomePage/frame.svg",
         text: (
           <div>
-           <span className="font-normal">Multi-Currency</span>  <span className="font-medium">Accounting</span>
+           <span className="font-normal">Multi-currency</span>  <span className="font-medium">accounting</span>
           </div>
         ),
       },
@@ -139,7 +139,7 @@ const advantagesData = [
         icon: "/HomePage/frame.svg",
         text: (
           <div>
-            <span className="font-medium">Landed Cost </span>  <span className="font-normal">Calculation</span>
+            <span className="font-medium">Landed cost </span>  <span className="font-normal">calculation</span>
           </div>
         ),
       },
@@ -147,7 +147,7 @@ const advantagesData = [
         icon: "/HomePage/frame.svg",
         text: (
           <div>
-           <span className="font-normal">Letter of Credit</span>  <span className="font-medium">Tracking</span>
+           <span className="font-normal">Letter of credit</span>  <span className="font-medium">tracking</span>
           </div>
         ),
       },
@@ -155,7 +155,7 @@ const advantagesData = [
         icon: "/HomePage/frame.svg",
         text: (
           <div>
-            <span className="font-medium">Customs Duty </span> <span className="font-normal">Accounting</span>
+            <span className="font-medium">Customs duty </span> <span className="font-normal">Accounting</span>
           </div>
         ),
       },
@@ -165,7 +165,7 @@ const advantagesData = [
 
 export const IncludedServicesSection = (): JSX.Element => {
   return (
-    <section className="flex flex-col w-full gap-16 py-8 lg:gap-4 mt-0 lg:mt-[130px]">
+    <section className="flex flex-col w-full gap-16 py-8 sm:gap-24">
       <header className="flex flex-col items-center gap-4 max-w-[1052px] mx-auto px-4">
         <div className="flex flex-col items-start w-full gap-4">
           <p className="w-full text-center font-helvetica font-normal text-[#21283399] text-xl md:text-2xl tracking-[0] leading-7">
@@ -178,11 +178,11 @@ export const IncludedServicesSection = (): JSX.Element => {
         </div>
 
         <p className="text-center max-w-[702px] font-helvetica font-normal text-[#212833] text-lg md:text-xl lg:text-[22px] tracking-[-0.64px] leading-relaxed lg:leading-[35px]">
-          Legal Obligations Every Hong Kong Company Must Comply With{" "}
+          Legal obligations every Hong Kong company must comply with{" "}
         </p>
       </header>
 
-      <div className="grid w-full grid-cols-1 gap-x-4 px-3 mx-auto sm:grid-cols-2 lg:grid-cols-3 sm:gap-x-10 max-w-[1300px]">
+      <div className="grid w-full grid-cols-1 gap-4 px-3 mx-auto sm:grid-cols-2 lg:grid-cols-3 sm:gap-10 xl:gap-y-20 max-w-[1300px]">
         {advantagesData.map((advantage, index) => (
           <div className="relative pt-20" key={index}>
             <img
@@ -202,7 +202,7 @@ export const IncludedServicesSection = (): JSX.Element => {
               shadowColor="#6a98ff"
               className="z-10"
             >
-              <CardContent className="relative flex flex-col items-center justify-center pt-16 xl:pt-24">
+              <CardContent className="relative flex flex-col items-start lg:items-center justify-center pt-16 xl:pt-24">
                 {/* Content */}
                 <div className="flex flex-col items-start sm:items-start pb-[40px] relative z-10 text-center sm:text-left">
                   <h3 className="font-helvetica font-medium text-[#212833] text-2xl sm:text-[26px] md:text-[25px] lg:text-[25px] xl:text-[24px] leading-snug pb-4">

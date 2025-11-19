@@ -5,33 +5,33 @@ import { Link } from "react-router-dom";
 
 export const HeroBannerSection = (): JSX.Element => {
   const statisticsBadges = [
-  {
-     text: ( 
+    {
+      text: (
 
-     <div>
-       Our <span className="font-semibold">HKICS-qualified team</span>
-        <br />
-        manages all your statutory
-        <br />
-        obligations
-      </div>
-       ),
-    className: "bottom-[2%] md:bottom-[8%] lg:bottom-[20%] left-[2%] md:left-[8%] xl:left-[0%] rounded-l-[14.12px] rounded-br-[14.12px]",
-    shadow: "shadow-[0px_11.91px_22.12px_#004eff52]",
-  },
+        <div>
+          Our <span className="font-semibold">HKICS-qualified team</span>
+          <br />
+          manages all your statutory
+          <br />
+          obligations
+        </div>
+      ),
+      className: "bottom-[2%] md:bottom-[8%] lg:bottom-[20%] left-[2%] md:left-[8%] xl:left-[0%] rounded-l-[14.12px] rounded-br-[14.12px]",
+      shadow: "shadow-[0px_11.91px_22.12px_#004eff52]",
+    },
 
-  {
-    text: (
-      <div>
-        Hi There!
-        <br />
-        Your <span className="font-semibold">Annual report</span> is ready
-      </div>
-    ),
-    className: "bottom-[2%] lg:bottom-[20%] md:bottom-[10%] right-[2%] md:right-[10%] xl:right-0 rounded-r-[14.12px] rounded-bl-[14.12px]",
-    shadow: "shadow-[0px_11.91px_22.12px_#004eff52]",
-  },
-];
+    {
+      text: (
+        <div>
+          Hi There!
+          <br />
+          Your <span className="font-semibold">Annual report</span> is ready
+        </div>
+      ),
+      className: "bottom-[2%] lg:bottom-[20%] md:bottom-[10%] right-[2%] md:right-[10%] xl:right-0 rounded-r-[14.12px] rounded-bl-[14.12px]",
+      shadow: "shadow-[0px_11.91px_22.12px_#004eff52]",
+    },
+  ];
   return (
     <section className="relative w-full bg-[#dbe6fe] md:bg-transparent h-auto">
       <div className="relative w-full xl:w-[97vw] mx-auto h-[1050px] sm:h-[700px] md:h-[950px] lg:h-[1100px] pt-5 overflow-hidden">
@@ -48,17 +48,17 @@ export const HeroBannerSection = (): JSX.Element => {
           src="/Secretary/herobg.png"
         />
         <div className="absolute bottom-0 h-[400px] w-full lg:w-[900px] xl:w-[1200px] left-1/2 -translate-x-1/2">
-        {statisticsBadges.map((badge, index) => (
-          <div
-            key={index}
-            className={`inline-flex items-center justify-center gap-[8.51px] px-[14.1px] py-[12.34px] absolute ${badge.className} bg-[#ffffffcc]  border-[0.85px] border-solid border-[#00000024] ${badge.shadow} backdrop-blur-[1.76px] backdrop-brightness-[100%] [-webkit-backdrop-filter:blur(1.76px)_brightness(100%)]`}
-          >
-            <div className="relative flex items-center justify-center w-fit mt-[-0.85px] [font-family:'Helvetica_Neue-Medium',Helvetica] font-medium text-[#004EFF] text-[10px] sm:text-[17.8px] tracking-[0] leading-[10px] md:leading-[26.0px] whitespace-nowrap">
-              {badge.text}
+          {statisticsBadges.map((badge, index) => (
+            <div
+              key={index}
+              className={`inline-flex items-center justify-center gap-[8.51px] px-[14.1px] py-[12.34px] absolute ${badge.className} bg-[#ffffffcc]  border-[0.85px] border-solid border-[#00000024] ${badge.shadow} backdrop-blur-[1.76px] backdrop-brightness-[100%] [-webkit-backdrop-filter:blur(1.76px)_brightness(100%)]`}
+            >
+              <div className="relative flex items-center justify-center w-fit mt-[-0.85px] [font-family:'Helvetica_Neue-Medium',Helvetica] font-medium text-[#004EFF] text-[10px] sm:text-[17.8px] tracking-[0] leading-[10px] md:leading-[26.0px] whitespace-nowrap">
+                {badge.text}
+              </div>
             </div>
-          </div>
-        ))}
-      </div>
+          ))}
+        </div>
       </div>
 
       <div className="absolute top-24 md:top-40 lg:top-[180px] left-1/2 -translate-x-1/2 flex flex-col w-full max-w-[1200px] px-4 items-center justify-center gap-6">
@@ -73,32 +73,35 @@ export const HeroBannerSection = (): JSX.Element => {
               </div>
             </Badge>
 
-            <h1 className="font-helvetica font-medium text-5xl sm:text-5xl md:text-6xl lg:text-[74px] text-center tracking-[-1.95px] leading-tight md:leading-snug lg:leading-[83px]">
-              <span className=" text-[#212833] ">
-                Licensed Company Secretary{" "} 
-                <br />  
-              </span>
-               
-              <div className="flex flex-col items-center justify-center gap-1 font-medium sm:flex-row ">
-             <span>
-                services in
-              </span>
-              <img
-              className="w-12 h-12 md:w-[70px] md:h-[70px] object-cover rounded-full"
-              alt="Ellipse"
-              src="/HomePage/ellipse-3-1.png"
-            />
-              <span className="font-georgia font-normal text-[#004eff]">
-                Hong Kong
-              </span>
-              </div>
-            </h1>
+          <h1 className="font-helvetica font-medium text-[28px] sm:text-5xl md:text-6xl lg:text-[74px] text-center tracking-[-1.95px] leading-tight md:leading-snug lg:leading-[83px]">
+  {/* First line */}
+  <span className="text-[#212833] block">
+    Licensed Company Secretary
+  </span>
+
+  {/* Second line */}
+  <div className="flex flex-col sm:flex-row items-center justify-center gap-2 mt-1">
+    <span>services in</span>
+
+    <div className="flex items-center gap-2">
+      <img
+        className="w-8 h-8 md:w-[70px] md:h-[70px] lg:w-12 lg:h-12 object-cover rounded-full"
+        alt="Ellipse"
+        src="/HomePage/ellipse-3-1.png"
+      />
+      <span className="font-georgia font-normal text-[#004eff] text-[36px] md:text-[36px] lg:text-[70px] whitespace-nowrap">
+        Hong Kong
+      </span>
+    </div>
+  </div>
+</h1>
+
 
             <p className="w-full max-w-[702px] font-helvetica font-normal text-[#212833] text-lg md:text-xl lg:text-[27px] text-center tracking-[-0.64px] leading-normal md:leading-[35px]">
               Ensure 100% statutory compliance with professional company secretarial support
             </p>
 
-            
+
           </div>
 
           <div className="flex flex-col items-center gap-4 sm:flex-row">

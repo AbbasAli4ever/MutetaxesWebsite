@@ -10,11 +10,11 @@ const pricingData = [
     description: "Perfect for new businesses, freelancers",
     badge: "Up to 50 Transactions/Month",
     features: [
-      "Monthly bookkeeping",
-      "Bank reconciliation",
-      "Basic financial statements",
-      "Expense tracking",
-      "Cloud software setup"
+      "Monthly Bookkeeping",
+      "Bank Reconciliation",
+      "Basic Financial Statements",
+      "Expense Tracking",
+      "Cloud Software Setup"
     ],
     buttonVariant: "outline" as const,
     buttonText: "Get Started",
@@ -86,7 +86,7 @@ export const HongKongAdvantagesSection = (): JSX.Element => {
           Packages
         </p>
 
-        <h2 className="w-full text-center font-georgia font-normal text-[#212833] text-4xl md:text-5xl lg:text-[64px] tracking-[0] leading-tight lg:leading-[72px]">
+        <h2 className="w-full text-center font-georgia font-normal text-[#212833] text-[38px] md:text-5xl lg:text-[64px] tracking-[0] leading-tight lg:leading-[72px]">
           Flexible Packages for <br />
           Every Business Stage
         </h2>

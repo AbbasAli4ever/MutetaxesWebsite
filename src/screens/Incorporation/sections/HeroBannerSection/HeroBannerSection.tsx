@@ -16,7 +16,7 @@ const statisticsBadges = [
   },
   {
     text: "2,500+ Companies Formed",
-    className: "bottom-[50%] left-[15%] md:bottom-[17%] md:left-[8%]",
+    className: "bottom-[50%] left-[23%] md:bottom-[17%] md:left-[8%]",
     shadow: "shadow-[0px_11.91px_22.12px_#004eff52]",
   },
 ];
@@ -69,28 +69,28 @@ export const HeroBannerSection = (): JSX.Element => {
               </div>
             </Badge>
 
-            <h1 className="[font-family:'Helvetica_Neue-Medium',Helvetica] font-normal text-[1.8rem] md:text-5xl lg:text-[74px] text-center tracking-[-1.95px] leading-tight md:leading-snug lg:leading-[83px]">
-              {/* First line: Register Your + Hong Kong + Icon */}
-              <div className="flex flex-wrap items-center justify-center gap-3 font-medium">
-                <span className="font-medium font-helvetica text-[#212833]">Register Your</span>
-                <span className="flex items-center gap-2">
-                  <img
-                    src="/HomePage/ellipse-3-1.png"
-                    alt="Hong Kong Icon"
-                    className="w-8 h-8 object-cover md:w-[3rem] md:h-[3rem] lg:w-12 lg:h-12 rounded-full"
-                  />
-                  <span className="font-georgia text-[#004eff]">
-                    Hong Kong
-                  </span>
+          <h1 className="[font-family:'Helvetica_Neue-Medium',Helvetica] font-normal text-[1.8rem] md:text-5xl lg:text-[74px] text-center tracking-[-1.95px] leading-tight md:leading-snug lg:leading-[83px]">
+  {/* First line: Register Your + Icon + Hong Kong */}
+  <div className="flex flex-col sm:flex-row items-center justify-center gap-2 sm:gap-3 font-medium">
+    <span className="font-medium font-helvetica text-[#212833]">Register Your</span>
+    <span className="flex items-center gap-2">
+      <img
+        src="/HomePage/ellipse-3-1.png"
+        alt="Hong Kong Icon"
+        className="w-8 h-8 object-cover md:w-[3rem] md:h-[3rem] lg:w-12 lg:h-12 rounded-full"
+      />
+      <span className="font-georgia text-[#004eff] whitespace-nowrap">
+        Hong Kong
+      </span>
+    </span>
+  </div>
 
-                </span>
-              </div>
+  {/* Second line: Company in 5–7 Days */}
+  <div className="font-medium font-helvetica text-[#212833] mt-1 lg:mt-2">
+    Company in 5–7 Days
+  </div>
+</h1>
 
-              {/* Second line: Company in 5–7 Days */}
-              <div className="font-medium font-helvetica text-[#212833] mt-1 lg:mt-2">
-                Company in 5–7 Days
-              </div>
-            </h1>
 
 
             <p className="w-[300px] lg:w-[698px] xl:w-[702px] font-helvetica font-normal text-[#212833] text-[15px] lg:text-[28px] text-center tracking-[-0.64px] lg:leading-[35px]">
@@ -142,7 +142,7 @@ export const HeroBannerSection = (): JSX.Element => {
 
             <img alt="Frame" src="/HomePage/frame-7.svg" />
 
-            <span className="font-helvetica font-normal text-[#212833] text-[15px] tracking-[0] leading-[18px]">
+            <span className="font-helvetica font-normal text-[#212833] text-[14px] tracking-[0] leading-[18px]">
               10,000+ reviews
             </span>
           </div>

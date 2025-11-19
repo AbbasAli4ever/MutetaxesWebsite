@@ -124,7 +124,7 @@ export const AuditPackagesSection = (): JSX.Element => {
           ))}
         </div>
 
-           <Card className="w-full max-w-[1226px] mx-auto rounded-[20px] overflow-hidden border-0 bg-[#2467ff] ">
+           <Card className="w-full max-w-[1190px] mx-auto rounded-[20px] overflow-hidden border-0 bg-[#2467ff] ">
           <CardContent className="relative p-0 overflow-hidden">
           <div className="absolute -bottom-[500px] -right-[200px] w-[700px] h-[700px] bg-white rounded-full blur-3xl opacity-40" />
             {/* Content */}

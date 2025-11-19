@@ -333,7 +333,7 @@ export const FeaturesIncludedSection = (): JSX.Element => {
           borderColor="bg-[#D7E3FF]"
           shadowColor="#D7E3FF]"
           notch={{
-            width: { base: 0, sm: 200, md: 700, lg: 900 },
+            width: { base: 0, sm: 200, md: 700, lg: 940 },
             depth: { base: 50, sm: 40, md: 45, lg: 50 },
             bottomRadius: 25,
             topRadius: 25,
@@ -342,7 +342,7 @@ export const FeaturesIncludedSection = (): JSX.Element => {
           {/* --- Tabs INSIDE card on small/medium screens --- */}
           <div className="block lg:hidden">
             <TabsList
-              className="flex items-center justify-start w-full gap-2 mb-6 overflow-x-auto bg-transparent md:justify-center scrollbar-hide"
+              className="flex items-center justify-start w-full gap-2 mb-6 overflow-x-auto bg-transparent md:justify-center "
             >
               {tabsData.map((tab) => (
                 <TabsTrigger
