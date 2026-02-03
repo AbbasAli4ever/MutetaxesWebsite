@@ -71,7 +71,7 @@ export const Navbar = (): JSX.Element => {
 
   return (
     <nav className="absolute z-40 w-full bg-transparent top-9">
-      <div className="grid grid-cols-3 items-center w-full xl:w-[97%] mx-auto px-4 xl:px-6">
+      <div className="grid grid-cols-2 sm:grid-cols-3 items-center w-full xl:w-[97%] mx-auto px-4 xl:px-6">
         {/* Logo */}
         <a href="/" onClick={() => setIsMenuOpen(false)}>
           <img
@@ -173,7 +173,7 @@ export const Navbar = (): JSX.Element => {
 
         {/* ===== Mobile Menu Toggle ===== */}
         <button
-          className="flex items-center justify-center w-10 h-10 transition rounded-md lg:hidden hover:bg-gray-100"
+          className="flex items-center justify-center absolute right-4 w-10 h-10 transition rounded-md lg:hidden hover:bg-gray-100"
           onClick={() => setIsMenuOpen(!isMenuOpen)}
         >
           {isMenuOpen ? <X size={26} /> : <Menu size={26} />}
@@ -213,30 +213,49 @@ export const Navbar = (): JSX.Element => {
             </Button>
 
             {/* Mobile Region Selector */}
-            <div className="flex items-center justify-center gap-2 mt-2 pt-3 border-t border-gray-200">
-              {regions.map((region) => (
-                <a
-                  key={region.code}
-                  href={region.href}
-                  onClick={() => setIsMenuOpen(false)}
-                  className={`flex items-center gap-1 px-3 py-2 rounded-full transition-colors ${
-                    currentRegion.code === region.code
-                      ? "bg-[#004eff] text-white"
-                      : "bg-white/50 text-[#212833] hover:bg-white"
-                  }`}
-                >
-                  <img
-                    src={region.flag}
-                    alt={`${region.name} flag`}
-                    width={20}
-                    height={15}
-                    className="rounded-sm object-cover"
-                  />
-                  <span className="font-helvetica font-medium text-sm">
-                    {region.code}
-                  </span>
-                </a>
-              ))}
+            <div className="mt-2 pt-3 border-t border-gray-200">
+              <p className="font-helvetica text-xs text-gray-500 text-center mb-2">
+                Select Region
+              </p>
+              <div className="grid grid-cols-2 gap-2">
+                {regions.map((region) => (
+                  <a
+                    key={region.code}
+                    href={region.href}
+                    onClick={() => setIsMenuOpen(false)}
+                    className={`flex items-center gap-2 px-3 py-2.5 rounded-xl transition-colors ${
+                      currentRegion.code === region.code
+                        ? "bg-[#004eff] text-white shadow-md"
+                        : "bg-white/70 text-[#212833] hover:bg-white"
+                    }`}
+                  >
+                    <img
+                      src={region.flag}
+                      alt={`${region.name} flag`}
+                      width={24}
+                      height={18}
+                      className="rounded-sm object-cover"
+                    />
+                    <div className="flex flex-col">
+                      <span className="font-helvetica font-medium text-sm">
+                        {region.code}
+                      </span>
+                      {/* <span
+                        className={`font-helvetica text-[10px] ${
+                          currentRegion.code === region.code
+                            ? "text-white/80"
+                            : "text-gray-500"
+                        }`}
+                      >
+                        {region.name}
+                      </span> */}
+                    </div>
+                    {currentRegion.code === region.code && (
+                      <span className="ml-auto text-white text-sm">✓</span>
+                    )}
+                  </a>
+                ))}
+              </div>
             </div>
           </div>
         </div>
