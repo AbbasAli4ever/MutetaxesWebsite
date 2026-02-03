@@ -19,6 +19,7 @@ export const HeroSection = (): JSX.Element => {
           autoPlay
           muted
           loop
+          playsInline
           src="/HomePage/hero_video.mp4"
         />
       </div>
