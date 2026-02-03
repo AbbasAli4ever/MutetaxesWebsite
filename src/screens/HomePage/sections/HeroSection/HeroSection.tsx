@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 export const HeroSection = (): JSX.Element => {
   return (
     <section className="relative w-full bg-[#dbe6fe] md:bg-transparent h-auto">
-      <div className="relative w-full xl:w-[97vw] mx-auto h-[1040px] sm:h-[700px] md:h-[850px] lg:h-[1100px] pt-5 overflow-hidden">
+      <div className="relative w-full xl:w-[97vw] mx-auto h-screen sm:h-[700px] md:h-[850px] lg:h-[1100px] pt-5 overflow-hidden">
         <img
           className="hidden object-cover w-full h-full md:object-fill md:block"
           alt="G illustration"
@@ -35,26 +35,25 @@ export const HeroSection = (): JSX.Element => {
               </div>
             </Badge>
 
-         <h1 className="font-helvetica font-medium text-[28px] sm:text-5xl md:text-6xl lg:text-[74px] text-center tracking-[-1.95px] leading-tight md:leading-snug lg:leading-[83px]">
-  {/* Line 1 */}
-  <span className="text-[#212833] block">
-    Your Complete Business
-  </span>
+            <h1 className="font-helvetica font-medium text-[28px] sm:text-5xl md:text-6xl lg:text-[74px] text-center tracking-[-1.95px] leading-tight md:leading-snug lg:leading-[83px]">
+              {/* Line 1 */}
+              <span className="text-[#212833] block">
+                Your Complete Business
+              </span>
 
-  {/* Line 2 */}
-  <div className="flex items-center justify-center gap-1 mt-1 sm:mt-2 flex-wrap">
-    <span>Solution in</span>
-    <img
-      className="w-8 h-8 lg:w-12 lg:h-12 md:w-[70px] md:h-[70px] object-cover rounded-full"
-      alt="Ellipse"
-      src="/HomePage/ellipse-3-1.png"
-    />
-    <span className="font-georgia font-normal text-[#004eff]">
-      Hong Kong
-    </span>
-  </div>
-</h1>
-
+              {/* Line 2 */}
+              <div className="flex items-center justify-center gap-1 mt-1 sm:mt-2 flex-wrap">
+                <span>Solution in</span>
+                <img
+                  className="w-8 h-8 lg:w-12 lg:h-12 md:w-[70px] md:h-[70px] object-cover rounded-full"
+                  alt="Ellipse"
+                  src="/HomePage/ellipse-3-1.png"
+                />
+                <span className="font-georgia font-normal text-[#004eff]">
+                  Hong Kong
+                </span>
+              </div>
+            </h1>
 
             <p className="w-full max-w-[350px] lg:max-w-[702px] font-helvetica font-normal text-[#212833] text-lg md:text-xl lg:text-[27px] text-center tracking-[-0.64px] leading-normal md:leading-[35px]">
               From company formation to compliance - we handle your business
@@ -90,7 +89,7 @@ export const HeroSection = (): JSX.Element => {
             Trusted by 1,000+ Hong Kong companies.
           </p>
 
-          <div className="flex items-center justify-center gap-2">
+          <div className="flex items-center max-sm:w-fuljustify-center gap-2">
             <img
               className="w-[23.43px] h-[23.43px]"
               alt="Frame"
@@ -103,7 +102,7 @@ export const HeroSection = (): JSX.Element => {
 
             <img alt="Frame" src="/HomePage/frame-7.svg" />
 
-            <span className="font-helvetica font-normal text-[#212833] text-base md:text-xl tracking-[0] leading-[18px]">
+            <span className="font-helvetica font-normal text-[#212833] text-base w-10 md:text-xl tracking-[0] leading-[18px]">
               10,000+ reviews
             </span>
           </div>
