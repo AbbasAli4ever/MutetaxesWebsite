@@ -16,6 +16,7 @@ import { Secretary } from "./screens/Secretary";
 import { Incorporation } from "./screens/Incorporation";
 import { AccountingServices } from "./screens/AccountingServices";
 import { AuditSupport } from "./screens/AuditSupport";
+import { CompanyFormation } from "./screens/CompanyFormation";
 
 // Components
 import { Navbar } from "./UIComponents/Navbar";
@@ -64,6 +65,11 @@ const router = createBrowserRouter([
         element: <AuditSupport />,
       },
     ],
+  },
+  // Company Formation route without navbar/footer
+  {
+    path: "/company-formation",
+    element: <CompanyFormation />,
   },
 ]);
 
