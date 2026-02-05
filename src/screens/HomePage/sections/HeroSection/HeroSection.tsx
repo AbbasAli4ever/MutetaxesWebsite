@@ -90,7 +90,7 @@ export const HeroSection = (): JSX.Element => {
             Trusted by 1,000+ Hong Kong companies.
           </p>
 
-          <div className="flex items-center max-sm:w-fuljustify-center gap-2">
+          <div className="flex items-center max-sm:w-full justify-center gap-2">
             <img
               className="w-[23.43px] h-[23.43px]"
               alt="Frame"
@@ -103,7 +103,7 @@ export const HeroSection = (): JSX.Element => {
 
             <img alt="Frame" src="/HomePage/frame-7.svg" />
 
-            <span className="font-helvetica font-normal text-[#212833] text-base w-10 md:text-xl tracking-[0] leading-[18px]">
+            <span className="font-helvetica font-normal text-[#212833] text-base md:text-xl  tracking-[0] leading-[18px]">
               10,000+ reviews
             </span>
           </div>

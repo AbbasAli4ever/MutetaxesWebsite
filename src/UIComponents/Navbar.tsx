@@ -71,7 +71,7 @@ export const Navbar = (): JSX.Element => {
 
   return (
     <nav className="absolute z-40 w-full bg-transparent top-9">
-      <div className="grid grid-cols-2 sm:grid-cols-3 items-center w-full xl:w-[97%] mx-auto px-4 xl:px-6">
+      <div className="flex justify-between items-center w-full xl:w-[97%] mx-auto px-4 xl:px-6">
         {/* Logo */}
         <a href="/" onClick={() => setIsMenuOpen(false)}>
           <img
@@ -87,7 +87,7 @@ export const Navbar = (): JSX.Element => {
             <a
               key={index}
               href={item.href}
-              className={`font-helvetica h-7 text-md xl:text-[17px] tracking-[-0.4px] font-normal leading-7 hover:opacity-70 transition-opacity ${
+              className={`font-helvetica h-7 text-md  xl:text-[17px] tracking-[-0.4px] font-normal leading-7 hover:opacity-70 transition-opacity ${
                 pathname === item.href ? "text-[#004eff]" : "text-[#212833]"
               }`}
             >
@@ -100,38 +100,38 @@ export const Navbar = (): JSX.Element => {
         <div className="items-center hidden gap-2 lg:flex justify-end">
           <Button
             variant="outline"
-            className="h-auto lg:px-3 lg:py-1.5 xl:px-[18px] xl:py-2 rounded-[40px] border border-solid border-[#21283366] bg-transparent hover:bg-transparent"
+            className="h-[40px] lg:px-3 lg:py-1.5 xl:px-[18px] xl:py-2 rounded-[40px] border border-solid hover:opacity-90  bg-[linear-gradient(129deg,rgba(104,150,255,1)_0%,rgba(0,78,255,1)_100%)] hover:bg-transparent"
           >
-            <span className="font-helvetica font-medium text-[#212833] lg:text-sm xl:text-base leading-6">
+            <span className="font-helvetica font-medium text-white lg:text-sm xl:text-base leading-6">
               Sign In
             </span>
           </Button>
 
-          <Button className="h-auto lg:px-3 lg:py-1.5 xl:px-[18px] xl:py-2 rounded-[40px] bg-[linear-gradient(129deg,rgba(104,150,255,1)_0%,rgba(0,78,255,1)_100%)] hover:opacity-90">
+          {/* <Button className="h-auto lg:px-3 lg:py-1.5 xl:px-[18px] xl:py-2 rounded-[40px] bg-[linear-gradient(129deg,rgba(104,150,255,1)_0%,rgba(0,78,255,1)_100%)] hover:opacity-90">
             <span className="font-helvetica font-medium text-[#dde7ff] lg:text-sm xl:text-base leading-6">
               Get Started
             </span>
-          </Button>
+          </Button> */}
 
           {/* Region Dropdown */}
+
           <div className="relative" ref={dropdownRef}>
             <Button
+              variant="outline"
               onClick={() => setIsRegionDropdownOpen(!isRegionDropdownOpen)}
-              className="h-auto lg:px-3 lg:py-1.5 xl:px-[18px] xl:py-2 rounded-[40px] bg-[linear-gradient(129deg,rgba(104,150,255,1)_0%,rgba(0,78,255,1)_100%)] hover:opacity-90 flex items-center gap-2"
+              className="h-[40px] border-[#21283327]  lg:px- lg:py-1.5 xl:px-[12px] xl:py-2 rounded-[40px] bg-transparent hover:bg-transparent hover:opacity-90 flex items-center gap-2"
             >
               <img
                 src={currentRegion.flag}
                 alt={`${currentRegion.name} flag`}
-                width={20}
-                height={15}
-                className="rounded-sm object-cover"
-              />
-              <span className="font-helvetica font-medium text-[#dde7ff] lg:text-sm xl:text-base leading-6">
+                className="rounded-full h-[25px] w-[25px] object-cover"
+              />{" "}
+              <span className="font-helvetica font-medium text-[#212833] lg:text-sm xl:text-base leading-6">
                 {currentRegion.code}
               </span>
               <ChevronDown
                 size={16}
-                className={`text-[#dde7ff] transition-transform duration-200 ${isRegionDropdownOpen ? "rotate-180" : ""}`}
+                className={`text-[#212833] transition-transform duration-200 ${isRegionDropdownOpen ? "rotate-180" : ""}`}
               />
             </Button>
 
@@ -150,8 +150,8 @@ export const Navbar = (): JSX.Element => {
                       src={region.flag}
                       alt={`${region.name} flag`}
                       width={24}
-                      height={18}
-                      className="rounded-sm object-cover"
+                      height={24}
+                      className="rounded-full h-[24px] w-[24px] object-cover"
                     />
                     <div className="flex flex-col">
                       <span className="font-helvetica font-medium text-[#212833] text-sm">
