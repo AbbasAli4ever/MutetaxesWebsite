@@ -3,7 +3,7 @@ import { Input } from "../../../components/ui/input";
 import { Select, SelectOption } from "../../../components/ui/select";
 import { Button } from "../../../components/ui/button";
 import { Checkbox } from "../../../components/ui/checkbox";
-import { Plus, Trash2 } from "lucide-react";
+import { Plus, Trash2, Upload } from "lucide-react";
 
 export interface Director {
   id: string;
@@ -14,6 +14,7 @@ export interface Director {
   phone: string;
   residentialAddress: string;
   passportFile: File | null;
+  selfieFile: File | null;
   addressProofFile: File | null;
 }
 
@@ -33,6 +34,7 @@ interface Step4Props {
     phone: string;
     residentialAddress: string;
     passportFile: File | null;
+    selfieFile: File | null;
     addressProofFile: File | null;
   }>;
 }
@@ -90,6 +92,7 @@ export const Step4Directors: React.FC<Step4Props> = ({ data, onChange, sharehold
           phone: shareholder.phone,
           residentialAddress: shareholder.residentialAddress,
           passportFile: shareholder.passportFile,
+          selfieFile: shareholder.selfieFile,
           addressProofFile: shareholder.addressProofFile,
         };
       } else {
@@ -103,6 +106,7 @@ export const Step4Directors: React.FC<Step4Props> = ({ data, onChange, sharehold
           phone: "",
           residentialAddress: "",
           passportFile: null,
+          selfieFile: null,
           addressProofFile: null,
         };
       }
@@ -117,6 +121,7 @@ export const Step4Directors: React.FC<Step4Props> = ({ data, onChange, sharehold
         phone: "",
         residentialAddress: "",
         passportFile: null,
+        selfieFile: null,
         addressProofFile: null,
       };
     }
@@ -289,7 +294,7 @@ export const Step4Directors: React.FC<Step4Props> = ({ data, onChange, sharehold
 
                   {/* Expanded Form */}
                   {isExpanded && (
-                    <div className="p-6 pt-0 space-y-4 border-t"
+                    <div className="p-6 pt-2 space-y-4 border-t"
 >
                   {/* Full Name */}
                   <div className="space-y-2">
@@ -377,17 +382,19 @@ export const Step4Directors: React.FC<Step4Props> = ({ data, onChange, sharehold
                   </div>
 
                   {/* File Uploads */}
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                     <div className="space-y-2">
                       <label className="block text-sm font-medium text-[#212833]">
                         Passport/ID Upload <span className="text-red-500">*</span>
                       </label>
-                      <label className="flex items-center justify-center gap-2 h-11 px-4 border-2 border-gray-300 rounded-md bg-white hover:bg-gray-50 cursor-pointer transition-colors">
-                        <span className="text-sm text-gray-700">
+                      <label className="flex flex-col items-center justify-center gap-2 py-4 px-4 border-2 border-dashed border-gray-300 rounded-lg bg-white hover:border-[#004eff] hover:bg-blue-50/30 cursor-pointer transition-colors">
+                        <Upload className="w-5 h-5 text-gray-400" />
+                        <span className="text-sm text-gray-600 text-center">
                           {director.passportFile
                             ? director.passportFile.name
                             : "Upload Passport"}
                         </span>
+                        <span className="text-xs text-gray-400">PDF, JPG, PNG · Max 10 MB</span>
                         <input
                           type="file"
                           accept=".pdf,.jpg,.jpeg,.png"
@@ -405,14 +412,43 @@ export const Step4Directors: React.FC<Step4Props> = ({ data, onChange, sharehold
 
                     <div className="space-y-2">
                       <label className="block text-sm font-medium text-[#212833]">
+                        Passport Holding Selfie <span className="text-red-500">*</span>
+                      </label>
+                      <label className="flex flex-col items-center justify-center gap-2 py-4 px-4 border-2 border-dashed border-gray-300 rounded-lg bg-white hover:border-[#004eff] hover:bg-blue-50/30 cursor-pointer transition-colors">
+                        <Upload className="w-5 h-5 text-gray-400" />
+                        <span className="text-sm text-gray-600 text-center">
+                          {director.selfieFile
+                            ? director.selfieFile.name
+                            : "Upload Selfie"}
+                        </span>
+                        <span className="text-xs text-gray-400">JPG, PNG · Max 10 MB</span>
+                        <input
+                          type="file"
+                          accept=".jpg,.jpeg,.png"
+                          onChange={(e) =>
+                            updateDirector(
+                              director.id,
+                              "selfieFile",
+                              e.target.files?.[0] || null
+                            )
+                          }
+                          className="hidden"
+                        />
+                      </label>
+                    </div>
+
+                    <div className="space-y-2">
+                      <label className="block text-sm font-medium text-[#212833]">
                         Proof of Address Upload <span className="text-red-500">*</span>
                       </label>
-                      <label className="flex items-center justify-center gap-2 h-11 px-4 border-2 border-gray-300 rounded-md bg-white hover:bg-gray-50 cursor-pointer transition-colors">
-                        <span className="text-sm text-gray-700">
+                      <label className="flex flex-col items-center justify-center gap-2 py-4 px-4 border-2 border-dashed border-gray-300 rounded-lg bg-white hover:border-[#004eff] hover:bg-blue-50/30 cursor-pointer transition-colors">
+                        <Upload className="w-5 h-5 text-gray-400" />
+                        <span className="text-sm text-gray-600 text-center">
                           {director.addressProofFile
                             ? director.addressProofFile.name
                             : "Upload Document"}
                         </span>
+                        <span className="text-xs text-gray-400">PDF, JPG, PNG · Max 10 MB</span>
                         <input
                           type="file"
                           accept=".pdf,.jpg,.jpeg,.png"
@@ -430,7 +466,7 @@ export const Step4Directors: React.FC<Step4Props> = ({ data, onChange, sharehold
                   </div>
 
                   {/* Save Button */}
-                  <div className="flex justify-end pt-4 border-t">
+                  <div className="flex justify-end pt-4">
                     <Button
                       type="button"
                       onClick={() => saveDirector(director.id)}
