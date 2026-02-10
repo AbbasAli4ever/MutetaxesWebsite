@@ -56,7 +56,7 @@ export const WhyChooseHongKongSection = (): JSX.Element => {
             Company Structure Pricing
           </div>
 
-          <h2 className="w-full text-center font-georgia font-normal text-[#212833] text-[32px] lg:text-[64px] tracking-[0] leading-tight lg:leading-[72px]">
+          <h2 className="w-full text-center font-georgia font-normal text-[#212833] text-[32px] lg:text-[63px] tracking-[0] leading-tight lg:leading-[72px]">
             Choose Your Company Structure
           </h2>
         </div>

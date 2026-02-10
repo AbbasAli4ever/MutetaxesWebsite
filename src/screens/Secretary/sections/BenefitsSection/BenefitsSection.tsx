@@ -31,7 +31,7 @@ export const BenefitsSection = (): JSX.Element => {
           </h2>
 
           {/* Description */}
-          <p className="text-[#212833e6] font-helvetica font-normal text-base sm:text-lg md:text-[18px] xl:text-[22px] leading-relaxed sm:leading-7 tracking-[0] max-w-[90%] sm:max-w-[600px] md:max-w-[702px]">
+          <p className="text-[#212833e6] font-helvetica font-normal text-base sm:text-lg md:text-[18px] xl:text-[20px] leading-relaxed sm:leading-7 tracking-[0] max-w-[90%] sm:max-w-[600px] md:max-w-[702px]">
             Don't risk penalties - get professional company secretary services now
           </p>
 

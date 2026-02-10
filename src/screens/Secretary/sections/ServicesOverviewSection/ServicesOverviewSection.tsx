@@ -5,13 +5,13 @@ import NotchedCard from "../../../../UIComponents/NotchedCard";
 const cardsData = [
   {
     id: 1,
-    icon: "/Secretary/valuepropositionsection-7.svg",
+    icon: "/Secretary/law.png",
     title: (<div>
       Mandatory Under <br />
-      hong Kong Law
+      Hong Kong Law
     </div>),
     description:
-      "Every Hong Kong Company MUST Appoint A Company Secretary Within 6 Months Of Incorporation Under The Companies Ordinance (cap. 622).",
+      "Every Hong Kong Company MUST Appoint A Company Secretary Within 6 Months Of Incorporation Under The Companies Ordinance (Cap. 622).",
     background: "/Secretary/subtract-5.svg",
     type: "text",
     shadowColor: "#6a98ff",
@@ -35,20 +35,20 @@ const cardsData = [
       {
         icon: "check",
         boldText: "Corporate:",
-        regularText: " hong Kong Registered Company With Tcsp License",
+        regularText: " Hong Kong Registered Company With TCSP License",
       },
     ],
   },
   {
     id: 3,
-    icon: "/Secretary/valuepropositionsection.svg",
-    title: "Consequences Of Non-compliance",
+    icon: "/Secretary/non.png",
+    title: "Consequences Of Non-Compliance",
     background: "/Secretary/subtract-7.svg",
     type: "warning-list",
     shadowColor: "#fbc3bf",
     borderColor: "#fbc3bf",
     items: [
-      "Daily Fines Up To Hk$25,000",
+      "Daily Fines Up To HK$25,000",
       "Director Prosecution Risk",
       "Potential Company Strike-off",
       "Banking Relationship Issues",
@@ -74,7 +74,7 @@ export const ServicesOverviewSection = (): JSX.Element => {
         </div>
 
         <p className="text-center max-w-[702px] font-helvetica font-normal text-[#212833] text-lg md:text-xl lg:text-[22px] tracking-[-0.64px] leading-relaxed lg:leading-[35px]">
-          Legal obligations every Hong Kong company must comply with
+          Legal Obligations Every Hong Kong Company Must Comply With
         </p>
       </header>
 
@@ -83,7 +83,7 @@ export const ServicesOverviewSection = (): JSX.Element => {
           <div className="relative pt-20" key={index}>
             <img
               className="absolute w-[150px] sm:w-[150px] md:w-[155px] xl:w-[162px] h-auto z-20 left-1/2 -ml-[51px] md:-ml-[52px] lg:-ml-[52px] xl:-ml-14 -mt-14"
-              
+
               src={card.icon}
             />
             <NotchedCard
@@ -106,7 +106,7 @@ export const ServicesOverviewSection = (): JSX.Element => {
                   </h3>
 
                   {card.type === "text" && (
-                    <p className="font-helvetica font-normal text-[#212833e6] text-base sm:text-base md:text-[15px] xl:text-[20px] xl:leading-[30px]">
+                    <p className="font-helvetica font-normal text-[#212833e6] text-base sm:text-base md:text-[15px] xl:text-[19px] xl:leading-[30px]">
                       {card.description}
                     </p>
                   )}
@@ -138,26 +138,26 @@ export const ServicesOverviewSection = (): JSX.Element => {
                   }
 
 
-                 {card.type === "warning-list" && (
-  <div className="flex flex-col items-start gap-4 mx-auto">
-    {card.items?.map((item, index) => {
-      if (typeof item !== "string") return null; // safety check
+                  {card.type === "warning-list" && (
+                    <div className="flex flex-col items-start gap-4 mx-auto">
+                      {card.items?.map((item, index) => {
+                        if (typeof item !== "string") return null; // safety check
 
-      return (
-        <div key={index} className="flex items-center gap-2.5">
-          <img
-            className="w-6 h-6"
-            alt="Warning icon"
-            src="/Secretary/Framecrose.png"
-          />
-          <p className="font-helvetica font-normal text-[#212833e6] text-base sm:text-base md:text-[15px] xl:text-[20px] leading-relaxed">
-            {item}
-          </p>
-        </div>
-      );
-    })}
-  </div>
-)}
+                        return (
+                          <div key={index} className="flex items-center gap-1.8 lg:gap-2.5 ">
+                            <img
+                              className="w-6 h-6"
+                              alt="Warning icon"
+                              src="/Secretary/Framecrose.png"
+                            />
+                            <p className="font-helvetica font-normal text-[#212833e6] text-base sm:text-base md:text-[15px] xl:text-[20px] leading-relaxed">
+                              {item}
+                            </p>
+                          </div>
+                        );
+                      })}
+                    </div>
+                  )}
 
                 </div>
               </CardContent>

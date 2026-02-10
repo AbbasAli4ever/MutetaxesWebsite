@@ -18,7 +18,12 @@ const pricingTiers = [
       { name: "Company Secretary (1 Year)", included: false },
       { name: "Accounting Setup", included: false },
       { name: "Tax Registration", included: false },
-      { name: "Express Service (1 Day)", included: false, addon: "+€200" },
+      { name: (
+    <>
+      Express Service (1 Day){" "}
+      <span className="text-[#3A7AFE]">+€200</span>
+    </>
+  ), included: false, addon: "+€200" },
     ],
     buttonVariant: "outline" as const,
     isPopular: false,
@@ -36,7 +41,7 @@ const pricingTiers = [
       { name: "Company Secretary (1 Year)", included: true },
       { name: "Accounting Setup", included: false },
       { name: "Tax Registration", included: false },
-      { name: "Express Service (1 Day)", included: false },
+      { name: "Express Service (1 Day)", included: true },
     ],
     buttonVariant: "default" as const,
     isPopular: true,
@@ -70,13 +75,13 @@ export const HongKongOverviewSection = (): JSX.Element => {
             Incorporation Pricing
           </p>
 
-          <h1 className="font-georgia font-normal text-[#212833] text-[39px]  lg:text-[64px] text-center tracking-[0] leading-tight lg:leading-[72px]">
+          <h1 className="font-georgia font-normal text-[#212833] text-[39px]  lg:text-[62px] text-center tracking-[0] leading-tight lg:leading-[72px]">
             Choose Your Incorporation Package
           </h1>
         </div>
 
-        <p className="font-helvetica font-normal text-[#212833] text-[15px] lg:text-[22px] text-center tracking-[-0.64px] leading-[35px] max-w-[702px]">
-          A transparent, step-by-step process from start to finish
+        <p className="font-helvetica font-normal text-[#212833] text-[15px] lg:text-[20px] text-center tracking-[-0.64px] leading-[35px] max-w-[702px]">
+          We help you select the optimal structure for your business goals
         </p>
       </header>
 
@@ -190,8 +195,8 @@ export const HongKongOverviewSection = (): JSX.Element => {
                   </Button>
 
                   <div className="font-helvetica font-normal text-[#212833e6] text-base tracking-[0] leading-[18.5px]">
-                    <span>Supprot: </span>
-                    <span className="font-normal font-helvetica">
+                    <span>Support: </span>
+                    <span className="font-medium font-helvetica">
                       {tier.support}
                     </span>
                   </div>

@@ -9,12 +9,12 @@ const advantageCards = [
     iconSrc: "/Audit/box.png",
     sideImgSrc: "/Secretary/b1.png",
     items: [
-      "Trial balance preparation",
-      "Account reconciliations",
-      "Working papers compilation",
-      "Supporting documentation",
-      "Variance analysis",
-      "Internal review",
+      "Trial Balance Preparation",
+      "Account Reconciliations",
+      "Working Papers Compilation",
+      "Supporting Documentation",
+      "Variance Analysis",
+      "Internal Review",
     ],
   },
   {
@@ -23,12 +23,12 @@ const advantageCards = [
     iconSrc: "/Audit/handfre.png",
     sideImgSrc: "/Secretary/b2.png",
     items: [
-      "Auditor liaison",
-      "Query management",
-      "Document provision",
-      "Sample coordination",
-      "Confirmation handling",
-      "Issue resolution",
+      "Auditor Liaison",
+      "Query Management",
+      "Document Provision",
+      "Sample Coordination",
+      "Confirmation Handling",
+      "Issue Resolution",
     ],
   },
 ];
@@ -37,12 +37,12 @@ const statutoryRecordSections = [
   {
     subtitle: "Mandatory Registers",
     items: [
-      "Adjustment posting",
-      "Report review",
-      "Filing assistance",
-      "Management letter review",
-      "Implementation support",
-      "Process improvements",
+      "Adjustment Posting",
+      "Report Review",
+      "Filing Assistance",
+      "Management Letter Review",
+      "Implementation Support",
+      "Process Improvements",
     ],
   },
   
@@ -124,7 +124,7 @@ export const AuditPackagesSection = (): JSX.Element => {
           ))}
         </div>
 
-           <Card className="w-full max-w-[1226px] mx-auto rounded-[20px] overflow-hidden border-0 bg-[#2467ff] ">
+           <Card className="w-full max-w-[1190px] mx-auto rounded-[20px] overflow-hidden border-0 bg-[#2467ff] ">
           <CardContent className="relative p-0 overflow-hidden">
           <div className="absolute -bottom-[500px] -right-[200px] w-[700px] h-[700px] bg-white rounded-full blur-3xl opacity-40" />
             {/* Content */}

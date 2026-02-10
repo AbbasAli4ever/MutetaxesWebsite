@@ -6,10 +6,11 @@ const cardsData = [
   {
     id: 1,
     icon: "/Audit/peopleo.png",
-    title: "Who Needs an Audit?",
+    title: "Who Needs An Audit?",
+    alt:"who needs an Audit ",
     description:
       (<span>
-        <span className="font-medium">All Hong Kong companies must be audited annually.</span> No exceptions unless you qualify for small company exemption.
+        <span className="font-medium">All Hong Kong Companies Must Be Audited Annually.</span> No Exceptions Unless You Qualify For Small Company Exemption.
       </span>),
     background: "/Secretary/subtract-5.svg",
     type: "text",
@@ -25,8 +26,8 @@ const cardsData = [
     shadowColor: "#6a98ff",
     borderColor: "#d7e3ff",
     items: [
-      (<span>Annual revenue <span className="font-medium">≤ HK$25 million</span></span>),
-      (<span>Total assets  <span className="font-medium">≤ HK$25 million</span></span>),
+      (<span>Annual Revenue <span className="font-medium">≤ HK$25 Million</span></span>),
+      (<span>Total Assets  <span className="font-medium">≤ HK$25 Million</span></span>),
       (<span>Employees  <span className="font-medium">≤ 50</span></span>),
     ]
   },
@@ -39,10 +40,10 @@ const cardsData = [
     shadowColor: "#fbc3bf",
     borderColor: "#fbc3bf",
     items: [
-      "Fines up to HK$300,000",
-      "Director prosecution",
-      "Company strike-off risk",
-      "Banking issues",
+      "Fines Up To HK$300,000",
+      "Director Prosecution",
+      "Company Strike-Off Risk",
+      "Banking Issues",
 
     ],
   },
@@ -74,7 +75,7 @@ export const IncludedServicesSection = (): JSX.Element => {
           <div className="relative pt-20" key={index}>
             <img
               className="absolute w-[150px] sm:w-[150px] md:w-[155px] xl:w-[162px] h-auto z-20 left-1/2 -ml-[51px] md:-ml-[52px] lg:-ml-[52px] xl:-ml-14 -mt-14"
-              alt={card.title}
+              alt={card.alt}
               src={card.icon}
             />
             <NotchedCard
@@ -91,7 +92,7 @@ export const IncludedServicesSection = (): JSX.Element => {
               className="z-10"
             >
               <CardContent className="relative flex flex-col items-start justify-center pt-12 xl:pt-24">
-                <div className="flex flex-col items-center sm:items-start gap-6 pb-[40px] relative z-10 text-start sm:text-left ">
+                <div className="flex flex-col items-start sm:items-start gap-6 pb-[40px] relative z-10 ">
                   <h3 className="font-helvetica font-medium text-[#212833] mt-5 xl:mt-0 text-2xl sm:text-[24px] md:text-[20px] xl:text-[24px] leading-snug">
                     {card.title}
                   </h3>

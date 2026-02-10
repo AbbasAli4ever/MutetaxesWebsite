@@ -31,12 +31,12 @@ export const WhyChooseUsDetailsSection = (): JSX.Element => {
           </h2>
 
           {/* Description */}
-          <p className="text-[#212833e6] font-helvetica font-normal text-base sm:text-lg md:text-[18px] xl:text-[22px] leading-relaxed sm:leading-7 tracking-[0] max-w-[90%] sm:max-w-[600px] md:max-w-[702px]">
+          <p className="text-[#212833e6] font-helvetica font-normal text-base sm:text-lg md:text-[18px] xl:text-[22px] leading-relaxed sm:leading-7 tracking-[0] max-w-[90%] sm:max-w-[600px] md:max-w-[710px]">
             Get your company incorporated and operational in as fast as 5 days
           </p>
 
           {/* Benefits */}
-          <div className="flex flex-wrap items-center justify-center gap-2 mt-2 sm:gap-3 md:gap-4 sm:mt-4">
+          <div className="flex flex-wrap items-center justify-center gap-2 mt-2 sm:gap-3 md:gap-2 sm:mt-4">
             {benefits.map((benefit, index) => (
               <Badge
                 key={index}

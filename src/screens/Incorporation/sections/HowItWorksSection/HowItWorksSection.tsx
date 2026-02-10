@@ -20,11 +20,11 @@ const steps = [
   },
   {
     number: "Days 2-3",
-    title: "Document\npreparation",
+    title: "Document\nPreparation",
     items: [
       "Kyc Documents Collection",
       "Incorporation Forms Drafting",
-      " articles Of Association",
+      " Articles Of Association",
       "Director/shareholder Details",
     ],
     icon: "/Incorporate/frame-1171278984-1.svg",
@@ -33,7 +33,7 @@ const steps = [
   },
   {
     number: "Days 4-5",
-    title: "Government submission",
+    title: "Government Submission",
     items: [
       "Companies Registry Filing",
       "Business Registration Application",
@@ -66,21 +66,23 @@ export const HowItWorksSection = (): JSX.Element => {
     <section className="relative w-full py-8">
       <div className="flex flex-col w-full max-w-[952px] mx-auto items-center gap-4 px-4">
         <div className="flex flex-col items-start w-full gap-4">
-          <div className="w-full flex items-center justify-center font-helvetica font-normal text-[#21283399] text-2xl text-center tracking-[0] leading-7">
-            How It&apos;s Work
+          <div className="w-full flex items-center justify-center font-helvetica font-normal text-[#21283399] text-2xl text-center tracking-[0] leading-7 lg:mt-[130px]">
+            Timeline
           </div>
 
           <h2 className="w-full text-center font-georgia font-normal text-[#212833] text-4xl md:text-5xl lg:text-[64px] tracking-[0] leading-tight lg:leading-[72px]">
-            Start Your Hong Kong
-            <br />
-            Journey in 3 Simple Steps
+            Your Incorporation Timeline
+           
           </h2>
         </div>
+         <p className="font-helvetica font-normal text-[#212833] text-[15px] lg:text-[22px] text-center tracking-[-0.64px] leading-[35px] max-w-[702px]">
+         A Transparent, Step-By-Step Process From Start To Finish
+        </p>
       </div>
 
       <div className="relative w-full max-w-[1440px] mx-auto mt-[120px] px-4">
         <div className="relative min-h-[1450px] md:min-h-[1150px]">
-          <div className="absolute left-1/2 top-0 w-1 h-[1468px] md:h-[1168px] bg-[linear-gradient(180deg,rgba(58,118,255,1)_38%,rgba(239,239,239,1)_94%)] -translate-x-1/2" />
+          <div className="absolute left-1/2 top-0 w-1 h-[1468px] md:h-[1168px] lg:h-[1077px] bg-[linear-gradient(180deg,rgba(58,118,255,1)_38%,rgba(239,239,239,1)_94%)] -translate-x-1/2" />
 
           {steps.map((step, index) => (
             <div key={index} className="relative">
@@ -186,7 +188,7 @@ export const HowItWorksSection = (): JSX.Element => {
           ))}
         </div>
 
-        <div className="flex justify-center mt-[81px]">
+        <div className="flex justify-center mt-[81px] lg:mt-[132px]">
           <Button className="group inline-flex items-center justify-center gap-2.5 pl-3 pr-1.5 py-1.5 rounded-[100px] bg-[linear-gradient(131deg,rgba(104,150,255,1)_0%,rgba(0,78,255,1)_100%)] h-auto border-0 hover:opacity-90">
             <span className="font-helvetica font-medium text-white text-base text-center tracking-[0] leading-6 whitespace-nowrap">
               Incorporate Now

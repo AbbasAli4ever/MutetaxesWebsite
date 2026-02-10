@@ -1,25 +1,21 @@
-import React, { useState } from "react";
-import { Badge } from "../../../../components/ui/badge";
-import { Button } from "../../../../components/ui/button";
 import { CheckIcon } from "lucide-react";
+import React, { useState } from "react";
 import {
   Tabs,
   TabsContent,
   TabsList,
   TabsTrigger,
-} from "../../../../components/ui/tabs";
-import NotchedCard from "../../../../UIComponents/NotchedCard";
+} from "../../../../IncorporateComponents/ui/tabs";
+import NotchedCard from "../../../../components/ui/NotchedCard";
 
 const taxBenefits = [
   {
     id: 1,
     text: (
       <>
-        <span className="font-medium text-[#212833E5]">Sales and purchase</span>
-       
+        <span className="font-medium text-[#212833E5]">Sales And Purchase</span>
         <br />
-        <span className="font-normal">invoice recording</span>
-     
+        <span className="font-normal">Invoice Recording</span>
       </>
     ),
   },
@@ -27,9 +23,9 @@ const taxBenefits = [
     id: 2,
     text: (
       <>
-       <span className="font-medium">Bank transaction</span> <span className="font-normal">import</span>
+        <span className="font-medium">Bank Transaction</span> <span className="font-normal">Import</span>
         <br />
-      <span className="font-normal">and reconciliation</span>
+        <span className="font-normal">And Reconciliation</span>
       </>
     ),
   },
@@ -37,9 +33,9 @@ const taxBenefits = [
     id: 3,
     text: (
       <>
-      <span className="font-normal">Expense</span>  <span className="font-medium">categorization</span> <span className="font-normal">and</span>
+        <span className="font-normal">Expense</span>  <span className="font-medium">Categorization</span> <span className="font-normal">And</span>
         <br />
-       <span className="font-normal">tracking</span>
+        <span className="font-normal">Tracking</span>
       </>
     ),
   },
@@ -48,10 +44,8 @@ const taxBenefits = [
     text: (
       <>
         <span className="font-medium">Multi-Currency</span> <span className="font-normal">Transaction</span>
-        
         <br />
         <span className="font-normal">Management</span>
-      
       </>
     ),
   },
@@ -59,33 +53,30 @@ const taxBenefits = [
     id: 5,
     text: (
       <>
-       <span className="font-normal">Receipt digitization</span>
-<br />
-       <span className="font-normal">and</span>  <span className="font-medium">filing</span>
-       
+        <span className="font-normal">Receipt Digitization</span>
+        <br />
+        <span className="font-normal">And</span>  <span className="font-medium">Filing</span>
       </>
     ),
   },
-   {
+  {
     id: 6,
     text: (
       <>
-       <span className="font-normal">Petty cash</span>  <span className="font-medium">management</span>
-      
+        <span className="font-normal">Petty Cash</span>  <span className="font-medium">Management</span>
       </>
     ),
   },
 ];
+
 const strategicBenefits = [
   {
     id: 1,
     text: (
       <>
-        <span className="font-meium">Monthly Profit</span><span className="font-normal">&</span>
-       
+        <span className="font-meium">Monthly Profit</span><span className="font-normal"> &</span>
         <br />
-        <span className="font-normal">Loss statements</span>
-    
+        <span className="font-normal">Loss Statements</span>
       </>
     ),
   },
@@ -94,10 +85,8 @@ const strategicBenefits = [
     text: (
       <>
         <span className="font-normal">Balance Sheet</span>
-       
         <br />
         <span className="font-medium">Prepration</span>
-      
       </>
     ),
   },
@@ -106,6 +95,9 @@ const strategicBenefits = [
     text: (
       <>
         <span className="font-normal">Cash Flow </span>
+
+
+
         <span className="font-medium">Statements</span>
       </>
     ),
@@ -116,7 +108,6 @@ const strategicBenefits = [
       <>
         <span className="font-normal">Management</span>
         <br /> <span className="font-medium"> Accounts</span>
-        
       </>
     ),
   },
@@ -125,7 +116,7 @@ const strategicBenefits = [
     text: (
       <>
         <span className="font-normal">Budget Vs </span>
-       <span className="font-medium">Actual</span>
+        <span className="font-medium">Actual</span>
         <br />
         <span className="font-medium">Analysis</span>
       </>
@@ -136,11 +127,13 @@ const strategicBenefits = [
     text: (
       <>
         <span className="font-normal">Custom </span>
-       <span className="font-medium">Financial Reports</span>
+        <span className="font-medium">Financial Reports</span>
+
       </>
     ),
   },
 ];
+
 const businessBenefits = [
   {
     id: 1,
@@ -149,7 +142,6 @@ const businessBenefits = [
         <span className="font-medium">Accounts</span> <span className="font-normal">Receiveable</span>
         <br />
         <span className="font-normal">Tracking</span>
-   
       </>
     ),
   },
@@ -158,10 +150,8 @@ const businessBenefits = [
     text: (
       <>
         <span className="font-normal">Accounts</span> <span className="font-medium">Payable</span>
-       
         <br />
         <span className="font-medium">Processing</span>
-      
       </>
     ),
   },
@@ -187,7 +177,7 @@ const businessBenefits = [
     id: 5,
     text: (
       <>
-       <span className="font-normal">Cash Flow </span>
+        <span className="font-normal">Cash Flow </span>
         <span className="font-medium">Management</span>
       </>
     ),
@@ -196,18 +186,20 @@ const businessBenefits = [
     id: 5,
     text: (
       <>
-       <span className="font-medium">Credit</span>
+        <span className="font-medium">Credit </span>
         <span className="font-normal">Control</span>
       </>
     ),
   },
 ];
+
 const worldBenefits = [
   {
     id: 1,
     text: (
       <>
         <span className="font-medium">Tax Provision </span>
+
         <span className="font-normal">Calculation</span>
       </>
     ),
@@ -217,7 +209,8 @@ const worldBenefits = [
     text: (
       <>
         <span className="font-normal">Profits Tax</span>
-       <span className="font-medium">Prepration</span>
+
+        <span className="font-medium"> Prepration</span>
       </>
     ),
   },
@@ -225,6 +218,7 @@ const worldBenefits = [
     id: 3,
     text: (
       <>
+
         <span className="font-normal">Tax Depreciation Schedules</span>
       </>
     ),
@@ -233,8 +227,8 @@ const worldBenefits = [
     id: 4,
     text: (
       <>
-       <span className="font-medium">Offshore </span>
-         <span className="font-normal">Claim Support</span>
+        <span className="font-medium">Offshore </span>
+        <span className="font-normal">Claim Support</span>
       </>
     ),
   },
@@ -242,7 +236,8 @@ const worldBenefits = [
     id: 5,
     text: (
       <>
-        <span className="font-normal">IRD Correspondense</span>
+
+        <span className="font-normal">IRD Correspondence</span>
       </>
     ),
   },
@@ -250,6 +245,7 @@ const worldBenefits = [
     id: 5,
     text: (
       <>
+
         <span className="font-normal">Tax-Efficient Planing</span>
       </>
     ),
@@ -258,94 +254,126 @@ const worldBenefits = [
 
 const tabsData = [
   {
-    value: "bookkeeping-transaction-processing",
+    value: "Bookkeeping & Transaction Processing",
     label: "Bookkeeping & Transaction Processing",
     benefits: taxBenefits,
   },
   {
-    value: "financial-reporting",
+    value: "Financial Reporting",
     label: "Financial Reporting",
     benefits: strategicBenefits,
   },
   {
-    value: "accounts-management",
+    value: "Accounts Management",
     label: "Accounts Management",
     benefits: businessBenefits,
   },
   {
-    value: "tax-accounting",
+    value: "Tax Accounting",
     label: "Tax Accounting",
     benefits: worldBenefits,
   },
 ];
 
 export const FeaturesIncludedSection = (): JSX.Element => {
-  const [activeTab, setActiveTab] = useState("bookkeeping-transaction-processing"); // ✅ match tab value
-
   return (
-    <section className="flex flex-col w-full gap-10 py-8 mt-0 lg:mt-[130px]">
-      {/* Header */}
-      <div className="flex flex-col items-center gap-4 px-4 max-w-[952px] mx-auto">
+    <section className="flex flex-col justify-between w-full py-8">
+      <div className="flex mx-auto w-full max-w-[952px] flex-col items-center gap-4 px-4 lg:mt-[130px]">
         <div className="flex flex-col items-start w-full gap-4">
-          <div className="w-full flex items-center justify-center font-helvetica font-normal text-[#21283399] text-2xl text-center tracking-[0] leading-7">
+          <div className="flex items-center justify-center w-full font-helvetica font-normal text-[#21283399] text-2xl text-center tracking-[0] leading-7">
             Accounting Solutions
           </div>
-          <h2 className="w-full flex items-center justify-center font-georgia font-normal text-[#212833] text-[40px] md:text-[50px] lg:text-[64px] text-center tracking-[0] leading-[42px] md:leading-[60px] lg:leading-[72px]">
-            Comprehensive Accounting <br/>Solutions
+
+          <h2 className="flex items-center justify-center w-full font-georgia font-normal text-[#212833] text-[32px]  lg:text-[64px] text-center tracking-[0] leading-tight lg:leading-[72px]">
+            Comprehensive Accounting Solutions
           </h2>
         </div>
-        <p className="flex items-center justify-center max-w-[702px] font-helvetica font-normal text-[#212833] text-lg md:text-xl lg:text-[22px] text-center tracking-[-0.64px] leading-relaxed lg:leading-[35px]">
-          Full-service accounting tailored to your business needs
+
+        <p className="flex items-center justify-center w-full max-w-[702px] font-helvetica font-normal text-[#212833] text-[18px] lg:text-[22px] text-center tracking-[-0.64px] leading-[30px]">
+          Full-Service Accounting Tailored To Your Business Needs
+
         </p>
       </div>
 
-      {/* Tabs */}
       <Tabs
-        value={activeTab}
-        onValueChange={setActiveTab}
-        className="relative z-10 w-full mt-12"
+        defaultValue={tabsData[0].value}
+        className="relative z-10 w-full mt-[48px] flex flex-col items-center"
       >
-        <TabsList className="relative z-20 flex items-center scrollbar-hide justify-start w-[90%] h-auto gap-2 mx-auto overflow-x-auto bg-transparent sm:w-full sm:overflow-x-visible md:justify-center -mb-14 md:-mb-12 lg:-mb-15 xl:-mb-[55px]">
-          {tabsData.map((service) => (
-            <TabsTrigger
-              key={service.value}
-              value={service.value} // ✅ use tab.value not label
-              className="inline-flex items-center justify-center z-30 gap-2.5 p-1.5 md:p-2 lg:p-3 rounded-[50px] h-auto data-[state=active]:shadow-none sm:data-[state=active]:shadow-[0px_24px_34px_#004eff47] data-[state=active]:bg-[linear-gradient(131deg,rgba(104,150,255,1)_0%,rgba(0,78,255,1)_100%)] bg-white  data-[state=inactive]:bg-[#efefef] sm:data-[state=inactive]:bg-white font-helvetica font-normal text-xs md:text-[12px] lg:text-[15px] text-center tracking-[0] leading-6 whitespace-nowrap data-[state=active]:text-white data-[state=inactive]:text-[#212833] mb-2"
-            >
-              {service.label}
-            </TabsTrigger>
-          ))}
-        </TabsList>
+        {/* --- Tabs ABOVE card on large screens --- */}
+        <div className="hidden lg:flex w-full justify-center mb-[-40px] z-20">
+          <TabsList
+            className="
+        flex items-center justify-center w-full max-w-[950px] gap-3 bg-transparent
+      "
+          >
+            {tabsData.map((tab) => (
+              <TabsTrigger
+                key={tab.value}
+                value={tab.value}
+                className={`inline-flex items-center justify-center gap-2.5 px-6 py-3 rounded-[50px]
+            data-[state=active]:shadow-[0px_24px_34px_#004eff47]
+            data-[state=active]:bg-[linear-gradient(131deg,rgba(104,150,255,1)_0%,rgba(0,78,255,1)_100%)]
+            data-[state=inactive]:bg-white
+            font-helvetica font-normal text-[14px] text-center
+            data-[state=active]:text-white data-[state=inactive]:text-[#212833]
+            whitespace-nowrap transition-all duration-200 lg:mb-[-60px]
+          `}
+              >
+                {tab.label}
+              </TabsTrigger>
+            ))}
+          </TabsList>
+        </div>
 
+        {/* --- The Notched Card --- */}
         <NotchedCard
+          className="z-10 px-4 pt-6 mx-auto md:pt-8 md:px-6"
+          widthClass="w-[320px] md:w-[700px] lg:w-[1226px]"
+          heightClass="h-auto"
+          borderColor="bg-[#D7E3FF]"
+          shadowColor="#D7E3FF]"
           notch={{
-            width: { base: 0, sm: 200, md: 700, lg: 875 },
+            width: { base: 0, sm: 200, md: 700, lg: 940 },
             depth: { base: 50, sm: 40, md: 45, lg: 50 },
             bottomRadius: 25,
             topRadius: 25,
           }}
-          widthClass="w-full lg:w-[1000px] xl:w-[1300px]"
-          heightClass="h-auto lg:h-[520px] xl:h-[430px]"
-          shadowColor="#6a98ff"
-          className="z-10 px-3"
         >
-          {tabsData.map((tab) => (
-            <TabsContent
-              key={tab.value}
-              value={tab.value} // ✅ matches trigger
-              className="px-10 pt-32 pb-10"
+          {/* --- Tabs INSIDE card on small/medium screens --- */}
+          <div className="block lg:hidden">
+            <TabsList
+              className="flex items-center justify-start w-full gap-2 mb-6 overflow-x-auto bg-transparent md:justify-center "
             >
+              {tabsData.map((tab) => (
+                <TabsTrigger
+                  key={tab.value}
+                  value={tab.value}
+                  className={`inline-flex items-center justify-center gap-2.5 px-3 py-2 rounded-[50px]
+              data-[state=active]:shadow-[0px_24px_34px_#004eff47]
+              data-[state=active]:bg-[linear-gradient(131deg,rgba(104,150,255,1)_0%,rgba(0,78,255,1)_100%)]
+              data-[state=inactive]:bg-white
+              font-helvetica font-normal text-xs md:text-[17px] text-center
+              data-[state=active]:text-white data-[state=inactive]:text-[#212833]
+              whitespace-nowrap
+            `}
+                >
+                  {tab.label}
+                </TabsTrigger>
+              ))}
+            </TabsList>
+          </div>
+
+          {/* --- Tabs Content (shared) --- */}
+          {tabsData.map((tab) => (
+            <TabsContent key={tab.value} value={tab.value} className="pb-10 mt-4">
               <div className="relative flex items-center justify-center w-full">
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-[60px] gap-y-[52px]">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-[60px] gap-y-[52px] lg:p-[3rem]">
                   {tab.benefits.map((benefit) => (
-                    <div
-                      key={benefit.id}
-                      className="inline-flex items-start gap-4"
-                    >
+                    <div key={benefit.id} className="inline-flex items-start gap-4">
                       <div className="relative w-6 h-6 mt-1 flex items-center justify-center bg-[#d9e5ff] rounded-full flex-shrink-0">
                         <CheckIcon className="w-4 h-4 text-[#004eff]" />
                       </div>
-                      <div className="font-helvetica font-medium text-[#212833E5] text-xl leading-[30px]">
+                      <div className="font-helvetica font-medium text-[#212833e6] text-xl leading-[30px]">
                         {benefit.text}
                       </div>
                     </div>
@@ -356,7 +384,10 @@ export const FeaturesIncludedSection = (): JSX.Element => {
           ))}
         </NotchedCard>
       </Tabs>
+
+
+
+
     </section>
   );
 };
-

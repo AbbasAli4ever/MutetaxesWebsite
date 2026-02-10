@@ -10,23 +10,23 @@ const advantagesData = [
     items: [
       {
         icon: "/HomePage/frame.svg",
-        text: "General ledger",
+        text: "General Ledger",
       },
       {
         icon: "/HomePage/frame.svg",
-        text: "Trial balance",
+        text: "Trial Balance",
       },
       {
         icon: "/HomePage/frame.svg",
-        text: "Bank statements (All Accounts)",
+        text: "Bank Statements (All Accounts)",
       },
       {
         icon: "/HomePage/frame.svg",
-        text: "Bank reconciliations",
+        text: "Bank Reconciliations",
       },
       {
         icon: "/HomePage/frame.svg",
-        text: "Journal entries",
+        text: "Journal Entries",
       },
     ],
   },
@@ -37,23 +37,23 @@ const advantagesData = [
     items: [
       {
         icon: "/HomePage/frame.svg",
-        text: "Sales invoices",
+        text: "Sales Invoices",
       },
       {
         icon: "/HomePage/frame.svg",
-        text: "Purchase invoices",
+        text: "Purchase Invoices",
       },
       {
         icon: "/HomePage/frame.svg",
-        text: "Contracts and agreements",
+        text: "Contracts And Agreements",
       },
       {
         icon: "/HomePage/frame.svg",
-        text: "Fixed asset register",
+        text: "Fixed Asset Register",
       },
       {
         icon: "/HomePage/frame.svg",
-        text: "Inventory records",
+        text: "Inventory Records",
       },
     ],
   },
@@ -64,23 +64,23 @@ const advantagesData = [
     items: [
       {
         icon: "/HomePage/frame.svg",
-        text: "Board minutes",
+        text: "Board Minutes",
       },
       {
         icon: "/HomePage/frame.svg",
-        text: "Shareholder resolutions",
+        text: "Shareholder Resolutions",
       },
       {
         icon: "/HomePage/frame.svg",
-        text: "Statutory registers",
+        text: "Statutory Registers",
       },
       {
         icon: "/HomePage/frame.svg",
-        text: "Insurance policies",
+        text: "Insurance Policies",
       },
       {
         icon: "/HomePage/frame.svg",
-        text: "Employment records",
+        text: "Employment Records",
       },
     ],
   },
@@ -91,19 +91,19 @@ const advantagesData = [
     items: [
       {
         icon: "/HomePage/frame.svg",
-        text: "Tax returns",
+        text: "Tax Returns",
       },
       {
         icon: "/HomePage/frame.svg",
-        text: "IRD correspondence",
+        text: "IRD Correspondence",
       },
       {
         icon: "/HomePage/frame.svg",
-        text: "Tax payment records",
+        text: "Tax payment Records",
       },
       {
         icon: "/HomePage/frame.svg",
-        text: "MPF contributions",
+        text: "MPF Contributions",
       },
     ],
   },

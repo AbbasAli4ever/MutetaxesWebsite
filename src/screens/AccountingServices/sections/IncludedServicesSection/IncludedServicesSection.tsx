@@ -165,7 +165,7 @@ const advantagesData = [
 
 export const IncludedServicesSection = (): JSX.Element => {
   return (
-    <section className="flex flex-col w-full gap-16 py-8 lg:gap-4 mt-0 lg:mt-[130px]">
+    <section className="flex flex-col w-full gap-16 py-8 sm:gap-24">
       <header className="flex flex-col items-center gap-4 max-w-[1052px] mx-auto px-4">
         <div className="flex flex-col items-start w-full gap-4">
           <p className="w-full text-center font-helvetica font-normal text-[#21283399] text-xl md:text-2xl tracking-[0] leading-7">
@@ -182,7 +182,7 @@ export const IncludedServicesSection = (): JSX.Element => {
         </p>
       </header>
 
-      <div className="grid w-full grid-cols-1 gap-x-4 px-3 mx-auto sm:grid-cols-2 lg:grid-cols-3 sm:gap-x-10 max-w-[1300px]">
+      <div className="grid w-full grid-cols-1 gap-4 px-3 mx-auto sm:grid-cols-2 lg:grid-cols-3 sm:gap-10 xl:gap-y-20 max-w-[1300px]">
         {advantagesData.map((advantage, index) => (
           <div className="relative pt-20" key={index}>
             <img
@@ -202,7 +202,7 @@ export const IncludedServicesSection = (): JSX.Element => {
               shadowColor="#6a98ff"
               className="z-10"
             >
-              <CardContent className="relative flex flex-col items-center justify-center pt-16 xl:pt-24">
+              <CardContent className="relative flex flex-col items-start lg:items-center justify-center pt-16 xl:pt-24">
                 {/* Content */}
                 <div className="flex flex-col items-start sm:items-start pb-[40px] relative z-10 text-center sm:text-left">
                   <h3 className="font-helvetica font-medium text-[#212833] text-2xl sm:text-[26px] md:text-[25px] lg:text-[25px] xl:text-[24px] leading-snug pb-4">

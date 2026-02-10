@@ -5,7 +5,7 @@ import { BenefitsSection } from "./sections/BenefitsSection";
 import { FaqSection } from "./sections/FaqSection";
 
 import { HeroBannerSection } from "./sections/HeroBannerSection";
-import { HongKongBenefitsSection } from "./sections/HongKongBenefitsSection";
+import { HongKongBenefitsSection } from "./sections/HongKongBenefitsSection"; 
 import { ServicesDetailsSection } from "./sections/ServicesDetailsSection";
 import { ServicesOverviewSection } from "./sections/ServicesOverviewSection";
 import { FooterSection } from "../HomePage/sections/FooterSection";

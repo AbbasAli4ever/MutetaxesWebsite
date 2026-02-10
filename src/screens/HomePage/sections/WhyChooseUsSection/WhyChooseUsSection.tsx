@@ -14,7 +14,7 @@ const features = [
     icon: "/HomePage/WhyLogo2.png",
     title: "Local Expertise",
     description:
-      "Hkicpa Qualified Accountants And Licensed Company Secretaries With 15+ Years Of Hong Kong Market Experience.",
+      "HKICPA Qualified Accountants And Licensed Company Secretaries With 15+ Years Of Hong Kong Market Experience.",
     background: "/HomePage/subtract-9.svg",
   },
   {
@@ -43,7 +43,7 @@ export const WhyChooseUsSection = (): JSX.Element => {
             Why Choose Us
           </p>
 
-          <h2 className="font-georgia font-normal text-[#212833] text-3xl sm:text-4xl md:text-5xl lg:text-[64px] leading-tight md:leading-[72px]">
+          <h2 className="font-georgia font-normal text-[#212833] text-[36px] sm:text-4xl md:text-5xl lg:text-[64px] leading-tight md:leading-[72px]">
             Why 1,000+ Hong Kong Businesses Choose Mute Taxes
           </h2>
         </div>
@@ -78,7 +78,7 @@ export const WhyChooseUsSection = (): JSX.Element => {
                     {feature.title}
                   </h3>
 
-                  <p className="font-helvetica font-normal text-[#212833e6] text-base sm:text-base md:text-[15px] xl:text-[20px] leading-snug sm:leading-snug md:leading-snug lg:leading-snug xl:leading-8">
+                  <p className="font-helvetica font-normal text-[#212833e6] text-base sm:text-base md:text-[15px] xl:text-[19px] leading-snug sm:leading-snug md:leading-snug lg:leading-snug xl:leading-8">
                     {feature.description}
                   </p>
                   </div>

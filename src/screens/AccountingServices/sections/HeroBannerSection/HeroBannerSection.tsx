@@ -74,24 +74,29 @@ export const HeroBannerSection = (): JSX.Element => {
                 </span>
               </div>
             </Badge>
-            <h1 className="font-helvetica font-medium text-5xl sm:text-5xl md:text-5xl lg:text-[74px] text-center tracking-[-1.95px] leading-tight md:leading-snug lg:leading-[83px]">
-              <span className=" text-[#212833] ">
-                Expert Accounting Services
-              </span>
-              <div className="flex flex-col items-center justify-center gap-3 font-medium sm:flex-row ">
-                <div className="flex items-center justify-center gap-3">
-                <span>for</span>
-                <img
-                  className="w-12 h-12 md:w-[70px] md:h-[70px] object-cover rounded-full"
-                  alt="Ellipse"
-                  src="/HomePage/ellipse-3-1.png"
-                />
-                </div>
-                <span className="font-georgia font-normal text-[#004EFF]">
-                  Hong Kong Businesses
-                </span>
-              </div>
-            </h1>
+            <h1 className="font-helvetica font-medium text-[28px] sm:text-5xl md:text-5xl lg:text-[74px] text-center tracking-[-1.95px] leading-tight md:leading-snug lg:leading-[83px]">
+  {/* First line */}
+  <span className="text-[#212833] block">
+    Expert Accounting Services
+  </span>
+
+  {/* Second line */}
+  <div className="flex flex-col sm:flex-row items-center justify-center gap-2 mt-2">
+    <div className="flex items-center justify-center gap-2">
+      <span>for</span>
+      <img
+        className="w-8 h-8 md:w-[70px] md:h-[70px] lg:w-12 lg:h-12 object-cover rounded-full"
+        alt="Ellipse"
+        src="/HomePage/ellipse-3-1.png"
+      />
+    </div>
+
+    <span className="font-georgia font-normal text-[#004EFF] text-center whitespace-nowrap mt-1 sm:mt-0">
+      Hong Kong Businesses
+    </span>
+  </div>
+</h1>
+
             <p className="w-full max-w-[902px] font-helvetica font-normal text-[#212833] text-lg md:text-xl lg:text-[27px] text-center tracking-[-0.64px] leading-normal md:leading-[35px]">
               From bookkeeping to financial reporting - accurate, timely, and
               compliant{" "}

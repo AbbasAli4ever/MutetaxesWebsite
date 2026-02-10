@@ -10,23 +10,29 @@ const advantagesData = [
     items: [
       {
         icon: "/HomePage/frame.svg",
-        text: "50% less than in-house staff",
+        text: "50% Less Than In-House Staff",
       },
       {
         icon: "/HomePage/frame.svg",
-        text: "No recruitment costs",
+        text: "No Recruitment Costs",
       },
       {
         icon: "/HomePage/frame.svg",
-        text: "No training expenses",
+       text: (
+      <>
+        <span className="font-medium">No Training Expenses</span> 
+       
+       
+      </>
+    ),
       },
       {
         icon: "/HomePage/frame.svg",
-        text: "No software licenses",
+        text: "No Software Licenses",
       },
       {
         icon: "/HomePage/frame.svg",
-        text: "Predictable monthly fees",
+        text: "Predictable Monthly Fees",
       },
     ],
   },
@@ -37,23 +43,53 @@ const advantagesData = [
     items: [
       {
         icon: "/HomePage/frame.svg",
-        text: "HKICPA qualified accountants",
+        text: (
+      <>
+        <span className="font-medium">HKICPA Qualified </span> 
+       
+      <span className="font-normal">Accountants</span>
+      </>
+    ),
       },
       {
         icon: "/HomePage/frame.svg",
-        text: "Latest compliance knowledge",
+       text: (
+      <>
+        <span className="font-normal">Latest Compliance </span> 
+       
+      <span className="font-medium">Knowledge</span>
+      </>
+    ),
       },
       {
         icon: "/HomePage/frame.svg",
-        text: "Industry best practices",
+         text: (
+      <>
+        <span className="font-medium">Industry </span> 
+       
+      <span className="font-normal">Best Practice</span>
+      </>
+    ),
       },
       {
         icon: "/HomePage/frame.svg",
-        text: "Continuous training",
+        text: (
+      <>
+        <span className="font-normal">Continous </span> 
+       
+      <span className="font-medium">Tranning</span>
+      </>
+    ),
       },
       {
         icon: "/HomePage/frame.svg",
-        text: "Technical support",
+        text: (
+      <>
+        <span className="font-medium">Technical  </span> 
+       
+      <span className="font-normal">Support</span>
+      </>
+    ),
       },
     ],
   },
@@ -64,23 +100,53 @@ const advantagesData = [
     items: [
       {
         icon: "/HomePage/frame.svg",
-        text: "Latest cloud software",
+        text: (
+      <>
+        <span className="font-medium">Latest Cloud  </span> 
+       
+      <span className="font-normal">Software</span>
+      </>
+    ),
       },
       {
         icon: "/HomePage/frame.svg",
-        text: "Automated processes",
+        text: (
+      <>
+        <span className="font-normal">Automated  </span> 
+       
+      <span className="font-medium">Processes</span>
+      </>
+    ),
       },
       {
         icon: "/HomePage/frame.svg",
-        text: "Real-time reporting",
+        text: (
+      <>
+        <span className="font-medium">Real-Time  </span> 
+       
+      <span className="font-normal">Reporting</span>
+      </>
+    ),
       },
       {
         icon: "/HomePage/frame.svg",
-        text: "Mobile access",
+         text: (
+      <>
+        <span className="font-medium">Mobile  </span> 
+       
+      <span className="font-normal">Access</span>
+      </>
+    ),
       },
       {
         icon: "/HomePage/frame.svg",
-        text: "System integrations",
+        text: (
+      <>
+        <span className="font-normal">System  </span> 
+       
+      <span className="font-medium">Integration</span>
+      </>
+    ),
       },
     ],
   },
@@ -91,23 +157,53 @@ const advantagesData = [
     items: [
       {
         icon: "/HomePage/frame.svg",
-        text: "Accurate records",
+         text: (
+      <>
+        <span className="font-medium">Accurate  </span> 
+       
+      <span className="font-normal">Records</span>
+      </>
+    ),
       },
       {
         icon: "/HomePage/frame.svg",
-        text: "Timely reporting",
+        text: (
+      <>
+        <span className="font-normal">Timely  </span> 
+       
+      <span className="font-medium">Reporting</span>
+      </>
+    ),
       },
       {
         icon: "/HomePage/frame.svg",
-        text: "Regulatory compliance",
+        text: (
+      <>
+        <span className="font-medium">Regulatory  </span> 
+       
+      <span className="font-normal">Compliance</span>
+      </>
+    ),
       },
       {
         icon: "/HomePage/frame.svg",
-        text: "Data security",
+        text: (
+      <>
+        <span className="font-normal">Data  </span> 
+       
+      <span className="font-medium">Security</span>
+      </>
+    ),
       },
       {
         icon: "/HomePage/frame.svg",
-        text: "Business continuity",
+         text: (
+      <>
+        <span className="font-medium">Buisness  </span> 
+       
+      <span className="font-normal">Continuity</span>
+      </>
+    ),
       },
     ],
   },
@@ -171,7 +267,7 @@ export const ServicesOverviewSection = (): JSX.Element => {
                           src={item.icon}
                         />
                         <span className="font-helvetica font-normal text-[#212833e6] text-[14px] xl:text-[19.2px] tracking-[0] leading-[25.3px]">
-                          <span className={"font-helvetica font-medium"}>
+                          <span className={"font-helvetica font-normal"}>
                             {item.text}
                           </span>
                         </span>
