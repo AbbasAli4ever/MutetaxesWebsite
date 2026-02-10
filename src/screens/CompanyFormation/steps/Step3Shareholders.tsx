@@ -2,7 +2,6 @@ import React from "react";
 import { Input } from "../../../components/ui/input";
 import { Select, SelectOption } from "../../../components/ui/select";
 import { RadioGroup } from "../../../components/ui/radio-group";
-import { Button } from "../../../components/ui/button";
 import { Upload } from "lucide-react";
 
 export interface Shareholder {
@@ -16,6 +15,7 @@ export interface Shareholder {
   percentage: string;
   residentialAddress: string;
   passportFile: File | null;
+  selfieFile: File | null;
   addressProofFile: File | null;
 }
 
@@ -53,7 +53,7 @@ export const Step3Shareholders: React.FC<Step3Props> = ({ data, onChange }) => {
     });
   };
 
-  const handleFileUpload = (id: string, field: "passportFile" | "addressProofFile", file: File | null) => {
+  const handleFileUpload = (id: string, field: "passportFile" | "selfieFile" | "addressProofFile", file: File | null) => {
     updateShareholder(id, field, file);
   };
 
@@ -73,6 +73,7 @@ export const Step3Shareholders: React.FC<Step3Props> = ({ data, onChange }) => {
             percentage: "",
             residentialAddress: "",
             passportFile: null,
+            selfieFile: null,
             addressProofFile: null,
           },
         ],
@@ -98,7 +99,7 @@ export const Step3Shareholders: React.FC<Step3Props> = ({ data, onChange }) => {
             className="p-3 md:p-6 bg-[#f9fafb] rounded-xl border border-gray-200"
           >
             <h4 className="text-lg font-semibold text-[#212833] mb-6">
-              Shareholder {index + 1}: {shareholder.type === "individual" ? "Human" : "Corporate"}
+              Shareholder {index + 1}{shareholder.fullName ? `: ${shareholder.fullName}` : ""}
             </h4>
 
             {/* Shareholder Type */}
@@ -209,19 +210,20 @@ export const Step3Shareholders: React.FC<Step3Props> = ({ data, onChange }) => {
             </div>
 
             {/* File Uploads */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               {/* Passport Upload */}
               <div className="space-y-2">
                 <label className="block text-sm font-medium text-[#212833]">
                   Passport/ID Upload <span className="text-red-500">*</span>
                 </label>
-                <label className="flex items-center justify-center gap-2 h-11 px-4 border-2 border-gray-300 rounded-md bg-white hover:bg-gray-50 cursor-pointer transition-colors">
-                  <Upload className="w-4 h-4 text-gray-600" />
-                  <span className="text-sm text-gray-700">
+                <label className="flex flex-col items-center justify-center gap-2 py-4 px-4 border-2 border-dashed border-gray-300 rounded-lg bg-white hover:border-[#004eff] hover:bg-blue-50/30 cursor-pointer transition-colors">
+                  <Upload className="w-5 h-5 text-gray-400" />
+                  <span className="text-sm text-gray-600 text-center">
                     {shareholder.passportFile
                       ? shareholder.passportFile.name
                       : "Upload Passport"}
                   </span>
+                  <span className="text-xs text-gray-400">PDF, JPG, PNG · Max 10 MB</span>
                   <input
                     type="file"
                     accept=".pdf,.jpg,.jpeg,.png"
@@ -237,18 +239,47 @@ export const Step3Shareholders: React.FC<Step3Props> = ({ data, onChange }) => {
                 </label>
               </div>
 
+              {/* Passport Holding Selfie Upload */}
+              <div className="space-y-2">
+                <label className="block text-sm font-medium text-[#212833]">
+                  Passport Holding Selfie <span className="text-red-500">*</span>
+                </label>
+                <label className="flex flex-col items-center justify-center gap-2 py-4 px-4 border-2 border-dashed border-gray-300 rounded-lg bg-white hover:border-[#004eff] hover:bg-blue-50/30 cursor-pointer transition-colors">
+                  <Upload className="w-5 h-5 text-gray-400" />
+                  <span className="text-sm text-gray-600 text-center">
+                    {shareholder.selfieFile
+                      ? shareholder.selfieFile.name
+                      : "Upload Selfie"}
+                  </span>
+                  <span className="text-xs text-gray-400">JPG, PNG · Max 10 MB</span>
+                  <input
+                    type="file"
+                    accept=".jpg,.jpeg,.png"
+                    onChange={(e) =>
+                      handleFileUpload(
+                        shareholder.id,
+                        "selfieFile",
+                        e.target.files?.[0] || null
+                      )
+                    }
+                    className="hidden"
+                  />
+                </label>
+              </div>
+
               {/* Proof of Address Upload */}
               <div className="space-y-2">
                 <label className="block text-sm font-medium text-[#212833]">
                   Proof of Address Upload <span className="text-red-500">*</span>
                 </label>
-                <label className="flex items-center justify-center gap-2 h-11 px-4 border-2 border-gray-300 rounded-md bg-white hover:bg-gray-50 cursor-pointer transition-colors">
-                  <Upload className="w-4 h-4 text-gray-600" />
-                  <span className="text-sm text-gray-700">
+                <label className="flex flex-col items-center justify-center gap-2 py-4 px-4 border-2 border-dashed border-gray-300 rounded-lg bg-white hover:border-[#004eff] hover:bg-blue-50/30 cursor-pointer transition-colors">
+                  <Upload className="w-5 h-5 text-gray-400" />
+                  <span className="text-sm text-gray-600 text-center">
                     {shareholder.addressProofFile
                       ? shareholder.addressProofFile.name
                       : "Upload Document"}
                   </span>
+                  <span className="text-xs text-gray-400">PDF, JPG, PNG · Max 10 MB</span>
                   <input
                     type="file"
                     accept=".pdf,.jpg,.jpeg,.png"

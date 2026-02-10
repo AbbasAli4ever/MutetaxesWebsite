@@ -22,14 +22,14 @@ interface FormData {
 }
 
 const steps = [
-  { number: 1, label: "Company Info" },
+  { number: 1, label: "Information" },
   { number: 2, label: "Share Capital" },
   { number: 3, label: "Shareholders" },
   { number: 4, label: "Directors" },
   { number: 5, label: "Services" },
-  { number: 6, label: "Documents" },
-  { number: 7, label: "Billing" },
-  { number: 8, label: "Review" },
+  // { number: 6, label: "Documents" },
+  { number: 6, label: "Billing" },
+  { number: 7, label: "Review" },
 ];
 
 const MOBILE_STEP_WIDTH = 80;
@@ -58,6 +58,10 @@ export const CompanyFormation: React.FC = () => {
   const [currentStep, setCurrentStep] = useState(1);
   const [formData, setFormData] = useState<FormData>({
     step1: {
+      firstName: "",
+      lastName: "",
+      email: "",
+      phone: "",
       countryOfIncorporation: "hong-kong",
       proposedCompanyName: "",
       alternativeName1: "",
@@ -195,31 +199,31 @@ export const CompanyFormation: React.FC = () => {
             onChange={(data) => updateFormData("step5", data)}
           />
         );
+      // case 6:
+      //   return (
+      //     <Step6Documents
+      //       data={formData.step6}
+      //       onChange={(data) => updateFormData("step6", data)}
+      //       shareholdersAndDirectors={[
+      //         ...formData.step3.shareholders.map((s) => ({
+      //           id: s.id,
+      //           fullName: s.fullName,
+      //         })),
+      //         ...formData.step4.directors.map((d) => ({
+      //           id: d.id,
+      //           fullName: d.fullName,
+      //         })),
+      //       ]}
+      //     />
+      //   );
       case 6:
-        return (
-          <Step6Documents
-            data={formData.step6}
-            onChange={(data) => updateFormData("step6", data)}
-            shareholdersAndDirectors={[
-              ...formData.step3.shareholders.map((s) => ({
-                id: s.id,
-                fullName: s.fullName,
-              })),
-              ...formData.step4.directors.map((d) => ({
-                id: d.id,
-                fullName: d.fullName,
-              })),
-            ]}
-          />
-        );
-      case 7:
         return (
           <Step7Billing
             data={formData.step7}
             onChange={(data) => updateFormData("step7", data)}
           />
         );
-      case 8:
+      case 7:
         return (
           <Step8Review
             data={formData.step8}
@@ -232,7 +236,7 @@ export const CompanyFormation: React.FC = () => {
     }
   };
 
-  const progressPercentage = Math.round((currentStep / 8) * 100);
+  const progressPercentage = Math.round((currentStep / 7) * 100);
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-[#f5f8ff] via-[#ffffff] to-[#f0f4ff]">
@@ -253,7 +257,7 @@ export const CompanyFormation: React.FC = () => {
           <div className="mb-6 md:mb-8">
             <div className="flex items-center justify-between mb-4">
               <span className="text-sm font-medium text-[#212833]">
-                Step {currentStep} of 8
+                Step {currentStep} of 7
               </span>
               <span className="text-sm font-semibold text-[#004eff]">
                 Progress: {progressPercentage}%
@@ -378,7 +382,7 @@ export const CompanyFormation: React.FC = () => {
             <h2 className="text-2xl font-bold text-[#212833] mb-1">
               {steps[currentStep - 1].label}
             </h2>
-            <p className="text-sm text-gray-500">Step {currentStep} of 8</p>
+            <p className="text-sm text-gray-500">Step {currentStep} of 7</p>
           </div>
 
           {renderStep()}
@@ -396,7 +400,7 @@ export const CompanyFormation: React.FC = () => {
             Back
           </Button>
 
-          {currentStep < 8 ? (
+          {currentStep < 7 ? (
             <Button
               onClick={handleNext}
               className="h-12 px-8 rounded-full bg-gradient-to-r from-[#6896ff] to-[#004eff] hover:opacity-90 transition-all shadow-lg hover:shadow-xl"

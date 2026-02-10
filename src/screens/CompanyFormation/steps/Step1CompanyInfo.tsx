@@ -5,6 +5,10 @@ import { Checkbox } from "../../../components/ui/checkbox";
 import { Textarea } from "../../../components/ui/textarea";
 
 export interface Step1Data {
+  firstName: string;
+  lastName: string;
+  email: string;
+  phone: string;
   countryOfIncorporation: string;
   proposedCompanyName: string;
   alternativeName1: string;
@@ -57,7 +61,70 @@ export const Step1CompanyInfo: React.FC<Step1Props> = ({ data, onChange }) => {
   };
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-8">
+      {/* Personal Info */}
+      <div className="space-y-4">
+        <h3 className="text-lg font-semibold text-[#212833] border-b border-gray-200 pb-2">
+          Personal Info
+        </h3>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div className="space-y-2">
+            <label className="block text-sm font-medium text-[#212833]">
+              First Name <span className="text-red-500">*</span>
+            </label>
+            <Input
+              type="text"
+              placeholder="Enter first name"
+              value={data.firstName}
+              onChange={(e) => onChange({ firstName: e.target.value })}
+              className="bg-[#f5f7fa] border-gray-300 h-11"
+            />
+          </div>
+          <div className="space-y-2">
+            <label className="block text-sm font-medium text-[#212833]">
+              Last Name <span className="text-red-500">*</span>
+            </label>
+            <Input
+              type="text"
+              placeholder="Enter last name"
+              value={data.lastName}
+              onChange={(e) => onChange({ lastName: e.target.value })}
+              className="bg-[#f5f7fa] border-gray-300 h-11"
+            />
+          </div>
+          <div className="space-y-2">
+            <label className="block text-sm font-medium text-[#212833]">
+              Email <span className="text-red-500">*</span>
+            </label>
+            <Input
+              type="email"
+              placeholder="Enter email address"
+              value={data.email}
+              onChange={(e) => onChange({ email: e.target.value })}
+              className="bg-[#f5f7fa] border-gray-300 h-11"
+            />
+          </div>
+          <div className="space-y-2">
+            <label className="block text-sm font-medium text-[#212833]">
+              Phone Number <span className="text-red-500">*</span>
+            </label>
+            <Input
+              type="tel"
+              placeholder="Enter phone number"
+              value={data.phone}
+              onChange={(e) => onChange({ phone: e.target.value })}
+              className="bg-[#f5f7fa] border-gray-300 h-11"
+            />
+          </div>
+        </div>
+      </div>
+
+      {/* Company Information */}
+      <div className="space-y-6">
+        <h3 className="text-lg font-semibold text-[#212833] border-b border-gray-200 pb-2">
+          Company Information
+        </h3>
+
       {/* Country of Incorporation */}
       <div className="space-y-2">
         <label className="block text-sm font-medium text-[#212833]">
@@ -167,6 +234,7 @@ export const Step1CompanyInfo: React.FC<Step1Props> = ({ data, onChange }) => {
           disabled
           className="bg-[#f5f7fa] border-gray-300 h-11"
         />
+      </div>
       </div>
     </div>
   );
