@@ -37,6 +37,7 @@ interface Step4Props {
     selfieFile: File | null;
     addressProofFile: File | null;
   }>;
+  errors?: Record<string, string>;
 }
 
 const nationalityOptions: SelectOption[] = [
@@ -50,38 +51,47 @@ const nationalityOptions: SelectOption[] = [
   { value: "korea", label: "South Korea" },
 ];
 
-export const Step4Directors: React.FC<Step4Props> = ({ data, onChange, shareholdersFromStep3 = [] }) => {
-  const [selectedShareholderForQuickAdd, setSelectedShareholderForQuickAdd] = useState("");
+export const Step4Directors: React.FC<Step4Props> = ({
+  data,
+  onChange,
+  shareholdersFromStep3 = [],
+  errors,
+}) => {
   const [expandedDirectors, setExpandedDirectors] = useState<string[]>([]);
-
-  // Debug: Log shareholders data
-  React.useEffect(() => {
-    console.log("Step 4 - Shareholders from Step 3:", shareholdersFromStep3);
-  }, [shareholdersFromStep3]);
+  const [formMessage, setFormMessage] = useState<string | null>(null);
+  const [formErrors, setFormErrors] = useState<Record<string, string>>({});
 
   const toggleDirectorExpanded = (id: string) => {
-    // Check if a DIFFERENT form is currently open (not the same one being clicked)
-    const otherFormOpen = expandedDirectors.length > 0 && expandedDirectors[0] !== id;
+    const otherFormOpen =
+      expandedDirectors.length > 0 && expandedDirectors[0] !== id;
     if (otherFormOpen) {
-      alert("Please save the current director form before editing another director.");
+      setFormMessage(
+        "Please save the current director form before editing another.",
+      );
       return;
     }
-    // Open the clicked form
+    setFormMessage(null);
+    setFormErrors({});
     setExpandedDirectors([id]);
   };
 
   const addDirector = (name: string = "", shareholderId?: string) => {
-    // Check if any form is currently open
     if (expandedDirectors.length > 0) {
-      alert("Please save the current director form before adding a new director.");
+      setFormMessage(
+        "Please save the current director form before adding a new one.",
+      );
       return;
     }
+    setFormMessage(null);
+    setFormErrors({});
 
     let newDirector: Director;
 
     // If adding from shareholder, copy all their information
     if (shareholderId) {
-      const shareholder = shareholdersFromStep3.find((s) => s.id === shareholderId);
+      const shareholder = shareholdersFromStep3.find(
+        (s) => s.id === shareholderId,
+      );
       if (shareholder) {
         newDirector = {
           id: Date.now().toString(),
@@ -138,12 +148,39 @@ export const Step4Directors: React.FC<Step4Props> = ({ data, onChange, sharehold
   };
 
   const saveDirector = (id: string) => {
-    // Close all forms after saving
+    const dir = data.directors.find((d) => d.id === id);
+    if (!dir) return;
+
+    const errs: Record<string, string> = {};
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    if (!dir.fullName.trim()) errs.fullName = "Full name is required";
+    if (!dir.nationality) errs.nationality = "Nationality is required";
+    if (!dir.email.trim()) errs.email = "Email is required";
+    else if (!emailRegex.test(dir.email)) errs.email = "Invalid email format";
+    if (!dir.phone.trim()) errs.phone = "Phone is required";
+    if (!dir.residentialAddress.trim())
+      errs.residentialAddress = "Address is required";
+    if (!dir.passportFile) errs.passportFile = "Passport upload is required";
+    if (!dir.selfieFile) errs.selfieFile = "Selfie upload is required";
+    if (!dir.addressProofFile)
+      errs.addressProofFile = "Address proof is required";
+
+    if (Object.keys(errs).length > 0) {
+      setFormErrors(errs);
+      setFormMessage("Please fill in all required fields before saving.");
+      return;
+    }
+
+    setFormErrors({});
+    setFormMessage(null);
     setExpandedDirectors([]);
   };
 
   const isShareholderAlreadyDirector = (shareholderId: string) => {
-    const shareholder = shareholdersFromStep3.find((s) => s.id === shareholderId);
+    const shareholder = shareholdersFromStep3.find(
+      (s) => s.id === shareholderId,
+    );
     if (!shareholder) return false;
     return data.directors.some((d) => d.fullName === shareholder.fullName);
   };
@@ -152,31 +189,42 @@ export const Step4Directors: React.FC<Step4Props> = ({ data, onChange, sharehold
     onChange({
       directors: data.directors.filter((d) => d.id !== id),
     });
+    setExpandedDirectors((prev) => prev.filter((eid) => eid !== id));
+    setFormMessage(null);
+    setFormErrors({});
   };
 
   const updateDirector = (id: string, field: keyof Director, value: any) => {
     onChange({
-      directors: data.directors.map((d) => (d.id === id ? { ...d, [field]: value } : d)),
+      directors: data.directors.map((d) =>
+        d.id === id ? { ...d, [field]: value } : d,
+      ),
     });
-  };
-
-  const handleQuickAddDirector = () => {
-    if (selectedShareholderForQuickAdd) {
-      const shareholder = shareholdersFromStep3.find((s) => s.id === selectedShareholderForQuickAdd);
-      if (shareholder) {
-        addDirector(shareholder.fullName, shareholder.id);
-        setSelectedShareholderForQuickAdd("");
-      }
-    }
   };
 
   return (
     <div className="space-y-8">
       {/* Header */}
       <div>
-        <h3 className="text-xl font-semibold text-[#212833] mb-2">Directors Information</h3>
-        <p className="text-sm text-gray-600">Specify directors for your company</p>
+        <h3 className="text-xl font-semibold text-[#212833] mb-2">
+          Directors Information
+        </h3>
+        <p className="text-sm text-gray-600">
+          Specify directors for your company
+        </p>
       </div>
+
+      {formMessage && (
+        <p className="text-xs text-amber-600 bg-amber-50 border border-amber-200 rounded-md px-3 py-2">
+          {formMessage}
+        </p>
+      )}
+
+      {errors?.directors && (
+        <p className="text-xs text-red-500 bg-red-50 border border-red-200 rounded-md px-3 py-2">
+          {errors.directors}
+        </p>
+      )}
 
       {/* Quick Add from Shareholders */}
       {shareholdersFromStep3.length > 0 ? (
@@ -217,7 +265,8 @@ export const Step4Directors: React.FC<Step4Props> = ({ data, onChange, sharehold
       ) : (
         <div className="p-5 bg-yellow-50 rounded-xl border border-yellow-200">
           <p className="text-sm text-yellow-800">
-            <strong>Tip:</strong> Add shareholders in Step 2 & Step 3 to use the Quick Add feature here.
+            <strong>Tip:</strong> Add shareholders in Step 2 & Step 3 to use the
+            Quick Add feature here.
           </p>
         </div>
       )}
@@ -226,7 +275,8 @@ export const Step4Directors: React.FC<Step4Props> = ({ data, onChange, sharehold
       <div className="space-y-4">
         <div className="flex items-center justify-between">
           <h4 className="text-base font-semibold text-[#212833]">
-            Directors {data.directors.length > 0 && `(${data.directors.length})`}
+            Directors{" "}
+            {data.directors.length > 0 && `(${data.directors.length})`}
           </h4>
           <Button
             type="button"
@@ -294,187 +344,305 @@ export const Step4Directors: React.FC<Step4Props> = ({ data, onChange, sharehold
 
                   {/* Expanded Form */}
                   {isExpanded && (
-                    <div className="p-6 pt-2 space-y-4 border-t"
->
-                  {/* Full Name */}
-                  <div className="space-y-2">
-                    <label className="block text-sm font-medium text-[#212833]">
-                      Full Name <span className="text-red-500">*</span>
-                    </label>
-                    <Input
-                      type="text"
-                      placeholder="Enter full name"
-                      value={director.fullName}
-                      onChange={(e) => updateDirector(director.id, "fullName", e.target.value)}
-                      className="bg-[#f5f7fa] border-gray-300 h-11"
-                    />
-                  </div>
-
-                  {/* Nationality & Position */}
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <div className="space-y-2">
-                      <label className="block text-sm font-medium text-[#212833]">
-                        Nationality <span className="text-red-500">*</span>
-                      </label>
-                      <Select
-                        options={nationalityOptions}
-                        value={director.nationality}
-                        onChange={(value) => updateDirector(director.id, "nationality", value)}
-                        placeholder="Select nationality"
-                      />
-                    </div>
-
-                    <div className="space-y-2">
-                      <label className="block text-sm font-medium text-[#212833]">Position</label>
-                      <Input
-                        type="text"
-                        placeholder="Director"
-                        value={director.position}
-                        onChange={(e) => updateDirector(director.id, "position", e.target.value)}
-                        className="bg-[#f5f7fa] border-gray-300 h-11"
-                      />
-                    </div>
-                  </div>
-
-                  {/* Email & Phone */}
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <div className="space-y-2">
-                      <label className="block text-sm font-medium text-[#212833]">
-                        Email <span className="text-red-500">*</span>
-                      </label>
-                      <Input
-                        type="email"
-                        placeholder="email@example.com"
-                        value={director.email}
-                        onChange={(e) => updateDirector(director.id, "email", e.target.value)}
-                        className="bg-[#f5f7fa] border-gray-300 h-11"
-                      />
-                    </div>
-
-                    <div className="space-y-2">
-                      <label className="block text-sm font-medium text-[#212833]">
-                        Phone <span className="text-red-500">*</span>
-                      </label>
-                      <Input
-                        type="tel"
-                        placeholder="+852-0000-0000"
-                        value={director.phone}
-                        onChange={(e) => updateDirector(director.id, "phone", e.target.value)}
-                        className="bg-[#f5f7fa] border-gray-300 h-11"
-                      />
-                    </div>
-                  </div>
-
-                  {/* Residential Address */}
-                  <div className="space-y-2">
-                    <label className="block text-sm font-medium text-[#212833]">
-                      Residential Address <span className="text-red-500">*</span>
-                    </label>
-                    <Input
-                      type="text"
-                      placeholder="Enter full residential address"
-                      value={director.residentialAddress}
-                      onChange={(e) =>
-                        updateDirector(director.id, "residentialAddress", e.target.value)
-                      }
-                      className="bg-[#f5f7fa] border-gray-300 h-11"
-                    />
-                  </div>
-
-                  {/* File Uploads */}
-                  <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                    <div className="space-y-2">
-                      <label className="block text-sm font-medium text-[#212833]">
-                        Passport/ID Upload <span className="text-red-500">*</span>
-                      </label>
-                      <label className="flex flex-col items-center justify-center gap-2 py-4 px-4 border-2 border-dashed border-gray-300 rounded-lg bg-white hover:border-[#004eff] hover:bg-blue-50/30 cursor-pointer transition-colors">
-                        <Upload className="w-5 h-5 text-gray-400" />
-                        <span className="text-sm text-gray-600 text-center">
-                          {director.passportFile
-                            ? director.passportFile.name
-                            : "Upload Passport"}
-                        </span>
-                        <span className="text-xs text-gray-400">PDF, JPG, PNG · Max 10 MB</span>
-                        <input
-                          type="file"
-                          accept=".pdf,.jpg,.jpeg,.png"
+                    <div className="p-6 pt-2 space-y-4 border-t">
+                      {/* Full Name */}
+                      <div className="space-y-2">
+                        <label className="block text-sm font-medium text-[#212833]">
+                          Full Name <span className="text-red-500">*</span>
+                        </label>
+                        <Input
+                          type="text"
+                          placeholder="Enter full name"
+                          value={director.fullName}
                           onChange={(e) =>
                             updateDirector(
                               director.id,
-                              "passportFile",
-                              e.target.files?.[0] || null
+                              "fullName",
+                              e.target.value,
                             )
                           }
-                          className="hidden"
+                          className={`bg-[#f5f7fa] border-gray-300 h-11 ${formErrors.fullName || errors?.[`directors.${index}.fullName`] ? "border-red-500" : ""}`}
                         />
-                      </label>
-                    </div>
+                        {(formErrors.fullName ||
+                          errors?.[`directors.${index}.fullName`]) && (
+                          <p className="text-xs text-red-500 mt-1">
+                            {formErrors.fullName ||
+                              errors?.[`directors.${index}.fullName`]}
+                          </p>
+                        )}
+                      </div>
 
-                    <div className="space-y-2">
-                      <label className="block text-sm font-medium text-[#212833]">
-                        Passport Holding Selfie <span className="text-red-500">*</span>
-                      </label>
-                      <label className="flex flex-col items-center justify-center gap-2 py-4 px-4 border-2 border-dashed border-gray-300 rounded-lg bg-white hover:border-[#004eff] hover:bg-blue-50/30 cursor-pointer transition-colors">
-                        <Upload className="w-5 h-5 text-gray-400" />
-                        <span className="text-sm text-gray-600 text-center">
-                          {director.selfieFile
-                            ? director.selfieFile.name
-                            : "Upload Selfie"}
-                        </span>
-                        <span className="text-xs text-gray-400">JPG, PNG · Max 10 MB</span>
-                        <input
-                          type="file"
-                          accept=".jpg,.jpeg,.png"
+                      {/* Nationality & Position */}
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div className="space-y-2">
+                          <label className="block text-sm font-medium text-[#212833]">
+                            Nationality <span className="text-red-500">*</span>
+                          </label>
+                          <Select
+                            options={nationalityOptions}
+                            value={director.nationality}
+                            onChange={(value) =>
+                              updateDirector(director.id, "nationality", value)
+                            }
+                            placeholder="Select nationality"
+                          />
+                          {(formErrors.nationality ||
+                            errors?.[`directors.${index}.nationality`]) && (
+                            <p className="text-xs text-red-500 mt-1">
+                              {formErrors.nationality ||
+                                errors?.[`directors.${index}.nationality`]}
+                            </p>
+                          )}
+                        </div>
+
+                        <div className="space-y-2">
+                          <label className="block text-sm font-medium text-[#212833]">
+                            Position
+                          </label>
+                          <Input
+                            type="text"
+                            placeholder="Director"
+                            value={director.position}
+                            onChange={(e) =>
+                              updateDirector(
+                                director.id,
+                                "position",
+                                e.target.value,
+                              )
+                            }
+                            className="bg-[#f5f7fa] border-gray-300 h-11"
+                          />
+                        </div>
+                      </div>
+
+                      {/* Email & Phone */}
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div className="space-y-2">
+                          <label className="block text-sm font-medium text-[#212833]">
+                            Email <span className="text-red-500">*</span>
+                          </label>
+                          <Input
+                            type="email"
+                            placeholder="email@example.com"
+                            value={director.email}
+                            onChange={(e) =>
+                              updateDirector(
+                                director.id,
+                                "email",
+                                e.target.value,
+                              )
+                            }
+                            className={`bg-[#f5f7fa] border-gray-300 h-11 ${formErrors.email || errors?.[`directors.${index}.email`] ? "border-red-500" : ""}`}
+                          />
+                          {(formErrors.email ||
+                            errors?.[`directors.${index}.email`]) && (
+                            <p className="text-xs text-red-500 mt-1">
+                              {formErrors.email ||
+                                errors?.[`directors.${index}.email`]}
+                            </p>
+                          )}
+                        </div>
+
+                        <div className="space-y-2">
+                          <label className="block text-sm font-medium text-[#212833]">
+                            Phone <span className="text-red-500">*</span>
+                          </label>
+                          <Input
+                            type="tel"
+                            placeholder="+852-0000-0000"
+                            value={director.phone}
+                            onChange={(e) =>
+                              updateDirector(
+                                director.id,
+                                "phone",
+                                e.target.value,
+                              )
+                            }
+                            className={`bg-[#f5f7fa] border-gray-300 h-11 ${formErrors.phone || errors?.[`directors.${index}.phone`] ? "border-red-500" : ""}`}
+                          />
+                          {(formErrors.phone ||
+                            errors?.[`directors.${index}.phone`]) && (
+                            <p className="text-xs text-red-500 mt-1">
+                              {formErrors.phone ||
+                                errors?.[`directors.${index}.phone`]}
+                            </p>
+                          )}
+                        </div>
+                      </div>
+
+                      {/* Residential Address */}
+                      <div className="space-y-2">
+                        <label className="block text-sm font-medium text-[#212833]">
+                          Residential Address{" "}
+                          <span className="text-red-500">*</span>
+                        </label>
+                        <Input
+                          type="text"
+                          placeholder="Enter full residential address"
+                          value={director.residentialAddress}
                           onChange={(e) =>
                             updateDirector(
                               director.id,
-                              "selfieFile",
-                              e.target.files?.[0] || null
+                              "residentialAddress",
+                              e.target.value,
                             )
                           }
-                          className="hidden"
+                          className={`bg-[#f5f7fa] border-gray-300 h-11 ${formErrors.residentialAddress || errors?.[`directors.${index}.residentialAddress`] ? "border-red-500" : ""}`}
                         />
-                      </label>
-                    </div>
+                        {(formErrors.residentialAddress ||
+                          errors?.[
+                            `directors.${index}.residentialAddress`
+                          ]) && (
+                          <p className="text-xs text-red-500 mt-1">
+                            {formErrors.residentialAddress ||
+                              errors?.[`directors.${index}.residentialAddress`]}
+                          </p>
+                        )}
+                      </div>
 
-                    <div className="space-y-2">
-                      <label className="block text-sm font-medium text-[#212833]">
-                        Proof of Address Upload <span className="text-red-500">*</span>
-                      </label>
-                      <label className="flex flex-col items-center justify-center gap-2 py-4 px-4 border-2 border-dashed border-gray-300 rounded-lg bg-white hover:border-[#004eff] hover:bg-blue-50/30 cursor-pointer transition-colors">
-                        <Upload className="w-5 h-5 text-gray-400" />
-                        <span className="text-sm text-gray-600 text-center">
-                          {director.addressProofFile
-                            ? director.addressProofFile.name
-                            : "Upload Document"}
-                        </span>
-                        <span className="text-xs text-gray-400">PDF, JPG, PNG · Max 10 MB</span>
-                        <input
-                          type="file"
-                          accept=".pdf,.jpg,.jpeg,.png"
-                          onChange={(e) =>
-                            updateDirector(
-                              director.id,
-                              "addressProofFile",
-                              e.target.files?.[0] || null
-                            )
-                          }
-                          className="hidden"
-                        />
-                      </label>
-                    </div>
-                  </div>
+                      {/* File Uploads */}
+                      <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                        <div className="space-y-2">
+                          <label className="block text-sm font-medium text-[#212833]">
+                            Passport/ID Upload{" "}
+                            <span className="text-red-500">*</span>
+                          </label>
+                          <label className="flex flex-col items-center justify-center gap-2 py-4 px-4 border-2 border-dashed border-gray-300 rounded-lg bg-white hover:border-[#004eff] hover:bg-blue-50/30 cursor-pointer transition-colors">
+                            <Upload className="w-5 h-5 text-gray-400" />
+                            <span className="text-sm text-gray-600 text-center">
+                              {director.passportFile
+                                ? director.passportFile.name
+                                : "Upload Passport"}
+                            </span>
+                            <span className="text-xs text-gray-400">
+                              PDF, JPG, PNG · Max 10 MB
+                            </span>
+                            <input
+                              type="file"
+                              accept=".pdf,.jpg,.jpeg,.png"
+                              onChange={(e) => {
+                                const file = e.target.files?.[0] || null;
+                                if (file && file.size > 10 * 1024 * 1024) {
+                                  setFormMessage(
+                                    "File size must be under 10 MB",
+                                  );
+                                  return;
+                                }
+                                updateDirector(
+                                  director.id,
+                                  "passportFile",
+                                  file,
+                                );
+                              }}
+                              className="hidden"
+                            />
+                          </label>
+                          {(formErrors.passportFile ||
+                            errors?.[`directors.${index}.passportFile`]) && (
+                            <p className="text-xs text-red-500 mt-1">
+                              {formErrors.passportFile ||
+                                errors?.[`directors.${index}.passportFile`]}
+                            </p>
+                          )}
+                        </div>
 
-                  {/* Save Button */}
-                  <div className="flex justify-end pt-4">
-                    <Button
-                      type="button"
-                      onClick={() => saveDirector(director.id)}
-                      className="h-10 px-8 bg-[#004eff] hover:bg-[#0040cc] text-white"
-                    >
-                      Save Director
-                    </Button>
-                  </div>
+                        <div className="space-y-2">
+                          <label className="block text-sm font-medium text-[#212833]">
+                            Passport Holding Selfie{" "}
+                            <span className="text-red-500">*</span>
+                          </label>
+                          <label className="flex flex-col items-center justify-center gap-2 py-4 px-4 border-2 border-dashed border-gray-300 rounded-lg bg-white hover:border-[#004eff] hover:bg-blue-50/30 cursor-pointer transition-colors">
+                            <Upload className="w-5 h-5 text-gray-400" />
+                            <span className="text-sm text-gray-600 text-center">
+                              {director.selfieFile
+                                ? director.selfieFile.name
+                                : "Upload Selfie"}
+                            </span>
+                            <span className="text-xs text-gray-400">
+                              JPG, PNG · Max 10 MB
+                            </span>
+                            <input
+                              type="file"
+                              accept=".jpg,.jpeg,.png"
+                              onChange={(e) => {
+                                const file = e.target.files?.[0] || null;
+                                if (file && file.size > 10 * 1024 * 1024) {
+                                  setFormMessage(
+                                    "File size must be under 10 MB",
+                                  );
+                                  return;
+                                }
+                                updateDirector(director.id, "selfieFile", file);
+                              }}
+                              className="hidden"
+                            />
+                          </label>
+                          {(formErrors.selfieFile ||
+                            errors?.[`directors.${index}.selfieFile`]) && (
+                            <p className="text-xs text-red-500 mt-1">
+                              {formErrors.selfieFile ||
+                                errors?.[`directors.${index}.selfieFile`]}
+                            </p>
+                          )}
+                        </div>
+
+                        <div className="space-y-2">
+                          <label className="block text-sm font-medium text-[#212833]">
+                            Proof of Address Upload{" "}
+                            <span className="text-red-500">*</span>
+                          </label>
+                          <label className="flex flex-col items-center justify-center gap-2 py-4 px-4 border-2 border-dashed border-gray-300 rounded-lg bg-white hover:border-[#004eff] hover:bg-blue-50/30 cursor-pointer transition-colors">
+                            <Upload className="w-5 h-5 text-gray-400" />
+                            <span className="text-sm text-gray-600 text-center">
+                              {director.addressProofFile
+                                ? director.addressProofFile.name
+                                : "Upload Document"}
+                            </span>
+                            <span className="text-xs text-gray-400">
+                              PDF, JPG, PNG · Max 10 MB
+                            </span>
+                            <input
+                              type="file"
+                              accept=".pdf,.jpg,.jpeg,.png"
+                              onChange={(e) => {
+                                const file = e.target.files?.[0] || null;
+                                if (file && file.size > 10 * 1024 * 1024) {
+                                  setFormMessage(
+                                    "File size must be under 10 MB",
+                                  );
+                                  return;
+                                }
+                                updateDirector(
+                                  director.id,
+                                  "addressProofFile",
+                                  file,
+                                );
+                              }}
+                              className="hidden"
+                            />
+                          </label>
+                          {(formErrors.addressProofFile ||
+                            errors?.[
+                              `directors.${index}.addressProofFile`
+                            ]) && (
+                            <p className="text-xs text-red-500 mt-1">
+                              {formErrors.addressProofFile ||
+                                errors?.[`directors.${index}.addressProofFile`]}
+                            </p>
+                          )}
+                        </div>
+                      </div>
+
+                      {/* Save Button */}
+                      <div className="flex justify-end pt-4">
+                        <Button
+                          type="button"
+                          onClick={() => saveDirector(director.id)}
+                          className="h-10 px-8 bg-[#004eff] hover:bg-[#0040cc] text-white"
+                        >
+                          Save Director
+                        </Button>
+                      </div>
                     </div>
                   )}
                 </div>
@@ -488,11 +656,14 @@ export const Step4Directors: React.FC<Step4Props> = ({ data, onChange, sharehold
       <div className="p-5 bg-[#f9fafb] rounded-xl border border-gray-200">
         <Checkbox
           checked={data.nomineeDirectorService}
-          onCheckedChange={(checked) => onChange({ nomineeDirectorService: checked })}
+          onCheckedChange={(checked) =>
+            onChange({ nomineeDirectorService: checked })
+          }
           label="Add Nominee Director Service"
         />
         <p className="text-sm text-gray-600 mt-2 ml-8">
-          Our nominee director service provides professional representation for your company
+          Our nominee director service provides professional representation for
+          your company
         </p>
       </div>
     </div>

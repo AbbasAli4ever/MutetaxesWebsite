@@ -19,14 +19,20 @@ export interface Step2Data {
 interface Step2Props {
   data: Step2Data;
   onChange: (data: Partial<Step2Data>) => void;
+  errors?: Record<string, string>;
 }
 
-export const Step2ShareCapital: React.FC<Step2Props> = ({ data, onChange }) => {
+export const Step2ShareCapital: React.FC<Step2Props> = ({
+  data,
+  onChange,
+  errors,
+}) => {
   // Track which shareholder IDs have been saved
   const [savedIds, setSavedIds] = useState<Set<string>>(new Set());
 
   // The ID of the currently open (unsaved) shareholder form — only one at a time
-  const unsavedId = data.shareDistribution.find((s) => !savedIds.has(s.id))?.id ?? null;
+  const unsavedId =
+    data.shareDistribution.find((s) => !savedIds.has(s.id))?.id ?? null;
 
   const addShareholder = () => {
     // Block if there is already an unsaved form open
@@ -38,7 +44,9 @@ export const Step2ShareCapital: React.FC<Step2Props> = ({ data, onChange }) => {
       shares: "",
       percentage: "",
     };
-    onChange({ shareDistribution: [...data.shareDistribution, newShareholder] });
+    onChange({
+      shareDistribution: [...data.shareDistribution, newShareholder],
+    });
   };
 
   const removeShareholder = (id: string) => {
@@ -55,11 +63,11 @@ export const Step2ShareCapital: React.FC<Step2Props> = ({ data, onChange }) => {
   const updateShareholder = (
     id: string,
     field: keyof ShareholderDistribution,
-    value: string
+    value: string,
   ) => {
     onChange({
       shareDistribution: data.shareDistribution.map((s) =>
-        s.id === id ? { ...s, [field]: value } : s
+        s.id === id ? { ...s, [field]: value } : s,
       ),
     });
   };
@@ -69,11 +77,13 @@ export const Step2ShareCapital: React.FC<Step2Props> = ({ data, onChange }) => {
     const totalSharesNum = parseFloat(data.totalShares) || 0;
     const sharesNum = parseFloat(shares) || 0;
     const percentage =
-      totalSharesNum > 0 ? ((sharesNum / totalSharesNum) * 100).toFixed(2) : "0";
+      totalSharesNum > 0
+        ? ((sharesNum / totalSharesNum) * 100).toFixed(2)
+        : "0";
 
     onChange({
       shareDistribution: data.shareDistribution.map((s) =>
-        s.id === id ? { ...s, shares, percentage: percentage + "%" } : s
+        s.id === id ? { ...s, shares, percentage: percentage + "%" } : s,
       ),
     });
   };
@@ -98,7 +108,9 @@ export const Step2ShareCapital: React.FC<Step2Props> = ({ data, onChange }) => {
     <div className="space-y-8">
       {/* Header */}
       <div>
-        <h3 className="text-xl font-semibold text-[#212833] mb-2">Share Capital Structure</h3>
+        <h3 className="text-xl font-semibold text-[#212833] mb-2">
+          Share Capital Structure
+        </h3>
         <p className="text-sm text-gray-600">
           Define your company's share capital and distribution
         </p>
@@ -114,9 +126,17 @@ export const Step2ShareCapital: React.FC<Step2Props> = ({ data, onChange }) => {
             type="text"
             placeholder="10000"
             value={data.shareCapitalAmount}
-            onChange={(e) => onChange({ shareCapitalAmount: e.target.value })}
-            className="bg-[#f5f7fa] border-gray-300 h-12 text-base"
+            onChange={(e) => {
+              const val = e.target.value.replace(/[^0-9]/g, "");
+              onChange({ shareCapitalAmount: val });
+            }}
+            className={`bg-[#f5f7fa] border-gray-300 h-12 text-base ${errors?.shareCapitalAmount ? "border-red-500" : ""}`}
           />
+          {errors?.shareCapitalAmount && (
+            <p className="text-xs text-red-500 mt-1">
+              {errors.shareCapitalAmount}
+            </p>
+          )}
           <p className="text-sm text-gray-500 mt-1">Standard: HKD 10,000</p>
         </div>
 
@@ -128,9 +148,15 @@ export const Step2ShareCapital: React.FC<Step2Props> = ({ data, onChange }) => {
             type="text"
             placeholder="10000"
             value={data.totalShares}
-            onChange={(e) => onChange({ totalShares: e.target.value })}
-            className="bg-[#f5f7fa] border-gray-300 h-12 text-base"
+            onChange={(e) => {
+              const val = e.target.value.replace(/[^0-9]/g, "");
+              onChange({ totalShares: val });
+            }}
+            className={`bg-[#f5f7fa] border-gray-300 h-12 text-base ${errors?.totalShares ? "border-red-500" : ""}`}
           />
+          {errors?.totalShares && (
+            <p className="text-xs text-red-500 mt-1">{errors.totalShares}</p>
+          )}
           <p className="text-sm text-gray-500 mt-1">Standard: 10,000 shares</p>
         </div>
       </div>
@@ -138,7 +164,9 @@ export const Step2ShareCapital: React.FC<Step2Props> = ({ data, onChange }) => {
       {/* Share Distribution Section */}
       <div className="space-y-4">
         <div className="flex items-center justify-between">
-          <h4 className="text-base font-semibold text-[#212833]">Share Distribution</h4>
+          <h4 className="text-base font-semibold text-[#212833]">
+            Share Distribution
+          </h4>
           <Button
             type="button"
             onClick={addShareholder}
@@ -154,6 +182,12 @@ export const Step2ShareCapital: React.FC<Step2Props> = ({ data, onChange }) => {
         {unsavedId !== null && (
           <p className="text-xs text-amber-600 bg-amber-50 border border-amber-200 rounded-md px-3 py-2">
             Please save the current shareholder before adding a new one.
+          </p>
+        )}
+
+        {errors?.shareDistribution && (
+          <p className="text-xs text-red-500 bg-red-50 border border-red-200 rounded-md px-3 py-2">
+            {errors.shareDistribution}
           </p>
         )}
 
@@ -176,7 +210,8 @@ export const Step2ShareCapital: React.FC<Step2Props> = ({ data, onChange }) => {
               const isSaved = savedIds.has(shareholder.id);
               const isOpen = !isSaved;
               const canSave =
-                shareholder.name.trim() !== "" && shareholder.shares.trim() !== "";
+                shareholder.name.trim() !== "" &&
+                shareholder.shares.trim() !== "";
 
               return (
                 <div
@@ -191,7 +226,9 @@ export const Step2ShareCapital: React.FC<Step2Props> = ({ data, onChange }) => {
                     <h5 className="font-medium text-[#212833] flex items-center gap-2">
                       Shareholder {index + 1}
                       {isSaved && shareholder.name && (
-                        <span className="text-gray-500 font-normal">— {shareholder.name}</span>
+                        <span className="text-gray-500 font-normal">
+                          — {shareholder.name}
+                        </span>
                       )}
                       {isSaved && (
                         <span className="inline-flex items-center gap-1 text-xs text-green-700 bg-green-100 px-2 py-0.5 rounded-full">
@@ -206,7 +243,9 @@ export const Step2ShareCapital: React.FC<Step2Props> = ({ data, onChange }) => {
                           variant="outline"
                           size="sm"
                           onClick={() => editShareholder(shareholder.id)}
-                          disabled={unsavedId !== null && unsavedId !== shareholder.id}
+                          disabled={
+                            unsavedId !== null && unsavedId !== shareholder.id
+                          }
                           className="h-8 px-3 text-xs border-gray-300 hover:border-[#212833] disabled:opacity-40 disabled:cursor-not-allowed"
                         >
                           Edit
@@ -229,14 +268,19 @@ export const Step2ShareCapital: React.FC<Step2Props> = ({ data, onChange }) => {
                       <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                         <div className="space-y-2">
                           <label className="block text-sm font-medium text-[#212833]">
-                            Shareholder Name <span className="text-red-500">*</span>
+                            Shareholder Name{" "}
+                            <span className="text-red-500">*</span>
                           </label>
                           <Input
                             type="text"
                             placeholder="Enter name"
                             value={shareholder.name}
                             onChange={(e) =>
-                              updateShareholder(shareholder.id, "name", e.target.value)
+                              updateShareholder(
+                                shareholder.id,
+                                "name",
+                                e.target.value,
+                              )
                             }
                             className="bg-[#f5f7fa] border-gray-300 h-11"
                           />
@@ -244,7 +288,8 @@ export const Step2ShareCapital: React.FC<Step2Props> = ({ data, onChange }) => {
 
                         <div className="space-y-2">
                           <label className="block text-sm font-medium text-[#212833]">
-                            Number of Shares <span className="text-red-500">*</span>
+                            Number of Shares{" "}
+                            <span className="text-red-500">*</span>
                           </label>
                           <Input
                             type="text"
@@ -290,15 +335,21 @@ export const Step2ShareCapital: React.FC<Step2Props> = ({ data, onChange }) => {
                   {isSaved && (
                     <div className="grid grid-cols-3 gap-4 text-sm text-gray-600">
                       <div>
-                        <span className="text-xs text-gray-400 block mb-0.5">Name</span>
+                        <span className="text-xs text-gray-400 block mb-0.5">
+                          Name
+                        </span>
                         {shareholder.name}
                       </div>
                       <div>
-                        <span className="text-xs text-gray-400 block mb-0.5">Shares</span>
+                        <span className="text-xs text-gray-400 block mb-0.5">
+                          Shares
+                        </span>
                         {shareholder.shares}
                       </div>
                       <div>
-                        <span className="text-xs text-gray-400 block mb-0.5">Ownership</span>
+                        <span className="text-xs text-gray-400 block mb-0.5">
+                          Ownership
+                        </span>
                         {shareholder.percentage}
                       </div>
                     </div>
@@ -317,7 +368,7 @@ export const Step2ShareCapital: React.FC<Step2Props> = ({ data, onChange }) => {
             <strong>Note:</strong> Total shares distributed:{" "}
             {data.shareDistribution.reduce(
               (sum, s) => sum + (parseFloat(s.shares) || 0),
-              0
+              0,
             )}{" "}
             / {data.totalShares || 0} shares
           </p>

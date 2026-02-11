@@ -26,6 +26,7 @@ export interface Step3Data {
 interface Step3Props {
   data: Step3Data;
   onChange: (data: Partial<Step3Data>) => void;
+  errors?: Record<string, string>;
 }
 
 const nationalityOptions: SelectOption[] = [
@@ -44,16 +45,32 @@ const shareholderTypeOptions = [
   { value: "corporate", label: "Corporate" },
 ];
 
-export const Step3Shareholders: React.FC<Step3Props> = ({ data, onChange }) => {
-  const updateShareholder = (id: string, field: keyof Shareholder, value: any) => {
+export const Step3Shareholders: React.FC<Step3Props> = ({
+  data,
+  onChange,
+  errors,
+}) => {
+  const updateShareholder = (
+    id: string,
+    field: keyof Shareholder,
+    value: any,
+  ) => {
     onChange({
       shareholders: data.shareholders.map((s) =>
-        s.id === id ? { ...s, [field]: value } : s
+        s.id === id ? { ...s, [field]: value } : s,
       ),
     });
   };
 
-  const handleFileUpload = (id: string, field: "passportFile" | "selfieFile" | "addressProofFile", file: File | null) => {
+  const handleFileUpload = (
+    id: string,
+    field: "passportFile" | "selfieFile" | "addressProofFile",
+    file: File | null,
+  ) => {
+    if (file && file.size > 10 * 1024 * 1024) {
+      alert("File size must be under 10 MB");
+      return;
+    }
     updateShareholder(id, field, file);
   };
 
@@ -79,17 +96,26 @@ export const Step3Shareholders: React.FC<Step3Props> = ({ data, onChange }) => {
         ],
       });
     }
-  }, []);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [data.shareholders.length]);
 
   return (
     <div className="space-y-8">
       {/* Header */}
       <div>
-        <h3 className="text-xl font-semibold text-[#212833] mb-2">Shareholders Information</h3>
+        <h3 className="text-xl font-semibold text-[#212833] mb-2">
+          Shareholders Information
+        </h3>
         <p className="text-sm text-gray-600">
           Provide detailed information for each shareholder
         </p>
       </div>
+
+      {errors?.shareholders && (
+        <p className="text-xs text-red-500 bg-red-50 border border-red-200 rounded-md px-3 py-2">
+          {errors.shareholders}
+        </p>
+      )}
 
       {/* Shareholders List */}
       <div className="space-y-6">
@@ -99,7 +125,8 @@ export const Step3Shareholders: React.FC<Step3Props> = ({ data, onChange }) => {
             className="p-3 md:p-6 bg-[#f9fafb] rounded-xl border border-gray-200"
           >
             <h4 className="text-lg font-semibold text-[#212833] mb-6">
-              Shareholder {index + 1}{shareholder.fullName ? `: ${shareholder.fullName}` : ""}
+              Shareholder {index + 1}
+              {shareholder.fullName ? `: ${shareholder.fullName}` : ""}
             </h4>
 
             {/* Shareholder Type */}
@@ -112,7 +139,11 @@ export const Step3Shareholders: React.FC<Step3Props> = ({ data, onChange }) => {
                 options={shareholderTypeOptions}
                 value={shareholder.type}
                 onChange={(value) =>
-                  updateShareholder(shareholder.id, "type", value as "individual" | "corporate")
+                  updateShareholder(
+                    shareholder.id,
+                    "type",
+                    value as "individual" | "corporate",
+                  )
                 }
               />
             </div>
@@ -126,9 +157,16 @@ export const Step3Shareholders: React.FC<Step3Props> = ({ data, onChange }) => {
                 type="text"
                 placeholder="Numan"
                 value={shareholder.fullName}
-                onChange={(e) => updateShareholder(shareholder.id, "fullName", e.target.value)}
-                className="bg-white border-gray-300 h-11"
+                onChange={(e) =>
+                  updateShareholder(shareholder.id, "fullName", e.target.value)
+                }
+                className={`bg-white border-gray-300 h-11 ${errors?.[`shareholders.${index}.fullName`] ? "border-red-500" : ""}`}
               />
+              {errors?.[`shareholders.${index}.fullName`] && (
+                <p className="text-xs text-red-500 mt-1">
+                  {errors[`shareholders.${index}.fullName`]}
+                </p>
+              )}
             </div>
 
             {/* Nationality & Email */}
@@ -140,9 +178,16 @@ export const Step3Shareholders: React.FC<Step3Props> = ({ data, onChange }) => {
                 <Select
                   options={nationalityOptions}
                   value={shareholder.nationality}
-                  onChange={(value) => updateShareholder(shareholder.id, "nationality", value)}
+                  onChange={(value) =>
+                    updateShareholder(shareholder.id, "nationality", value)
+                  }
                   placeholder="Select nationality"
                 />
+                {errors?.[`shareholders.${index}.nationality`] && (
+                  <p className="text-xs text-red-500 mt-1">
+                    {errors[`shareholders.${index}.nationality`]}
+                  </p>
+                )}
               </div>
 
               <div className="space-y-2">
@@ -153,9 +198,16 @@ export const Step3Shareholders: React.FC<Step3Props> = ({ data, onChange }) => {
                   type="email"
                   placeholder="email@example.com"
                   value={shareholder.email}
-                  onChange={(e) => updateShareholder(shareholder.id, "email", e.target.value)}
-                  className="bg-white border-gray-300 h-11"
+                  onChange={(e) =>
+                    updateShareholder(shareholder.id, "email", e.target.value)
+                  }
+                  className={`bg-white border-gray-300 h-11 ${errors?.[`shareholders.${index}.email`] ? "border-red-500" : ""}`}
                 />
+                {errors?.[`shareholders.${index}.email`] && (
+                  <p className="text-xs text-red-500 mt-1">
+                    {errors[`shareholders.${index}.email`]}
+                  </p>
+                )}
               </div>
             </div>
 
@@ -169,13 +221,22 @@ export const Step3Shareholders: React.FC<Step3Props> = ({ data, onChange }) => {
                   type="tel"
                   placeholder="+852-0000-0000"
                   value={shareholder.phone}
-                  onChange={(e) => updateShareholder(shareholder.id, "phone", e.target.value)}
-                  className="bg-white border-gray-300 h-11"
+                  onChange={(e) =>
+                    updateShareholder(shareholder.id, "phone", e.target.value)
+                  }
+                  className={`bg-white border-gray-300 h-11 ${errors?.[`shareholders.${index}.phone`] ? "border-red-500" : ""}`}
                 />
+                {errors?.[`shareholders.${index}.phone`] && (
+                  <p className="text-xs text-red-500 mt-1">
+                    {errors[`shareholders.${index}.phone`]}
+                  </p>
+                )}
               </div>
 
               <div className="space-y-2">
-                <label className="block text-sm font-medium text-[#212833]">Shareholding</label>
+                <label className="block text-sm font-medium text-[#212833]">
+                  Shareholding
+                </label>
                 <Input
                   type="text"
                   placeholder="0 shares (-0.01%)"
@@ -203,10 +264,19 @@ export const Step3Shareholders: React.FC<Step3Props> = ({ data, onChange }) => {
                 placeholder="Enter full residential address"
                 value={shareholder.residentialAddress}
                 onChange={(e) =>
-                  updateShareholder(shareholder.id, "residentialAddress", e.target.value)
+                  updateShareholder(
+                    shareholder.id,
+                    "residentialAddress",
+                    e.target.value,
+                  )
                 }
-                className="bg-white border-gray-300 h-11"
+                className={`bg-white border-gray-300 h-11 ${errors?.[`shareholders.${index}.residentialAddress`] ? "border-red-500" : ""}`}
               />
+              {errors?.[`shareholders.${index}.residentialAddress`] && (
+                <p className="text-xs text-red-500 mt-1">
+                  {errors[`shareholders.${index}.residentialAddress`]}
+                </p>
+              )}
             </div>
 
             {/* File Uploads */}
@@ -223,7 +293,9 @@ export const Step3Shareholders: React.FC<Step3Props> = ({ data, onChange }) => {
                       ? shareholder.passportFile.name
                       : "Upload Passport"}
                   </span>
-                  <span className="text-xs text-gray-400">PDF, JPG, PNG · Max 10 MB</span>
+                  <span className="text-xs text-gray-400">
+                    PDF, JPG, PNG · Max 10 MB
+                  </span>
                   <input
                     type="file"
                     accept=".pdf,.jpg,.jpeg,.png"
@@ -231,18 +303,24 @@ export const Step3Shareholders: React.FC<Step3Props> = ({ data, onChange }) => {
                       handleFileUpload(
                         shareholder.id,
                         "passportFile",
-                        e.target.files?.[0] || null
+                        e.target.files?.[0] || null,
                       )
                     }
                     className="hidden"
                   />
                 </label>
+                {errors?.[`shareholders.${index}.passportFile`] && (
+                  <p className="text-xs text-red-500 mt-1">
+                    {errors[`shareholders.${index}.passportFile`]}
+                  </p>
+                )}
               </div>
 
               {/* Passport Holding Selfie Upload */}
               <div className="space-y-2">
                 <label className="block text-sm font-medium text-[#212833]">
-                  Passport Holding Selfie <span className="text-red-500">*</span>
+                  Passport Holding Selfie{" "}
+                  <span className="text-red-500">*</span>
                 </label>
                 <label className="flex flex-col items-center justify-center gap-2 py-4 px-4 border-2 border-dashed border-gray-300 rounded-lg bg-white hover:border-[#004eff] hover:bg-blue-50/30 cursor-pointer transition-colors">
                   <Upload className="w-5 h-5 text-gray-400" />
@@ -251,7 +329,9 @@ export const Step3Shareholders: React.FC<Step3Props> = ({ data, onChange }) => {
                       ? shareholder.selfieFile.name
                       : "Upload Selfie"}
                   </span>
-                  <span className="text-xs text-gray-400">JPG, PNG · Max 10 MB</span>
+                  <span className="text-xs text-gray-400">
+                    JPG, PNG · Max 10 MB
+                  </span>
                   <input
                     type="file"
                     accept=".jpg,.jpeg,.png"
@@ -259,18 +339,24 @@ export const Step3Shareholders: React.FC<Step3Props> = ({ data, onChange }) => {
                       handleFileUpload(
                         shareholder.id,
                         "selfieFile",
-                        e.target.files?.[0] || null
+                        e.target.files?.[0] || null,
                       )
                     }
                     className="hidden"
                   />
                 </label>
+                {errors?.[`shareholders.${index}.selfieFile`] && (
+                  <p className="text-xs text-red-500 mt-1">
+                    {errors[`shareholders.${index}.selfieFile`]}
+                  </p>
+                )}
               </div>
 
               {/* Proof of Address Upload */}
               <div className="space-y-2">
                 <label className="block text-sm font-medium text-[#212833]">
-                  Proof of Address Upload <span className="text-red-500">*</span>
+                  Proof of Address Upload{" "}
+                  <span className="text-red-500">*</span>
                 </label>
                 <label className="flex flex-col items-center justify-center gap-2 py-4 px-4 border-2 border-dashed border-gray-300 rounded-lg bg-white hover:border-[#004eff] hover:bg-blue-50/30 cursor-pointer transition-colors">
                   <Upload className="w-5 h-5 text-gray-400" />
@@ -279,7 +365,9 @@ export const Step3Shareholders: React.FC<Step3Props> = ({ data, onChange }) => {
                       ? shareholder.addressProofFile.name
                       : "Upload Document"}
                   </span>
-                  <span className="text-xs text-gray-400">PDF, JPG, PNG · Max 10 MB</span>
+                  <span className="text-xs text-gray-400">
+                    PDF, JPG, PNG · Max 10 MB
+                  </span>
                   <input
                     type="file"
                     accept=".pdf,.jpg,.jpeg,.png"
@@ -287,12 +375,17 @@ export const Step3Shareholders: React.FC<Step3Props> = ({ data, onChange }) => {
                       handleFileUpload(
                         shareholder.id,
                         "addressProofFile",
-                        e.target.files?.[0] || null
+                        e.target.files?.[0] || null,
                       )
                     }
                     className="hidden"
                   />
                 </label>
+                {errors?.[`shareholders.${index}.addressProofFile`] && (
+                  <p className="text-xs text-red-500 mt-1">
+                    {errors[`shareholders.${index}.addressProofFile`]}
+                  </p>
+                )}
               </div>
             </div>
           </div>
@@ -302,8 +395,9 @@ export const Step3Shareholders: React.FC<Step3Props> = ({ data, onChange }) => {
       {/* Info Box */}
       <div className="p-4 bg-blue-50 border border-blue-200 rounded-lg">
         <p className="text-sm text-blue-800">
-          <strong>Note:</strong> The shareholding distribution is automatically pulled from Step 2.
-          If you need to add more shareholders or modify the distribution, please go back to Step 2.
+          <strong>Note:</strong> The shareholding distribution is automatically
+          pulled from Step 2. If you need to add more shareholders or modify the
+          distribution, please go back to Step 2.
         </p>
       </div>
     </div>
