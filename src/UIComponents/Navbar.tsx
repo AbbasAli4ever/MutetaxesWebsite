@@ -34,6 +34,12 @@ const regions = [
     flag: "/flags/uae.svg",
     href: "https://uae.mutetaxes.com/",
   },
+  {
+    code: "SG",
+    name: "SG",
+    flag: "/flags/sg.svg",
+    href: "https://sg.mutetaxes.com/",
+  },
 ];
 
 export const Navbar = (): JSX.Element => {
