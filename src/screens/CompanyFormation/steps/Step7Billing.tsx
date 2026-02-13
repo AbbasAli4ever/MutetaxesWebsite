@@ -1,33 +1,9 @@
 import React from "react";
 import { Input } from "../../../components/ui/input";
 import { Select, SelectOption } from "../../../components/ui/select";
-import { Textarea } from "../../../components/ui/textarea";
-
-export interface Step7Data {
-  billingName: string;
-  billingEmail: string;
-  billingPhone: string;
-  billingAddress: string;
-  billingCountry: string;
-  paymentMethod: string;
-}
-
-interface Step7Props {
-  data: Step7Data;
-  onChange: (data: Partial<Step7Data>) => void;
-  errors?: Record<string, string>;
-}
-
-const countryOptions: SelectOption[] = [
-  { value: "hong-kong", label: "Hong Kong" },
-  { value: "china", label: "China" },
-  { value: "singapore", label: "Singapore" },
-  { value: "usa", label: "United States" },
-  { value: "uk", label: "United Kingdom" },
-  { value: "india", label: "India" },
-  { value: "japan", label: "Japan" },
-  { value: "australia", label: "Australia" },
-];
+import { PhoneInput } from "../../../components/ui/phone-input";
+import { AddressInput } from "../../../components/ui/address-input";
+import { useCompanyStore } from "../../../store/useCompanyStore";
 
 const paymentMethodOptions: SelectOption[] = [
   { value: "credit-card", label: "Credit Card" },
@@ -36,11 +12,13 @@ const paymentMethodOptions: SelectOption[] = [
   { value: "stripe", label: "Stripe" },
 ];
 
-export const Step7Billing: React.FC<Step7Props> = ({
-  data,
-  onChange,
-  errors,
-}) => {
+export const Step7Billing: React.FC = () => {
+  // Use the store directly
+  const { formData, stepErrors, updateBilling } = useCompanyStore();
+  const { billing, company } = formData;
+  const errors = stepErrors;
+  const defaultCountryCode = company.countryOfIncorporation;
+
   return (
     <div className="space-y-8">
       {/* Header */}
@@ -55,7 +33,7 @@ export const Step7Billing: React.FC<Step7Props> = ({
 
       {/* Billing Form */}
       <div className="p-3 sm:p-6 bg-white rounded-xl border border-gray-200">
-        <div className="space-y-4">
+        <div className="space-y-6">
           {/* Company/Client Name - Full Width */}
           <div className="space-y-2">
             <label className="block text-sm font-medium text-[#212833]">
@@ -64,8 +42,8 @@ export const Step7Billing: React.FC<Step7Props> = ({
             <Input
               type="text"
               placeholder="Enter name"
-              value={data.billingName}
-              onChange={(e) => onChange({ billingName: e.target.value })}
+              value={billing.name}
+              onChange={(e) => updateBilling({ name: e.target.value })}
               className={`bg-[#f5f7fa] border-gray-300 h-11 ${errors?.billingName ? "border-red-500" : ""}`}
             />
             {errors?.billingName && (
@@ -82,8 +60,8 @@ export const Step7Billing: React.FC<Step7Props> = ({
               <Input
                 type="email"
                 placeholder="billing@example.com"
-                value={data.billingEmail}
-                onChange={(e) => onChange({ billingEmail: e.target.value })}
+                value={billing.email}
+                onChange={(e) => updateBilling({ email: e.target.value })}
                 className={`bg-[#f5f7fa] border-gray-300 h-11 ${errors?.billingEmail ? "border-red-500" : ""}`}
               />
               {errors?.billingEmail && (
@@ -97,12 +75,12 @@ export const Step7Billing: React.FC<Step7Props> = ({
               <label className="block text-sm font-medium text-[#212833]">
                 Phone <span className="text-red-500">*</span>
               </label>
-              <Input
-                type="tel"
-                placeholder="+852-0000-0000"
-                value={data.billingPhone}
-                onChange={(e) => onChange({ billingPhone: e.target.value })}
-                className={`bg-[#f5f7fa] border-gray-300 h-11 ${errors?.billingPhone ? "border-red-500" : ""}`}
+              <PhoneInput
+                value={billing.phone}
+                onChange={(value) => updateBilling({ phone: value })}
+                defaultCountryCode={defaultCountryCode}
+                placeholder="Enter phone number"
+                error={!!errors?.billingPhone}
               />
               {errors?.billingPhone && (
                 <p className="text-xs text-red-500 mt-1">
@@ -112,65 +90,54 @@ export const Step7Billing: React.FC<Step7Props> = ({
             </div>
           </div>
 
-          {/* Country & Payment Method - 2 Column Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <div className="space-y-2">
-              <label className="block text-sm font-medium text-[#212833]">
-                Country <span className="text-red-500">*</span>
-              </label>
-              <Select
-                options={countryOptions}
-                value={data.billingCountry}
-                onChange={(value) => onChange({ billingCountry: value })}
-                placeholder="Select country"
-              />
-              {errors?.billingCountry && (
-                <p className="text-xs text-red-500 mt-1">
-                  {errors.billingCountry}
-                </p>
-              )}
-            </div>
-
-            <div className="space-y-2">
-              <label className="block text-sm font-medium text-[#212833]">
-                Payment Method <span className="text-red-500">*</span>
-              </label>
-              <Select
-                options={paymentMethodOptions}
-                value={data.paymentMethod}
-                onChange={(value) => onChange({ paymentMethod: value })}
-                placeholder="Select payment method"
-              />
-              {errors?.paymentMethod && (
-                <p className="text-xs text-red-500 mt-1">
-                  {errors.paymentMethod}
-                </p>
-              )}
-            </div>
-          </div>
-
-          {/* Billing Address - Full Width Textarea */}
+          {/* Payment Method */}
           <div className="space-y-2">
             <label className="block text-sm font-medium text-[#212833]">
-              Billing Address <span className="text-red-500">*</span>
+              Payment Method <span className="text-red-500">*</span>
             </label>
-            <Textarea
-              placeholder="Enter full billing address"
-              value={data.billingAddress}
-              onChange={(e) => onChange({ billingAddress: e.target.value })}
-              className={`bg-[#f5f7fa] border-gray-300 min-h-[100px] resize-none ${errors?.billingAddress ? "border-red-500" : ""}`}
+            <Select
+              options={paymentMethodOptions}
+              value={billing.paymentMethod}
+              onChange={(value) => updateBilling({ paymentMethod: value })}
+              placeholder="Select payment method"
             />
-            {errors?.billingAddress && (
+            {errors?.paymentMethod && (
               <p className="text-xs text-red-500 mt-1">
-                {errors.billingAddress}
+                {errors.paymentMethod}
               </p>
             )}
+          </div>
+
+          {/* Billing Address */}
+          <div>
+            <h5 className="text-sm font-medium text-[#212833] mb-4">
+              Billing Address <span className="text-red-500">*</span>
+            </h5>
+            <AddressInput
+              value={
+                billing.address || {
+                  street: "",
+                  city: "",
+                  state: "",
+                  postalCode: "",
+                  country: "",
+                }
+              }
+              onChange={(address) => updateBilling({ address })}
+              defaultCountry={defaultCountryCode}
+              errors={{
+                street: errors?.billingAddress,
+                city: errors?.billingCity,
+                postalCode: errors?.billingPostalCode,
+                country: errors?.billingCountry,
+              }}
+            />
           </div>
         </div>
       </div>
 
       {/* Estimated Costs */}
-      <div className="p-3 md:p-6 bg-[#f9fafb] rounded-xl border border-gray-200">
+      {/* <div className="p-3 md:p-6 bg-[#f9fafb] rounded-xl border border-gray-200">
         <h4 className="text-lg font-semibold text-[#212833] mb-6">
           Estimated Costs
         </h4>
@@ -195,7 +162,9 @@ export const Step7Billing: React.FC<Step7Props> = ({
           <div className="flex justify-between items-center">
             <div>
               <span className="text-sm text-gray-700">Additional Services</span>
-              <span className="text-xs text-gray-500 ml-1">(2)</span>
+              <span className="text-xs text-gray-500 ml-1">
+                ({formData.services.additionalServices.length})
+              </span>
             </div>
             <span className="text-sm font-semibold text-[#212833]">
               Price on request
@@ -217,7 +186,7 @@ export const Step7Billing: React.FC<Step7Props> = ({
             * Final pricing will be confirmed after review of selected services
           </p>
         </div>
-      </div>
+      </div> */}
     </div>
   );
 };

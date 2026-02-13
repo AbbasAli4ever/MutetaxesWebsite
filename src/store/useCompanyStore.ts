@@ -1,144 +1,293 @@
 import { create } from "zustand";
 import { persist, createJSONStorage } from "zustand/middleware";
+import { useShallow } from "zustand/react/shallow";
 
-// --- Interfaces (Moved from your component) ---
-// You might want to move these to a separate types.ts file eventually
+// ==================== INTERFACES ====================
 
-export interface Step1Data {
+export interface ApplicantInterface {
   firstName: string;
   lastName: string;
   email: string;
   phone: string;
+}
+
+export interface CompanyInterface {
   countryOfIncorporation: string;
+  type: string;
   proposedCompanyName: string;
-  alternativeName1: string;
-  alternativeName2: string;
-  alternativeName3: string;
+  alternativeNames: string[];
   natureOfBusiness: string[];
   businessScope: string;
   businessScopeDescription: string;
-  companyType: string;
 }
 
-export interface Step2Data {
-  shareCapitalAmount: string;
-  totalShares: string;
-  shareDistribution: any[]; // Define stricter types if available
+export interface ShareCapitalInterface {
+  currency: string;
+  totalAmount: number;
+  totalShares: number;
 }
 
-export interface Step3Data {
-  shareholders: any[];
+export interface ResidentialAddressInterface {
+  street: string;
+  city: string;
+  state: string;
+  postalCode: string;
+  country: string;
 }
 
-export interface Step4Data {
-  directors: any[];
-  nomineeDirectorService: boolean;
+export interface ShareholdingInterface {
+  shares: number;
+  percentage: number;
 }
 
-export interface Step5Data {
-  bankingServices: any[];
-  additionalServices: any[];
+export interface FileInterface {
+  key: string;
+  url: string;
+  fileName: string;
+  mimeType: string;
+  size: number;
 }
 
-// export interface Step6Data {
-//   passportDocuments: any[];
-//   selfieDocuments: any[];
-//   addressProofs: any[];
-// }
+export interface DocumentsInterface {
+  passport: FileInterface | null;
+  selfie: FileInterface | null;
+  addressProof: FileInterface | null;
+  certificate_of_incorporation: FileInterface | null;
+  business_license: FileInterface | null;
+  others: FileInterface | null;
+}
 
-export interface Step7Data {
-  billingName: string;
-  billingEmail: string;
-  billingPhone: string;
-  billingAddress: string;
-  billingCountry: string;
+export type PersonType = "individual" | "corporate";
+export type PersonRole = "shareholder" | "director";
+
+export interface PersonInterface {
+  id: string;
+  type: PersonType;
+  roles: PersonRole[];
+  fullName: string;
+  // Corporate-specific fields
+  companyName: string;
+  countryOfIncorporation: string | null;
+  registrationNumber: string | null;
+  // Individual fields
+  nationality: string;
+  email: string;
+  phone: string;
+  residentialAddress: ResidentialAddressInterface;
+  shareholding: ShareholdingInterface;
+  documents: DocumentsInterface;
+}
+
+export interface BankingInterface {
+  providers: string[];
+  preferredProvider: string;
+}
+
+export interface ServicesInterface {
+  banking: BankingInterface;
+  additionalServices: string[];
+}
+
+export interface BillingInterface {
+  name: string;
+  email: string;
+  phone: string;
+  address: ResidentialAddressInterface;
   paymentMethod: string;
 }
 
-export interface Step8Data {
-  complianceAccepted: boolean;
+export interface ComplianceAcceptedInterface {
+  isAccepted: boolean;
+  timestamp: string;
 }
 
-export interface FormData {
-  step1: Step1Data;
-  step2: Step2Data;
-  step3: Step3Data;
-  step4: Step4Data;
-  step5: Step5Data;
-  // step6: Step6Data;
-  step6: Step7Data;
-  step7: Step8Data;
+export interface FormDataInterface {
+  applicant: ApplicantInterface;
+  company: CompanyInterface;
+  shareCapital: ShareCapitalInterface;
+  persons: PersonInterface[]; // ARRAY of persons
+  services: ServicesInterface;
+  billing: BillingInterface;
+  complianceAccepted: ComplianceAcceptedInterface;
 }
+
+// ==================== INITIAL VALUES ====================
+
+const createEmptyAddress = (): ResidentialAddressInterface => ({
+  street: "",
+  city: "",
+  state: "",
+  postalCode: "",
+  country: "",
+});
+
+const createEmptyDocuments = (): DocumentsInterface => ({
+  passport: null,
+  selfie: null,
+  addressProof: null,
+  certificate_of_incorporation: null,
+  business_license: null,
+  others: null,
+});
+
+const createEmptyShareholding = (): ShareholdingInterface => ({
+  shares: 0,
+  percentage: 0,
+});
+
+export const createEmptyPerson = (
+  type: PersonType = "individual",
+  roles: PersonRole[] = [],
+): PersonInterface => ({
+  id: Date.now().toString() + Math.random().toString(36).substr(2, 9),
+  type,
+  roles,
+  fullName: "",
+  companyName: "",
+  countryOfIncorporation: null,
+  registrationNumber: null,
+  nationality: "",
+  email: "",
+  phone: "",
+  residentialAddress: createEmptyAddress(),
+  shareholding: createEmptyShareholding(),
+  documents: createEmptyDocuments(),
+});
+
+const initialFormData: FormDataInterface = {
+  applicant: {
+    firstName: "",
+    lastName: "",
+    email: "",
+    phone: "",
+  },
+  company: {
+    countryOfIncorporation: "hong-kong",
+    type: "Private Limited Company",
+    proposedCompanyName: "",
+    alternativeNames: ["", "", ""],
+    natureOfBusiness: [],
+    businessScope: "",
+    businessScopeDescription: "",
+  },
+  shareCapital: {
+    currency: "HKD",
+    totalAmount: 10000,
+    totalShares: 10000,
+  },
+  persons: [],
+  services: {
+    banking: {
+      providers: [],
+      preferredProvider: "",
+    },
+    additionalServices: [],
+  },
+  billing: {
+    name: "",
+    email: "",
+    phone: "",
+    address: createEmptyAddress(),
+    paymentMethod: "",
+  },
+  complianceAccepted: {
+    isAccepted: false,
+    timestamp: "",
+  },
+};
+
+// ==================== STORE INTERFACE ====================
 
 interface CompanyStoreState {
   currentStep: number;
-  formData: FormData;
+  formData: FormDataInterface;
   isLoading: boolean;
   isSuccess: boolean;
   error: string | null;
   stepErrors: Record<string, string>;
 
-  // Actions
+  // Navigation
   setStep: (step: number) => void;
-  updateFormData: (step: keyof FormData, data: any) => void;
   nextStep: () => void;
   prevStep: () => void;
-  submitApplication: () => Promise<void>;
+
+  // Step 1 - Applicant
+  updateApplicant: (data: Partial<ApplicantInterface>) => void;
+
+  // Step 1 - Company (combined with applicant in step 1)
+  updateCompany: (data: Partial<CompanyInterface>) => void;
+
+  // Step 2 - Share Capital
+  updateShareCapital: (data: Partial<ShareCapitalInterface>) => void;
+
+  // Step 2 - Add Shareholder (creates new person with shareholder role)
+  addShareholder: (
+    fullName: string,
+    shares: number,
+    percentage: number,
+    type?: PersonType,
+  ) => string; // Returns the new person's ID
+
+  // Step 2 - Update shareholder distribution
+  updateShareholderDistribution: (
+    personId: string,
+    shares: number,
+    percentage: number,
+  ) => void;
+
+  // Step 2 - Remove shareholder
+  removeShareholder: (personId: string) => void;
+
+  // Step 3 - Update existing person (shareholder details)
+  updatePerson: (personId: string, data: Partial<PersonInterface>) => void;
+
+  // Step 3 - Update person documents
+  updatePersonDocuments: (
+    personId: string,
+    documents: Partial<DocumentsInterface>,
+  ) => void;
+
+  // Step 4 - Add director role to existing person
+  addDirectorRole: (personId: string) => void;
+
+  // Step 4 - Remove director role from person
+  removeDirectorRole: (personId: string) => void;
+
+  // Step 4 - Add new director (creates new person with director role)
+  addNewDirector: (data: Partial<PersonInterface>) => string;
+
+  // Step 4 - Remove person entirely (if only has one role)
+  removePerson: (personId: string) => void;
+
+  // Step 5 - Services
+  updateServices: (data: Partial<ServicesInterface>) => void;
+  updateBanking: (data: Partial<BankingInterface>) => void;
+
+  // Step 6 - Billing
+  updateBilling: (data: Partial<BillingInterface>) => void;
+
+  // Step 7 - Compliance
+  acceptCompliance: (isAccepted: boolean | "indeterminate") => void;
+
+  // Generic update for backward compatibility
+  updateFormData: <K extends keyof FormDataInterface>(
+    key: K,
+    data: Partial<FormDataInterface[K]>,
+  ) => void;
+
+  // Validation & Submission
   validateStep: (step: number) => boolean;
   clearStepErrors: () => void;
+  submitApplication: () => Promise<void>;
   resetForm: () => void;
+
+  // Utility getters
+  getShareholders: () => PersonInterface[];
+  getDirectors: () => PersonInterface[];
+  getPersonById: (id: string) => PersonInterface | undefined;
 }
 
-// --- Initial State ---
-const initialFormData: FormData = {
-  step1: {
-    firstName: "",
-    lastName: "",
-    email: "",
-    phone: "",
-    countryOfIncorporation: "hong-kong",
-    proposedCompanyName: "",
-    alternativeName1: "",
-    alternativeName2: "",
-    alternativeName3: "",
-    natureOfBusiness: [],
-    businessScope: "",
-    businessScopeDescription: "",
-    companyType: "Private Limited Company",
-  },
-  step2: {
-    shareCapitalAmount: "10000",
-    totalShares: "10000",
-    shareDistribution: [],
-  },
-  step3: {
-    shareholders: [],
-  },
-  step4: {
-    directors: [],
-    nomineeDirectorService: false,
-  },
-  step5: {
-    bankingServices: [],
-    additionalServices: [],
-  },
-  // step6: {
-  //   passportDocuments: [],
-  //   selfieDocuments: [],
-  //   addressProofs: [],
-  // },
-  step6: {
-    billingName: "",
-    billingEmail: "",
-    billingPhone: "",
-    billingAddress: "",
-    billingCountry: "",
-    paymentMethod: "",
-  },
-  step7: {
-    complianceAccepted: false,
-  },
-};
+// ==================== STORE IMPLEMENTATION ====================
 
 export const useCompanyStore = create<CompanyStoreState>()(
   persist(
@@ -150,47 +299,12 @@ export const useCompanyStore = create<CompanyStoreState>()(
       error: null,
       stepErrors: {},
 
+      // ==================== NAVIGATION ====================
+
       setStep: (step) => set({ currentStep: step }),
 
-      updateFormData: (step, data) =>
-        set((state) => ({
-          formData: {
-            ...state.formData,
-            [step]: { ...state.formData[step], ...data },
-          },
-          stepErrors: {},
-        })),
-
       nextStep: () => {
-        const { currentStep, formData } = get();
-
-        // Sync Logic: Step 2 -> Step 3
-        if (currentStep === 2) {
-          const shareholdersFromStep2 = formData.step2.shareDistribution.map(
-            (dist) => ({
-              id: dist.id,
-              type: "individual" as const,
-              fullName: dist.name,
-              nationality: "",
-              email: "",
-              phone: "",
-              shares: dist.shares,
-              percentage: dist.percentage,
-              residentialAddress: "",
-              passportFile: null,
-              selfieFile: null,
-              addressProofFile: null,
-            }),
-          );
-
-          set((state) => ({
-            formData: {
-              ...state.formData,
-              step3: { shareholders: shareholdersFromStep2 },
-            },
-          }));
-        }
-
+        const { currentStep } = get();
         if (currentStep < 7) {
           set({ currentStep: currentStep + 1 });
         }
@@ -203,36 +317,300 @@ export const useCompanyStore = create<CompanyStoreState>()(
         }
       },
 
-      submitApplication: async () => {
-        const { formData } = get();
-        set({ isLoading: true, error: null });
-        let steps = {
-          formData,
-        };
-        try {
-          console.log(JSON.stringify(steps));
+      // ==================== STEP 1: APPLICANT ====================
 
-          // Replace with your actual API endpoint
+      updateApplicant: (data) =>
+        set((state) => ({
+          formData: {
+            ...state.formData,
+            applicant: { ...state.formData.applicant, ...data },
+          },
+          stepErrors: {},
+        })),
 
-          const response = await fetch("https://api.your-domain.com/submit", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify(formData),
-          });
+      // ==================== STEP 1: COMPANY ====================
 
-          if (!response.ok) throw new Error("Submission failed");
+      updateCompany: (data) =>
+        set((state) => ({
+          formData: {
+            ...state.formData,
+            company: { ...state.formData.company, ...data },
+          },
+          stepErrors: {},
+        })),
 
-          set({ isSuccess: true, isLoading: false });
+      // ==================== STEP 2: SHARE CAPITAL ====================
 
-          // Optional: Clear storage on success
-          // localStorage.removeItem('company-formation-storage');
-        } catch (err: any) {
-          set({
-            error: err.message || "Something went wrong",
-            isLoading: false,
-          });
-        }
+      updateShareCapital: (data) =>
+        set((state) => ({
+          formData: {
+            ...state.formData,
+            shareCapital: { ...state.formData.shareCapital, ...data },
+          },
+          stepErrors: {},
+        })),
+
+      addShareholder: (fullName, shares, percentage, type = "individual") => {
+        const newPerson = createEmptyPerson(type, ["shareholder"]);
+        newPerson.fullName = fullName;
+        newPerson.shareholding = { shares, percentage };
+
+        set((state) => ({
+          formData: {
+            ...state.formData,
+            persons: [...state.formData.persons, newPerson],
+          },
+          stepErrors: {},
+        }));
+
+        return newPerson.id;
       },
+
+      updateShareholderDistribution: (personId, shares, percentage) =>
+        set((state) => ({
+          formData: {
+            ...state.formData,
+            persons: state.formData.persons.map((person) =>
+              person.id === personId
+                ? {
+                    ...person,
+                    shareholding: { shares, percentage },
+                  }
+                : person,
+            ),
+          },
+          stepErrors: {},
+        })),
+
+      removeShareholder: (personId) =>
+        set((state) => {
+          const person = state.formData.persons.find((p) => p.id === personId);
+          if (!person) return state;
+
+          // If person is only a shareholder, remove entirely
+          if (
+            person.roles.length === 1 &&
+            person.roles.includes("shareholder")
+          ) {
+            return {
+              formData: {
+                ...state.formData,
+                persons: state.formData.persons.filter(
+                  (p) => p.id !== personId,
+                ),
+              },
+              stepErrors: {},
+            };
+          }
+
+          // If person has multiple roles, just remove shareholder role
+          return {
+            formData: {
+              ...state.formData,
+              persons: state.formData.persons.map((p) =>
+                p.id === personId
+                  ? {
+                      ...p,
+                      roles: p.roles.filter((r) => r !== "shareholder"),
+                      shareholding: createEmptyShareholding(),
+                    }
+                  : p,
+              ),
+            },
+            stepErrors: {},
+          };
+        }),
+
+      // ==================== STEP 3: PERSON DETAILS ====================
+
+      updatePerson: (personId, data) =>
+        set((state) => ({
+          formData: {
+            ...state.formData,
+            persons: state.formData.persons.map((person) =>
+              person.id === personId
+                ? {
+                    ...person,
+                    ...data,
+                    // Preserve nested objects if not provided in data
+                    residentialAddress: data.residentialAddress
+                      ? {
+                          ...person.residentialAddress,
+                          ...data.residentialAddress,
+                        }
+                      : person.residentialAddress,
+                    shareholding: data.shareholding
+                      ? { ...person.shareholding, ...data.shareholding }
+                      : person.shareholding,
+                    documents: data.documents
+                      ? { ...person.documents, ...data.documents }
+                      : person.documents,
+                  }
+                : person,
+            ),
+          },
+          stepErrors: {},
+        })),
+
+      updatePersonDocuments: (personId, documents) =>
+        set((state) => ({
+          formData: {
+            ...state.formData,
+            persons: state.formData.persons.map((person) =>
+              person.id === personId
+                ? {
+                    ...person,
+                    documents: { ...person.documents, ...documents },
+                  }
+                : person,
+            ),
+          },
+          stepErrors: {},
+        })),
+
+      // ==================== STEP 4: DIRECTORS ====================
+
+      addDirectorRole: (personId) =>
+        set((state) => ({
+          formData: {
+            ...state.formData,
+            persons: state.formData.persons.map((person) =>
+              person.id === personId && !person.roles.includes("director")
+                ? { ...person, roles: [...person.roles, "director"] }
+                : person,
+            ),
+          },
+          stepErrors: {},
+        })),
+
+      removeDirectorRole: (personId) =>
+        set((state) => {
+          const person = state.formData.persons.find((p) => p.id === personId);
+          if (!person) return state;
+
+          // If person is only a director, remove entirely
+          if (person.roles.length === 1 && person.roles.includes("director")) {
+            return {
+              formData: {
+                ...state.formData,
+                persons: state.formData.persons.filter(
+                  (p) => p.id !== personId,
+                ),
+              },
+              stepErrors: {},
+            };
+          }
+
+          // If person has multiple roles, just remove director role
+          return {
+            formData: {
+              ...state.formData,
+              persons: state.formData.persons.map((p) =>
+                p.id === personId
+                  ? { ...p, roles: p.roles.filter((r) => r !== "director") }
+                  : p,
+              ),
+            },
+            stepErrors: {},
+          };
+        }),
+
+      addNewDirector: (data) => {
+        const newPerson = createEmptyPerson("individual", ["director"]);
+        Object.assign(newPerson, data);
+
+        set((state) => ({
+          formData: {
+            ...state.formData,
+            persons: [...state.formData.persons, newPerson],
+          },
+          stepErrors: {},
+        }));
+
+        return newPerson.id;
+      },
+
+      removePerson: (personId) =>
+        set((state) => ({
+          formData: {
+            ...state.formData,
+            persons: state.formData.persons.filter((p) => p.id !== personId),
+          },
+          stepErrors: {},
+        })),
+
+      // ==================== STEP 5: SERVICES ====================
+
+      updateServices: (data) =>
+        set((state) => ({
+          formData: {
+            ...state.formData,
+            services: {
+              ...state.formData.services,
+              ...data,
+              banking: data.banking
+                ? { ...state.formData.services.banking, ...data.banking }
+                : state.formData.services.banking,
+            },
+          },
+          stepErrors: {},
+        })),
+
+      updateBanking: (data) =>
+        set((state) => ({
+          formData: {
+            ...state.formData,
+            services: {
+              ...state.formData.services,
+              banking: { ...state.formData.services.banking, ...data },
+            },
+          },
+          stepErrors: {},
+        })),
+
+      // ==================== STEP 6: BILLING ====================
+
+      updateBilling: (data) =>
+        set((state) => ({
+          formData: {
+            ...state.formData,
+            billing: {
+              ...state.formData.billing,
+              ...data,
+              address: data.address
+                ? { ...state.formData.billing.address, ...data.address }
+                : state.formData.billing.address,
+            },
+          },
+          stepErrors: {},
+        })),
+
+      // ==================== STEP 7: COMPLIANCE ====================
+
+      acceptCompliance: (isAccepted) =>
+        set((state) => ({
+          formData: {
+            ...state.formData,
+            complianceAccepted: {
+              isAccepted: isAccepted === true,
+              timestamp: Date.now().toString(),
+            },
+          },
+          stepErrors: {},
+        })),
+
+      // ==================== GENERIC UPDATE ====================
+
+      updateFormData: (key, data) =>
+        set((state) => ({
+          formData: {
+            ...state.formData,
+            [key]: { ...state.formData[key], ...data },
+          },
+          stepErrors: {},
+        })),
+
+      // ==================== VALIDATION ====================
 
       validateStep: (step: number) => {
         const { formData } = get();
@@ -241,65 +619,83 @@ export const useCompanyStore = create<CompanyStoreState>()(
 
         switch (step) {
           case 1: {
-            const d = formData.step1;
-            if (!d.firstName.trim())
+            // Validate Applicant
+            const a = formData.applicant;
+            if (!a.firstName.trim())
               errors.firstName = "First name is required";
-            if (!d.lastName.trim()) errors.lastName = "Last name is required";
-            if (!d.email.trim()) errors.email = "Email is required";
-            else if (!emailRegex.test(d.email))
+            if (!a.lastName.trim()) errors.lastName = "Last name is required";
+            if (!a.email.trim()) errors.email = "Email is required";
+            else if (!emailRegex.test(a.email))
               errors.email = "Invalid email format";
-            if (!d.phone.trim()) errors.phone = "Phone number is required";
-            if (!d.proposedCompanyName.trim())
+            if (!a.phone.trim()) errors.phone = "Phone number is required";
+
+            // Validate Company
+            const c = formData.company;
+            if (!c.proposedCompanyName.trim())
               errors.proposedCompanyName = "Company name is required";
-            if (d.natureOfBusiness.length === 0)
+            if (c.natureOfBusiness.length === 0)
               errors.natureOfBusiness = "Select at least one business type";
-            if (!d.businessScope)
+            if (!c.businessScope)
               errors.businessScope = "Business scope is required";
-            if (!d.businessScopeDescription.trim())
+            if (!c.businessScopeDescription.trim())
               errors.businessScopeDescription = "Description is required";
+            else if (c.businessScopeDescription.trim().length < 50)
+              errors.businessScopeDescription =
+                "Description must be at least 50 characters";
             break;
           }
+
           case 2: {
-            const d = formData.step2;
-            if (
-              !d.shareCapitalAmount ||
-              isNaN(Number(d.shareCapitalAmount)) ||
-              Number(d.shareCapitalAmount) <= 0
-            )
+            // Validate Share Capital
+            const sc = formData.shareCapital;
+            if (!sc.totalAmount || sc.totalAmount <= 0)
               errors.shareCapitalAmount = "Enter a valid share capital amount";
-            if (
-              !d.totalShares ||
-              isNaN(Number(d.totalShares)) ||
-              Number(d.totalShares) <= 0
-            )
+            if (!sc.totalShares || sc.totalShares <= 0)
               errors.totalShares = "Enter a valid number of shares";
-            if (d.shareDistribution.length === 0) {
+
+            // Validate Shareholders
+            const shareholders = formData.persons.filter((p) =>
+              p.roles.includes("shareholder"),
+            );
+
+            if (shareholders.length === 0) {
               errors.shareDistribution = "Add at least one shareholder";
             } else {
-              const totalDistributed = d.shareDistribution.reduce(
-                (sum: number, s: any) => sum + (parseFloat(s.shares) || 0),
+              const totalPercentage = shareholders.reduce(
+                (sum, s) => sum + (s.shareholding?.percentage || 0),
                 0,
               );
-              const totalShares = parseFloat(d.totalShares) || 0;
-              if (totalDistributed > totalShares)
-                errors.shareDistribution =
-                  "Distributed shares exceed total shares";
-              const incomplete = d.shareDistribution.some(
-                (s: any) => !s.name?.trim() || !s.shares?.trim(),
+
+              const incomplete = shareholders.some(
+                (s) =>
+                  !s.fullName?.trim() || (s.shareholding?.percentage || 0) <= 0,
               );
-              if (incomplete)
+
+              if (incomplete) {
                 errors.shareDistribution =
-                  "All shareholders must have a name and share count";
+                  "All shareholders must have a name and ownership percentage";
+              } else if (totalPercentage > 100) {
+                errors.shareDistribution = `Total ownership (${totalPercentage.toFixed(2)}%) exceeds 100%. Please reduce allocation.`;
+              } else if (totalPercentage < 100) {
+                const remaining = (100 - totalPercentage).toFixed(2);
+                errors.shareDistribution = `Share ownership must total exactly 100%. You have ${remaining}% remaining to allocate.`;
+              }
             }
             break;
           }
+
           case 3: {
-            const d = formData.step3;
-            if (d.shareholders.length === 0) {
+            // Validate Shareholder Details
+            const shareholders = formData.persons.filter((p) =>
+              p.roles.includes("shareholder"),
+            );
+
+            if (shareholders.length === 0) {
               errors.shareholders = "At least one shareholder is required";
               break;
             }
-            d.shareholders.forEach((s: any, i: number) => {
+
+            shareholders.forEach((s, i) => {
               if (!s.fullName?.trim())
                 errors[`shareholders.${i}.fullName`] = "Full name is required";
               if (!s.nationality)
@@ -311,28 +707,83 @@ export const useCompanyStore = create<CompanyStoreState>()(
                 errors[`shareholders.${i}.email`] = "Invalid email format";
               if (!s.phone?.trim())
                 errors[`shareholders.${i}.phone`] = "Phone is required";
-              if (!s.residentialAddress?.trim())
+              // Residential address validation
+              if (!s.residentialAddress?.street?.trim())
                 errors[`shareholders.${i}.residentialAddress`] =
-                  "Address is required";
-              if (!s.passportFile)
+                  "Street address is required";
+              if (!s.residentialAddress?.city?.trim())
+                errors[`shareholders.${i}.residentialAddress.city`] =
+                  "City is required";
+              if (!s.residentialAddress?.postalCode?.trim())
+                errors[`shareholders.${i}.residentialAddress.postalCode`] =
+                  "Postal code is required";
+              if (!s.residentialAddress?.country)
+                errors[`shareholders.${i}.residentialAddress.country`] =
+                  "Country is required";
+              if (!s.documents?.passport)
                 errors[`shareholders.${i}.passportFile`] =
                   "Passport upload is required";
-              if (!s.selfieFile)
+              if (!s.documents?.selfie)
                 errors[`shareholders.${i}.selfieFile`] =
                   "Selfie upload is required";
-              if (!s.addressProofFile)
+              if (!s.documents?.addressProof)
                 errors[`shareholders.${i}.addressProofFile`] =
                   "Address proof is required";
+
+              // Corporate-specific validation
+              if (s.type === "corporate") {
+                if (!s.companyName?.trim())
+                  errors[`shareholders.${i}.companyName`] =
+                    "Company name is required";
+                if (!s.countryOfIncorporation)
+                  errors[`shareholders.${i}.countryOfIncorporation`] =
+                    "Country of incorporation is required";
+                if (!s.registrationNumber?.trim())
+                  errors[`shareholders.${i}.registrationNumber`] =
+                    "Registration number is required";
+                if (!s.documents?.certificate_of_incorporation)
+                  errors[`shareholders.${i}.certificateFile`] =
+                    "Certificate of incorporation is required";
+                if (!s.documents?.business_license)
+                  errors[`shareholders.${i}.businessLicenseFile`] =
+                    "Business license is required";
+              }
             });
             break;
           }
+
           case 4: {
-            const d = formData.step4;
-            if (d.directors.length === 0) {
+            // Validate Directors
+            const directors = formData.persons.filter((p) =>
+              p.roles.includes("director"),
+            );
+
+            if (directors.length === 0) {
               errors.directors = "At least one director is required";
               break;
             }
-            d.directors.forEach((dir: any, i: number) => {
+
+            directors.forEach((dir, i) => {
+              // Corporate-specific validation
+              if (dir.type === "corporate") {
+                if (!dir.companyName?.trim())
+                  errors[`directors.${i}.companyName`] =
+                    "Company name is required";
+                if (!dir.countryOfIncorporation)
+                  errors[`directors.${i}.countryOfIncorporation`] =
+                    "Country of incorporation is required";
+                if (!dir.registrationNumber?.trim())
+                  errors[`directors.${i}.registrationNumber`] =
+                    "Registration number is required";
+                if (!dir.documents?.certificate_of_incorporation)
+                  errors[`directors.${i}.certificateFile`] =
+                    "Certificate of incorporation is required";
+                if (!dir.documents?.business_license)
+                  errors[`directors.${i}.businessLicenseFile`] =
+                    "Business license is required";
+              }
+
+              // Individual fields validation (always required)
               if (!dir.fullName?.trim())
                 errors[`directors.${i}.fullName`] = "Full name is required";
               if (!dir.nationality)
@@ -344,43 +795,61 @@ export const useCompanyStore = create<CompanyStoreState>()(
                 errors[`directors.${i}.email`] = "Invalid email format";
               if (!dir.phone?.trim())
                 errors[`directors.${i}.phone`] = "Phone is required";
-              if (!dir.residentialAddress?.trim())
+              // Residential address validation
+              if (!dir.residentialAddress?.street?.trim())
                 errors[`directors.${i}.residentialAddress`] =
-                  "Address is required";
-              if (!dir.passportFile)
+                  "Street address is required";
+              if (!dir.residentialAddress?.city?.trim())
+                errors[`directors.${i}.residentialAddress.city`] =
+                  "City is required";
+              if (!dir.residentialAddress?.postalCode?.trim())
+                errors[`directors.${i}.residentialAddress.postalCode`] =
+                  "Postal code is required";
+              if (!dir.residentialAddress?.country)
+                errors[`directors.${i}.residentialAddress.country`] =
+                  "Country is required";
+              if (!dir.documents?.passport)
                 errors[`directors.${i}.passportFile`] =
                   "Passport upload is required";
-              if (!dir.selfieFile)
+              if (!dir.documents?.selfie)
                 errors[`directors.${i}.selfieFile`] =
                   "Selfie upload is required";
-              if (!dir.addressProofFile)
+              if (!dir.documents?.addressProof)
                 errors[`directors.${i}.addressProofFile`] =
                   "Address proof is required";
             });
             break;
           }
+
           case 5:
+            // Services step - optional
             break;
+
           case 6: {
-            const d = formData.step6;
-            if (!d.billingName.trim())
-              errors.billingName = "Billing name is required";
-            if (!d.billingEmail.trim())
-              errors.billingEmail = "Email is required";
-            else if (!emailRegex.test(d.billingEmail))
+            // Validate Billing
+            const b = formData.billing;
+            if (!b.name.trim()) errors.billingName = "Billing name is required";
+            if (!b.email.trim()) errors.billingEmail = "Email is required";
+            else if (!emailRegex.test(b.email))
               errors.billingEmail = "Invalid email format";
-            if (!d.billingPhone.trim())
-              errors.billingPhone = "Phone is required";
-            if (!d.billingAddress.trim())
-              errors.billingAddress = "Billing address is required";
-            if (!d.billingCountry)
+            if (!b.phone.trim()) errors.billingPhone = "Phone is required";
+            // Billing address validation
+            if (!b.address?.street?.trim())
+              errors.billingAddress = "Billing street address is required";
+            if (!b.address?.city?.trim())
+              errors.billingCity = "City is required";
+            if (!b.address?.postalCode?.trim())
+              errors.billingPostalCode = "Postal code is required";
+            if (!b.address?.country)
               errors.billingCountry = "Country is required";
-            if (!d.paymentMethod)
+            if (!b.paymentMethod)
               errors.paymentMethod = "Payment method is required";
             break;
           }
+
           case 7: {
-            if (!formData.step7.complianceAccepted)
+            // Validate Compliance
+            if (!formData.complianceAccepted.isAccepted)
               errors.complianceAccepted =
                 "You must accept the compliance declaration";
             break;
@@ -393,6 +862,33 @@ export const useCompanyStore = create<CompanyStoreState>()(
 
       clearStepErrors: () => set({ stepErrors: {} }),
 
+      // ==================== SUBMISSION ====================
+
+      submitApplication: async () => {
+        const { formData } = get();
+
+        set({ isLoading: true, error: null });
+
+        try {
+          console.log("Submitting:", JSON.stringify(formData, null, 2));
+
+          const response = await fetch("https://api.your-domain.com/submit", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(formData),
+          });
+
+          if (!response.ok) throw new Error("Submission failed");
+
+          set({ isSuccess: true, isLoading: false });
+        } catch (err: any) {
+          set({
+            error: err.message || "Something went wrong",
+            isLoading: false,
+          });
+        }
+      },
+
       resetForm: () =>
         set({
           currentStep: 1,
@@ -401,15 +897,103 @@ export const useCompanyStore = create<CompanyStoreState>()(
           error: null,
           stepErrors: {},
         }),
+
+      // ==================== UTILITY GETTERS ====================
+
+      getShareholders: () =>
+        get().formData.persons.filter((p) => p.roles.includes("shareholder")),
+
+      getDirectors: () =>
+        get().formData.persons.filter((p) => p.roles.includes("director")),
+
+      getPersonById: (id) => get().formData.persons.find((p) => p.id === id),
     }),
     {
-      name: "company-formation-storage", // Unique key in localStorage
-      storage: createJSONStorage(() => localStorage), // Default is localStorage, but being explicit is good
+      name: "company-formation-storage",
+      storage: createJSONStorage(() => localStorage),
       partialize: (state) => ({
-        // Select fields to persist (exclude isLoading/errors)
         currentStep: state.currentStep,
         formData: state.formData,
       }),
+      // Deep merge persisted state with initial state to handle schema changes
+      merge: (persistedState, currentState) => {
+        const persisted = persistedState as Partial<CompanyStoreState>;
+        return {
+          ...currentState,
+          currentStep: persisted.currentStep ?? currentState.currentStep,
+          formData: {
+            ...currentState.formData,
+            ...persisted.formData,
+            applicant: {
+              ...currentState.formData.applicant,
+              ...persisted.formData?.applicant,
+            },
+            company: {
+              ...currentState.formData.company,
+              ...persisted.formData?.company,
+            },
+            shareCapital: {
+              ...currentState.formData.shareCapital,
+              ...persisted.formData?.shareCapital,
+            },
+            persons:
+              persisted.formData?.persons ?? currentState.formData.persons,
+            services: {
+              ...currentState.formData.services,
+              ...persisted.formData?.services,
+              banking: {
+                ...currentState.formData.services.banking,
+                ...persisted.formData?.services?.banking,
+              },
+            },
+            billing: {
+              ...currentState.formData.billing,
+              ...persisted.formData?.billing,
+              address: {
+                ...currentState.formData.billing.address,
+                ...persisted.formData?.billing?.address,
+              },
+            },
+            complianceAccepted: {
+              ...currentState.formData.complianceAccepted,
+              ...persisted.formData?.complianceAccepted,
+            },
+          },
+        };
+      },
     },
   ),
 );
+
+// ==================== HELPER HOOKS ====================
+
+// Custom hook to get shareholders
+export const useShareholders = () => {
+  return useCompanyStore(
+    useShallow((state) =>
+      state.formData.persons.filter((p) => p.roles.includes("shareholder")),
+    ),
+  );
+};
+
+// Custom hook to get directors
+export const useDirectors = () => {
+  return useCompanyStore(
+    useShallow((state) =>
+      state.formData.persons.filter((p) => p.roles.includes("director")),
+    ),
+  );
+};
+
+// Custom hook to check if person is both shareholder and director
+export const usePersonRoles = (personId: string) => {
+  return useCompanyStore(
+    useShallow((state) => {
+      const person = state.formData.persons.find((p) => p.id === personId);
+      return {
+        isShareholder: person?.roles.includes("shareholder") ?? false,
+        isDirector: person?.roles.includes("director") ?? false,
+      };
+    }),
+  );
+};

@@ -1,39 +1,59 @@
 import React from "react";
 import { FileText, AlertCircle } from "lucide-react";
 import { Checkbox } from "../../../components/ui/checkbox";
-import type { FormData } from "../../../store/useCompanyStore";
+import {
+  useCompanyStore,
+  useShareholders,
+  useDirectors,
+} from "../../../store/useCompanyStore";
 
-export interface Step8Data {
-  complianceAccepted: boolean;
-}
+export const Step8Review: React.FC = () => {
+  // Use the store directly
+  const { formData, stepErrors, acceptCompliance } = useCompanyStore();
+  const shareholders = useShareholders();
+  const directors = useDirectors();
+  const errors = stepErrors;
 
-interface Step8Props {
-  data: Step8Data;
-  onChange: (data: Partial<Step8Data>) => void;
-  formData: FormData;
-  errors?: Record<string, string>;
-}
+  const { applicant, company, shareCapital, services, complianceAccepted } =
+    formData;
 
-export const Step8Review: React.FC<Step8Props> = ({
-  data,
-  onChange,
-  formData,
-  errors,
-}) => {
+  // Provide defaults for billing in case of hydration issues with old persisted data
+  const billing = formData.billing ?? {
+    name: "",
+    email: "",
+    phone: "",
+    address: { street: "", city: "", state: "", postalCode: "", country: "" },
+    paymentMethod: "",
+  };
+
   // Helper function to get country label
   const getCountryLabel = (value: string) => {
     const countryMap: Record<string, string> = {
       "hong-kong": "Hong Kong",
-      china: "China",
       singapore: "Singapore",
       usa: "United States",
       uk: "United Kingdom",
-      canada: "Canada",
-      india: "India",
-      japan: "Japan",
-      australia: "Australia",
+      uae: "United Arab Emirates",
     };
     return countryMap[value] || value;
+  };
+
+  // Helper function to get country name
+  const getCountryName = () => {
+    switch (company.countryOfIncorporation) {
+      case "usa":
+        return "United States";
+      case "hong-kong":
+        return "Hong Kong";
+      case "uk":
+        return "United Kingdom";
+      case "uae":
+        return "United Arab Emirates";
+      case "singapore":
+        return "Singapore";
+      default:
+        return "Hong Kong";
+    }
   };
 
   // Helper function to format business types
@@ -53,24 +73,22 @@ export const Step8Review: React.FC<Step8Props> = ({
 
   // Check section completeness
   const isStep1Complete = !!(
-    formData.step1.firstName &&
-    formData.step1.lastName &&
-    formData.step1.email &&
-    formData.step1.proposedCompanyName
+    applicant.firstName &&
+    applicant.lastName &&
+    applicant.email &&
+    company.proposedCompanyName
   );
-  const isStep2Complete = formData.step2.shareDistribution.length > 0;
+  const isStep2Complete = shareholders.length > 0;
   const isStep3Complete =
-    formData.step3.shareholders.length > 0 &&
-    formData.step3.shareholders.every((s: any) => s.fullName && s.email);
+    shareholders.length > 0 && shareholders.every((s) => s.fullName && s.email);
   const isStep4Complete =
-    formData.step4.directors.length > 0 &&
-    formData.step4.directors.every((d: any) => d.fullName && d.email);
+    directors.length > 0 && directors.every((d) => d.fullName && d.email);
   const isBillingComplete = !!(
-    formData.step6.billingName &&
-    formData.step6.billingEmail &&
-    formData.step6.billingAddress &&
-    formData.step6.billingCountry &&
-    formData.step6.paymentMethod
+    billing.name &&
+    billing.email &&
+    billing.address.street &&
+    billing.address.country &&
+    billing.paymentMethod
   );
 
   const incompleteSections = [
@@ -120,21 +138,21 @@ export const Step8Review: React.FC<Step8Props> = ({
             <div>
               <div className="text-xs text-gray-600 mb-1">Country</div>
               <div className="text-sm font-medium text-[#212833]">
-                {getCountryLabel(formData.step1.countryOfIncorporation) ||
+                {getCountryLabel(company.countryOfIncorporation) ||
                   "Not selected"}
               </div>
             </div>
             <div>
               <div className="text-xs text-gray-600 mb-1">Name</div>
               <div className="text-sm font-medium text-[#212833]">
-                {formData.step1.proposedCompanyName || "Not provided"}
+                {company.proposedCompanyName || "Not provided"}
               </div>
             </div>
             <div>
               <div className="text-xs text-gray-600 mb-1">Business</div>
               <div className="text-sm font-medium text-[#212833]">
-                {formData.step1.natureOfBusiness.length > 0
-                  ? formatBusinessTypes(formData.step1.natureOfBusiness)
+                {company.natureOfBusiness.length > 0
+                  ? formatBusinessTypes(company.natureOfBusiness)
                   : "Not selected"}
               </div>
             </div>
@@ -150,24 +168,24 @@ export const Step8Review: React.FC<Step8Props> = ({
             <div>
               <div className="text-xs text-gray-600 mb-1">Amount</div>
               <div className="text-sm font-medium text-[#212833]">
-                HKD{" "}
-                {formData.step2.shareCapitalAmount
-                  ? Number(formData.step2.shareCapitalAmount).toLocaleString()
+                {shareCapital.currency}{" "}
+                {shareCapital.totalAmount
+                  ? Number(shareCapital.totalAmount).toLocaleString()
                   : "0"}
               </div>
             </div>
             <div>
               <div className="text-xs text-gray-600 mb-1">Shares</div>
               <div className="text-sm font-medium text-[#212833]">
-                {formData.step2.totalShares
-                  ? Number(formData.step2.totalShares).toLocaleString()
+                {shareCapital.totalShares
+                  ? Number(shareCapital.totalShares).toLocaleString()
                   : "0"}
               </div>
             </div>
             <div>
               <div className="text-xs text-gray-600 mb-1">Shareholders</div>
               <div className="text-sm font-medium text-[#212833]">
-                {formData.step3.shareholders.length}
+                {shareholders.length}
               </div>
             </div>
           </div>
@@ -182,19 +200,17 @@ export const Step8Review: React.FC<Step8Props> = ({
             <div>
               <div className="text-xs text-gray-600 mb-1">Count</div>
               <div className="text-sm font-medium text-[#212833]">
-                {formData.step4.directors.length}
+                {directors.length}
               </div>
             </div>
-            {formData.step4.directors.length > 0 && (
+            {directors.length > 0 && (
               <div>
                 <ul className="list-disc list-inside space-y-1">
-                  {formData.step4.directors.map(
-                    (director: any, index: number) => (
-                      <li key={index} className="text-sm text-[#212833]">
-                        {director.fullName || `Director ${index + 1}`}
-                      </li>
-                    ),
-                  )}
+                  {directors.map((director, index: number) => (
+                    <li key={index} className="text-sm text-[#212833]">
+                      {director.fullName || `Director ${index + 1}`}
+                    </li>
+                  ))}
                 </ul>
               </div>
             )}
@@ -210,19 +226,21 @@ export const Step8Review: React.FC<Step8Props> = ({
             <div>
               <div className="text-xs text-gray-600 mb-1">Banking</div>
               <div className="text-sm font-medium text-[#212833]">
-                {formData.step5.bankingServices.length} selected
+                {services.banking.providers.length} selected
               </div>
             </div>
             <div>
               <div className="text-xs text-gray-600 mb-1">Additional</div>
               <div className="text-sm font-medium text-[#212833]">
-                {formData.step5.additionalServices.length} selected
+                {services.additionalServices.length} selected
               </div>
             </div>
             <div>
               <div className="text-xs text-gray-600 mb-1">Nominee</div>
               <div className="text-sm font-medium text-[#212833]">
-                {formData.step4.nomineeDirectorService ? "Yes" : "No"}
+                {services.additionalServices.includes("nominee-director")
+                  ? "Yes"
+                  : "No"}
               </div>
             </div>
           </div>
@@ -241,13 +259,15 @@ export const Step8Review: React.FC<Step8Props> = ({
               <p>
                 I hereby declare that the information provided is complete and
                 accurate. I confirm that the company will not engage in
-                restricted or unlawful activities under Hong Kong law, including
-                but not limited to:
+                restricted or unlawful activities under {getCountryName()} law,
+                including but not limited to:
               </p>
               <ul className="list-disc list-inside space-y-1 ml-4">
                 <li>Money laundering or terrorist financing</li>
                 <li>Illegal trading of goods or services</li>
-                <li>Activities prohibited under Hong Kong regulations</li>
+                <li>
+                  Activities prohibited under {getCountryName()} regulations
+                </li>
                 <li>Tax evasion or fraudulent activities</li>
               </ul>
               <p>
@@ -260,10 +280,8 @@ export const Step8Review: React.FC<Step8Props> = ({
 
         <div className="mt-4">
           <Checkbox
-            checked={data.complianceAccepted}
-            onCheckedChange={(checked) =>
-              onChange({ complianceAccepted: checked })
-            }
+            checked={complianceAccepted.isAccepted}
+            onCheckedChange={(checked) => acceptCompliance(checked)}
             label="I have read and agree to the compliance declaration above"
           />
           {errors?.complianceAccepted && (

@@ -3,34 +3,15 @@ import { Input } from "../../../components/ui/input";
 import { Select, SelectOption } from "../../../components/ui/select";
 import { Checkbox } from "../../../components/ui/checkbox";
 import { Textarea } from "../../../components/ui/textarea";
-
-export interface Step1Data {
-  firstName: string;
-  lastName: string;
-  email: string;
-  phone: string;
-  countryOfIncorporation: string;
-  proposedCompanyName: string;
-  alternativeName1: string;
-  alternativeName2: string;
-  alternativeName3: string;
-  natureOfBusiness: string[];
-  businessScope: string;
-  businessScopeDescription: string;
-  companyType: string;
-}
-
-interface Step1Props {
-  data: Step1Data;
-  onChange: (data: Partial<Step1Data>) => void;
-  errors?: Record<string, string>;
-}
+import { PhoneInput } from "../../../components/ui/phone-input";
+import { useCompanyStore } from "../../../store/useCompanyStore";
 
 const countryOptions: SelectOption[] = [
   { value: "hong-kong", label: "Hong Kong" },
   { value: "singapore", label: "Singapore" },
   { value: "usa", label: "United States" },
   { value: "uk", label: "United Kingdom" },
+  { value: "uae", label: "United Arab Emirates" },
 ];
 
 const businessScopeOptions: SelectOption[] = [
@@ -53,16 +34,18 @@ const natureOfBusinessOptions = [
   { id: "import-export", label: "Import/Export" },
 ];
 
-export const Step1CompanyInfo: React.FC<Step1Props> = ({
-  data,
-  onChange,
-  errors,
-}) => {
+export const Step1CompanyInfo: React.FC = () => {
+  // Use the store directly
+  const { formData, stepErrors, updateApplicant, updateCompany } =
+    useCompanyStore();
+  const { applicant, company } = formData;
+  const errors = stepErrors;
+
   const handleCheckboxChange = (id: string, checked: boolean) => {
     const updatedNature = checked
-      ? [...data.natureOfBusiness, id]
-      : data.natureOfBusiness.filter((item) => item !== id);
-    onChange({ natureOfBusiness: updatedNature });
+      ? [...company.natureOfBusiness, id]
+      : company.natureOfBusiness.filter((item) => item !== id);
+    updateCompany({ natureOfBusiness: updatedNature });
   };
 
   return (
@@ -80,8 +63,8 @@ export const Step1CompanyInfo: React.FC<Step1Props> = ({
             <Input
               type="text"
               placeholder="Enter first name"
-              value={data.firstName}
-              onChange={(e) => onChange({ firstName: e.target.value })}
+              value={applicant.firstName}
+              onChange={(e) => updateApplicant({ firstName: e.target.value })}
               className={`bg-[#f5f7fa] border-gray-300 h-11 ${errors?.firstName ? "border-red-500" : ""}`}
             />
             {errors?.firstName && (
@@ -95,8 +78,8 @@ export const Step1CompanyInfo: React.FC<Step1Props> = ({
             <Input
               type="text"
               placeholder="Enter last name"
-              value={data.lastName}
-              onChange={(e) => onChange({ lastName: e.target.value })}
+              value={applicant.lastName}
+              onChange={(e) => updateApplicant({ lastName: e.target.value })}
               className={`bg-[#f5f7fa] border-gray-300 h-11 ${errors?.lastName ? "border-red-500" : ""}`}
             />
             {errors?.lastName && (
@@ -110,8 +93,8 @@ export const Step1CompanyInfo: React.FC<Step1Props> = ({
             <Input
               type="email"
               placeholder="Enter email address"
-              value={data.email}
-              onChange={(e) => onChange({ email: e.target.value })}
+              value={applicant.email}
+              onChange={(e) => updateApplicant({ email: e.target.value })}
               className={`bg-[#f5f7fa] border-gray-300 h-11 ${errors?.email ? "border-red-500" : ""}`}
             />
             {errors?.email && (
@@ -122,12 +105,12 @@ export const Step1CompanyInfo: React.FC<Step1Props> = ({
             <label className="block text-sm font-medium text-[#212833]">
               Phone Number <span className="text-red-500">*</span>
             </label>
-            <Input
-              type="tel"
+            <PhoneInput
+              value={applicant.phone}
+              onChange={(value) => updateApplicant({ phone: value })}
+              defaultCountryCode={company.countryOfIncorporation}
               placeholder="Enter phone number"
-              value={data.phone}
-              onChange={(e) => onChange({ phone: e.target.value })}
-              className={`bg-[#f5f7fa] border-gray-300 h-11 ${errors?.phone ? "border-red-500" : ""}`}
+              error={!!errors?.phone}
             />
             {errors?.phone && (
               <p className="text-xs text-red-500 mt-1">{errors.phone}</p>
@@ -149,8 +132,10 @@ export const Step1CompanyInfo: React.FC<Step1Props> = ({
           </label>
           <Select
             options={countryOptions}
-            value={data.countryOfIncorporation}
-            onChange={(value) => onChange({ countryOfIncorporation: value })}
+            value={company.countryOfIncorporation}
+            onChange={(value) =>
+              updateCompany({ countryOfIncorporation: value })
+            }
             placeholder="Hong Kong"
           />
         </div>
@@ -164,8 +149,10 @@ export const Step1CompanyInfo: React.FC<Step1Props> = ({
           <Input
             type="text"
             placeholder="Enter proposed company name"
-            value={data.proposedCompanyName}
-            onChange={(e) => onChange({ proposedCompanyName: e.target.value })}
+            value={company.proposedCompanyName}
+            onChange={(e) =>
+              updateCompany({ proposedCompanyName: e.target.value })
+            }
             className={`bg-[#f5f7fa] border-gray-300 h-11 ${errors?.proposedCompanyName ? "border-red-500" : ""}`}
           />
           {errors?.proposedCompanyName && (
@@ -184,22 +171,46 @@ export const Step1CompanyInfo: React.FC<Step1Props> = ({
             <Input
               type="text"
               placeholder="Alternative name 1"
-              value={data.alternativeName1}
-              onChange={(e) => onChange({ alternativeName1: e.target.value })}
+              value={company.alternativeNames[0] || ""}
+              onChange={(e) =>
+                updateCompany({
+                  alternativeNames: [
+                    e.target.value,
+                    company.alternativeNames[1] || "",
+                    company.alternativeNames[2] || "",
+                  ],
+                })
+              }
               className="bg-[#f5f7fa] border-gray-300 h-11"
             />
             <Input
               type="text"
               placeholder="Alternative name 2"
-              value={data.alternativeName2}
-              onChange={(e) => onChange({ alternativeName2: e.target.value })}
+              value={company.alternativeNames[1] || ""}
+              onChange={(e) =>
+                updateCompany({
+                  alternativeNames: [
+                    company.alternativeNames[0] || "",
+                    e.target.value,
+                    company.alternativeNames[2] || "",
+                  ],
+                })
+              }
               className="bg-[#f5f7fa] border-gray-300 h-11"
             />
             <Input
               type="text"
               placeholder="Alternative name 3"
-              value={data.alternativeName3}
-              onChange={(e) => onChange({ alternativeName3: e.target.value })}
+              value={company.alternativeNames[2] || ""}
+              onChange={(e) =>
+                updateCompany({
+                  alternativeNames: [
+                    company.alternativeNames[0] || "",
+                    company.alternativeNames[1] || "",
+                    e.target.value,
+                  ],
+                })
+              }
               className="bg-[#f5f7fa] border-gray-300 h-11"
             />
           </div>
@@ -214,7 +225,7 @@ export const Step1CompanyInfo: React.FC<Step1Props> = ({
             {natureOfBusinessOptions.map((option) => (
               <Checkbox
                 key={option.id}
-                checked={data.natureOfBusiness.includes(option.id)}
+                checked={company.natureOfBusiness.includes(option.id)}
                 onCheckedChange={(checked) =>
                   handleCheckboxChange(option.id, checked)
                 }
@@ -236,8 +247,8 @@ export const Step1CompanyInfo: React.FC<Step1Props> = ({
           </label>
           <Select
             options={businessScopeOptions}
-            value={data.businessScope}
-            onChange={(value) => onChange({ businessScope: value })}
+            value={company.businessScope}
+            onChange={(value) => updateCompany({ businessScope: value })}
             placeholder="Select business scope"
           />
           {errors?.businessScope && (
@@ -252,9 +263,10 @@ export const Step1CompanyInfo: React.FC<Step1Props> = ({
           </label>
           <Textarea
             placeholder="Describe your business activities in detail..."
-            value={data.businessScopeDescription}
+            value={company.businessScopeDescription}
+            minLength={50}
             onChange={(e) =>
-              onChange({ businessScopeDescription: e.target.value })
+              updateCompany({ businessScopeDescription: e.target.value })
             }
             className={`bg-[#f5f7fa] border-gray-300 min-h-[100px] ${errors?.businessScopeDescription ? "border-red-500" : ""}`}
           />
@@ -272,7 +284,7 @@ export const Step1CompanyInfo: React.FC<Step1Props> = ({
           </label>
           <Input
             type="text"
-            value={data.companyType}
+            value={company.type}
             disabled
             className="bg-[#f5f7fa] border-gray-300 h-11"
           />

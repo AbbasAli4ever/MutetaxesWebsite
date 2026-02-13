@@ -2,42 +2,30 @@ import React from "react";
 import { Input } from "../../../components/ui/input";
 import { Select, SelectOption } from "../../../components/ui/select";
 import { RadioGroup } from "../../../components/ui/radio-group";
+import { PhoneInput } from "../../../components/ui/phone-input";
+import { AddressInput } from "../../../components/ui/address-input";
 import { Upload } from "lucide-react";
-
-export interface Shareholder {
-  id: string;
-  type: "individual" | "corporate";
-  fullName: string;
-  nationality: string;
-  email: string;
-  phone: string;
-  shares: string;
-  percentage: string;
-  residentialAddress: string;
-  passportFile: File | null;
-  selfieFile: File | null;
-  addressProofFile: File | null;
-}
-
-export interface Step3Data {
-  shareholders: Shareholder[];
-}
-
-interface Step3Props {
-  data: Step3Data;
-  onChange: (data: Partial<Step3Data>) => void;
-  errors?: Record<string, string>;
-}
+import {
+  useCompanyStore,
+  useShareholders,
+  PersonType,
+  FileInterface,
+} from "../../../store/useCompanyStore";
 
 const nationalityOptions: SelectOption[] = [
   { value: "hong-kong", label: "Hong Kong" },
-  { value: "china", label: "China" },
+  { value: "singapore", label: "Singapore" },
   { value: "usa", label: "United States" },
   { value: "uk", label: "United Kingdom" },
+  { value: "uae", label: "United Arab Emirates" },
+];
+
+const countryOfIncorporationOptions: SelectOption[] = [
+  { value: "hong-kong", label: "Hong Kong" },
   { value: "singapore", label: "Singapore" },
-  { value: "india", label: "India" },
-  { value: "japan", label: "Japan" },
-  { value: "korea", label: "South Korea" },
+  { value: "usa", label: "United States" },
+  { value: "uk", label: "United Kingdom" },
+  { value: "uae", label: "United Arab Emirates" },
 ];
 
 const shareholderTypeOptions = [
@@ -45,59 +33,43 @@ const shareholderTypeOptions = [
   { value: "corporate", label: "Corporate" },
 ];
 
-export const Step3Shareholders: React.FC<Step3Props> = ({
-  data,
-  onChange,
-  errors,
-}) => {
-  const updateShareholder = (
-    id: string,
-    field: keyof Shareholder,
-    value: any,
-  ) => {
-    onChange({
-      shareholders: data.shareholders.map((s) =>
-        s.id === id ? { ...s, [field]: value } : s,
-      ),
-    });
-  };
+export const Step3Shareholders: React.FC = () => {
+  // Use the store directly
+  const { formData, stepErrors, updatePerson, updatePersonDocuments } =
+    useCompanyStore();
+  const shareholders = useShareholders();
+  const errors = stepErrors;
+  const defaultCountryCode = formData.company.countryOfIncorporation;
 
   const handleFileUpload = (
     id: string,
-    field: "passportFile" | "selfieFile" | "addressProofFile",
+    field:
+      | "passport"
+      | "selfie"
+      | "addressProof"
+      | "certificate_of_incorporation"
+      | "business_license"
+      | "others",
     file: File | null,
   ) => {
     if (file && file.size > 10 * 1024 * 1024) {
       alert("File size must be under 10 MB");
       return;
     }
-    updateShareholder(id, field, file);
-  };
 
-  // Initialize with one shareholder if none exist
-  React.useEffect(() => {
-    if (data.shareholders.length === 0) {
-      onChange({
-        shareholders: [
-          {
-            id: "1",
-            type: "individual",
-            fullName: "",
-            nationality: "",
-            email: "",
-            phone: "",
-            shares: "",
-            percentage: "",
-            residentialAddress: "",
-            passportFile: null,
-            selfieFile: null,
-            addressProofFile: null,
-          },
-        ],
-      });
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [data.shareholders.length]);
+    // Create FileInterface from File object
+    const fileData: FileInterface | null = file
+      ? {
+          key: Date.now().toString(),
+          url: URL.createObjectURL(file),
+          fileName: file.name,
+          mimeType: file.type,
+          size: file.size,
+        }
+      : null;
+
+    updatePersonDocuments(id, { [field]: fileData });
+  };
 
   return (
     <div className="space-y-8">
@@ -119,7 +91,7 @@ export const Step3Shareholders: React.FC<Step3Props> = ({
 
       {/* Shareholders List */}
       <div className="space-y-6">
-        {data.shareholders.map((shareholder, index) => (
+        {shareholders.map((shareholder, index) => (
           <div
             key={shareholder.id}
             className="p-3 md:p-6 bg-[#f9fafb] rounded-xl border border-gray-200"
@@ -139,14 +111,189 @@ export const Step3Shareholders: React.FC<Step3Props> = ({
                 options={shareholderTypeOptions}
                 value={shareholder.type}
                 onChange={(value) =>
-                  updateShareholder(
-                    shareholder.id,
-                    "type",
-                    value as "individual" | "corporate",
-                  )
+                  updatePerson(shareholder.id, { type: value as PersonType })
                 }
               />
             </div>
+
+            {/* CORPORATE FIELDS - Only show when type is corporate */}
+            {shareholder.type === "corporate" && (
+              <>
+                {/* Company Name */}
+                <div className="space-y-2 mb-6">
+                  <label className="block text-sm font-medium text-[#212833]">
+                    Company Name <span className="text-red-500">*</span>
+                  </label>
+                  <Input
+                    type="text"
+                    placeholder="Enter company name"
+                    value={shareholder.companyName || ""}
+                    onChange={(e) =>
+                      updatePerson(shareholder.id, {
+                        companyName: e.target.value,
+                      })
+                    }
+                    className={`bg-white border-gray-300 h-11 ${errors?.[`shareholders.${index}.companyName`] ? "border-red-500" : ""}`}
+                  />
+                  {errors?.[`shareholders.${index}.companyName`] && (
+                    <p className="text-xs text-red-500 mt-1">
+                      {errors[`shareholders.${index}.companyName`]}
+                    </p>
+                  )}
+                </div>
+
+                {/* Country of Incorporation & Registration No */}
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                  <div className="space-y-2">
+                    <label className="block text-sm font-medium text-[#212833]">
+                      Country of Incorporation{" "}
+                      <span className="text-red-500">*</span>
+                    </label>
+                    <Select
+                      options={countryOfIncorporationOptions}
+                      value={shareholder.countryOfIncorporation || ""}
+                      onChange={(value) =>
+                        updatePerson(shareholder.id, {
+                          countryOfIncorporation: value,
+                        })
+                      }
+                      placeholder="Select country"
+                    />
+                    {errors?.[
+                      `shareholders.${index}.countryOfIncorporation`
+                    ] && (
+                      <p className="text-xs text-red-500 mt-1">
+                        {errors[`shareholders.${index}.countryOfIncorporation`]}
+                      </p>
+                    )}
+                  </div>
+
+                  <div className="space-y-2">
+                    <label className="block text-sm font-medium text-[#212833]">
+                      Registration No. <span className="text-red-500">*</span>
+                    </label>
+                    <Input
+                      type="text"
+                      placeholder="Enter registration number"
+                      value={shareholder.registrationNumber || ""}
+                      onChange={(e) =>
+                        updatePerson(shareholder.id, {
+                          registrationNumber: e.target.value,
+                        })
+                      }
+                      className={`bg-white border-gray-300 h-11 ${errors?.[`shareholders.${index}.registrationNumber`] ? "border-red-500" : ""}`}
+                    />
+                    {errors?.[`shareholders.${index}.registrationNumber`] && (
+                      <p className="text-xs text-red-500 mt-1">
+                        {errors[`shareholders.${index}.registrationNumber`]}
+                      </p>
+                    )}
+                  </div>
+                </div>
+
+                {/* Corporate Document Uploads */}
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
+                  {/* Certificate of Incorporation */}
+                  <div className="space-y-2">
+                    <label className="block text-sm font-medium text-[#212833]">
+                      Certificate of Incorporation{" "}
+                      <span className="text-red-500">*</span>
+                    </label>
+                    <label className="flex flex-col items-center justify-center gap-2 py-4 px-4 border-2 border-dashed border-gray-300 rounded-lg bg-white hover:border-[#004eff] hover:bg-blue-50/30 cursor-pointer transition-colors">
+                      <Upload className="w-5 h-5 text-gray-400" />
+                      <span className="text-sm text-gray-600 text-center">
+                        {shareholder.documents?.certificate_of_incorporation
+                          ? shareholder.documents.certificate_of_incorporation
+                              .fileName
+                          : "Upload Certificate"}
+                      </span>
+                      <span className="text-xs text-gray-400">
+                        PDF, JPG, PNG · Max 10 MB
+                      </span>
+                      <input
+                        type="file"
+                        accept=".pdf,.jpg,.jpeg,.png"
+                        onChange={(e) =>
+                          handleFileUpload(
+                            shareholder.id,
+                            "certificate_of_incorporation",
+                            e.target.files?.[0] || null,
+                          )
+                        }
+                        className="hidden"
+                      />
+                    </label>
+                    {errors?.[`shareholders.${index}.certificate`] && (
+                      <p className="text-xs text-red-500 mt-1">
+                        {errors[`shareholders.${index}.certificate`]}
+                      </p>
+                    )}
+                  </div>
+
+                  {/* Business License */}
+                  <div className="space-y-2">
+                    <label className="block text-sm font-medium text-[#212833]">
+                      Business License{" "}
+                      <span className="text-gray-400">(Optional)</span>
+                    </label>
+                    <label className="flex flex-col items-center justify-center gap-2 py-4 px-4 border-2 border-dashed border-gray-300 rounded-lg bg-white hover:border-[#004eff] hover:bg-blue-50/30 cursor-pointer transition-colors">
+                      <Upload className="w-5 h-5 text-gray-400" />
+                      <span className="text-sm text-gray-600 text-center">
+                        {shareholder.documents?.business_license
+                          ? shareholder.documents.business_license.fileName
+                          : "Upload License"}
+                      </span>
+                      <span className="text-xs text-gray-400">
+                        PDF, JPG, PNG · Max 10 MB
+                      </span>
+                      <input
+                        type="file"
+                        accept=".pdf,.jpg,.jpeg,.png"
+                        onChange={(e) =>
+                          handleFileUpload(
+                            shareholder.id,
+                            "business_license",
+                            e.target.files?.[0] || null,
+                          )
+                        }
+                        className="hidden"
+                      />
+                    </label>
+                  </div>
+
+                  {/* Other Documents */}
+                  <div className="space-y-2">
+                    <label className="block text-sm font-medium text-[#212833]">
+                      Other Documents{" "}
+                      <span className="text-gray-400">(Optional)</span>
+                    </label>
+                    <label className="flex flex-col items-center justify-center gap-2 py-4 px-4 border-2 border-dashed border-gray-300 rounded-lg bg-white hover:border-[#004eff] hover:bg-blue-50/30 cursor-pointer transition-colors">
+                      <Upload className="w-5 h-5 text-gray-400" />
+                      <span className="text-sm text-gray-600 text-center">
+                        {shareholder.documents?.others
+                          ? shareholder.documents.others.fileName
+                          : "Upload Document"}
+                      </span>
+                      <span className="text-xs text-gray-400">
+                        PDF, JPG, PNG · Max 10 MB
+                      </span>
+                      <input
+                        type="file"
+                        accept=".pdf,.jpg,.jpeg,.png"
+                        onChange={(e) =>
+                          handleFileUpload(
+                            shareholder.id,
+                            "others",
+                            e.target.files?.[0] || null,
+                          )
+                        }
+                        className="hidden"
+                      />
+                    </label>
+                  </div>
+                </div>
+              </>
+            )}
 
             {/* Full Name */}
             <div className="space-y-2 mb-6">
@@ -156,9 +303,9 @@ export const Step3Shareholders: React.FC<Step3Props> = ({
               <Input
                 type="text"
                 placeholder="Numan"
-                value={shareholder.fullName}
+                value={shareholder.fullName || ""}
                 onChange={(e) =>
-                  updateShareholder(shareholder.id, "fullName", e.target.value)
+                  updatePerson(shareholder.id, { fullName: e.target.value })
                 }
                 className={`bg-white border-gray-300 h-11 ${errors?.[`shareholders.${index}.fullName`] ? "border-red-500" : ""}`}
               />
@@ -177,9 +324,9 @@ export const Step3Shareholders: React.FC<Step3Props> = ({
                 </label>
                 <Select
                   options={nationalityOptions}
-                  value={shareholder.nationality}
+                  value={shareholder.nationality || ""}
                   onChange={(value) =>
-                    updateShareholder(shareholder.id, "nationality", value)
+                    updatePerson(shareholder.id, { nationality: value })
                   }
                   placeholder="Select nationality"
                 />
@@ -197,9 +344,9 @@ export const Step3Shareholders: React.FC<Step3Props> = ({
                 <Input
                   type="email"
                   placeholder="email@example.com"
-                  value={shareholder.email}
+                  value={shareholder.email || ""}
                   onChange={(e) =>
-                    updateShareholder(shareholder.id, "email", e.target.value)
+                    updatePerson(shareholder.id, { email: e.target.value })
                   }
                   className={`bg-white border-gray-300 h-11 ${errors?.[`shareholders.${index}.email`] ? "border-red-500" : ""}`}
                 />
@@ -217,14 +364,14 @@ export const Step3Shareholders: React.FC<Step3Props> = ({
                 <label className="block text-sm font-medium text-[#212833]">
                   Phone <span className="text-red-500">*</span>
                 </label>
-                <Input
-                  type="tel"
-                  placeholder="+852-0000-0000"
-                  value={shareholder.phone}
-                  onChange={(e) =>
-                    updateShareholder(shareholder.id, "phone", e.target.value)
+                <PhoneInput
+                  value={shareholder.phone || ""}
+                  onChange={(value) =>
+                    updatePerson(shareholder.id, { phone: value })
                   }
-                  className={`bg-white border-gray-300 h-11 ${errors?.[`shareholders.${index}.phone`] ? "border-red-500" : ""}`}
+                  defaultCountryCode={defaultCountryCode}
+                  placeholder="Enter phone number"
+                  error={!!errors?.[`shareholders.${index}.phone`]}
                 />
                 {errors?.[`shareholders.${index}.phone`] && (
                   <p className="text-xs text-red-500 mt-1">
@@ -241,8 +388,8 @@ export const Step3Shareholders: React.FC<Step3Props> = ({
                   type="text"
                   placeholder="0 shares (-0.01%)"
                   value={
-                    shareholder.shares
-                      ? `${shareholder.shares} shares (${shareholder.percentage})`
+                    shareholder.shareholding?.shares
+                      ? `${shareholder.shareholding.shares} shares (${shareholder.shareholding.percentage}%)`
                       : ""
                   }
                   disabled
@@ -255,28 +402,39 @@ export const Step3Shareholders: React.FC<Step3Props> = ({
             </div>
 
             {/* Residential Address */}
-            <div className="space-y-2 mb-6">
-              <label className="block text-sm font-medium text-[#212833]">
+            <div className="mb-6">
+              <h5 className="text-sm font-medium text-[#212833] mb-4">
                 Residential Address <span className="text-red-500">*</span>
-              </label>
-              <Input
-                type="text"
-                placeholder="Enter full residential address"
-                value={shareholder.residentialAddress}
-                onChange={(e) =>
-                  updateShareholder(
-                    shareholder.id,
-                    "residentialAddress",
-                    e.target.value,
-                  )
+              </h5>
+              <AddressInput
+                value={
+                  shareholder.residentialAddress || {
+                    street: "",
+                    city: "",
+                    state: "",
+                    postalCode: "",
+                    country: "",
+                  }
                 }
-                className={`bg-white border-gray-300 h-11 ${errors?.[`shareholders.${index}.residentialAddress`] ? "border-red-500" : ""}`}
+                onChange={(address) =>
+                  updatePerson(shareholder.id, { residentialAddress: address })
+                }
+                defaultCountry={defaultCountryCode}
+                errors={{
+                  street: errors?.[`shareholders.${index}.residentialAddress`],
+                  city: errors?.[
+                    `shareholders.${index}.residentialAddress.city`
+                  ],
+                  postalCode:
+                    errors?.[
+                      `shareholders.${index}.residentialAddress.postalCode`
+                    ],
+                  country:
+                    errors?.[
+                      `shareholders.${index}.residentialAddress.country`
+                    ],
+                }}
               />
-              {errors?.[`shareholders.${index}.residentialAddress`] && (
-                <p className="text-xs text-red-500 mt-1">
-                  {errors[`shareholders.${index}.residentialAddress`]}
-                </p>
-              )}
             </div>
 
             {/* File Uploads */}
@@ -289,8 +447,8 @@ export const Step3Shareholders: React.FC<Step3Props> = ({
                 <label className="flex flex-col items-center justify-center gap-2 py-4 px-4 border-2 border-dashed border-gray-300 rounded-lg bg-white hover:border-[#004eff] hover:bg-blue-50/30 cursor-pointer transition-colors">
                   <Upload className="w-5 h-5 text-gray-400" />
                   <span className="text-sm text-gray-600 text-center">
-                    {shareholder.passportFile
-                      ? shareholder.passportFile.name
+                    {shareholder.documents?.passport
+                      ? shareholder.documents.passport.fileName
                       : "Upload Passport"}
                   </span>
                   <span className="text-xs text-gray-400">
@@ -302,7 +460,7 @@ export const Step3Shareholders: React.FC<Step3Props> = ({
                     onChange={(e) =>
                       handleFileUpload(
                         shareholder.id,
-                        "passportFile",
+                        "passport",
                         e.target.files?.[0] || null,
                       )
                     }
@@ -325,8 +483,8 @@ export const Step3Shareholders: React.FC<Step3Props> = ({
                 <label className="flex flex-col items-center justify-center gap-2 py-4 px-4 border-2 border-dashed border-gray-300 rounded-lg bg-white hover:border-[#004eff] hover:bg-blue-50/30 cursor-pointer transition-colors">
                   <Upload className="w-5 h-5 text-gray-400" />
                   <span className="text-sm text-gray-600 text-center">
-                    {shareholder.selfieFile
-                      ? shareholder.selfieFile.name
+                    {shareholder.documents?.selfie
+                      ? shareholder.documents.selfie.fileName
                       : "Upload Selfie"}
                   </span>
                   <span className="text-xs text-gray-400">
@@ -338,7 +496,7 @@ export const Step3Shareholders: React.FC<Step3Props> = ({
                     onChange={(e) =>
                       handleFileUpload(
                         shareholder.id,
-                        "selfieFile",
+                        "selfie",
                         e.target.files?.[0] || null,
                       )
                     }
@@ -361,8 +519,8 @@ export const Step3Shareholders: React.FC<Step3Props> = ({
                 <label className="flex flex-col items-center justify-center gap-2 py-4 px-4 border-2 border-dashed border-gray-300 rounded-lg bg-white hover:border-[#004eff] hover:bg-blue-50/30 cursor-pointer transition-colors">
                   <Upload className="w-5 h-5 text-gray-400" />
                   <span className="text-sm text-gray-600 text-center">
-                    {shareholder.addressProofFile
-                      ? shareholder.addressProofFile.name
+                    {shareholder.documents?.addressProof
+                      ? shareholder.documents.addressProof.fileName
                       : "Upload Document"}
                   </span>
                   <span className="text-xs text-gray-400">
@@ -374,7 +532,7 @@ export const Step3Shareholders: React.FC<Step3Props> = ({
                     onChange={(e) =>
                       handleFileUpload(
                         shareholder.id,
-                        "addressProofFile",
+                        "addressProof",
                         e.target.files?.[0] || null,
                       )
                     }

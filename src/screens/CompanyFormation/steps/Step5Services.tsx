@@ -1,15 +1,7 @@
 import React from "react";
 import { Checkbox } from "../../../components/ui/checkbox";
-
-export interface Step5Data {
-  bankingServices: string[];
-  additionalServices: string[];
-}
-
-interface Step5Props {
-  data: Step5Data;
-  onChange: (data: Partial<Step5Data>) => void;
-}
+import { RadioGroup } from "../../../components/ui/radio-group";
+import { useCompanyStore } from "../../../store/useCompanyStore";
 
 const bankingOptions = [
   { id: "airwallex", label: "Airwallex" },
@@ -36,20 +28,44 @@ const additionalServiceOptions = [
   { id: "payment-setup", label: "PayPal / Stripe Setup Guidance" },
 ];
 
-export const Step5Services: React.FC<Step5Props> = ({ data, onChange }) => {
+export const Step5Services: React.FC = () => {
+  // Use the store directly
+  const { formData, updateServices, updateBanking } = useCompanyStore();
+  const { services } = formData;
+
   const handleBankingChange = (id: string, checked: boolean) => {
-    const updated = checked
-      ? [...data.bankingServices, id]
-      : data.bankingServices.filter((item) => item !== id);
-    onChange({ bankingServices: updated });
+    let updated = checked
+      ? [...services.banking.providers, id]
+      : services.banking.providers.filter((item) => item !== id);
+
+    // If the removed provider was the preferred one, clear it
+    if (!checked && services.banking.preferredProvider === id) {
+      updateBanking({ providers: updated, preferredProvider: "" });
+      return;
+    }
+
+    updateBanking({ providers: updated });
+  };
+
+  const handlePreferredProviderChange = (value: string) => {
+    updateBanking({ preferredProvider: value });
   };
 
   const handleAdditionalServiceChange = (id: string, checked: boolean) => {
     const updated = checked
-      ? [...data.additionalServices, id]
-      : data.additionalServices.filter((item) => item !== id);
-    onChange({ additionalServices: updated });
+      ? [...services.additionalServices, id]
+      : services.additionalServices.filter((item) => item !== id);
+    updateServices({ additionalServices: updated });
   };
+
+  // Get selected banking providers for preferred provider selection (exclude "no-bank-account")
+  const selectedBankingProviders = services.banking.providers
+    .filter((id) => id !== "no-bank-account")
+    .map((id) => {
+      const option = bankingOptions.find((opt) => opt.id === id);
+      return option ? { value: option.id, label: option.label } : null;
+    })
+    .filter(Boolean) as { value: string; label: string }[];
 
   return (
     <div className="space-y-8">
@@ -76,12 +92,32 @@ export const Step5Services: React.FC<Step5Props> = ({ data, onChange }) => {
           {bankingOptions.map((option) => (
             <Checkbox
               key={option.id}
-              checked={data.bankingServices.includes(option.id)}
-              onCheckedChange={(checked) => handleBankingChange(option.id, checked)}
+              checked={services.banking.providers.includes(option.id)}
+              onCheckedChange={(checked) =>
+                handleBankingChange(option.id, checked)
+              }
               label={option.label}
             />
           ))}
         </div>
+
+        {/* Preferred Provider Selection */}
+        {selectedBankingProviders.length > 0 && (
+          <div className="mt-6 pt-6 border-t border-gray-200">
+            <h5 className="text-sm font-semibold text-[#212833] mb-2">
+              Preferred Provider
+            </h5>
+            <p className="text-sm text-gray-600 mb-4">
+              Select your primary banking service preference
+            </p>
+            <RadioGroup
+              name="preferred-banking-provider"
+              options={selectedBankingProviders}
+              value={services.banking.preferredProvider}
+              onChange={handlePreferredProviderChange}
+            />
+          </div>
+        )}
       </div>
 
       {/* Additional Services */}
@@ -97,7 +133,7 @@ export const Step5Services: React.FC<Step5Props> = ({ data, onChange }) => {
           {additionalServiceOptions.map((option) => (
             <Checkbox
               key={option.id}
-              checked={data.additionalServices.includes(option.id)}
+              checked={services.additionalServices.includes(option.id)}
               onCheckedChange={(checked) =>
                 handleAdditionalServiceChange(option.id, checked)
               }
@@ -109,15 +145,17 @@ export const Step5Services: React.FC<Step5Props> = ({ data, onChange }) => {
 
       {/* Service Selection Summary */}
       <div className="p-3 md:p-6 bg-[#f0f4ff] rounded-xl border border-blue-200">
-        <h4 className="font-semibold text-[#212833] mb-3">Service Selection Summary</h4>
+        <h4 className="font-semibold text-[#212833] mb-3">
+          Service Selection Summary
+        </h4>
         <div className="space-y-1 text-sm text-gray-700">
           <p>
             <span className="font-medium">Banking Services:</span>{" "}
-            {data.bankingServices.length} selected
+            {services.banking.providers.length} selected
           </p>
           <p>
             <span className="font-medium">Additional Services:</span>{" "}
-            {data.additionalServices.length} selected
+            {services.additionalServices.length} selected
           </p>
         </div>
       </div>

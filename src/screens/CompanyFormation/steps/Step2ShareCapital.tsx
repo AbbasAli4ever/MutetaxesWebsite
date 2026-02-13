@@ -1,96 +1,187 @@
-import React, { useState } from "react";
+import React, { useState, useMemo, useEffect } from "react";
 import { Input } from "../../../components/ui/input";
 import { Button } from "../../../components/ui/button";
-import { Plus, Trash2, Check } from "lucide-react";
+import { Plus, Trash2, Check, AlertCircle, CheckCircle2 } from "lucide-react";
+import {
+  useCompanyStore,
+  useShareholders,
+} from "../../../store/useCompanyStore";
+import { getCurrencyForCountry } from "../../../lib/countryUtils";
 
-export interface ShareholderDistribution {
-  id: string;
-  name: string;
-  shares: string;
-  percentage: string;
-}
+export const Step2ShareCapital: React.FC = () => {
+  // Use the store directly
+  const {
+    formData,
+    stepErrors,
+    updateShareCapital,
+    addShareholder,
+    updateShareholderDistribution,
+    removeShareholder,
+    updatePerson,
+  } = useCompanyStore();
 
-export interface Step2Data {
-  shareCapitalAmount: string;
-  totalShares: string;
-  shareDistribution: ShareholderDistribution[];
-}
+  const shareholders = useShareholders();
+  const { shareCapital, company } = formData;
+  const errors = stepErrors;
 
-interface Step2Props {
-  data: Step2Data;
-  onChange: (data: Partial<Step2Data>) => void;
-  errors?: Record<string, string>;
-}
+  // Get currency based on country of incorporation
+  const currency = getCurrencyForCountry(company.countryOfIncorporation);
 
-export const Step2ShareCapital: React.FC<Step2Props> = ({
-  data,
-  onChange,
-  errors,
-}) => {
+  // Update currency in store when country changes
+  useEffect(() => {
+    if (shareCapital.currency !== currency) {
+      updateShareCapital({ currency });
+    }
+  }, [currency, shareCapital.currency, updateShareCapital]);
+
   // Track which shareholder IDs have been saved
   const [savedIds, setSavedIds] = useState<Set<string>>(new Set());
 
-  // The ID of the currently open (unsaved) shareholder form — only one at a time
-  const unsavedId =
-    data.shareDistribution.find((s) => !savedIds.has(s.id))?.id ?? null;
+  // Track percentage field errors per shareholder
+  const [percentageErrors, setPercentageErrors] = useState<
+    Record<string, string>
+  >({});
 
-  const addShareholder = () => {
+  // The ID of the currently open (unsaved) shareholder form — only one at a time
+  const unsavedId = shareholders.find((s) => !savedIds.has(s.id))?.id ?? null;
+
+  // Calculate share allocation stats based on percentage
+  const allocationStats = useMemo(() => {
+    const totalShares = shareCapital.totalShares || 0;
+
+    // Calculate total percentage allocated
+    const totalPercentageAllocated = shareholders.reduce((sum, s) => {
+      const pct = s.shareholding?.percentage || 0;
+      return sum + pct;
+    }, 0);
+
+    // Calculate allocated shares from percentage
+    const allocatedShares = shareholders.reduce(
+      (sum, s) => sum + (s.shareholding?.shares || 0),
+      0,
+    );
+
+    const remainingPercentage = Math.max(0, 100 - totalPercentageAllocated);
+    const remainingShares = Math.max(0, totalShares - allocatedShares);
+    const allocationPercentage = Math.min(100, totalPercentageAllocated);
+    const isComplete = totalPercentageAllocated === 100;
+    const isOverAllocated = totalPercentageAllocated > 100;
+
+    return {
+      totalShares,
+      allocatedShares,
+      remainingShares,
+      allocationPercentage,
+      remainingPercentage,
+      isComplete,
+      isOverAllocated,
+    };
+  }, [shareCapital.totalShares, shareholders]);
+
+  const handleAddShareholder = () => {
     // Block if there is already an unsaved form open
     if (unsavedId !== null) return;
 
-    const newShareholder: ShareholderDistribution = {
-      id: Date.now().toString(),
-      name: "",
-      shares: "",
-      percentage: "",
-    };
-    onChange({
-      shareDistribution: [...data.shareDistribution, newShareholder],
-    });
+    // Add shareholder with empty data
+    addShareholder("", 0, 0);
   };
 
-  const removeShareholder = (id: string) => {
-    onChange({
-      shareDistribution: data.shareDistribution.filter((s) => s.id !== id),
-    });
+  const handleRemoveShareholder = (id: string) => {
+    removeShareholder(id);
     setSavedIds((prev) => {
       const next = new Set(prev);
       next.delete(id);
       return next;
     });
-  };
-
-  const updateShareholder = (
-    id: string,
-    field: keyof ShareholderDistribution,
-    value: string,
-  ) => {
-    onChange({
-      shareDistribution: data.shareDistribution.map((s) =>
-        s.id === id ? { ...s, [field]: value } : s,
-      ),
+    // Clear any percentage error for this shareholder
+    setPercentageErrors((prev) => {
+      const newErrors = { ...prev };
+      delete newErrors[id];
+      return newErrors;
     });
   };
 
-  // Auto-calculate percentage when shares change
-  const handleSharesChange = (id: string, shares: string) => {
-    const totalSharesNum = parseFloat(data.totalShares) || 0;
-    const sharesNum = parseFloat(shares) || 0;
+  const updateShareholderName = (id: string, name: string) => {
+    updatePerson(id, { fullName: name });
+  };
+
+  // Auto-calculate shares when percentage changes with validation
+  const handlePercentageChange = (id: string, inputValue: string) => {
+    // Only allow numeric input with decimal point
+    const cleanedValue = inputValue.replace(/[^0-9.]/g, "");
+
+    // Ensure only one decimal point
+    const parts = cleanedValue.split(".");
     const percentage =
-      totalSharesNum > 0
-        ? ((sharesNum / totalSharesNum) * 100).toFixed(2)
-        : "0";
+      parts.length > 2
+        ? parts[0] + "." + parts.slice(1).join("")
+        : cleanedValue;
 
-    onChange({
-      shareDistribution: data.shareDistribution.map((s) =>
-        s.id === id ? { ...s, shares, percentage: percentage + "%" } : s,
-      ),
-    });
+    const percentageNum = parseFloat(percentage) || 0;
+    const totalSharesNum = shareCapital.totalShares || 0;
+
+    // Calculate percentage already allocated to OTHER shareholders
+    const otherPercentageAllocated = shareholders
+      .filter((s) => s.id !== id)
+      .reduce((sum, s) => {
+        const pct = s.shareholding?.percentage || 0;
+        return sum + pct;
+      }, 0);
+
+    // Calculate maximum allowed percentage for this shareholder
+    const maxAllowedPercentage = Math.max(0, 100 - otherPercentageAllocated);
+
+    // Check if percentage exceeds the maximum allowed and set error
+    if (percentageNum > maxAllowedPercentage) {
+      setPercentageErrors((prev) => ({
+        ...prev,
+        [id]: `Exceeds available ownership. Max: ${maxAllowedPercentage.toFixed(2)}%`,
+      }));
+    } else if (percentageNum > 100) {
+      setPercentageErrors((prev) => ({
+        ...prev,
+        [id]: "Ownership cannot exceed 100%",
+      }));
+    } else {
+      // Clear error if valid
+      setPercentageErrors((prev) => {
+        const newErrors = { ...prev };
+        delete newErrors[id];
+        return newErrors;
+      });
+    }
+
+    // Calculate shares from percentage (use raw percentage for calculation)
+    const calculatedShares =
+      totalSharesNum > 0
+        ? Math.round(((percentageNum || 0) / 100) * totalSharesNum)
+        : 0;
+
+    updateShareholderDistribution(id, calculatedShares, percentageNum);
+  };
+
+  // Get remaining percentage available for a specific shareholder
+  const getRemainingPercentageFor = (shareholderId: string): number => {
+    const otherPercentageAllocated = shareholders
+      .filter((s) => s.id !== shareholderId)
+      .reduce((sum, s) => {
+        const pct = s.shareholding?.percentage || 0;
+        return sum + pct;
+      }, 0);
+    return Math.max(0, 100 - otherPercentageAllocated);
   };
 
   const saveShareholder = (id: string) => {
-    const s = data.shareDistribution.find((sh) => sh.id === id);
-    if (!s || !s.name.trim() || !s.shares.trim()) return;
+    const s = shareholders.find((sh) => sh.id === id);
+    const percentageValue = s?.shareholding?.percentage || 0;
+    // Don't save if there's a percentage error
+    if (
+      !s ||
+      !s.fullName?.trim() ||
+      percentageValue <= 0 ||
+      percentageErrors[id]
+    )
+      return;
     setSavedIds((prev) => new Set(prev).add(id));
   };
 
@@ -120,15 +211,16 @@ export const Step2ShareCapital: React.FC<Step2Props> = ({
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         <div className="space-y-2">
           <label className="block text-base font-medium text-[#212833]">
-            Share Capital Amount (HKD) <span className="text-red-500">*</span>
+            Share Capital Amount ({currency}){" "}
+            <span className="text-red-500">*</span>
           </label>
           <Input
             type="text"
             placeholder="10000"
-            value={data.shareCapitalAmount}
+            value={shareCapital.totalAmount.toString()}
             onChange={(e) => {
               const val = e.target.value.replace(/[^0-9]/g, "");
-              onChange({ shareCapitalAmount: val });
+              updateShareCapital({ totalAmount: parseInt(val) || 0 });
             }}
             className={`bg-[#f5f7fa] border-gray-300 h-12 text-base ${errors?.shareCapitalAmount ? "border-red-500" : ""}`}
           />
@@ -137,7 +229,9 @@ export const Step2ShareCapital: React.FC<Step2Props> = ({
               {errors.shareCapitalAmount}
             </p>
           )}
-          <p className="text-sm text-gray-500 mt-1">Standard: HKD 10,000</p>
+          <p className="text-sm text-gray-500 mt-1">
+            Standard: {currency} 10,000
+          </p>
         </div>
 
         <div className="space-y-2">
@@ -147,10 +241,10 @@ export const Step2ShareCapital: React.FC<Step2Props> = ({
           <Input
             type="text"
             placeholder="10000"
-            value={data.totalShares}
+            value={shareCapital.totalShares.toString()}
             onChange={(e) => {
               const val = e.target.value.replace(/[^0-9]/g, "");
-              onChange({ totalShares: val });
+              updateShareCapital({ totalShares: parseInt(val) || 0 });
             }}
             className={`bg-[#f5f7fa] border-gray-300 h-12 text-base ${errors?.totalShares ? "border-red-500" : ""}`}
           />
@@ -161,6 +255,88 @@ export const Step2ShareCapital: React.FC<Step2Props> = ({
         </div>
       </div>
 
+      {/* Share Allocation Progress */}
+      {shareholders.length > 0 && (
+        <div
+          className={`p-4 rounded-xl border-2 transition-colors ${
+            allocationStats.isComplete
+              ? "bg-green-50 border-green-300"
+              : allocationStats.isOverAllocated
+                ? "bg-red-50 border-red-300"
+                : "bg-blue-50 border-blue-200"
+          }`}
+        >
+          <div className="flex items-center justify-between mb-3">
+            <div className="flex items-center gap-2">
+              {allocationStats.isComplete ? (
+                <CheckCircle2 className="w-5 h-5 text-green-600" />
+              ) : allocationStats.isOverAllocated ? (
+                <AlertCircle className="w-5 h-5 text-red-600" />
+              ) : (
+                <AlertCircle className="w-5 h-5 text-blue-600" />
+              )}
+              <span
+                className={`font-semibold ${
+                  allocationStats.isComplete
+                    ? "text-green-800"
+                    : allocationStats.isOverAllocated
+                      ? "text-red-800"
+                      : "text-blue-800"
+                }`}
+              >
+                Share Allocation:{" "}
+                {allocationStats.allocationPercentage.toFixed(1)}%
+              </span>
+            </div>
+            <span
+              className={`text-sm ${
+                allocationStats.isComplete
+                  ? "text-green-700"
+                  : allocationStats.isOverAllocated
+                    ? "text-red-700"
+                    : "text-blue-700"
+              }`}
+            >
+              {allocationStats.allocatedShares.toLocaleString()} /{" "}
+              {allocationStats.totalShares.toLocaleString()} shares
+            </span>
+          </div>
+
+          {/* Progress Bar */}
+          <div className="w-full h-3 bg-gray-200 rounded-full overflow-hidden">
+            <div
+              className={`h-full rounded-full transition-all duration-300 ${
+                allocationStats.isComplete
+                  ? "bg-green-500"
+                  : allocationStats.isOverAllocated
+                    ? "bg-red-500"
+                    : "bg-blue-500"
+              }`}
+              style={{
+                width: `${Math.min(100, allocationStats.allocationPercentage)}%`,
+              }}
+            />
+          </div>
+
+          {/* Status Message */}
+          <p
+            className={`text-sm mt-2 ${
+              allocationStats.isComplete
+                ? "text-green-700"
+                : allocationStats.isOverAllocated
+                  ? "text-red-700"
+                  : "text-blue-700"
+            }`}
+          >
+            {allocationStats.isComplete
+              ? "✓ 100% ownership allocated. You can proceed to the next step."
+              : allocationStats.isOverAllocated
+                ? `⚠ Over-allocated by ${(allocationStats.allocationPercentage - 100).toFixed(2)}%. Please reduce allocation.`
+                : `${allocationStats.remainingPercentage.toFixed(2)}% ownership remaining to allocate`}
+          </p>
+        </div>
+      )}
+
       {/* Share Distribution Section */}
       <div className="space-y-4">
         <div className="flex items-center justify-between">
@@ -169,8 +345,8 @@ export const Step2ShareCapital: React.FC<Step2Props> = ({
           </h4>
           <Button
             type="button"
-            onClick={addShareholder}
-            disabled={unsavedId !== null}
+            onClick={handleAddShareholder}
+            disabled={unsavedId !== null || allocationStats.isComplete}
             variant="outline"
             className="h-10 px-4 border-gray-300 hover:border-[#212833] hover:bg-white disabled:opacity-50 disabled:cursor-not-allowed"
           >
@@ -191,12 +367,12 @@ export const Step2ShareCapital: React.FC<Step2Props> = ({
           </p>
         )}
 
-        {data.shareDistribution.length === 0 ? (
+        {shareholders.length === 0 ? (
           <div className="border-2 border-dashed border-gray-300 rounded-xl p-12 text-center bg-[#f9fafb]">
             <p className="text-gray-500 mb-4">No shareholders added yet</p>
             <Button
               type="button"
-              onClick={addShareholder}
+              onClick={handleAddShareholder}
               variant="outline"
               className="h-10 px-6 border-gray-300 hover:border-[#212833]"
             >
@@ -206,12 +382,15 @@ export const Step2ShareCapital: React.FC<Step2Props> = ({
           </div>
         ) : (
           <div className="space-y-4">
-            {data.shareDistribution.map((shareholder, index) => {
+            {shareholders.map((shareholder, index) => {
               const isSaved = savedIds.has(shareholder.id);
               const isOpen = !isSaved;
+              const percentageValue = shareholder.shareholding?.percentage || 0;
+              const hasPercentageError = !!percentageErrors[shareholder.id];
               const canSave =
-                shareholder.name.trim() !== "" &&
-                shareholder.shares.trim() !== "";
+                shareholder.fullName?.trim() !== "" &&
+                percentageValue > 0 &&
+                !hasPercentageError;
 
               return (
                 <div
@@ -225,9 +404,9 @@ export const Step2ShareCapital: React.FC<Step2Props> = ({
                   <div className="flex items-center justify-between mb-4">
                     <h5 className="font-medium text-[#212833] flex items-center gap-2">
                       Shareholder {index + 1}
-                      {isSaved && shareholder.name && (
+                      {isSaved && shareholder.fullName && (
                         <span className="text-gray-500 font-normal">
-                          — {shareholder.name}
+                          — {shareholder.fullName}
                         </span>
                       )}
                       {isSaved && (
@@ -255,7 +434,7 @@ export const Step2ShareCapital: React.FC<Step2Props> = ({
                         type="button"
                         variant="ghost"
                         size="sm"
-                        onClick={() => removeShareholder(shareholder.id)}
+                        onClick={() => handleRemoveShareholder(shareholder.id)}
                         className="text-gray-400 hover:text-red-500 hover:bg-red-50 h-8 w-8 p-0"
                       >
                         <Trash2 className="w-4 h-4" />
@@ -274,11 +453,10 @@ export const Step2ShareCapital: React.FC<Step2Props> = ({
                           <Input
                             type="text"
                             placeholder="Enter name"
-                            value={shareholder.name}
+                            value={shareholder.fullName || ""}
                             onChange={(e) =>
-                              updateShareholder(
+                              updateShareholderName(
                                 shareholder.id,
-                                "name",
                                 e.target.value,
                               )
                             }
@@ -288,31 +466,54 @@ export const Step2ShareCapital: React.FC<Step2Props> = ({
 
                         <div className="space-y-2">
                           <label className="block text-sm font-medium text-[#212833]">
-                            Number of Shares{" "}
-                            <span className="text-red-500">*</span>
+                            Ownership % <span className="text-red-500">*</span>
                           </label>
                           <Input
                             type="text"
-                            placeholder="5000"
-                            value={shareholder.shares}
-                            onChange={(e) =>
-                              handleSharesChange(shareholder.id, e.target.value)
+                            placeholder="50"
+                            value={
+                              shareholder.shareholding?.percentage?.toString() ||
+                              ""
                             }
-                            className="bg-[#f5f7fa] border-gray-300 h-11"
+                            onChange={(e) =>
+                              handlePercentageChange(
+                                shareholder.id,
+                                e.target.value,
+                              )
+                            }
+                            className={`bg-[#f5f7fa] border-gray-300 h-11 ${hasPercentageError ? "border-red-500 focus:border-red-500 focus:ring-red-500" : ""}`}
                           />
+                          {hasPercentageError ? (
+                            <p className="text-xs text-red-500">
+                              {percentageErrors[shareholder.id]}
+                            </p>
+                          ) : (
+                            <p className="text-xs text-gray-500">
+                              Max available:{" "}
+                              {getRemainingPercentageFor(
+                                shareholder.id,
+                              ).toFixed(2)}
+                              %
+                            </p>
+                          )}
                         </div>
 
                         <div className="space-y-2">
                           <label className="block text-sm font-medium text-[#212833]">
-                            Ownership %
+                            Number of Shares
                           </label>
                           <Input
                             type="text"
-                            placeholder="50%"
-                            value={shareholder.percentage}
+                            placeholder="Calculated"
+                            value={
+                              shareholder.shareholding?.shares?.toString() || ""
+                            }
                             disabled
                             className="bg-gray-100 border-gray-300 h-11 text-gray-600"
                           />
+                          <p className="text-xs text-gray-500">
+                            Auto-calculated from ownership %
+                          </p>
                         </div>
                       </div>
 
@@ -338,19 +539,19 @@ export const Step2ShareCapital: React.FC<Step2Props> = ({
                         <span className="text-xs text-gray-400 block mb-0.5">
                           Name
                         </span>
-                        {shareholder.name}
-                      </div>
-                      <div>
-                        <span className="text-xs text-gray-400 block mb-0.5">
-                          Shares
-                        </span>
-                        {shareholder.shares}
+                        {shareholder.fullName}
                       </div>
                       <div>
                         <span className="text-xs text-gray-400 block mb-0.5">
                           Ownership
                         </span>
-                        {shareholder.percentage}
+                        {shareholder.shareholding?.percentage}%
+                      </div>
+                      <div>
+                        <span className="text-xs text-gray-400 block mb-0.5">
+                          Shares
+                        </span>
+                        {shareholder.shareholding?.shares}
                       </div>
                     </div>
                   )}
@@ -361,17 +562,39 @@ export const Step2ShareCapital: React.FC<Step2Props> = ({
         )}
       </div>
 
-      {/* Summary Info */}
-      {data.shareDistribution.length > 0 && (
-        <div className="p-4 bg-blue-50 border border-blue-200 rounded-lg">
-          <p className="text-sm text-blue-800">
-            <strong>Note:</strong> Total shares distributed:{" "}
-            {data.shareDistribution.reduce(
-              (sum, s) => sum + (parseFloat(s.shares) || 0),
-              0,
-            )}{" "}
-            / {data.totalShares || 0} shares
-          </p>
+      {/* Validation Warning */}
+      {shareholders.length > 0 && !allocationStats.isComplete && (
+        <div className="p-4 bg-amber-50 border border-amber-300 rounded-lg flex items-start gap-3">
+          <AlertCircle className="w-5 h-5 text-amber-600 flex-shrink-0 mt-0.5" />
+          <div>
+            <p className="text-sm font-medium text-amber-800">
+              Share ownership must reach exactly 100%
+            </p>
+            <p className="text-sm text-amber-700 mt-1">
+              You need to allocate{" "}
+              {allocationStats.remainingPercentage.toFixed(2)}% more ownership
+              before you can proceed to the next step.
+            </p>
+          </div>
+        </div>
+      )}
+
+      {/* Success Message */}
+      {allocationStats.isComplete && (
+        <div className="p-4 bg-green-50 border border-green-300 rounded-lg flex items-start gap-3">
+          <CheckCircle2 className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
+          <div>
+            <p className="text-sm font-medium text-green-800">
+              Share ownership complete!
+            </p>
+            <p className="text-sm text-green-700 mt-1">
+              100% ownership ({allocationStats.totalShares.toLocaleString()}{" "}
+              shares) has been distributed among {shareholders.length}{" "}
+              shareholder
+              {shareholders.length > 1 ? "s" : ""}. You can now proceed to the
+              next step.
+            </p>
+          </div>
         </div>
       )}
     </div>
