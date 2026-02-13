@@ -6,10 +6,10 @@ import { AddressInput } from "../../../components/ui/address-input";
 import { useCompanyStore } from "../../../store/useCompanyStore";
 
 const paymentMethodOptions: SelectOption[] = [
-  { value: "credit-card", label: "Credit Card" },
-  { value: "bank-transfer", label: "Bank Transfer" },
+  { value: "card", label: "Credit / Debit Card" },
+  { value: "bank_transfer", label: "Bank Transfer" },
+  { value: "crypto", label: "Cryptocurrency" },
   { value: "paypal", label: "PayPal" },
-  { value: "stripe", label: "Stripe" },
 ];
 
 export const Step7Billing: React.FC = () => {

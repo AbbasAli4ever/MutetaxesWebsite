@@ -30,8 +30,8 @@ const natureOfBusinessOptions = [
   { id: "consulting", label: "Consulting" },
   { id: "services", label: "Services" },
   { id: "trading", label: "Trading" },
-  { id: "it-saas", label: "IT / SaaS" },
-  { id: "import-export", label: "Import/Export" },
+  { id: "it_saas", label: "IT / SaaS" },
+  { id: "other", label: "Other" },
 ];
 
 export const Step1CompanyInfo: React.FC = () => {
@@ -284,7 +284,7 @@ export const Step1CompanyInfo: React.FC = () => {
           </label>
           <Input
             type="text"
-            value={company.type}
+            value="Private Limited Company"
             disabled
             className="bg-[#f5f7fa] border-gray-300 h-11"
           />

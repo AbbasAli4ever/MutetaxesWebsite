@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+
+const API_BASE = import.meta.env.VITE_API_URL ?? "http://localhost:3000";
 import { Input } from "../../../components/ui/input";
 import { Select, SelectOption } from "../../../components/ui/select";
 import { Button } from "../../../components/ui/button";
@@ -11,7 +13,6 @@ import {
   useCompanyStore,
   useShareholders,
   useDirectors,
-  FileInterface,
   PersonType,
 } from "../../../store/useCompanyStore";
 
@@ -36,6 +37,14 @@ const directorTypeOptions: { value: PersonType; label: string }[] = [
   { value: "corporate", label: "Corporate Entity" },
 ];
 
+const ALLOWED_MIME_TYPES = [
+  "application/pdf",
+  "image/jpeg",
+  "image/jpg",
+  "image/png",
+  "image/webp",
+];
+
 export const Step4Directors: React.FC = () => {
   // Use the store directly
   const {
@@ -58,6 +67,7 @@ export const Step4Directors: React.FC = () => {
   const [formMessage, setFormMessage] = useState<string | null>(null);
   const [formErrors, setFormErrors] = useState<Record<string, string>>({});
   const [nomineeDirectorService, setNomineeDirectorService] = useState(false);
+  const [uploadingFiles, setUploadingFiles] = useState<Record<string, boolean>>({});
 
   const toggleDirectorExpanded = (id: string) => {
     const otherFormOpen =
@@ -175,7 +185,7 @@ export const Step4Directors: React.FC = () => {
     setFormErrors({});
   };
 
-  const handleFileUpload = (
+  const handleFileUpload = async (
     id: string,
     field:
       | "passport"
@@ -186,23 +196,77 @@ export const Step4Directors: React.FC = () => {
       | "others",
     file: File | null,
   ) => {
-    if (file && file.size > 10 * 1024 * 1024) {
+    if (!file) {
+      updatePersonDocuments(id, { [field]: null });
+      return;
+    }
+
+    if (!ALLOWED_MIME_TYPES.includes(file.type)) {
+      setFormMessage("Unsupported file type. Allowed: PDF, JPEG, PNG, WEBP");
+      return;
+    }
+    if (file.size > 10 * 1024 * 1024) {
       setFormMessage("File size must be under 10 MB");
       return;
     }
 
-    const fileData: FileInterface | null = file
-      ? {
-          key: Date.now().toString(),
-          url: URL.createObjectURL(file),
+    const uploadKey = `${id}-${field}`;
+    setUploadingFiles((prev) => ({ ...prev, [uploadKey]: true }));
+
+    try {
+      const presignRes = await fetch(
+        `${API_BASE}/api/v1/uploads/presign`,
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            documentType: field,
+            fileName: file.name,
+            mimeType: file.type,
+            sizeBytes: file.size,
+          }),
+        },
+      );
+
+      if (!presignRes.ok) {
+        const err = await presignRes.json().catch(() => ({}));
+        throw new Error(err?.error ?? "Failed to get upload URL");
+      }
+
+      const { uploadUrl, key, publicUrl } = await presignRes.json();
+
+      const uploadRes = await fetch(uploadUrl, {
+        method: "PUT",
+        headers: { "Content-Type": file.type },
+        body: file,
+      });
+
+      if (!uploadRes.ok) {
+        throw new Error(`Upload failed: ${uploadRes.status}`);
+      }
+
+      updatePersonDocuments(id, {
+        [field]: {
+          key,
+          url: publicUrl,
           fileName: file.name,
           mimeType: file.type,
           size: file.size,
-        }
-      : null;
-
-    updatePersonDocuments(id, { [field]: fileData });
+        },
+      });
+    } catch (err: any) {
+      setFormMessage(err.message ?? "File upload failed");
+    } finally {
+      setUploadingFiles((prev) => {
+        const next = { ...prev };
+        delete next[uploadKey];
+        return next;
+      });
+    }
   };
+
+  const isUploading = (id: string, field: string) =>
+    !!uploadingFiles[`${id}-${field}`];
 
   return (
     <div className="space-y-8">
@@ -466,11 +530,11 @@ export const Step4Directors: React.FC = () => {
                               <label className="flex flex-col items-center justify-center gap-2 py-4 px-4 border-2 border-dashed border-gray-300 rounded-lg bg-white hover:border-[#004eff] hover:bg-blue-50/30 cursor-pointer transition-colors">
                                 <Upload className="w-5 h-5 text-gray-400" />
                                 <span className="text-sm text-gray-600 text-center">
-                                  {director.documents
-                                    ?.certificate_of_incorporation
-                                    ? director.documents
-                                        .certificate_of_incorporation.fileName
-                                    : "Upload Certificate"}
+                                  {isUploading(director.id, "certificate_of_incorporation")
+                                    ? "Uploading..."
+                                    : director.documents?.certificate_of_incorporation
+                                      ? director.documents.certificate_of_incorporation.fileName
+                                      : "Upload Certificate"}
                                 </span>
                                 <span className="text-xs text-gray-400">
                                   PDF, JPG, PNG · Max 10 MB
@@ -509,10 +573,11 @@ export const Step4Directors: React.FC = () => {
                               <label className="flex flex-col items-center justify-center gap-2 py-4 px-4 border-2 border-dashed border-gray-300 rounded-lg bg-white hover:border-[#004eff] hover:bg-blue-50/30 cursor-pointer transition-colors">
                                 <Upload className="w-5 h-5 text-gray-400" />
                                 <span className="text-sm text-gray-600 text-center">
-                                  {director.documents?.business_license
-                                    ? director.documents.business_license
-                                        .fileName
-                                    : "Upload License"}
+                                  {isUploading(director.id, "business_license")
+                                    ? "Uploading..."
+                                    : director.documents?.business_license
+                                      ? director.documents.business_license.fileName
+                                      : "Upload License"}
                                 </span>
                                 <span className="text-xs text-gray-400">
                                   PDF, JPG, PNG · Max 10 MB
@@ -550,9 +615,11 @@ export const Step4Directors: React.FC = () => {
                               <label className="flex flex-col items-center justify-center gap-2 py-4 px-4 border-2 border-dashed border-gray-300 rounded-lg bg-white hover:border-[#004eff] hover:bg-blue-50/30 cursor-pointer transition-colors">
                                 <Upload className="w-5 h-5 text-gray-400" />
                                 <span className="text-sm text-gray-600 text-center">
-                                  {director.documents?.others
-                                    ? director.documents.others.fileName
-                                    : "Upload Document"}
+                                  {isUploading(director.id, "others")
+                                    ? "Uploading..."
+                                    : director.documents?.others
+                                      ? director.documents.others.fileName
+                                      : "Upload Document"}
                                 </span>
                                 <span className="text-xs text-gray-400">
                                   PDF, JPG, PNG · Max 10 MB
@@ -742,9 +809,11 @@ export const Step4Directors: React.FC = () => {
                           <label className="flex flex-col items-center justify-center gap-2 py-4 px-4 border-2 border-dashed border-gray-300 rounded-lg bg-white hover:border-[#004eff] hover:bg-blue-50/30 cursor-pointer transition-colors">
                             <Upload className="w-5 h-5 text-gray-400" />
                             <span className="text-sm text-gray-600 text-center">
-                              {director.documents?.passport
-                                ? director.documents.passport.fileName
-                                : "Upload Passport"}
+                              {isUploading(director.id, "passport")
+                                ? "Uploading..."
+                                : director.documents?.passport
+                                  ? director.documents.passport.fileName
+                                  : "Upload Passport"}
                             </span>
                             <span className="text-xs text-gray-400">
                               PDF, JPG, PNG · Max 10 MB
@@ -779,9 +848,11 @@ export const Step4Directors: React.FC = () => {
                           <label className="flex flex-col items-center justify-center gap-2 py-4 px-4 border-2 border-dashed border-gray-300 rounded-lg bg-white hover:border-[#004eff] hover:bg-blue-50/30 cursor-pointer transition-colors">
                             <Upload className="w-5 h-5 text-gray-400" />
                             <span className="text-sm text-gray-600 text-center">
-                              {director.documents?.selfie
-                                ? director.documents.selfie.fileName
-                                : "Upload Selfie"}
+                              {isUploading(director.id, "selfie")
+                                ? "Uploading..."
+                                : director.documents?.selfie
+                                  ? director.documents.selfie.fileName
+                                  : "Upload Selfie"}
                             </span>
                             <span className="text-xs text-gray-400">
                               JPG, PNG · Max 10 MB
@@ -816,9 +887,11 @@ export const Step4Directors: React.FC = () => {
                           <label className="flex flex-col items-center justify-center gap-2 py-4 px-4 border-2 border-dashed border-gray-300 rounded-lg bg-white hover:border-[#004eff] hover:bg-blue-50/30 cursor-pointer transition-colors">
                             <Upload className="w-5 h-5 text-gray-400" />
                             <span className="text-sm text-gray-600 text-center">
-                              {director.documents?.addressProof
-                                ? director.documents.addressProof.fileName
-                                : "Upload Document"}
+                              {isUploading(director.id, "addressProof")
+                                ? "Uploading..."
+                                : director.documents?.addressProof
+                                  ? director.documents.addressProof.fileName
+                                  : "Upload Document"}
                             </span>
                             <span className="text-xs text-gray-400">
                               PDF, JPG, PNG · Max 10 MB

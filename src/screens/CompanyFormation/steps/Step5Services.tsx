@@ -9,23 +9,23 @@ const bankingOptions = [
   { id: "payoneer", label: "Payoneer" },
   { id: "currenxie", label: "Currenxie" },
   { id: "stripe", label: "Stripe" },
-  { id: "bank-account-assistance", label: "Bank Account Assistance" },
-  { id: "no-bank-account", label: "No Bank Account Needed" },
+  { id: "bank_account_assistance", label: "Bank Account Assistance" },
+  { id: "no_bank_account", label: "No Bank Account Needed" },
 ];
 
 const additionalServiceOptions = [
-  { id: "annual-secretarial", label: "Annual Secretarial Service" },
-  { id: "registered-address-renewal", label: "Registered Address Renewal" },
-  { id: "accounting-bookkeeping", label: "Accounting & Bookkeeping" },
-  { id: "audit-arrangement", label: "Audit Arrangement" },
-  { id: "br-renewal", label: "BR Renewal Handling" },
-  { id: "virtual-office", label: "Virtual Office" },
-  { id: "phone-efax", label: "Phone Number / E-Fax" },
-  { id: "nominee-shareholder", label: "Nominee Shareholder Service" },
-  { id: "nominee-director", label: "Nominee Director Service" },
-  { id: "compliance-support", label: "Compliance Support" },
-  { id: "visa-application", label: "Visa Application Support" },
-  { id: "payment-setup", label: "PayPal / Stripe Setup Guidance" },
+  { id: "annual_secretarial_service", label: "Annual Secretarial Service" },
+  { id: "registered_address_renewal", label: "Registered Address Renewal" },
+  { id: "accounting_bookkeeping", label: "Accounting & Bookkeeping" },
+  { id: "audit_arrangement", label: "Audit Arrangement" },
+  { id: "br_renewal_handling", label: "BR Renewal Handling" },
+  { id: "virtual_office", label: "Virtual Office" },
+  { id: "phone_number_efax", label: "Phone Number / E-Fax" },
+  { id: "nominee_shareholder_service", label: "Nominee Shareholder Service" },
+  { id: "nominee_director_service", label: "Nominee Director Service" },
+  { id: "compliance_support", label: "Compliance Support" },
+  { id: "visa_application_support", label: "Visa Application Support" },
+  { id: "paypal_stripe_setup_guidance", label: "PayPal / Stripe Setup Guidance" },
 ];
 
 export const Step5Services: React.FC = () => {
@@ -60,7 +60,7 @@ export const Step5Services: React.FC = () => {
 
   // Get selected banking providers for preferred provider selection (exclude "no-bank-account")
   const selectedBankingProviders = services.banking.providers
-    .filter((id) => id !== "no-bank-account")
+    .filter((id) => id !== "no_bank_account")
     .map((id) => {
       const option = bankingOptions.find((opt) => opt.id === id);
       return option ? { value: option.id, label: option.label } : null;
