@@ -1,4 +1,6 @@
-import React from "react";
+import React, { useState } from "react";
+
+const API_BASE = import.meta.env.VITE_API_URL ?? "http://localhost:3000";
 import { Input } from "../../../components/ui/input";
 import { Select, SelectOption } from "../../../components/ui/select";
 import { RadioGroup } from "../../../components/ui/radio-group";
@@ -9,7 +11,6 @@ import {
   useCompanyStore,
   useShareholders,
   PersonType,
-  FileInterface,
 } from "../../../store/useCompanyStore";
 
 const nationalityOptions: SelectOption[] = [
@@ -33,6 +34,14 @@ const shareholderTypeOptions = [
   { value: "corporate", label: "Corporate" },
 ];
 
+const ALLOWED_MIME_TYPES = [
+  "application/pdf",
+  "image/jpeg",
+  "image/jpg",
+  "image/png",
+  "image/webp",
+];
+
 export const Step3Shareholders: React.FC = () => {
   // Use the store directly
   const { formData, stepErrors, updatePerson, updatePersonDocuments } =
@@ -41,7 +50,9 @@ export const Step3Shareholders: React.FC = () => {
   const errors = stepErrors;
   const defaultCountryCode = formData.company.countryOfIncorporation;
 
-  const handleFileUpload = (
+  const [uploadingFiles, setUploadingFiles] = useState<Record<string, boolean>>({});
+
+  const handleFileUpload = async (
     id: string,
     field:
       | "passport"
@@ -52,24 +63,77 @@ export const Step3Shareholders: React.FC = () => {
       | "others",
     file: File | null,
   ) => {
-    if (file && file.size > 10 * 1024 * 1024) {
+    if (!file) {
+      updatePersonDocuments(id, { [field]: null });
+      return;
+    }
+
+    if (!ALLOWED_MIME_TYPES.includes(file.type)) {
+      alert("Unsupported file type. Allowed: PDF, JPEG, PNG, WEBP");
+      return;
+    }
+    if (file.size > 10 * 1024 * 1024) {
       alert("File size must be under 10 MB");
       return;
     }
 
-    // Create FileInterface from File object
-    const fileData: FileInterface | null = file
-      ? {
-          key: Date.now().toString(),
-          url: URL.createObjectURL(file),
+    const uploadKey = `${id}-${field}`;
+    setUploadingFiles((prev) => ({ ...prev, [uploadKey]: true }));
+
+    try {
+      const presignRes = await fetch(
+        `${API_BASE}/api/v1/uploads/presign`,
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            documentType: field,
+            fileName: file.name,
+            mimeType: file.type,
+            sizeBytes: file.size,
+          }),
+        },
+      );
+
+      if (!presignRes.ok) {
+        const err = await presignRes.json().catch(() => ({}));
+        throw new Error(err?.error ?? "Failed to get upload URL");
+      }
+
+      const { uploadUrl, key, publicUrl } = await presignRes.json();
+
+      const uploadRes = await fetch(uploadUrl, {
+        method: "PUT",
+        headers: { "Content-Type": file.type },
+        body: file,
+      });
+
+      if (!uploadRes.ok) {
+        throw new Error(`Upload failed: ${uploadRes.status}`);
+      }
+
+      updatePersonDocuments(id, {
+        [field]: {
+          key,
+          url: publicUrl,
           fileName: file.name,
           mimeType: file.type,
           size: file.size,
-        }
-      : null;
-
-    updatePersonDocuments(id, { [field]: fileData });
+        },
+      });
+    } catch (err: any) {
+      alert(err.message ?? "File upload failed");
+    } finally {
+      setUploadingFiles((prev) => {
+        const next = { ...prev };
+        delete next[uploadKey];
+        return next;
+      });
+    }
   };
+
+  const isUploading = (id: string, field: string) =>
+    !!uploadingFiles[`${id}-${field}`];
 
   return (
     <div className="space-y-8">
@@ -202,10 +266,11 @@ export const Step3Shareholders: React.FC = () => {
                     <label className="flex flex-col items-center justify-center gap-2 py-4 px-4 border-2 border-dashed border-gray-300 rounded-lg bg-white hover:border-[#004eff] hover:bg-blue-50/30 cursor-pointer transition-colors">
                       <Upload className="w-5 h-5 text-gray-400" />
                       <span className="text-sm text-gray-600 text-center">
-                        {shareholder.documents?.certificate_of_incorporation
-                          ? shareholder.documents.certificate_of_incorporation
-                              .fileName
-                          : "Upload Certificate"}
+                        {isUploading(shareholder.id, "certificate_of_incorporation")
+                          ? "Uploading..."
+                          : shareholder.documents?.certificate_of_incorporation
+                            ? shareholder.documents.certificate_of_incorporation.fileName
+                            : "Upload Certificate"}
                       </span>
                       <span className="text-xs text-gray-400">
                         PDF, JPG, PNG · Max 10 MB
@@ -239,9 +304,11 @@ export const Step3Shareholders: React.FC = () => {
                     <label className="flex flex-col items-center justify-center gap-2 py-4 px-4 border-2 border-dashed border-gray-300 rounded-lg bg-white hover:border-[#004eff] hover:bg-blue-50/30 cursor-pointer transition-colors">
                       <Upload className="w-5 h-5 text-gray-400" />
                       <span className="text-sm text-gray-600 text-center">
-                        {shareholder.documents?.business_license
-                          ? shareholder.documents.business_license.fileName
-                          : "Upload License"}
+                        {isUploading(shareholder.id, "business_license")
+                          ? "Uploading..."
+                          : shareholder.documents?.business_license
+                            ? shareholder.documents.business_license.fileName
+                            : "Upload License"}
                       </span>
                       <span className="text-xs text-gray-400">
                         PDF, JPG, PNG · Max 10 MB
@@ -270,9 +337,11 @@ export const Step3Shareholders: React.FC = () => {
                     <label className="flex flex-col items-center justify-center gap-2 py-4 px-4 border-2 border-dashed border-gray-300 rounded-lg bg-white hover:border-[#004eff] hover:bg-blue-50/30 cursor-pointer transition-colors">
                       <Upload className="w-5 h-5 text-gray-400" />
                       <span className="text-sm text-gray-600 text-center">
-                        {shareholder.documents?.others
-                          ? shareholder.documents.others.fileName
-                          : "Upload Document"}
+                        {isUploading(shareholder.id, "others")
+                          ? "Uploading..."
+                          : shareholder.documents?.others
+                            ? shareholder.documents.others.fileName
+                            : "Upload Document"}
                       </span>
                       <span className="text-xs text-gray-400">
                         PDF, JPG, PNG · Max 10 MB
@@ -447,9 +516,11 @@ export const Step3Shareholders: React.FC = () => {
                 <label className="flex flex-col items-center justify-center gap-2 py-4 px-4 border-2 border-dashed border-gray-300 rounded-lg bg-white hover:border-[#004eff] hover:bg-blue-50/30 cursor-pointer transition-colors">
                   <Upload className="w-5 h-5 text-gray-400" />
                   <span className="text-sm text-gray-600 text-center">
-                    {shareholder.documents?.passport
-                      ? shareholder.documents.passport.fileName
-                      : "Upload Passport"}
+                    {isUploading(shareholder.id, "passport")
+                      ? "Uploading..."
+                      : shareholder.documents?.passport
+                        ? shareholder.documents.passport.fileName
+                        : "Upload Passport"}
                   </span>
                   <span className="text-xs text-gray-400">
                     PDF, JPG, PNG · Max 10 MB
@@ -483,9 +554,11 @@ export const Step3Shareholders: React.FC = () => {
                 <label className="flex flex-col items-center justify-center gap-2 py-4 px-4 border-2 border-dashed border-gray-300 rounded-lg bg-white hover:border-[#004eff] hover:bg-blue-50/30 cursor-pointer transition-colors">
                   <Upload className="w-5 h-5 text-gray-400" />
                   <span className="text-sm text-gray-600 text-center">
-                    {shareholder.documents?.selfie
-                      ? shareholder.documents.selfie.fileName
-                      : "Upload Selfie"}
+                    {isUploading(shareholder.id, "selfie")
+                      ? "Uploading..."
+                      : shareholder.documents?.selfie
+                        ? shareholder.documents.selfie.fileName
+                        : "Upload Selfie"}
                   </span>
                   <span className="text-xs text-gray-400">
                     JPG, PNG · Max 10 MB
@@ -519,9 +592,11 @@ export const Step3Shareholders: React.FC = () => {
                 <label className="flex flex-col items-center justify-center gap-2 py-4 px-4 border-2 border-dashed border-gray-300 rounded-lg bg-white hover:border-[#004eff] hover:bg-blue-50/30 cursor-pointer transition-colors">
                   <Upload className="w-5 h-5 text-gray-400" />
                   <span className="text-sm text-gray-600 text-center">
-                    {shareholder.documents?.addressProof
-                      ? shareholder.documents.addressProof.fileName
-                      : "Upload Document"}
+                    {isUploading(shareholder.id, "addressProof")
+                      ? "Uploading..."
+                      : shareholder.documents?.addressProof
+                        ? shareholder.documents.addressProof.fileName
+                        : "Upload Document"}
                   </span>
                   <span className="text-xs text-gray-400">
                     PDF, JPG, PNG · Max 10 MB

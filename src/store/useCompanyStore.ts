@@ -2,6 +2,8 @@ import { create } from "zustand";
 import { persist, createJSONStorage } from "zustand/middleware";
 import { useShallow } from "zustand/react/shallow";
 
+const API_BASE = import.meta.env.VITE_API_URL ?? "http://localhost:3000";
+
 // ==================== INTERFACES ====================
 
 export interface ApplicantInterface {
@@ -161,21 +163,25 @@ const initialFormData: FormDataInterface = {
     email: "",
     phone: "",
   },
+
   company: {
     countryOfIncorporation: "hong-kong",
-    type: "Private Limited Company",
+    type: "private_limited_company",
     proposedCompanyName: "",
     alternativeNames: ["", "", ""],
     natureOfBusiness: [],
     businessScope: "",
     businessScopeDescription: "",
   },
+
   shareCapital: {
     currency: "HKD",
     totalAmount: 10000,
     totalShares: 10000,
   },
+
   persons: [],
+
   services: {
     banking: {
       providers: [],
@@ -183,6 +189,7 @@ const initialFormData: FormDataInterface = {
     },
     additionalServices: [],
   },
+
   billing: {
     name: "",
     email: "",
@@ -190,6 +197,7 @@ const initialFormData: FormDataInterface = {
     address: createEmptyAddress(),
     paymentMethod: "",
   },
+  
   complianceAccepted: {
     isAccepted: false,
     timestamp: "",
@@ -593,7 +601,7 @@ export const useCompanyStore = create<CompanyStoreState>()(
             ...state.formData,
             complianceAccepted: {
               isAccepted: isAccepted === true,
-              timestamp: Date.now().toString(),
+              timestamp: new Date().toISOString(),
             },
           },
           stepErrors: {},
@@ -866,21 +874,107 @@ export const useCompanyStore = create<CompanyStoreState>()(
 
       submitApplication: async () => {
         const { formData } = get();
-
         set({ isLoading: true, error: null });
 
+        // Internal country code → ISO 3166-1 alpha-2
+        const ISO: Record<string, string> = {
+          "hong-kong": "HK", singapore: "SG", usa: "US",
+          uk: "GB", uae: "AE", china: "CN", india: "IN",
+          japan: "JP", korea: "KR", australia: "AU",
+          canada: "CA", bvi: "VG", cayman: "KY", delaware: "US",
+        };
+        const iso = (code: string) => ISO[code] ?? code;
+
+        // "+852-12345678" → E.164 "+85212345678"
+        const e164 = (phone: string) => phone.replace(/^(\+\d+)-/, "$1");
+
+        const payload = {
+          applicant: formData.applicant,
+          company: {
+            ...formData.company,
+            countryOfIncorporation: iso(formData.company.countryOfIncorporation),
+            alternativeNames: formData.company.alternativeNames.filter((n) => n.trim()),
+          },
+          shareCapital: formData.shareCapital,
+          persons: formData.persons.map((p) => {
+            const isShareholder = p.roles.includes("shareholder");
+            if (p.type === "individual") {
+              return {
+                type: p.type,
+                roles: p.roles,
+                fullName: p.fullName,
+                nationality: iso(p.nationality),
+                email: p.email,
+                phone: p.phone,
+                residentialAddress: {
+                  ...p.residentialAddress,
+                  country: iso(p.residentialAddress.country),
+                },
+                companyName: null,
+                countryOfIncorporation: null,
+                registrationNumber: null,
+                shareholding: isShareholder ? p.shareholding : null,
+                documents: p.documents,
+              };
+            }
+            // corporate
+            return {
+              type: p.type,
+              roles: p.roles,
+              fullName: null,
+              nationality: null,
+              email: null,
+              phone: null,
+              residentialAddress: null,
+              companyName: p.companyName,
+              countryOfIncorporation: iso(p.countryOfIncorporation ?? ""),
+              registrationNumber: p.registrationNumber,
+              shareholding: isShareholder ? p.shareholding : null,
+              documents: p.documents,
+            };
+          }),
+          services: {
+            banking: {
+              providers: formData.services.banking.providers,
+              preferredProvider: formData.services.banking.preferredProvider || null,
+            },
+            additionalServices: formData.services.additionalServices,
+          },
+          billing: {
+            ...formData.billing,
+            phone: e164(formData.billing.phone),
+            address: {
+              ...formData.billing.address,
+              country: iso(formData.billing.address.country),
+            },
+          },
+          complianceAccepted: formData.complianceAccepted,
+        };
+
         try {
-          console.log("Submitting:", JSON.stringify(formData, null, 2));
+          const response = await fetch(
+            `${API_BASE}/api/v1/registrations`,
+            {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify(payload),
+            },
+          );
 
-          const response = await fetch("https://api.your-domain.com/submit", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify(formData),
+          if (!response.ok) {
+            const data = await response.json().catch(() => ({}));
+            throw new Error(
+              data?.error ?? `Request failed: ${response.status}`,
+            );
+          }
+
+          set({
+            isSuccess: true,
+            isLoading: false,
+            currentStep: 1,
+            formData: initialFormData,
+            stepErrors: {},
           });
-
-          if (!response.ok) throw new Error("Submission failed");
-
-          set({ isSuccess: true, isLoading: false });
         } catch (err: any) {
           set({
             error: err.message || "Something went wrong",
