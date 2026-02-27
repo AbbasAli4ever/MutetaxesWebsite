@@ -268,6 +268,11 @@ export const Step4Directors: React.FC = () => {
   const isUploading = (id: string, field: string) =>
     !!uploadingFiles[`${id}-${field}`];
 
+  const truncateFileName = (fileName: string, maxLength = 24) =>
+    fileName.length > maxLength
+      ? `${fileName.slice(0, maxLength)}...`
+      : fileName;
+
   return (
     <div className="space-y-8">
       {/* Header */}
@@ -529,11 +534,21 @@ export const Step4Directors: React.FC = () => {
                               </label>
                               <label className="flex flex-col items-center justify-center gap-2 py-4 px-4 border-2 border-dashed border-gray-300 rounded-lg bg-white hover:border-[#004eff] hover:bg-blue-50/30 cursor-pointer transition-colors">
                                 <Upload className="w-5 h-5 text-gray-400" />
-                                <span className="text-sm text-gray-600 text-center">
+                                <span
+                                  className="block w-full text-sm text-gray-600 text-center truncate"
+                                  title={
+                                    director.documents?.certificate_of_incorporation
+                                      ?.fileName
+                                  }
+                                >
                                   {isUploading(director.id, "certificate_of_incorporation")
                                     ? "Uploading..."
                                     : director.documents?.certificate_of_incorporation
-                                      ? director.documents.certificate_of_incorporation.fileName
+                                      ? truncateFileName(
+                                          director.documents
+                                            .certificate_of_incorporation
+                                            .fileName,
+                                        )
                                       : "Upload Certificate"}
                                 </span>
                                 <span className="text-xs text-gray-400">
@@ -572,11 +587,17 @@ export const Step4Directors: React.FC = () => {
                               </label>
                               <label className="flex flex-col items-center justify-center gap-2 py-4 px-4 border-2 border-dashed border-gray-300 rounded-lg bg-white hover:border-[#004eff] hover:bg-blue-50/30 cursor-pointer transition-colors">
                                 <Upload className="w-5 h-5 text-gray-400" />
-                                <span className="text-sm text-gray-600 text-center">
+                                <span
+                                  className="block w-full text-sm text-gray-600 text-center truncate"
+                                  title={director.documents?.business_license?.fileName}
+                                >
                                   {isUploading(director.id, "business_license")
                                     ? "Uploading..."
                                     : director.documents?.business_license
-                                      ? director.documents.business_license.fileName
+                                      ? truncateFileName(
+                                          director.documents.business_license
+                                            .fileName,
+                                        )
                                       : "Upload License"}
                                 </span>
                                 <span className="text-xs text-gray-400">
@@ -614,11 +635,16 @@ export const Step4Directors: React.FC = () => {
                               </label>
                               <label className="flex flex-col items-center justify-center gap-2 py-4 px-4 border-2 border-dashed border-gray-300 rounded-lg bg-white hover:border-[#004eff] hover:bg-blue-50/30 cursor-pointer transition-colors">
                                 <Upload className="w-5 h-5 text-gray-400" />
-                                <span className="text-sm text-gray-600 text-center">
+                                <span
+                                  className="block w-full text-sm text-gray-600 text-center truncate"
+                                  title={director.documents?.others?.fileName}
+                                >
                                   {isUploading(director.id, "others")
                                     ? "Uploading..."
                                     : director.documents?.others
-                                      ? director.documents.others.fileName
+                                      ? truncateFileName(
+                                          director.documents.others.fileName,
+                                        )
                                       : "Upload Document"}
                                 </span>
                                 <span className="text-xs text-gray-400">
@@ -808,11 +834,16 @@ export const Step4Directors: React.FC = () => {
                           </label>
                           <label className="flex flex-col items-center justify-center gap-2 py-4 px-4 border-2 border-dashed border-gray-300 rounded-lg bg-white hover:border-[#004eff] hover:bg-blue-50/30 cursor-pointer transition-colors">
                             <Upload className="w-5 h-5 text-gray-400" />
-                            <span className="text-sm text-gray-600 text-center">
+                            <span
+                              className="block w-full text-sm text-gray-600 text-center truncate"
+                              title={director.documents?.passport?.fileName}
+                            >
                               {isUploading(director.id, "passport")
                                 ? "Uploading..."
                                 : director.documents?.passport
-                                  ? director.documents.passport.fileName
+                                  ? truncateFileName(
+                                      director.documents.passport.fileName,
+                                    )
                                   : "Upload Passport"}
                             </span>
                             <span className="text-xs text-gray-400">
@@ -847,11 +878,16 @@ export const Step4Directors: React.FC = () => {
                           </label>
                           <label className="flex flex-col items-center justify-center gap-2 py-4 px-4 border-2 border-dashed border-gray-300 rounded-lg bg-white hover:border-[#004eff] hover:bg-blue-50/30 cursor-pointer transition-colors">
                             <Upload className="w-5 h-5 text-gray-400" />
-                            <span className="text-sm text-gray-600 text-center">
+                            <span
+                              className="block w-full text-sm text-gray-600 text-center truncate"
+                              title={director.documents?.selfie?.fileName}
+                            >
                               {isUploading(director.id, "selfie")
                                 ? "Uploading..."
                                 : director.documents?.selfie
-                                  ? director.documents.selfie.fileName
+                                  ? truncateFileName(
+                                      director.documents.selfie.fileName,
+                                    )
                                   : "Upload Selfie"}
                             </span>
                             <span className="text-xs text-gray-400">
@@ -886,11 +922,16 @@ export const Step4Directors: React.FC = () => {
                           </label>
                           <label className="flex flex-col items-center justify-center gap-2 py-4 px-4 border-2 border-dashed border-gray-300 rounded-lg bg-white hover:border-[#004eff] hover:bg-blue-50/30 cursor-pointer transition-colors">
                             <Upload className="w-5 h-5 text-gray-400" />
-                            <span className="text-sm text-gray-600 text-center">
+                            <span
+                              className="block w-full text-sm text-gray-600 text-center truncate"
+                              title={director.documents?.addressProof?.fileName}
+                            >
                               {isUploading(director.id, "addressProof")
                                 ? "Uploading..."
                                 : director.documents?.addressProof
-                                  ? director.documents.addressProof.fileName
+                                  ? truncateFileName(
+                                      director.documents.addressProof.fileName,
+                                    )
                                   : "Upload Document"}
                             </span>
                             <span className="text-xs text-gray-400">

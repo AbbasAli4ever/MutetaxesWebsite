@@ -829,9 +829,29 @@ export const useCompanyStore = create<CompanyStoreState>()(
             break;
           }
 
-          case 5:
-            // Services step - optional
+          case 5: {
+            // Services step - preferred provider is required if banking is selected
+            const bankingProviders = formData.services.banking.providers.filter(
+              (id) => id !== "no_bank_account",
+            );
+            const preferredProvider = formData.services.banking.preferredProvider;
+
+            if (
+              bankingProviders.length > 1 &&
+              !preferredProvider
+            ) {
+              errors.bankingPreferredProvider =
+                "Please select at least one preferred bank/provider.";
+            } else if (
+              bankingProviders.length > 1 &&
+              preferredProvider &&
+              !bankingProviders.includes(preferredProvider)
+            ) {
+              errors.bankingPreferredProvider =
+                "Preferred provider must be one of the selected banking services.";
+            }
             break;
+          }
 
           case 6: {
             // Validate Billing

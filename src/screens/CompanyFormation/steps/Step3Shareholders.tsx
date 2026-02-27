@@ -135,6 +135,11 @@ export const Step3Shareholders: React.FC = () => {
   const isUploading = (id: string, field: string) =>
     !!uploadingFiles[`${id}-${field}`];
 
+  const truncateFileName = (fileName: string, maxLength = 24) =>
+    fileName.length > maxLength
+      ? `${fileName.slice(0, maxLength)}...`
+      : fileName;
+
   return (
     <div className="space-y-8">
       {/* Header */}
@@ -265,11 +270,19 @@ export const Step3Shareholders: React.FC = () => {
                     </label>
                     <label className="flex flex-col items-center justify-center gap-2 py-4 px-4 border-2 border-dashed border-gray-300 rounded-lg bg-white hover:border-[#004eff] hover:bg-blue-50/30 cursor-pointer transition-colors">
                       <Upload className="w-5 h-5 text-gray-400" />
-                      <span className="text-sm text-gray-600 text-center">
+                      <span
+                        className="block w-full text-sm text-gray-600 text-center truncate"
+                        title={
+                          shareholder.documents?.certificate_of_incorporation?.fileName
+                        }
+                      >
                         {isUploading(shareholder.id, "certificate_of_incorporation")
                           ? "Uploading..."
                           : shareholder.documents?.certificate_of_incorporation
-                            ? shareholder.documents.certificate_of_incorporation.fileName
+                            ? truncateFileName(
+                                shareholder.documents.certificate_of_incorporation
+                                  .fileName,
+                              )
                             : "Upload Certificate"}
                       </span>
                       <span className="text-xs text-gray-400">
@@ -303,11 +316,16 @@ export const Step3Shareholders: React.FC = () => {
                     </label>
                     <label className="flex flex-col items-center justify-center gap-2 py-4 px-4 border-2 border-dashed border-gray-300 rounded-lg bg-white hover:border-[#004eff] hover:bg-blue-50/30 cursor-pointer transition-colors">
                       <Upload className="w-5 h-5 text-gray-400" />
-                      <span className="text-sm text-gray-600 text-center">
+                      <span
+                        className="block w-full text-sm text-gray-600 text-center truncate"
+                        title={shareholder.documents?.business_license?.fileName}
+                      >
                         {isUploading(shareholder.id, "business_license")
                           ? "Uploading..."
                           : shareholder.documents?.business_license
-                            ? shareholder.documents.business_license.fileName
+                            ? truncateFileName(
+                                shareholder.documents.business_license.fileName,
+                              )
                             : "Upload License"}
                       </span>
                       <span className="text-xs text-gray-400">
@@ -336,11 +354,14 @@ export const Step3Shareholders: React.FC = () => {
                     </label>
                     <label className="flex flex-col items-center justify-center gap-2 py-4 px-4 border-2 border-dashed border-gray-300 rounded-lg bg-white hover:border-[#004eff] hover:bg-blue-50/30 cursor-pointer transition-colors">
                       <Upload className="w-5 h-5 text-gray-400" />
-                      <span className="text-sm text-gray-600 text-center">
+                      <span
+                        className="block w-full text-sm text-gray-600 text-center truncate"
+                        title={shareholder.documents?.others?.fileName}
+                      >
                         {isUploading(shareholder.id, "others")
                           ? "Uploading..."
                           : shareholder.documents?.others
-                            ? shareholder.documents.others.fileName
+                            ? truncateFileName(shareholder.documents.others.fileName)
                             : "Upload Document"}
                       </span>
                       <span className="text-xs text-gray-400">
@@ -515,11 +536,14 @@ export const Step3Shareholders: React.FC = () => {
                 </label>
                 <label className="flex flex-col items-center justify-center gap-2 py-4 px-4 border-2 border-dashed border-gray-300 rounded-lg bg-white hover:border-[#004eff] hover:bg-blue-50/30 cursor-pointer transition-colors">
                   <Upload className="w-5 h-5 text-gray-400" />
-                  <span className="text-sm text-gray-600 text-center">
+                  <span
+                    className="block w-full text-sm text-gray-600 text-center truncate"
+                    title={shareholder.documents?.passport?.fileName}
+                  >
                     {isUploading(shareholder.id, "passport")
                       ? "Uploading..."
                       : shareholder.documents?.passport
-                        ? shareholder.documents.passport.fileName
+                        ? truncateFileName(shareholder.documents.passport.fileName)
                         : "Upload Passport"}
                   </span>
                   <span className="text-xs text-gray-400">
@@ -553,11 +577,14 @@ export const Step3Shareholders: React.FC = () => {
                 </label>
                 <label className="flex flex-col items-center justify-center gap-2 py-4 px-4 border-2 border-dashed border-gray-300 rounded-lg bg-white hover:border-[#004eff] hover:bg-blue-50/30 cursor-pointer transition-colors">
                   <Upload className="w-5 h-5 text-gray-400" />
-                  <span className="text-sm text-gray-600 text-center">
+                  <span
+                    className="block w-full text-sm text-gray-600 text-center truncate"
+                    title={shareholder.documents?.selfie?.fileName}
+                  >
                     {isUploading(shareholder.id, "selfie")
                       ? "Uploading..."
                       : shareholder.documents?.selfie
-                        ? shareholder.documents.selfie.fileName
+                        ? truncateFileName(shareholder.documents.selfie.fileName)
                         : "Upload Selfie"}
                   </span>
                   <span className="text-xs text-gray-400">
@@ -591,11 +618,16 @@ export const Step3Shareholders: React.FC = () => {
                 </label>
                 <label className="flex flex-col items-center justify-center gap-2 py-4 px-4 border-2 border-dashed border-gray-300 rounded-lg bg-white hover:border-[#004eff] hover:bg-blue-50/30 cursor-pointer transition-colors">
                   <Upload className="w-5 h-5 text-gray-400" />
-                  <span className="text-sm text-gray-600 text-center">
+                  <span
+                    className="block w-full text-sm text-gray-600 text-center truncate"
+                    title={shareholder.documents?.addressProof?.fileName}
+                  >
                     {isUploading(shareholder.id, "addressProof")
                       ? "Uploading..."
                       : shareholder.documents?.addressProof
-                        ? shareholder.documents.addressProof.fileName
+                        ? truncateFileName(
+                            shareholder.documents.addressProof.fileName,
+                          )
                         : "Upload Document"}
                   </span>
                   <span className="text-xs text-gray-400">

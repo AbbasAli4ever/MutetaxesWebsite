@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Checkbox } from "../../../components/ui/checkbox";
 import { RadioGroup } from "../../../components/ui/radio-group";
 import { useCompanyStore } from "../../../store/useCompanyStore";
@@ -10,7 +10,6 @@ const bankingOptions = [
   { id: "currenxie", label: "Currenxie" },
   { id: "stripe", label: "Stripe" },
   { id: "bank_account_assistance", label: "Bank Account Assistance" },
-  { id: "no_bank_account", label: "No Bank Account Needed" },
 ];
 
 const additionalServiceOptions = [
@@ -30,21 +29,73 @@ const additionalServiceOptions = [
 
 export const Step5Services: React.FC = () => {
   // Use the store directly
-  const { formData, updateServices, updateBanking } = useCompanyStore();
+  const { formData, stepErrors, updateServices, updateBanking } = useCompanyStore();
   const { services } = formData;
+  const errors = stepErrors;
+  const selectedProviderIds = services.banking.providers;
+  const preferredProvider = services.banking.preferredProvider;
+  const preferredEligibleProviderIds = selectedProviderIds;
 
-  const handleBankingChange = (id: string, checked: boolean) => {
-    let updated = checked
-      ? [...services.banking.providers, id]
-      : services.banking.providers.filter((item) => item !== id);
+  const selectedBankingProviders = selectedProviderIds
+    .map((id) => {
+      const option = bankingOptions.find((opt) => opt.id === id);
+      return option ? { value: option.id, label: option.label } : null;
+    })
+    .filter(Boolean) as { value: string; label: string }[];
 
-    // If the removed provider was the preferred one, clear it
-    if (!checked && services.banking.preferredProvider === id) {
-      updateBanking({ providers: updated, preferredProvider: "" });
+  const preferredBankingProviders = preferredEligibleProviderIds
+    .map((id) => {
+      const option = bankingOptions.find((opt) => opt.id === id);
+      return option ? { value: option.id, label: option.label } : null;
+    })
+    .filter(Boolean) as { value: string; label: string }[];
+
+  useEffect(() => {
+    if (preferredEligibleProviderIds.length === 0 && preferredProvider) {
+      updateBanking({ preferredProvider: "" });
       return;
     }
 
-    updateBanking({ providers: updated });
+    if (
+      preferredEligibleProviderIds.length === 1 &&
+      preferredProvider !== preferredEligibleProviderIds[0]
+    ) {
+      updateBanking({ preferredProvider: preferredEligibleProviderIds[0] });
+      return;
+    }
+
+    if (
+      preferredEligibleProviderIds.length > 1 &&
+      preferredProvider &&
+      !preferredEligibleProviderIds.includes(preferredProvider)
+    ) {
+      updateBanking({ preferredProvider: "" });
+    }
+  }, [preferredEligibleProviderIds, preferredProvider, updateBanking]);
+
+  const handleBankingChange = (id: string, checked: boolean) => {
+    let updated = checked
+      ? [...selectedProviderIds, id]
+      : selectedProviderIds.filter((item) => item !== id);
+
+    let nextPreferredProvider = preferredProvider;
+    const updatedEligibleProviderIds = updated;
+
+    if (updatedEligibleProviderIds.length === 0) {
+      nextPreferredProvider = "";
+    } else if (updatedEligibleProviderIds.length === 1) {
+      nextPreferredProvider = updatedEligibleProviderIds[0];
+    } else if (
+      nextPreferredProvider &&
+      !updatedEligibleProviderIds.includes(nextPreferredProvider)
+    ) {
+      nextPreferredProvider = "";
+    }
+
+    updateBanking({
+      providers: updated,
+      preferredProvider: nextPreferredProvider,
+    });
   };
 
   const handlePreferredProviderChange = (value: string) => {
@@ -57,15 +108,6 @@ export const Step5Services: React.FC = () => {
       : services.additionalServices.filter((item) => item !== id);
     updateServices({ additionalServices: updated });
   };
-
-  // Get selected banking providers for preferred provider selection (exclude "no-bank-account")
-  const selectedBankingProviders = services.banking.providers
-    .filter((id) => id !== "no_bank_account")
-    .map((id) => {
-      const option = bankingOptions.find((opt) => opt.id === id);
-      return option ? { value: option.id, label: option.label } : null;
-    })
-    .filter(Boolean) as { value: string; label: string }[];
 
   return (
     <div className="space-y-8">
@@ -102,20 +144,33 @@ export const Step5Services: React.FC = () => {
         </div>
 
         {/* Preferred Provider Selection */}
-        {selectedBankingProviders.length > 0 && (
+        {preferredBankingProviders.length > 0 && (
           <div className="mt-6 pt-6 border-t border-gray-200">
             <h5 className="text-sm font-semibold text-[#212833] mb-2">
               Preferred Provider
             </h5>
-            <p className="text-sm text-gray-600 mb-4">
-              Select your primary banking service preference
-            </p>
-            <RadioGroup
-              name="preferred-banking-provider"
-              options={selectedBankingProviders}
-              value={services.banking.preferredProvider}
-              onChange={handlePreferredProviderChange}
-            />
+            {preferredBankingProviders.length === 1 ? (
+              <p className="text-sm text-gray-700">
+                {preferredBankingProviders[0].label} (auto-selected)
+              </p>
+            ) : (
+              <>
+                <p className="text-sm text-gray-600 mb-4">
+                  Select your primary banking service preference
+                </p>
+                <RadioGroup
+                  name="preferred-banking-provider"
+                  options={preferredBankingProviders}
+                  value={services.banking.preferredProvider}
+                  onChange={handlePreferredProviderChange}
+                />
+                {errors?.bankingPreferredProvider && (
+                  <p className="text-xs text-red-500 mt-2">
+                    {errors.bankingPreferredProvider}
+                  </p>
+                )}
+              </>
+            )}
           </div>
         )}
       </div>
@@ -151,7 +206,7 @@ export const Step5Services: React.FC = () => {
         <div className="space-y-1 text-sm text-gray-700">
           <p>
             <span className="font-medium">Banking Services:</span>{" "}
-            {services.banking.providers.length} selected
+            {selectedBankingProviders.length} selected
           </p>
           <p>
             <span className="font-medium">Additional Services:</span>{" "}
