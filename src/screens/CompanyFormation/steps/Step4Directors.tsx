@@ -70,6 +70,11 @@ export const Step4Directors: React.FC = () => {
   const [uploadingFiles, setUploadingFiles] = useState<Record<string, boolean>>({});
 
   const toggleDirectorExpanded = (id: string) => {
+    const director = directors.find((d) => d.id === id);
+    if (director && (director.isNominee || director.shareholderSelection === "nominee")) {
+      return;
+    }
+
     const otherFormOpen =
       expandedDirectors.length > 0 && expandedDirectors[0] !== id;
     if (otherFormOpen) {
@@ -119,6 +124,14 @@ export const Step4Directors: React.FC = () => {
   const saveDirector = (id: string) => {
     const dir = directors.find((d) => d.id === id);
     if (!dir) return;
+
+    // Nominee directors are read-only and do not require detail validation.
+    if (dir.isNominee || dir.shareholderSelection === "nominee") {
+      setFormErrors({});
+      setFormMessage(null);
+      setExpandedDirectors([]);
+      return;
+    }
 
     const errs: Record<string, string> = {};
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -336,7 +349,7 @@ export const Step4Directors: React.FC = () => {
       ) : (
         <div className="p-5 bg-yellow-50 rounded-xl border border-yellow-200">
           <p className="text-sm text-yellow-800">
-            <strong>Tip:</strong> Add shareholders in Step 2 & Step 3 to use the
+            <strong>Tip:</strong> Add shareholders in Step 2 to use the
             Quick Add feature here.
           </p>
         </div>
@@ -376,6 +389,8 @@ export const Step4Directors: React.FC = () => {
           <div className="space-y-4">
             {directors.map((director, index) => {
               const isExpanded = expandedDirectors.includes(director.id);
+              const isNomineeDirector =
+                director.isNominee || director.shareholderSelection === "nominee";
 
               return (
                 <div
@@ -389,7 +404,7 @@ export const Step4Directors: React.FC = () => {
                       {director.fullName && `: ${director.fullName}`}
                     </h5>
                     <div className="flex items-center gap-2">
-                      {!isExpanded && (
+                      {!isExpanded && !isNomineeDirector && (
                         <Button
                           type="button"
                           variant="outline"
@@ -412,8 +427,16 @@ export const Step4Directors: React.FC = () => {
                     </div>
                   </div>
 
+                  {isNomineeDirector && (
+                    <div className="px-4 pb-4">
+                      <p className="text-xs text-gray-600 bg-[#f5f7fa] border border-gray-200 rounded-md px-3 py-2">
+                        Nominee director added. No additional details are required.
+                      </p>
+                    </div>
+                  )}
+
                   {/* Expanded Form */}
-                  {isExpanded && (
+                  {isExpanded && !isNomineeDirector && (
                     <div className="p-6 pt-2 space-y-4 border-t">
                       {/* Director Type Selector */}
                       <div className="space-y-2">

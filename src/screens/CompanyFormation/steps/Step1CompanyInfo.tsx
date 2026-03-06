@@ -25,6 +25,17 @@ const businessScopeOptions: SelectOption[] = [
   { value: "real-estate", label: "Real Estate" },
 ];
 
+const companyTypeOptions: SelectOption[] = [
+  {
+    value: "limited_liability_company",
+    label: "Limited Liability Company (LLC)",
+  },
+  {
+    value: "private_limited_company",
+    label: "Private Limited Company (LTD)",
+  },
+];
+
 const natureOfBusinessOptions = [
   { id: "ecommerce", label: "E-Commerce" },
   { id: "consulting", label: "Consulting" },
@@ -165,7 +176,7 @@ export const Step1CompanyInfo: React.FC = () => {
         {/* Alternative Names */}
         <div className="space-y-2">
           <label className="block text-sm font-medium text-[#212833]">
-            Alternative Names (Optional)
+            Alternative Names <span className="text-red-500">*</span>
           </label>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
             <Input
@@ -181,7 +192,7 @@ export const Step1CompanyInfo: React.FC = () => {
                   ],
                 })
               }
-              className="bg-[#f5f7fa] border-gray-300 h-11"
+              className={`bg-[#f5f7fa] border-gray-300 h-11 ${errors?.alternativeName1 ? "border-red-500" : ""}`}
             />
             <Input
               type="text"
@@ -196,7 +207,7 @@ export const Step1CompanyInfo: React.FC = () => {
                   ],
                 })
               }
-              className="bg-[#f5f7fa] border-gray-300 h-11"
+              className={`bg-[#f5f7fa] border-gray-300 h-11 ${errors?.alternativeName2 ? "border-red-500" : ""}`}
             />
             <Input
               type="text"
@@ -211,9 +222,18 @@ export const Step1CompanyInfo: React.FC = () => {
                   ],
                 })
               }
-              className="bg-[#f5f7fa] border-gray-300 h-11"
+              className={`bg-[#f5f7fa] border-gray-300 h-11 ${errors?.alternativeName3 ? "border-red-500" : ""}`}
             />
           </div>
+          {(errors?.alternativeName1 ||
+            errors?.alternativeName2 ||
+            errors?.alternativeName3) && (
+            <p className="text-xs text-red-500 mt-1">
+              {errors.alternativeName1 ||
+                errors.alternativeName2 ||
+                errors.alternativeName3}
+            </p>
+          )}
         </div>
 
         {/* Nature of Business */}
@@ -280,14 +300,17 @@ export const Step1CompanyInfo: React.FC = () => {
         {/* Company Type */}
         <div className="space-y-2">
           <label className="block text-sm font-medium text-[#212833]">
-            Company Type
+            Company Type <span className="text-red-500">*</span>
           </label>
-          <Input
-            type="text"
-            value="Private Limited Company"
-            disabled
-            className="bg-[#f5f7fa] border-gray-300 h-11"
+          <Select
+            options={companyTypeOptions}
+            value={company.type}
+            onChange={(value) => updateCompany({ type: value })}
+            placeholder="Select company type"
           />
+          {errors?.companyType && (
+            <p className="text-xs text-red-500 mt-1">{errors.companyType}</p>
+          )}
         </div>
       </div>
     </div>

@@ -42,6 +42,8 @@ export interface ShareholdingInterface {
   percentage: number;
 }
 
+export type ShareholderSelection = "own_name" | "nominee";
+
 export interface FileInterface {
   key: string;
   url: string;
@@ -66,6 +68,8 @@ export interface PersonInterface {
   id: string;
   type: PersonType;
   roles: PersonRole[];
+  shareholderSelection?: ShareholderSelection;
+  isNominee: boolean;
   fullName: string;
   // Corporate-specific fields
   companyName: string;
@@ -144,6 +148,8 @@ export const createEmptyPerson = (
   id: Date.now().toString() + Math.random().toString(36).substr(2, 9),
   type,
   roles,
+  shareholderSelection: "own_name",
+  isNominee: false,
   fullName: "",
   companyName: "",
   countryOfIncorporation: null,
@@ -440,6 +446,12 @@ export const useCompanyStore = create<CompanyStoreState>()(
                 ? {
                     ...person,
                     ...data,
+                    isNominee:
+                      typeof data.isNominee === "boolean"
+                        ? data.isNominee
+                        : data.shareholderSelection
+                          ? data.shareholderSelection === "nominee"
+                          : person.isNominee,
                     // Preserve nested objects if not provided in data
                     residentialAddress: data.residentialAddress
                       ? {
@@ -639,8 +651,16 @@ export const useCompanyStore = create<CompanyStoreState>()(
 
             // Validate Company
             const c = formData.company;
+            if (!c.type?.trim())
+              errors.companyType = "Company type is required";
             if (!c.proposedCompanyName.trim())
               errors.proposedCompanyName = "Company name is required";
+            if (!c.alternativeNames[0]?.trim())
+              errors.alternativeName1 = "Alternative name 1 is required";
+            if (!c.alternativeNames[1]?.trim())
+              errors.alternativeName2 = "Alternative name 2 is required";
+            if (!c.alternativeNames[2]?.trim())
+              errors.alternativeName3 = "Alternative name 3 is required";
             if (c.natureOfBusiness.length === 0)
               errors.natureOfBusiness = "Select at least one business type";
             if (!c.businessScope)
@@ -654,45 +674,6 @@ export const useCompanyStore = create<CompanyStoreState>()(
           }
 
           case 2: {
-            // Validate Share Capital
-            const sc = formData.shareCapital;
-            if (!sc.totalAmount || sc.totalAmount <= 0)
-              errors.shareCapitalAmount = "Enter a valid share capital amount";
-            if (!sc.totalShares || sc.totalShares <= 0)
-              errors.totalShares = "Enter a valid number of shares";
-
-            // Validate Shareholders
-            const shareholders = formData.persons.filter((p) =>
-              p.roles.includes("shareholder"),
-            );
-
-            if (shareholders.length === 0) {
-              errors.shareDistribution = "Add at least one shareholder";
-            } else {
-              const totalPercentage = shareholders.reduce(
-                (sum, s) => sum + (s.shareholding?.percentage || 0),
-                0,
-              );
-
-              const incomplete = shareholders.some(
-                (s) =>
-                  !s.fullName?.trim() || (s.shareholding?.percentage || 0) <= 0,
-              );
-
-              if (incomplete) {
-                errors.shareDistribution =
-                  "All shareholders must have a name and ownership percentage";
-              } else if (totalPercentage > 100) {
-                errors.shareDistribution = `Total ownership (${totalPercentage.toFixed(2)}%) exceeds 100%. Please reduce allocation.`;
-              } else if (totalPercentage < 100) {
-                const remaining = (100 - totalPercentage).toFixed(2);
-                errors.shareDistribution = `Share ownership must total exactly 100%. You have ${remaining}% remaining to allocate.`;
-              }
-            }
-            break;
-          }
-
-          case 3: {
             // Validate Shareholder Details
             const shareholders = formData.persons.filter((p) =>
               p.roles.includes("shareholder"),
@@ -704,6 +685,18 @@ export const useCompanyStore = create<CompanyStoreState>()(
             }
 
             shareholders.forEach((s, i) => {
+              const isNominee =
+                s.isNominee || s.shareholderSelection === "nominee";
+              const nomineePercentage = s.shareholding?.percentage || 0;
+
+              if (isNominee) {
+                if (nomineePercentage <= 0 || nomineePercentage > 100) {
+                  errors[`shareholders.${i}.nomineePercentage`] =
+                    "Nominee share percentage must be between 0 and 100";
+                }
+                return;
+              }
+
               if (!s.fullName?.trim())
                 errors[`shareholders.${i}.fullName`] = "Full name is required";
               if (!s.nationality)
@@ -757,6 +750,67 @@ export const useCompanyStore = create<CompanyStoreState>()(
                     "Business license is required";
               }
             });
+
+            // Step 2 gate: total ownership must already be 100% before proceeding
+            const totalPercentage = shareholders.reduce(
+              (sum, s) => sum + (s.shareholding?.percentage || 0),
+              0,
+            );
+
+            const missingPercentage = shareholders.some(
+              (s) => (s.shareholding?.percentage || 0) <= 0,
+            );
+
+            if (missingPercentage) {
+              errors.shareDistribution =
+                "All shareholders must have an ownership percentage greater than 0";
+            } else if (totalPercentage > 100) {
+              errors.shareDistribution = `Total ownership (${totalPercentage.toFixed(2)}%) exceeds 100%. Please reduce allocation.`;
+            } else if (totalPercentage < 100) {
+              const remaining = (100 - totalPercentage).toFixed(2);
+              errors.shareDistribution = `Share ownership must total exactly 100%. You have ${remaining}% remaining to allocate.`;
+            }
+            break;
+          }
+
+          case 3: {
+            // Validate Share Capital
+            const sc = formData.shareCapital;
+            if (!sc.totalAmount || sc.totalAmount <= 0)
+              errors.shareCapitalAmount = "Enter a valid share capital amount";
+            if (!sc.totalShares || sc.totalShares <= 0)
+              errors.totalShares = "Enter a valid number of shares";
+
+            // Validate Shareholders
+            const shareholders = formData.persons.filter((p) =>
+              p.roles.includes("shareholder"),
+            );
+
+            if (shareholders.length === 0) {
+              errors.shareDistribution = "Add at least one shareholder";
+            } else {
+              const totalPercentage = shareholders.reduce(
+                (sum, s) => sum + (s.shareholding?.percentage || 0),
+                0,
+              );
+
+              const incomplete = shareholders.some(
+                (s) =>
+                  (!(s.isNominee || s.shareholderSelection === "nominee") &&
+                    !s.fullName?.trim()) ||
+                  (s.shareholding?.percentage || 0) <= 0,
+              );
+
+              if (incomplete) {
+                errors.shareDistribution =
+                  "All shareholders must have a name and ownership percentage";
+              } else if (totalPercentage > 100) {
+                errors.shareDistribution = `Total ownership (${totalPercentage.toFixed(2)}%) exceeds 100%. Please reduce allocation.`;
+              } else if (totalPercentage < 100) {
+                const remaining = (100 - totalPercentage).toFixed(2);
+                errors.shareDistribution = `Share ownership must total exactly 100%. You have ${remaining}% remaining to allocate.`;
+              }
+            }
             break;
           }
 
@@ -772,6 +826,12 @@ export const useCompanyStore = create<CompanyStoreState>()(
             }
 
             directors.forEach((dir, i) => {
+              const isNomineeDirector =
+                dir.isNominee || dir.shareholderSelection === "nominee";
+              if (isNomineeDirector) {
+                return;
+              }
+
               // Corporate-specific validation
               if (dir.type === "corporate") {
                 if (!dir.companyName?.trim())
@@ -922,6 +982,7 @@ export const useCompanyStore = create<CompanyStoreState>()(
               return {
                 type: p.type,
                 roles: p.roles,
+                isNominee: !!p.isNominee,
                 fullName: p.fullName,
                 nationality: iso(p.nationality),
                 email: p.email,
@@ -941,6 +1002,7 @@ export const useCompanyStore = create<CompanyStoreState>()(
             return {
               type: p.type,
               roles: p.roles,
+              isNominee: !!p.isNominee,
               fullName: null,
               nationality: null,
               email: null,
@@ -1051,7 +1113,15 @@ export const useCompanyStore = create<CompanyStoreState>()(
               ...persisted.formData?.shareCapital,
             },
             persons:
-              persisted.formData?.persons ?? currentState.formData.persons,
+              (persisted.formData?.persons ?? currentState.formData.persons).map(
+                (person) => ({
+                  ...person,
+                  isNominee:
+                    typeof person.isNominee === "boolean"
+                      ? person.isNominee
+                      : person.shareholderSelection === "nominee",
+                }),
+              ),
             services: {
               ...currentState.formData.services,
               ...persisted.formData?.services,

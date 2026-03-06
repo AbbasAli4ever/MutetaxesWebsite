@@ -14,8 +14,8 @@ import { Step8Review } from "./steps/Step8Review";
 
 const steps = [
   { number: 1, label: "Information" },
-  { number: 2, label: "Share Capital" },
-  { number: 3, label: "Shareholders" },
+  { number: 2, label: "Shareholders" },
+  { number: 3, label: "Share Capital" },
   { number: 4, label: "Directors" },
   { number: 5, label: "Services" },
   { number: 6, label: "Billing" },
@@ -95,9 +95,9 @@ export const CompanyFormation: React.FC = () => {
       case 1:
         return <Step1CompanyInfo />;
       case 2:
-        return <Step2ShareCapital />;
-      case 3:
         return <Step3Shareholders />;
+      case 3:
+        return <Step2ShareCapital />;
       case 4:
         return <Step4Directors />;
       case 5:
